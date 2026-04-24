@@ -1,0 +1,1611 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 3 · Organización Visual del Documento | Microsoft Word 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --bg:#F5F7FB;--bg2:#EAEEF6;--white:#FFFFFF;--card:#FFFFFF;
+  --border:#DDE3EE;--border2:#C5CDDF;
+  --navy:#0A2540;--blue:#0066FF;--blue2:#004FCC;--blueL:#E8F0FF;--blueXL:#F0F5FF;
+  --cyan:#00C2E0;--cyanL:#E0F9FD;
+  --amber:#FF8C00;--amberL:#FFF4E5;
+  --green:#00A67E;--greenL:#E3FAF5;
+  --red:#E0294A;--redL:#FFF0F3;
+  --purple:#7C3AED;--purpleL:#F5F0FF;
+  --text:#1A2B4A;--text2:#4A5A75;--muted:#8A97B0;
+  --r:10px;--r2:16px;
+  --shadow:0 2px 12px rgba(10,37,64,.08);--shadowM:0 8px 32px rgba(10,37,64,.12);
+  --sidebar:268px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;font-size:17px;zoom:1.12}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg2)}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:6px}
+::-webkit-scrollbar-thumb:hover{background:var(--blue)}
+
+body::before{content:'';position:fixed;inset:0;z-index:-2;background-color:var(--bg);
+  background-image:radial-gradient(circle at 20% 10%,rgba(0,102,255,.05) 0%,transparent 50%),
+    radial-gradient(circle at 80% 90%,rgba(0,194,224,.06) 0%,transparent 45%),
+    radial-gradient(circle at 60% 40%,rgba(124,58,237,.03) 0%,transparent 40%)}
+body::after{content:'';position:fixed;inset:0;z-index:-1;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ccircle cx='40' cy='40' r='1.2' fill='%230066FF' fill-opacity='.09'/%3E%3C/svg%3E");
+  background-size:40px 40px;pointer-events:none}
+
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:9999;
+  background:linear-gradient(90deg,var(--green),var(--cyan),var(--blue));
+  box-shadow:0 0 8px rgba(0,135,90,.4);transition:width .1s}
+
+/* SIDEBAR */
+#sidebar{position:fixed;left:0;top:0;bottom:0;width:var(--sidebar);background:var(--white);
+  border-right:1px solid var(--border);z-index:200;display:flex;flex-direction:column;
+  overflow-y:auto;box-shadow:2px 0 20px rgba(10,37,64,.06);scrollbar-width:thin;scrollbar-color:var(--border2) var(--white)}
+.sb-top{padding:18px 16px;border-bottom:1px solid var(--border)}
+.sb-brand{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.sb-icon{width:38px;height:38px;border-radius:10px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--purple),var(--blue));
+  display:flex;align-items:center;justify-content:center;font-size:18px;
+  box-shadow:0 4px 12px rgba(124,58,237,.3)}
+.sb-brand-txt{font-size:12px;font-weight:700;color:var(--navy);line-height:1.3}
+.sb-brand-sub{font-size:10px;color:var(--muted);font-weight:400}
+.sb-chip{background:var(--purpleL);border:1px solid rgba(124,58,237,.15);border-radius:var(--r);padding:10px 12px}
+.sb-chip-num{font-size:10px;font-weight:700;color:var(--purple);text-transform:uppercase;
+  letter-spacing:.1em;margin-bottom:3px;font-family:'Fira Code',monospace}
+.sb-chip-name{font-size:12.5px;font-weight:700;color:var(--navy);line-height:1.3}
+.sb-chip-week{font-size:11px;color:var(--muted);margin-top:3px}
+.nav-group{padding:12px 16px 4px;font-size:9.5px;font-weight:700;color:var(--muted);
+  text-transform:uppercase;letter-spacing:.12em}
+.nav-link{display:flex;align-items:center;gap:9px;padding:8px 12px 8px 16px;
+  font-size:12.5px;color:var(--text2);text-decoration:none;
+  border-left:3px solid transparent;transition:all .18s;cursor:pointer}
+.nav-link:hover{color:var(--purple);background:var(--purpleL)}
+.nav-link.on{color:var(--purple);border-left-color:var(--purple);background:var(--purpleL);font-weight:600}
+.nav-link.done .nav-icon::after{content:' ✓';font-size:10px;color:var(--green)}
+.nav-icon{font-size:13px;width:18px;text-align:center;flex-shrink:0}
+.nav-txt{flex:1;line-height:1.3}
+.nav-sub{font-size:10px;color:var(--muted);margin-top:1px;font-weight:400}
+.sb-foot{margin-top:auto;padding:14px 16px;border-top:1px solid var(--border)}
+.prog-row{display:flex;justify-content:space-between;margin-bottom:5px;font-size:10px;
+  font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.prog-row span{color:var(--purple);font-family:'Fira Code',monospace}
+.prog-track{height:5px;background:var(--bg2);border-radius:20px;overflow:hidden}
+.prog-fill{height:100%;width:24%;background:linear-gradient(90deg,var(--purple),var(--blue),var(--cyan));border-radius:20px}
+.prog-note{font-size:10px;color:var(--muted);margin-top:4px}
+
+/* MAIN */
+#main{margin-left:var(--sidebar);min-height:100vh}
+
+/* HERO */
+#hero{background:var(--white);border-bottom:1px solid var(--border);
+  position:relative;overflow:hidden;padding:56px 64px 48px;min-height:72vh;display:flex;align-items:center}
+#hero::before{content:'';position:absolute;inset:0;z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect x='0' y='100' width='60' height='1.5' fill='%237C3AED' fill-opacity='.07'/%3E%3Crect x='100' y='0' width='1.5' height='60' fill='%237C3AED' fill-opacity='.07'/%3E%3Crect x='60' y='100' width='1.5' height='60' fill='%237C3AED' fill-opacity='.07'/%3E%3Crect x='100' y='60' width='100' height='1.5' fill='%237C3AED' fill-opacity='.07'/%3E%3Ccircle cx='60' cy='100' r='4' fill='none' stroke='%237C3AED' stroke-width='1.5' stroke-opacity='.13'/%3E%3Ccircle cx='100' cy='60' r='4' fill='none' stroke='%237C3AED' stroke-width='1.5' stroke-opacity='.13'/%3E%3Ccircle cx='100' cy='160' r='3' fill='%230066FF' fill-opacity='.12'/%3E%3C/svg%3E");
+  background-size:200px 200px}
+.hero-circuit{position:absolute;top:-40px;right:-40px;width:480px;height:480px;z-index:0;pointer-events:none;opacity:.8}
+.hero-left{position:relative;z-index:1;max-width:660px;flex:1}
+.hero-right-card{position:absolute;right:64px;top:50%;transform:translateY(-50%);z-index:1;width:270px}
+
+.eyebrow{display:inline-flex;align-items:center;gap:8px;margin-bottom:22px;
+  background:var(--purpleL);border:1px solid rgba(124,58,237,.2);border-radius:20px;
+  padding:6px 14px;font-size:11px;font-weight:700;color:var(--purple);
+  text-transform:uppercase;letter-spacing:.1em;font-family:'Fira Code',monospace;animation:fadeUp .5s both}
+.eyebrow-pulse{width:7px;height:7px;border-radius:50%;background:var(--purple);animation:pulse 1.6s infinite;flex-shrink:0}
+
+.hero-title{font-size:clamp(36px,4.8vw,62px);font-weight:900;color:var(--navy);
+  line-height:1.08;margin-bottom:18px;letter-spacing:-.02em;animation:fadeUp .5s .1s both}
+.hero-title .accent{background:linear-gradient(90deg,var(--purple),var(--blue));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-desc{font-size:17px;color:var(--text2);max-width:520px;margin-bottom:28px;
+  line-height:1.75;font-weight:400;animation:fadeUp .5s .18s both}
+
+.compat-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r2);
+  padding:18px;box-shadow:var(--shadowM);animation:fadeUp .5s .2s both}
+.compat-hd{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;
+  letter-spacing:.1em;margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.compat-hd::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--purple);display:inline-block}
+.compat-row{display:flex;align-items:center;gap:9px;padding:7px 0;border-bottom:1px solid var(--border)}
+.compat-row:last-child{border-bottom:none}
+.compat-ok{width:18px;height:18px;border-radius:50%;flex-shrink:0;
+  background:var(--greenL);border:1px solid rgba(0,135,90,.3);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--green)}
+.compat-ok.star{background:var(--amberL);border-color:rgba(255,140,0,.3);color:var(--amber)}
+.compat-name{font-size:13px;font-weight:600;color:var(--text)}
+.compat-tag{margin-left:auto;font-size:9px;font-weight:700;padding:2px 7px;border-radius:6px;text-transform:uppercase}
+.compat-tag.all{background:var(--greenL);color:var(--green)}
+.compat-tag.bonus{background:var(--amberL);color:var(--amber)}
+
+/* SECTIONS */
+.sec{padding:60px 64px;border-bottom:1px solid var(--border);background:var(--white)}
+.sec.alt{background:var(--bg)}.sec.alt2{background:var(--purpleL)}
+.sec-kicker{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:700;
+  color:var(--purple);text-transform:uppercase;letter-spacing:.14em;margin-bottom:8px;font-family:'Fira Code',monospace}
+.sec-kicker::before{content:'//';color:var(--cyan);margin-right:2px}
+.sec-h{font-size:clamp(24px,3.2vw,40px);font-weight:900;color:var(--navy);line-height:1.12;margin-bottom:8px;letter-spacing:-.01em}
+.sec-sub{font-size:16px;color:var(--text2);margin-bottom:36px;max-width:600px}
+h2.t2{font-size:22px;font-weight:800;color:var(--navy);margin:44px 0 14px;
+  display:flex;align-items:center;gap:10px;letter-spacing:-.01em}
+h2.t2::before{content:'';width:4px;height:22px;background:linear-gradient(180deg,var(--purple),var(--blue));border-radius:4px;flex-shrink:0}
+h3.t3{font-size:17px;font-weight:700;color:var(--purple);margin:26px 0 10px}
+p.body{font-size:16px;color:var(--text2);line-height:1.85;margin-bottom:18px;text-align:justify}
+p.body strong{color:var(--navy);font-weight:700}
+
+/* BOXES */
+.box{border-radius:var(--r2);padding:20px 24px;margin:22px 0;display:flex;gap:15px;align-items:flex-start}
+.box-ico{font-size:21px;flex-shrink:0;margin-top:2px}
+.box-body{flex:1}
+.box-title{font-weight:700;font-size:15px;margin-bottom:6px}
+.box-text{font-size:15px;line-height:1.75;color:var(--text2)}
+.box-text ul{margin:7px 0 0 18px}.box-text li{margin-bottom:5px}
+.box-text strong{color:var(--navy);font-weight:700}
+.box-text code{background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.15);
+  border-radius:4px;padding:2px 7px;font-family:'Fira Code',monospace;font-size:13px;color:var(--purple)}
+.box.info{background:var(--blueXL);border:1px solid rgba(0,102,255,.18)}.box.info .box-title{color:var(--blue)}
+.box.warn{background:var(--amberL);border:1px solid rgba(255,140,0,.2)}.box.warn .box-title{color:var(--amber)}
+.box.ok{background:var(--greenL);border:1px solid rgba(0,135,90,.2)}.box.ok .box-title{color:var(--green)}
+.box.err{background:var(--redL);border:1px solid rgba(224,41,74,.18)}.box.err .box-title{color:var(--red)}
+.box.purple{background:var(--purpleL);border:1px solid rgba(124,58,237,.2)}.box.purple .box-title{color:var(--purple)}
+.box.bonus{background:linear-gradient(135deg,var(--amberL),#FFF8EC);border:1px dashed rgba(255,140,0,.4)}.box.bonus .box-title{color:var(--amber)}
+.box.teal{background:var(--tealL);border:1px solid rgba(8,145,178,.2)}.box.teal .box-title{color:var(--teal)}
+
+/* TABLES */
+.tbl-wrap{overflow-x:auto;margin:18px 0;border-radius:var(--r2);box-shadow:var(--shadow);border:1px solid var(--border)}
+table.t{width:100%;border-collapse:collapse;font-size:15px;background:var(--white)}
+table.t thead tr{background:var(--navy)}
+table.t thead th{padding:13px 16px;text-align:left;color:#fff;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em}
+table.t thead th:first-child{border-radius:var(--r2) 0 0 0}table.t thead th:last-child{border-radius:0 var(--r2) 0 0}
+table.t thead th.ctr{text-align:center}
+table.t tbody tr{border-bottom:1px solid var(--border);transition:background .15s}
+table.t tbody tr:hover{background:var(--purpleL)}
+table.t td{padding:12px 16px;color:var(--text2);vertical-align:top;font-size:15px}
+table.t td.ctr{text-align:center}
+.ok{color:var(--green);font-weight:700;font-size:16px}.no{color:var(--muted);font-size:14px}.par{color:var(--amber);font-size:13px;font-weight:700}
+
+/* COMPETENCES */
+.comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin:22px 0}
+.comp-item{background:var(--white);border:1px solid var(--border);border-radius:var(--r);
+  padding:14px 16px;display:flex;align-items:flex-start;gap:12px;transition:border-color .2s,box-shadow .2s}
+.comp-item:hover{border-color:rgba(124,58,237,.3);box-shadow:0 4px 16px rgba(124,58,237,.08)}
+.comp-bullet{width:24px;height:24px;border-radius:6px;flex-shrink:0;margin-top:1px;
+  background:linear-gradient(135deg,var(--purple),var(--blue));display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff}
+.comp-txt{font-size:14.5px;color:var(--text2);line-height:1.45}
+
+/* VISUAL DEMO BOXES (page layout) */
+.page-demo{background:var(--white);border:1px solid var(--border);border-radius:var(--r2);
+  overflow:hidden;margin:20px 0;box-shadow:var(--shadow)}
+.page-demo-bar{background:var(--navy);padding:10px 16px;display:flex;align-items:center;gap:7px;
+  font-family:'Fira Code',monospace;font-size:11px;color:rgba(255,255,255,.45)}
+.pd-dot{width:11px;height:11px;border-radius:50%}
+.page-demo-body{padding:20px 24px;display:grid;gap:12px}
+.pd-zone{border-radius:8px;padding:11px 16px;display:flex;align-items:center;gap:12px}
+.pd-label{font-family:'Fira Code',monospace;font-size:11px;font-weight:600;color:var(--purple);
+  text-transform:uppercase;letter-spacing:.07em;width:150px;flex-shrink:0}
+.pd-desc{color:var(--text2);font-size:14px;line-height:1.4}
+.pz1{background:rgba(124,58,237,.06);border:1px solid rgba(124,58,237,.15)}
+.pz2{background:rgba(0,194,224,.08);border:1px solid rgba(0,194,224,.18)}
+.pz3{background:rgba(255,140,0,.07);border:1px solid rgba(255,140,0,.15)}
+.pz4{background:rgba(0,102,255,.06);border:1px solid rgba(0,102,255,.12)}
+.pz5{background:rgba(255,255,255,.6);border:1px solid var(--border)}
+
+/* MARGIN VISUALIZER */
+.margin-viz{
+  background:var(--purpleL);border:2px dashed rgba(124,58,237,.2);border-radius:var(--r2);
+  padding:28px;margin:20px 0;position:relative;
+}
+.margin-viz-inner{
+  background:var(--white);border:1px solid var(--border);border-radius:var(--r);
+  padding:24px;min-height:120px;display:flex;align-items:center;justify-content:center;
+  font-size:15px;color:var(--text2);line-height:1.7;
+}
+.margin-label{position:absolute;font-family:'Fira Code',monospace;font-size:10px;font-weight:700;color:var(--purple);
+  background:var(--purpleL);padding:2px 8px;border-radius:4px}
+.ml-top{top:8px;left:50%;transform:translateX(-50%)}
+.ml-bottom{bottom:8px;left:50%;transform:translateX(-50%)}
+.ml-left{left:8px;top:50%;transform:translateY(-50%) rotate(-90deg)}
+.ml-right{right:8px;top:50%;transform:translateY(-50%) rotate(90deg)}
+
+/* WATERMARK DEMO */
+.watermark-demo{position:relative;background:var(--white);border:1px solid var(--border);
+  border-radius:var(--r2);padding:36px 32px;margin:20px 0;box-shadow:var(--shadow);
+  min-height:160px;overflow:hidden}
+.wm-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-35deg);
+  font-size:52px;font-weight:900;color:rgba(124,58,237,.1);white-space:nowrap;
+  letter-spacing:.05em;pointer-events:none;user-select:none;font-family:'Outfit',sans-serif}
+.wm-content{position:relative;z-index:1;font-size:15px;color:var(--text2);line-height:1.7}
+
+/* HEADER-FOOTER DIAGRAM */
+.hf-diagram{background:var(--navy);border-radius:var(--r2);overflow:hidden;margin:20px 0;box-shadow:var(--shadowM)}
+.hf-header-area{background:rgba(124,58,237,.12);border-bottom:2px dashed rgba(124,58,237,.3);
+  padding:12px 20px;display:flex;justify-content:space-between;align-items:center}
+.hf-body-area{padding:20px;min-height:90px;display:flex;align-items:center;justify-content:center}
+.hf-footer-area{background:rgba(0,194,224,.15);border-top:2px dashed rgba(0,194,224,.4);
+  padding:12px 20px;display:flex;justify-content:space-between;align-items:center}
+.hf-zone-label{font-family:'Fira Code',monospace;font-size:11px;font-weight:700}
+.hf-zone-label.green{color:#c4b5fd}
+.hf-zone-label.cyan{color:var(--cyan)}
+.hf-zone-label.muted{color:rgba(255,255,255,.3);font-size:10px}
+.hf-body-text{color:rgba(255,255,255,.25);font-size:13px;font-style:italic;letter-spacing:.02em}
+
+/* EXERCISES */
+.ex-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r2);
+  overflow:hidden;margin:30px 0;box-shadow:var(--shadow);transition:box-shadow .25s,border-color .25s}
+.ex-card:hover{box-shadow:var(--shadowM);border-color:rgba(124,58,237,.2)}
+.ex-head{padding:18px 22px;background:var(--navy);display:flex;align-items:center;gap:14px}
+.ex-num{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--purple),var(--blue));
+  display:flex;align-items:center;justify-content:center;font-weight:900;font-size:19px;color:#fff;
+  flex-shrink:0;box-shadow:0 4px 12px rgba(124,58,237,.4)}
+.ex-info{flex:1}
+.ex-title{font-weight:800;font-size:17px;color:#fff}
+.ex-meta{font-size:12px;color:rgba(255,255,255,.55);margin-top:3px;font-family:'Fira Code',monospace}
+.ex-body{padding:24px 26px}
+.ex-goal{background:var(--amberL);border-left:3px solid var(--amber);border-radius:0 var(--r) var(--r) 0;
+  padding:13px 17px;margin-bottom:22px;font-size:15px;color:var(--text2)}
+.ex-goal strong{color:var(--amber);font-weight:700}
+.steps{list-style:none;padding:0}
+.step{display:flex;gap:15px;margin-bottom:16px;align-items:flex-start}
+.step-n{width:30px;height:30px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--purple),var(--blue));
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:#fff;
+  box-shadow:0 3px 8px rgba(124,58,237,.25)}
+.step-t{font-size:15px;color:var(--text2);line-height:1.75;padding-top:4px}
+.step-t strong{color:var(--navy);font-weight:700}
+.step-t code{background:var(--purpleL);border:1px solid rgba(124,58,237,.15);border-radius:5px;
+  padding:2px 7px;font-family:'Fira Code',monospace;font-size:13px;color:var(--purple)}
+.tip{background:var(--greenL);border:1px solid rgba(0,135,90,.2);border-radius:var(--r);
+  padding:12px 16px;margin-top:15px;font-size:14.5px;color:var(--text2)}
+.tip strong{color:var(--green)}
+.reto{background:var(--blueXL);border:1px solid rgba(0,102,255,.2);border-radius:var(--r);
+  padding:12px 16px;margin-top:10px;font-size:14.5px;color:var(--text2)}
+.reto::before{content:'⚡ Variante RETO: ';font-weight:700;color:var(--blue)}
+.bonus-hint{background:var(--blueXL);border:1px dashed rgba(0,102,255,.3);border-radius:var(--r);
+  padding:12px 16px;margin-top:10px;font-size:14.5px;color:var(--text2)}
+.bonus-hint::before{content:'⭐ BONUS (solo M365 + Copilot): ';font-weight:700;color:var(--blue)}
+
+/* SHORTCUTS */
+.sk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin:18px 0}
+.sk-item{background:var(--white);border:1px solid var(--border);border-radius:var(--r);
+  padding:12px 14px;display:flex;align-items:center;gap:12px;transition:border-color .2s,transform .2s}
+.sk-item:hover{border-color:rgba(124,58,237,.3);transform:translateY(-1px)}
+.sk-keys{display:flex;gap:3px;align-items:center;flex-shrink:0}
+.key{background:var(--navy);color:#fff;border-radius:6px;padding:5px 9px;min-width:30px;text-align:center;
+  font-family:'Fira Code',monospace;font-size:12px;font-weight:600;
+  box-shadow:0 3px 0 rgba(10,37,64,.4);border:1px solid rgba(255,255,255,.1)}
+.key.w{min-width:46px}.plus{font-size:11px;color:var(--muted);font-weight:800}
+.sk-desc{font-size:13.5px;color:var(--text2);line-height:1.3}
+
+/* MARK COMPLETE BUTTON */
+.mark-complete{
+  margin:36px 0 8px;display:flex;align-items:center;justify-content:center;
+}
+.btn-complete{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--purpleL);border:2px solid rgba(124,58,237,.2);
+  color:var(--purple);font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;
+  padding:12px 24px;border-radius:10px;cursor:pointer;
+  transition:all .25s;box-shadow:var(--shadow);
+}
+.btn-complete:hover{
+  background:var(--purple);color:#fff;border-color:var(--purple);
+  box-shadow:0 4px 20px rgba(124,58,237,.3);transform:translateY(-1px);
+}
+.btn-complete.done{
+  background:var(--greenL);
+  border-color:rgba(0,166,126,.3);color:var(--green);
+  cursor:default;transform:none!important;box-shadow:none!important;
+}
+.btn-complete .bc-icon{font-size:18px;transition:transform .3s}
+.btn-complete.done .bc-icon{transform:scale(1.2)}
+.btn-complete .bc-txt{}
+
+/* EXAM */
+#examen{background:var(--navy)}
+.exam-hero{padding:52px 64px 28px;border-bottom:1px solid rgba(255,255,255,.08);text-align:center;position:relative;overflow:hidden;
+  background:radial-gradient(ellipse 70% 60% at 20% 50%,rgba(124,58,237,.12) 0%,transparent 70%),
+    radial-gradient(ellipse 50% 50% at 80% 50%,rgba(0,194,224,.08) 0%,transparent 70%)}
+.exam-hero::after{content:'';position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Ccircle cx='20' cy='20' r='1' fill='white' fill-opacity='.05'/%3E%3C/svg%3E");
+  background-size:40px 40px;pointer-events:none}
+.exam-hero h2{font-size:36px;font-weight:900;color:#fff;margin-bottom:8px;position:relative;z-index:1}
+.exam-hero p{font-size:15px;color:rgba(255,255,255,.5);margin-bottom:20px;position:relative;z-index:1}
+.exam-stats{display:flex;justify-content:center;gap:32px;position:relative;z-index:1}
+.es-v{font-family:'Fira Code',monospace;font-size:30px;font-weight:700;color:var(--amber)}
+.es-l{font-size:11px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.08em}
+.exam-body{padding:32px 64px 48px;background:var(--navy)}
+.exam-note{background:rgba(255,140,0,.1);border:1px solid rgba(255,140,0,.25);border-radius:var(--r);
+  padding:13px 17px;margin-bottom:24px;font-size:14px;color:rgba(255,255,255,.65);display:flex;align-items:center;gap:8px}
+.sec-div{font-family:'Fira Code',monospace;font-size:12px;font-weight:700;color:var(--cyan);
+  text-transform:uppercase;letter-spacing:.12em;padding:10px 0;border-bottom:1px solid rgba(0,194,224,.2);
+  margin:28px 0 18px;display:flex;align-items:center;gap:10px}
+.sec-div-badge{background:rgba(0,194,224,.12);border:1px solid rgba(0,194,224,.2);border-radius:5px;
+  padding:2px 8px;font-size:11px;color:var(--cyan)}
+.q-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:var(--r2);
+  padding:22px 24px;margin-bottom:13px;transition:border-color .2s}
+.q-card:hover{border-color:rgba(124,58,237,.3)}
+.q-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:16px}
+.q-num{width:34px;height:34px;border-radius:50%;flex-shrink:0;background:rgba(124,58,237,.2);
+  border:1px solid rgba(124,58,237,.35);display:flex;align-items:center;justify-content:center;
+  font-family:'Fira Code',monospace;font-size:13px;font-weight:700;color:#c4b5fd}
+.q-meta{flex:1}
+.q-type{font-size:10px;font-weight:700;color:var(--amber);text-transform:uppercase;letter-spacing:.1em;margin-bottom:5px;font-family:'Fira Code',monospace}
+.q-text{font-size:15.5px;color:#fff;line-height:1.65;font-weight:500}
+.opts{display:flex;flex-direction:column;gap:8px;margin-left:48px}
+.opt{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  border-radius:var(--r);padding:12px 16px;cursor:pointer;transition:all .18s;user-select:none}
+.opt:hover{background:rgba(124,58,237,.1);border-color:rgba(124,58,237,.3)}
+.opt.sel{background:rgba(124,58,237,.15);border-color:rgba(124,58,237,.4)}
+.opt.ok{background:rgba(0,166,126,.12);border-color:rgba(0,166,126,.35)}
+.opt.bad{background:rgba(224,41,74,.08);border-color:rgba(224,41,74,.3)}
+.opt-l{width:26px;height:26px;border-radius:50%;flex-shrink:0;background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;
+  font-family:'Fira Code',monospace;font-size:12px;font-weight:700;color:rgba(255,255,255,.5)}
+.opt.ok .opt-l{background:var(--green);color:#fff;border-color:var(--green)}
+.opt.bad .opt-l{background:var(--red);color:#fff;border-color:var(--red)}
+.opt-t{font-size:14.5px;color:rgba(255,255,255,.8)}
+.tf-row{display:flex;gap:10px;margin-left:48px}
+.tf{flex:1;padding:14px;border-radius:var(--r);text-align:center;background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.09);cursor:pointer;font-size:15px;font-weight:700;
+  color:rgba(255,255,255,.55);transition:all .18s;user-select:none}
+.tf:hover{border-color:rgba(124,58,237,.3)}
+.tf.sel{border-color:var(--purple);background:rgba(124,58,237,.15);color:#fff}
+.tf.ok{border-color:var(--green);background:rgba(0,166,126,.12);color:var(--green)}
+.tf.bad{border-color:var(--red);background:rgba(224,41,74,.08);color:#ff8fa0}
+.fb{margin-left:48px;margin-top:10px;padding:10px 14px;border-radius:8px;font-size:14px;display:none}
+.fb.vis{display:block}
+.fb.ok{background:rgba(0,135,90,.1);border:1px solid rgba(0,135,90,.25);color:#52d9a9}
+.fb.bad{background:rgba(224,41,74,.08);border:1px solid rgba(224,41,74,.2);color:#ff8fa0}
+.sa{margin-left:48px;margin-top:9px}
+.sa textarea{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+  border-radius:var(--r);padding:12px 15px;color:#fff;font-family:'Outfit',sans-serif;
+  font-size:15px;line-height:1.65;resize:vertical;min-height:80px;outline:none;transition:border-color .2s}
+.sa textarea:focus{border-color:rgba(124,58,237,.45)}
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-left:48px}
+.match-col-h{font-size:11px;font-weight:700;color:rgba(255,255,255,.35);text-transform:uppercase;
+  letter-spacing:.08em;margin-bottom:8px;font-family:'Fira Code',monospace}
+.match-i{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--r);
+  padding:10px 14px;font-size:14px;color:rgba(255,255,255,.75);margin-bottom:6px;cursor:pointer;transition:all .18s}
+.match-i:hover{border-color:rgba(124,58,237,.3)}
+.match-i.sel{border-color:var(--amber);background:rgba(255,140,0,.08)}
+.match-i.done{border-color:var(--green);background:rgba(0,135,90,.1);color:#52d9a9}
+.exam-cta{text-align:center;padding:28px 64px 44px;border-top:1px solid rgba(255,255,255,.07);background:var(--navy)}
+.btn-grade{background:linear-gradient(135deg,var(--purple),var(--blue));color:#fff;
+  font-family:'Outfit',sans-serif;font-size:16px;font-weight:800;letter-spacing:.04em;
+  text-transform:uppercase;padding:16px 52px;border:none;border-radius:30px;cursor:pointer;
+  transition:all .22s;box-shadow:0 4px 20px rgba(124,58,237,.35)}
+.btn-grade:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(124,58,237,.45)}
+.score-box{display:none;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);
+  border-radius:var(--r2);padding:28px;margin-top:22px}
+.score-box.vis{display:block}
+.score-big{font-family:'Fira Code',monospace;font-size:60px;font-weight:700;color:var(--amber)}
+.score-msg{font-size:15px;color:rgba(255,255,255,.5);margin-top:5px}
+
+/* RUBRIC */
+.rub{width:100%;border-collapse:collapse;font-size:14.5px;margin:16px 0;border-radius:var(--r2);overflow:hidden;box-shadow:var(--shadow)}
+.rub thead{background:var(--navy)}
+.rub th{padding:11px 13px;text-align:left;color:#fff;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.rub td{padding:11px 13px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top}
+.rub tr:nth-child(even){background:var(--purpleL)}
+.rub tr:last-child td{background:rgba(124,58,237,.08);font-weight:700;color:var(--purple)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+@keyframes checkPop{0%{transform:scale(0)}60%{transform:scale(1.3)}100%{transform:scale(1)}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .55s,transform .55s}
+.reveal.shown{opacity:1;transform:none}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  
+:root{--sidebar:0px}
+  #sidebar{display:none}#main{margin-left:0}
+  .hero-right-card{display:none}#hero{padding:40px 24px;min-height:auto}
+  .sec{padding:40px 24px}
+  .comp-grid,.sk-grid{grid-template-columns:1fr}
+  .exam-body,.exam-cta,.exam-hero{padding-left:24px;padding-right:24px}
+  .opts,.tf-row,.fb,.sa,.match-grid{margin-left:0}
+  .match-grid{grid-template-columns:1fr}
+}
+
+.note-archivo{
+  background:#FFFBEB;border:2px solid #F59E0B;border-radius:var(--r);
+  padding:13px 16px;margin-top:14px;display:flex;align-items:flex-start;gap:12px;
+}
+.note-archivo .na-ico{font-size:20px;flex-shrink:0;margin-top:1px}
+.note-archivo .na-body{font-size:13.5px;color:var(--text2);line-height:1.6}
+.note-archivo .na-body strong{color:#B45309}
+.note-archivo .na-body code{background:rgba(180,83,9,.1);border:1px solid rgba(180,83,9,.2);
+  border-radius:4px;padding:2px 7px;font-family:'Fira Code',monospace;font-size:12px;color:#92400E}
+</style>
+</head>
+<body>
+
+<div id="pbar"></div>
+
+<!-- ═══ SIDEBAR ═══════════════════════════════════════════ -->
+<nav id="sidebar">
+  <div class="sb-top">
+    <div class="sb-brand">
+      <div class="sb-icon">📄</div>
+      <div>
+        <div class="sb-brand-txt">Microsoft Word 2026</div>
+        <div class="sb-brand-sub">Curso autogestivo · Parte 1 de 2</div>
+      </div>
+    </div>
+    <div class="sb-chip">
+      <div class="sb-chip-num">MOD_03 // SEM_03</div>
+      <div class="sb-chip-name">Organización Visual del Documento</div>
+      <div class="sb-chip-week">📅 27 abr – 3 may de 2026 · 16 horas</div>
+    </div>
+  </div>
+
+  <div class="nav-group">Contenido</div>
+  <a href="#hero"      class="nav-link on" id="nav-hero"><span class="nav-icon">🏠</span><div class="nav-txt">Portada<div class="nav-sub">Inicio del módulo</div></div></a>
+  <a href="#intro"     class="nav-link" id="nav-intro"><span class="nav-icon">🎯</span><div class="nav-txt">Introducción<div class="nav-sub">Mapa y competencias</div></div></a>
+  <a href="#tema1"     class="nav-link" id="nav-t1"><span class="nav-icon">📐</span><div class="nav-txt">Tema 1 · Configuración de página<div class="nav-sub">Márgenes, orientación, columnas</div></div></a>
+  <a href="#tema2"     class="nav-link" id="nav-t2"><span class="nav-icon">🔝</span><div class="nav-txt">Tema 2 · Encabezados y pies<div class="nav-sub">Profesionales y dinámicos</div></div></a>
+  <a href="#tema3"     class="nav-link" id="nav-t3"><span class="nav-icon">🔢</span><div class="nav-txt">Tema 3 · Numeración de páginas<div class="nav-sub">Formatos y posiciones</div></div></a>
+  <a href="#tema4"     class="nav-link" id="nav-t4"><span class="nav-icon">✂️</span><div class="nav-txt">Tema 4 · Secciones y saltos<div class="nav-sub">Control estructural avanzado</div></div></a>
+  <a href="#tema5"     class="nav-link" id="nav-t5"><span class="nav-icon">🖼️</span><div class="nav-txt">Tema 5 · Bordes y fondos<div class="nav-sub">Diseño visual de página</div></div></a>
+  <a href="#tema6"     class="nav-link" id="nav-t6"><span class="nav-icon">💧</span><div class="nav-txt">Tema 6 · Marcas de agua<div class="nav-sub">Confidencial, borrador, custom</div></div></a>
+  <a href="#tema7"     class="nav-link" id="nav-t7"><span class="nav-icon">📋</span><div class="nav-txt">Tema 7 · Plantillas<div class="nav-sub">Galería y creación propia</div></div></a>
+
+  <div class="nav-group">Evaluación</div>
+  <a href="#ejercicios" class="nav-link" id="nav-ej"><span class="nav-icon">✏️</span><div class="nav-txt">Ejercicios paso a paso<div class="nav-sub">5 ejercicios prácticos</div></div></a>
+  <a href="#examen"    class="nav-link" id="nav-ex"><span class="nav-icon">📝</span><div class="nav-txt">Examen interactivo<div class="nav-sub">20 reactivos</div></div></a>
+  <a href="#actividad" class="nav-link" id="nav-act"><span class="nav-icon">🏆</span><div class="nav-txt">Actividad integradora<div class="nav-sub">Proyecto + rúbrica</div></div></a>
+
+  <div class="sb-foot">
+    <div class="prog-row">Progreso del curso <span>24%</span></div>
+    <div class="prog-track"><div class="prog-fill"></div></div>
+    <div class="prog-note">Módulo 3 de 13 · Parte 1 de 2</div>
+  </div>
+</nav>
+
+<!-- ═══ MAIN ═══════════════════════════════════════════════ -->
+<main id="main">
+
+<!-- ─── HERO ───────────────────────────────────────────── -->
+<section id="hero">
+  <!-- Circuit SVG verde -->
+  <svg class="hero-circuit" viewBox="0 0 480 480" fill="none">
+    <line x1="400" y1="0"   x2="400" y2="110" stroke="#7C3AED" stroke-width="1.5" stroke-opacity=".12"/>
+    <line x1="400" y1="110" x2="310" y2="110" stroke="#7C3AED" stroke-width="1.5" stroke-opacity=".12"/>
+    <line x1="310" y1="110" x2="310" y2="210" stroke="#7C3AED" stroke-width="1.5" stroke-opacity=".12"/>
+    <line x1="310" y1="210" x2="450" y2="210" stroke="#7C3AED" stroke-width="1.5" stroke-opacity=".12"/>
+    <line x1="450" y1="210" x2="450" y2="350" stroke="#7C3AED" stroke-width="1.5" stroke-opacity=".12"/>
+    <line x1="360" y1="0"   x2="360" y2="70"  stroke="#00C2E0" stroke-width="1"   stroke-opacity=".09"/>
+    <line x1="360" y1="70"  x2="270" y2="70"  stroke="#00C2E0" stroke-width="1"   stroke-opacity=".09"/>
+    <line x1="270" y1="70"  x2="270" y2="170" stroke="#00C2E0" stroke-width="1"   stroke-opacity=".09"/>
+    <line x1="270" y1="170" x2="410" y2="170" stroke="#00C2E0" stroke-width="1"   stroke-opacity=".09"/>
+    <circle cx="400" cy="110" r="5"   fill="none" stroke="#7C3AED" stroke-width="1.5" stroke-opacity=".25"/>
+    <circle cx="310" cy="110" r="3.5" fill="#7C3AED" fill-opacity=".2"/>
+    <circle cx="310" cy="210" r="5"   fill="none" stroke="#7C3AED" stroke-width="1.5" stroke-opacity=".25"/>
+    <circle cx="450" cy="210" r="3.5" fill="#7C3AED" fill-opacity=".2"/>
+    <circle cx="360" cy="70"  r="3.5" fill="#00C2E0" fill-opacity=".18"/>
+    <circle cx="270" cy="70"  r="3.5" fill="#00C2E0" fill-opacity=".18"/>
+    <circle cx="270" cy="170" r="3.5" fill="#00C2E0" fill-opacity=".18"/>
+    <!-- Page icon deco -->
+    <rect x="320" y="260" width="60" height="76" rx="4" fill="none" stroke="#7C3AED" stroke-width="1.2" stroke-opacity=".12"/>
+    <line x1="330" y1="278" x2="370" y2="278" stroke="#7C3AED" stroke-width="1" stroke-opacity=".1"/>
+    <line x1="330" y1="288" x2="368" y2="288" stroke="#7C3AED" stroke-width="1" stroke-opacity=".08"/>
+    <line x1="330" y1="298" x2="362" y2="298" stroke="#7C3AED" stroke-width="1" stroke-opacity=".06"/>
+    <rect x="330" y="264" width="40" height="8" rx="2" fill="#7C3AED" fill-opacity=".07"/>
+    <!-- dots -->
+    <circle cx="380" cy="380" r="2" fill="#FF8C00" fill-opacity=".3"/>
+    <circle cx="420" cy="400" r="2" fill="#7C3AED" fill-opacity=".3"/>
+    <circle cx="460" cy="360" r="2" fill="#00C2E0" fill-opacity=".3"/>
+    <line x1="380" y1="380" x2="420" y2="400" stroke="#7C3AED" stroke-width=".8" stroke-opacity=".1"/>
+    <line x1="420" y1="400" x2="460" y2="360" stroke="#00C2E0" stroke-width=".8" stroke-opacity=".1"/>
+  </svg>
+
+  <div class="hero-left">
+    <div class="eyebrow">
+      <span class="eyebrow-pulse"></span>
+      MOD_03 · SEM_03 · 27 ABR – 3 MAY 2026
+    </div>
+    <h1 class="hero-title">
+      Organización<br>
+      <span class="accent">Visual</span> del<br>
+      Documento
+    </h1>
+    <p class="hero-desc">
+      Márgenes, encabezados, pie de página, secciones, marcas de agua y plantillas. El módulo que transforma un documento funcional en un documento <strong>verdaderamente profesional</strong>.
+    </p>
+  </div>
+
+  <div class="hero-right-card">
+    <div class="compat-card">
+      <div class="compat-hd">Compatibilidad</div>
+      <div class="compat-row"><div class="compat-ok">✓</div><div class="compat-name">Word 2016</div><span class="compat-tag all">100%</span></div>
+      <div class="compat-row"><div class="compat-ok">✓</div><div class="compat-name">Word 2019</div><span class="compat-tag all">100%</span></div>
+      <div class="compat-row"><div class="compat-ok">✓</div><div class="compat-name">Word 2021</div><span class="compat-tag all">100%</span></div>
+      <div class="compat-row"><div class="compat-ok">✓</div><div class="compat-name">Microsoft 365</div><span class="compat-tag all">100%</span></div>
+      <div class="compat-row"><div class="compat-ok star">⭐</div><div class="compat-name">365 + Copilot</div><span class="compat-tag bonus">+ Bonus</span></div>
+      <div class="compat-row"><div class="compat-ok">✓</div><div class="compat-name">Windows 7/10/11</div><span class="compat-tag all">100%</span></div>
+    </div>
+    <div style="margin-top:10px;background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:12px 14px;box-shadow:var(--shadow);display:flex;align-items:center;gap:10px">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="6" fill="#F5F0FF"/>
+        <rect x="7" y="5" width="18" height="22" rx="2" fill="none" stroke="#7C3AED" stroke-width="1.5" stroke-opacity=".7"/>
+        <line x1="10" y1="11" x2="22" y2="11" stroke="#7C3AED" stroke-width="1" stroke-opacity=".4"/>
+        <line x1="10" y1="15" x2="22" y2="15" stroke="#7C3AED" stroke-width="1" stroke-opacity=".3"/>
+        <line x1="10" y1="19" x2="19" y2="19" stroke="#7C3AED" stroke-width="1" stroke-opacity=".2"/>
+        <rect x="10" y="7" width="12" height="3" rx="1" fill="#7C3AED" fill-opacity=".15"/>
+      </svg>
+      <div>
+        <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-family:'Fira Code',monospace">Semana 3 de 7</div>
+        <div style="font-size:12px;font-weight:700;color:var(--navy)">27 abr – 3 may, 2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── INTRODUCCIÓN ────────────────────────────────────── -->
+<section id="intro" class="sec alt reveal">
+  <div class="sec-kicker">Punto de partida</div>
+  <h2 class="sec-h">Introducción y Encuadre</h2>
+  <p class="sec-sub">¿Qué hace que un documento se vea profesional? En este módulo aprenderás las respuestas.</p>
+
+  <div class="box green">
+    <div class="box-ico">🖋️</div>
+    <div class="box-body">
+      <div class="box-title">¿Por qué importa la organización visual?</div>
+      <div class="box-text">Un documento bien organizado visualmente no solo se ve mejor — también se entiende mejor y transmite credibilidad institucional. Los márgenes correctos, los encabezados consistentes, la numeración adecuada y las marcas de agua apropiadas son señales de que el documento fue creado con cuidado y profesionalismo. En este módulo aprenderás a controlar cada uno de estos elementos de forma precisa con <strong>cualquier versión de Word desde 2016</strong>.</div>
+    </div>
+  </div>
+
+  <h2 class="t2">Mapa conceptual del Módulo 3</h2>
+  <div class="tbl-wrap">
+  <table class="t">
+    <thead><tr><th>Tema</th><th>Contenido principal</th></tr></thead>
+    <tbody>
+      <tr><td><strong>1. Configuración de página</strong></td><td>Márgenes, orientación, tamaño de papel y columnas</td></tr>
+      <tr><td><strong>2. Encabezados y pies de página</strong></td><td>Diseño profesional, campos dinámicos y diferentes por sección</td></tr>
+      <tr><td><strong>3. Numeración de páginas</strong></td><td>Formatos, posiciones, páginas romanas y diferenciadas</td></tr>
+      <tr><td><strong>4. Secciones y saltos</strong></td><td>Secciones, saltos de página y de sección para control estructural</td></tr>
+      <tr><td><strong>5. Bordes y fondos de página</strong></td><td>Bordes decorativos, color de fondo y diseño visual</td></tr>
+      <tr><td><strong>6. Marcas de agua</strong></td><td>Confidencial, borrador, personalizada y cómo quitarlas</td></tr>
+      <tr><td><strong>7. Plantillas</strong></td><td>Galería de Word, plantillas personalizadas y plantilla Normal</td></tr>
+      <tr><td><strong>Práctica + Examen</strong></td><td>5 ejercicios prácticos + examen de 20 reactivos</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 class="t2">Competencias que desarrollarás</h2>
+  <div class="comp-grid">
+    <div class="comp-item"><div class="comp-bullet">✓</div><div class="comp-txt">Configurarás márgenes, orientación y columnas para cualquier tipo de documento</div></div>
+    <div class="comp-item"><div class="comp-bullet">✓</div><div class="comp-txt">Crearás encabezados y pies de página profesionales con campos dinámicos</div></div>
+    <div class="comp-item"><div class="comp-bullet">✓</div><div class="comp-txt">Controlarás la numeración de páginas en múltiples formatos y posiciones</div></div>
+    <div class="comp-item"><div class="comp-bullet">✓</div><div class="comp-txt">Usarás secciones para aplicar diseños distintos en un mismo documento</div></div>
+    <div class="comp-item"><div class="comp-bullet">✓</div><div class="comp-txt">Aplicarás bordes y fondos de página con criterio estético institucional</div></div>
+    <div class="comp-item"><div class="comp-bullet">✓</div><div class="comp-txt">Insertarás marcas de agua estándar y personalizadas según el estado del documento</div></div>
+    <div class="comp-item"><div class="comp-bullet">✓</div><div class="comp-txt">Crearás y usarás plantillas para acelerar la producción de documentos repetitivos</div></div>
+    <div class="comp-item"><div class="comp-bullet">✓</div><div class="comp-txt">Producirás documentos institucionales con presentación completamente profesional</div></div>
+  </div>
+
+  <div class="box warn">
+    <div class="box-ico">🤔</div>
+    <div class="box-body">
+      <div class="box-title">Pregunta detonadora</div>
+      <div class="box-text"><em>¿Cuánto tiempo dedicas a formatear manualmente el encabezado de cada oficio que elaboras? ¿Cuántas veces has ajustado los márgenes de un documento recibido porque no cumplían con el estándar institucional? Al terminar este módulo, tendrás plantillas listas que resolverán esos problemas automáticamente.</em></div>
+    </div>
+  </div>
+
+  <div class="box ok">
+    <div class="box-ico">📌</div>
+    <div class="box-body">
+      <div class="box-title">Instrucciones de navegación</div>
+      <div class="box-text">
+        <ul>
+          <li>Módulo de la <strong>semana del 27 de abril al 3 de mayo</strong> · 16 horas · ~2.3 hrs/día.</li>
+          <li>Lee la teoría antes de cada ejercicio. Los Temas 4 (secciones) y 7 (plantillas) son los más complejos.</li>
+          <li>Al terminar cada tema, marca tu avance con el botón <strong>"Marcar como completado"</strong>.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TEMA 1 ───────────────────────────────────────────── -->
+<section id="tema1" class="sec reveal">
+  <div class="sec-kicker">Tema 1</div>
+  <h2 class="sec-h">Configuración de Página</h2>
+  <p class="sec-sub">Márgenes, orientación, tamaño de papel y columnas: la base de todo documento profesional</p>
+
+  <p class="body">Antes de escribir una sola palabra en un documento institucional, es fundamental configurar correctamente la página. Los márgenes incorrectos, el tamaño de papel equivocado o la orientación inadecuada pueden invalidar un documento ante autoridades o causar problemas al imprimir. Esta configuración va en la pestaña <strong>Disposición → Configurar página</strong>.</p>
+
+  <h2 class="t2">1.1 Márgenes</h2>
+  <p class="body">Los márgenes definen el espacio en blanco entre el borde del papel y el área donde se escribe el texto. Word ofrece márgenes predeterminados de 2.54 cm (1 pulgada) en todos los lados, pero las normas institucionales mexicanas generalmente requieren configuraciones específicas.</p>
+
+  <div class="margin-viz">
+    <span class="margin-label ml-top">Superior: 2.5 cm</span>
+    <span class="margin-label ml-bottom">Inferior: 2.5 cm</span>
+    <span class="margin-label ml-left">Izq: 3 cm</span>
+    <span class="margin-label ml-right">Der: 2.5 cm</span>
+    <div class="margin-viz-inner">
+      <div style="font-size:15px;color:var(--text2);text-align:center;line-height:1.8">
+        <strong style="color:var(--purple)">Configuración recomendada para documentos del CEB 6/17</strong><br>
+        Izquierdo 3 cm · Derecho 2.5 cm · Superior 2.5 cm · Inferior 2.5 cm<br>
+        <span style="font-size:13px;color:var(--muted)">El margen izquierdo mayor permite el encuadernado y el perforado de documentos.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="tbl-wrap">
+  <table class="t">
+    <thead><tr><th>Tipo de documento</th><th>Margen Superior</th><th>Margen Inferior</th><th>Margen Izquierdo</th><th>Margen Derecho</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Oficios y memorandos</strong></td><td>2.5 cm</td><td>2.5 cm</td><td>3.0 cm</td><td>2.5 cm</td></tr>
+      <tr><td><strong>Trabajos académicos APA</strong></td><td>2.54 cm</td><td>2.54 cm</td><td>2.54 cm</td><td>2.54 cm</td></tr>
+      <tr><td><strong>Planeaciones didácticas</strong></td><td>2.0 cm</td><td>2.0 cm</td><td>2.5 cm</td><td>2.0 cm</td></tr>
+      <tr><td><strong>Constancias y diplomas</strong></td><td>3.0 cm</td><td>3.0 cm</td><td>3.0 cm</td><td>3.0 cm</td></tr>
+      <tr><td><strong>Listas de asistencia (compactas)</strong></td><td>1.5 cm</td><td>1.5 cm</td><td>2.0 cm</td><td>1.5 cm</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 class="t2">1.2 Orientación del papel</h2>
+  <p class="body">Word ofrece dos orientaciones: <strong>Vertical (Portrait)</strong> y <strong>Horizontal (Landscape)</strong>. La orientación vertical es el estándar para la gran mayoría de documentos escritos. La horizontal es útil para tablas anchas, horarios, planeaciones con muchas columnas o materiales de presentación.</p>
+  <p class="body">Para cambiar la orientación: <code>Disposición → Orientación → Vertical / Horizontal</code>. Si solo necesitas que <em>una página</em> del documento sea horizontal (por ejemplo, una tabla de estadísticas dentro de un informe), usa <strong>secciones</strong> para aplicar orientaciones diferentes (lo veremos en el Tema 4).</p>
+
+  <h2 class="t2">1.3 Tamaño de papel</h2>
+  <p class="body">El tamaño predeterminado de Word en México es <strong>Carta (21.59 × 27.94 cm)</strong>, que es el estándar para documentos institucionales y académicos en el país. El tamaño A4 (21 × 29.7 cm) es el estándar internacional europeo — si recibes un documento con ese tamaño, notarás que es ligeramente más largo que el papel carta.</p>
+  <p class="body">Configura el tamaño en <code>Disposición → Tamaño</code>. Para documentos especiales como diplomas o carteles, puedes usar tamaños personalizados con "Más tamaños de papel...".</p>
+
+  <h2 class="t2">1.4 Columnas de texto</h2>
+  <p class="body">Las columnas dividen el área de texto en franjas verticales, como en un periódico o revista. Se aplican desde <code>Disposición → Columnas</code>. Word ofrece presets de 1, 2 y 3 columnas con opciones de ancho y separación personalizable.</p>
+  <p class="body">Las columnas son útiles en boletines informativos, trípticos, materiales didácticos y ciertos tipos de actas. Para documentos institucionales estándar (oficios, memorandos), siempre usa una sola columna. El espacio entre columnas recomendado es de 1.25 cm para mantener la legibilidad.</p>
+
+  <h2 class="t2">1.5 Cómo configurar la página</h2>
+  <div class="ex-card">
+    <div class="ex-head">
+      <div class="ex-num">⚙️</div>
+      <div class="ex-info">
+        <div class="ex-title">Procedimiento: Configurar márgenes personalizados</div>
+        <div class="ex-meta">page_setup() { // compatible todas las versiones · ~3 min }</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <ol class="steps">
+        <li class="step"><div class="step-n">1</div><div class="step-t">Ve a la pestaña <strong>Disposición</strong> en la Cinta de opciones.</div></li>
+        <li class="step"><div class="step-n">2</div><div class="step-t">Haz clic en <code>Márgenes → Márgenes personalizados...</code> (al final de la lista desplegable).</div></li>
+        <li class="step"><div class="step-n">3</div><div class="step-t">En el cuadro de diálogo, ingresa los valores exactos: Superior <strong>2.5</strong>, Inferior <strong>2.5</strong>, Izquierdo <strong>3</strong>, Derecho <strong>2.5</strong> (todos en cm).</div></li>
+        <li class="step"><div class="step-n">4</div><div class="step-t">En "Aplicar a:" selecciona <strong>"Todo el documento"</strong>.</div></li>
+        <li class="step"><div class="step-n">5</div><div class="step-t">Haz clic en <strong>"Establecer como predeterminado"</strong> si quieres que todos los documentos nuevos usen estos márgenes. Luego haz clic en <strong>Aceptar</strong>.</div></li>
+      </ol>
+      <div class="tip"><strong>Atajo:</strong> También puedes arrastrar los marcadores de los márgenes directamente en la regla horizontal para ajustar el margen izquierdo y derecho de forma visual e inmediata.</div>
+    </div>
+  </div>
+
+  <!-- MARK COMPLETE -->
+  <div class="mark-complete">
+    <button class="btn-complete" onclick="markDone(this,'t1')" id="mc-t1">
+      <span class="bc-icon">○</span>
+      <span class="bc-txt">Marcar como completado</span>
+    </button>
+  </div>
+</section>
+
+<!-- ─── TEMA 2 ───────────────────────────────────────────── -->
+<section id="tema2" class="sec alt reveal">
+  <div class="sec-kicker">Tema 2</div>
+  <h2 class="sec-h">Encabezados y Pies de Página</h2>
+  <p class="sec-sub">Información persistente en cada página: membrete, nombre del documento, fecha y numeración</p>
+
+  <p class="body">Los encabezados y pies de página son áreas especiales que aparecen de forma automática en todas las páginas del documento (o en páginas seleccionadas). Son esenciales en documentos de más de una página: garantizan que cada hoja lleve la información necesaria para identificarla aunque se separe del resto.</p>
+
+  <h2 class="t2">2.1 Anatomía del encabezado y pie de página</h2>
+
+  <div class="hf-diagram">
+    <div class="hf-header-area">
+      <span class="hf-zone-label green">⬆ ENCABEZADO</span>
+      <span class="hf-zone-label muted">Nombre del documento / Institución / Logo</span>
+      <span class="hf-zone-label muted">Fecha actual (campo dinámico)</span>
+    </div>
+    <div class="hf-body-area">
+      <span class="hf-body-text">— Área de edición del documento —</span>
+    </div>
+    <div class="hf-footer-area">
+      <span class="hf-zone-label cyan">⬇ PIE DE PÁGINA</span>
+      <span class="hf-zone-label muted">Texto libre / Número de módulo / Tema</span>
+      <span class="hf-zone-label muted">Página X de Y</span>
+    </div>
+  </div>
+
+  <h2 class="t2">2.2 Cómo insertar y editar encabezados o pies de página</h2>
+  <p class="body">Para insertar un encabezado o pie de página: <code>Insertar → Encabezado → Editar encabezado</code> (o doble clic en la parte superior de cualquier página). Word entra en <strong>modo de edición de encabezado</strong>, donde el área principal del documento se oscurece y el encabezado se activa para edición. Presiona <code>Esc</code> o haz doble clic en el cuerpo del documento para salir del modo de edición.</p>
+
+  <div class="tbl-wrap">
+  <table class="t">
+    <thead><tr><th>Opción de encabezado/pie</th><th>Dónde está</th><th>Para qué sirve</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Primera página diferente</strong></td><td>Herramientas de encabezado → Opciones</td><td>La portada o primera hoja no tiene encabezado — muy útil en oficios y reportes</td></tr>
+      <tr><td><strong>Páginas pares e impares diferentes</strong></td><td>Herramientas de encabezado → Opciones</td><td>Documentos de libro: la información alterna entre páginas izquierda y derecha</td></tr>
+      <tr><td><strong>Vincular al anterior</strong></td><td>Herramientas de encabezado → Navegación</td><td>Cuando está activo, el encabezado de esta sección copia al de la anterior. Desactívalo para diferenciarlo.</td></tr>
+      <tr><td><strong>Distancia desde el borde</strong></td><td>Herramientas de encabezado → Posición</td><td>Controla cuánto espacio hay entre el borde del papel y el encabezado. Recomendado: 1.25 cm</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 class="t2">2.3 Campos dinámicos en encabezados y pies</h2>
+  <p class="body">Los campos dinámicos son elementos que se actualizan automáticamente. Son esenciales en encabezados y pies de página porque evitan tener que actualizar manualmente información como la fecha o el número de página.</p>
+
+  <div class="tbl-wrap">
+  <table class="t">
+    <thead><tr><th>Campo dinámico</th><th>Cómo insertarlo</th><th>Qué muestra</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Número de página</strong></td><td><code>Insertar → Número de página</code> o botón en las Herramientas de encabezado</td><td>El número de la página actual, actualizado automáticamente</td></tr>
+      <tr><td><strong>Total de páginas</strong></td><td><code>Insertar → Elementos rápidos → Campo → NumPages</code></td><td>El total de páginas del documento (para formato "Página 2 de 5")</td></tr>
+      <tr><td><strong>Fecha actual</strong></td><td><code>Insertar → Fecha y hora</code> → marcar "Actualizar automáticamente"</td><td>La fecha del día en que se imprime o abre el documento</td></tr>
+      <tr><td><strong>Nombre del archivo</strong></td><td><code>Insertar → Elementos rápidos → Campo → FileName</code></td><td>El nombre del archivo .docx guardado en disco</td></tr>
+      <tr><td><strong>Nombre del autor</strong></td><td><code>Insertar → Elementos rápidos → Campo → Author</code></td><td>El nombre configurado en la cuenta de Word del usuario</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="box info">
+    <div class="box-ico">💡</div>
+    <div class="box-body">
+      <div class="box-title">Crear el formato "Página X de Y" en el pie de página</div>
+      <div class="box-text">
+        <ol style="margin:6px 0 0 16px">
+          <li>Abre el pie de página (doble clic en la parte inferior de la página).</li>
+          <li>Escribe la palabra "Página " (con espacio al final).</li>
+          <li>Ve a <code>Insertar → Elementos rápidos → Campo → Page</code> y haz clic en Aceptar.</li>
+          <li>Escribe " de " (con espacios a ambos lados).</li>
+          <li>Ve a <code>Insertar → Elementos rápidos → Campo → NumPages</code> y haz clic en Aceptar.</li>
+          <li>El resultado: <strong>Página 3 de 8</strong> — siempre actualizado automáticamente.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="t2">2.4 Encabezados institucionales para el CEB 6/17</h2>
+  <p class="body">Para documentos del plantel, el encabezado estándar puede incluir: el nombre completo de la institución en la parte izquierda y el número de oficio o folio en la parte derecha. El pie de página puede mostrar el nombre del docente, el área o departamento, y el número de página en el centro o a la derecha.</p>
+  <p class="body">Usa las <strong>tabulaciones</strong> dentro del encabezado para alinear texto en múltiples posiciones. Word configura automáticamente una tabulación centrada en el centro del encabezado y una tabulación derecha al final — presiona <code>Tab</code> para saltar entre ellas.</p>
+
+  <!-- MARK COMPLETE -->
+  <div class="mark-complete">
+    <button class="btn-complete" onclick="markDone(this,'t2')" id="mc-t2">
+      <span class="bc-icon">○</span>
+      <span class="bc-txt">Marcar como completado</span>
+    </button>
+  </div>
+</section>
+
+<!-- ─── TEMA 3 ───────────────────────────────────────────── -->
+<section id="tema3" class="sec reveal">
+  <div class="sec-kicker">Tema 3</div>
+  <h2 class="sec-h">Numeración de Páginas</h2>
+  <p class="sec-sub">Formatos, posiciones y control avanzado de la numeración en documentos complejos</p>
+
+  <p class="body">La numeración de páginas parece simple, pero Word ofrece un nivel de control muy sofisticado que es indispensable en documentos largos como manuales, reglamentos o informes anuales: puedes elegir dónde aparece el número, en qué formato (arábigos, romanos, letras), desde qué número comienza y si ciertas páginas quedan sin numerar.</p>
+
+  <h2 class="t2">3.1 Insertar numeración básica</h2>
+  <p class="body">La forma más sencilla: <code>Insertar → Número de página</code>. Aparece un menú con cuatro posiciones y dentro de cada una, múltiples formatos visuales de la galería. Las posiciones disponibles son:</p>
+
+  <div class="tbl-wrap">
+  <table class="t">
+    <thead><tr><th>Posición</th><th>Descripción</th><th>Uso típico</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Principio de página</strong></td><td>El número aparece en el encabezado</td><td>Documentos académicos con el encabezado en la parte superior</td></tr>
+      <tr><td><strong>Final de página</strong></td><td>El número aparece en el pie de página</td><td>La posición más común para documentos institucionales</td></tr>
+      <tr><td><strong>Márgenes de página</strong></td><td>El número aparece en el margen lateral</td><td>Publicaciones de diseño editorial, documentos de libro</td></tr>
+      <tr><td><strong>Posición actual</strong></td><td>El número se inserta donde está el cursor</td><td>Cuando necesitas el número dentro del texto o en una posición personalizada</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 class="t2">3.2 Formatos de numeración</h2>
+  <p class="body">Desde <code>Insertar → Número de página → Formato del número de página</code> puedes elegir:</p>
+  <div class="tbl-wrap">
+  <table class="t">
+    <thead><tr><th>Formato</th><th>Ejemplo</th><th>Uso típico</th></tr></thead>
+    <tbody>
+      <tr><td><strong>1, 2, 3...</strong></td><td>1, 2, 3, 4, 5</td><td>Estándar para la mayoría de documentos</td></tr>
+      <tr><td><strong>i, ii, iii...</strong></td><td>i, ii, iii, iv, v</td><td>Páginas preliminares (índice, presentación) antes del cuerpo principal</td></tr>
+      <tr><td><strong>I, II, III...</strong></td><td>I, II, III, IV, V</td><td>Documentos formales que requieren numeración romana en mayúsculas</td></tr>
+      <tr><td><strong>a, b, c...</strong></td><td>a, b, c, d, e</td><td>Anexos, apéndices o secciones secundarias</td></tr>
+      <tr><td><strong>A, B, C...</strong></td><td>A, B, C, D, E</td><td>Capítulos o secciones principales con numeración de letra</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 class="t2">3.3 Numeración avanzada: página de inicio y páginas sin número</h2>
+  <p class="body">Para documentos profesionales —como un manual de procedimientos o un reglamento escolar— es común que las primeras páginas (portada, índice, presentación) tengan numeración romana o no tengan número, y que el cuerpo principal comience desde el número 1.</p>
+  <p class="body">Esto se logra combinando <strong>Secciones</strong> (Tema 4) con la opción <strong>"Iniciar en:"</strong> del cuadro de Formato de número de página. Por ejemplo: Sección 1 con números romanos (i, ii, iii) y Sección 2 que comienza en 1 (arábigos).</p>
+
+  <div class="box ok">
+    <div class="box-ico">✓</div>
+    <div class="box-body">
+      <div class="box-title">Quitar el número de la primera página</div>
+      <div class="box-text">Abre el encabezado o pie (doble clic), ve a <strong>Herramientas de encabezado y pie → Primera página diferente</strong>. Luego borra el número de la primera página. El resto del documento mantiene su numeración, pero la primera página queda sin número visible — ideal para portadas.</div>
+    </div>
+  </div>
+
+  <!-- MARK COMPLETE -->
+  <div class="mark-complete">
+    <button class="btn-complete" onclick="markDone(this,'t3')" id="mc-t3">
+      <span class="bc-icon">○</span>
+      <span class="bc-txt">Marcar como completado</span>
+    </button>
+  </div>
+</section>
+
+<!-- ─── TEMA 4 ───────────────────────────────────────────── -->
+<section id="tema4" class="sec alt reveal">
+  <div class="sec-kicker">Tema 4</div>
+  <h2 class="sec-h">Secciones y Saltos</h2>
+  <p class="sec-sub">El mecanismo más poderoso para controlar la estructura de documentos complejos</p>
+
+  <p class="body">Las <strong>secciones</strong> son divisiones internas de un documento que permiten aplicar configuraciones de página diferentes en distintas partes del mismo archivo. Esto significa que puedes tener páginas verticales y horizontales en el mismo documento, numeraciones distintas por capítulo, encabezados diferentes por sección o márgenes distintos para diferentes partes del texto.</p>
+
+  <h2 class="t2">4.1 Tipos de saltos en Word</h2>
+  <div class="tbl-wrap">
+  <table class="t">
+    <thead><tr><th>Tipo de salto</th><th>Dónde está</th><th>Qué hace</th><th>Cuándo usarlo</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Salto de página</strong></td><td><code>Ctrl+Intro</code> o Disposición → Saltos → Página</td><td>Fuerza el inicio del siguiente párrafo en una nueva página</td><td>Para que un capítulo o sección siempre comience en página nueva</td></tr>
+      <tr><td><strong>Salto de columna</strong></td><td>Disposición → Saltos → Columna</td><td>Pasa al inicio de la siguiente columna de texto</td><td>En documentos con múltiples columnas para controlar el flujo</td></tr>
+      <tr><td><strong>Salto de sección — Continuo</strong></td><td>Disposición → Saltos → Continuo</td><td>Inicia nueva sección en la misma página</td><td>Para cambiar el número de columnas a mitad de una página</td></tr>
+      <tr><td><strong>Salto de sección — Página siguiente</strong></td><td>Disposición → Saltos → Página siguiente</td><td>Inicia nueva sección en una nueva página</td><td>Para cambiar orientación, márgenes o encabezados en la siguiente página</td></tr>
+      <tr><td><strong>Salto de sección — Página par/impar</strong></td><td>Disposición → Saltos → Página par / Página impar</td><td>Inicia nueva sección en la siguiente página par o impar</td><td>Para documentos de libro donde los capítulos deben comenzar en página par o impar</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="box err">
+    <div class="box-ico">⚠️</div>
+    <div class="box-body">
+      <div class="box-title">Error común: usar Enter para "empujar" texto a la siguiente página</div>
+      <div class="box-text">Presionar Enter varias veces para llevar texto a una nueva página es una práctica incorrecta que crea decenas de párrafos vacíos. Si el texto anterior cambia, todo el diseño se desajusta. La forma correcta siempre es insertar un <strong>Salto de página</strong> (<code>Ctrl+Intro</code>) o usar la opción <strong>"Salto de página antes"</strong> en el formato de párrafo (clic derecho → Párrafo → Saltos de línea y de página).</div>
+    </div>
+  </div>
+
+  <h2 class="t2">4.2 Caso práctico: página horizontal dentro de un documento vertical</h2>
+  <p class="body">Escenario frecuente: tienes un informe de varios capítulos en orientación vertical, pero necesitas insertar una tabla de estadísticas que requiere orientación horizontal. Con secciones, esto es perfectamente posible:</p>
+  <ol class="steps" style="list-style:none;padding:0">
+    <li class="step"><div class="step-n">1</div><div class="step-t">Coloca el cursor al final de la última línea antes de la tabla.</div></li>
+    <li class="step"><div class="step-n">2</div><div class="step-t">Ve a <code>Disposición → Saltos → Sección siguiente (Página siguiente)</code>.</div></li>
+    <li class="step"><div class="step-n">3</div><div class="step-t">Ahora cambia la orientación de esta sección a <strong>Horizontal</strong>: <code>Disposición → Orientación → Horizontal</code>.</div></li>
+    <li class="step"><div class="step-n">4</div><div class="step-t">Inserta la tabla en esta sección horizontal.</div></li>
+    <li class="step"><div class="step-n">5</div><div class="step-t">Coloca el cursor después de la tabla y agrega otro salto de sección (página siguiente). Cambia la orientación de vuelta a <strong>Vertical</strong>.</div></li>
+    <li class="step"><div class="step-n">6</div><div class="step-t">Resultado: el documento mantiene orientación vertical, con una sola página horizontal en el medio donde está la tabla.</div></li>
+  </ol>
+
+  <h2 class="t2">4.3 Visualizar los saltos con caracteres no imprimibles</h2>
+  <p class="body">Presiona <code>Ctrl+F8</code> (botón ¶ en la Cinta) para ver los saltos de página y de sección como marcas visibles en el documento. Esto es fundamental cuando editas un documento complejo con muchas secciones — verás exactamente dónde está cada salto y podrás eliminarlos si es necesario seleccionándolos y presionando <code>Supr</code>.</p>
+
+  <!-- MARK COMPLETE -->
+  <div class="mark-complete">
+    <button class="btn-complete" onclick="markDone(this,'t4')" id="mc-t4">
+      <span class="bc-icon">○</span>
+      <span class="bc-txt">Marcar como completado</span>
+    </button>
+  </div>
+</section>
+
+<!-- ─── TEMA 5 ───────────────────────────────────────────── -->
+<section id="tema5" class="sec reveal">
+  <div class="sec-kicker">Tema 5</div>
+  <h2 class="sec-h">Bordes y Fondos de Página</h2>
+  <p class="sec-sub">Elementos visuales que enmarcan y dan identidad al documento</p>
+
+  <p class="body">Los bordes y fondos de página son herramientas de diseño visual que añaden un marco o un color de fondo al documento. Usados con criterio, aportan profesionalismo y distinción. Usados sin criterio, se convierten en distracciones que restan credibilidad.</p>
+
+  <h2 class="t2">5.1 Bordes de página</h2>
+  <p class="body">El borde de página es una línea decorativa que rodea toda la página. Se configura en <code>Diseño → Bordes de página</code>.</p>
+
+  <div class="page-demo">
+    <div class="page-demo-bar">
+      <div class="pd-dot" style="background:#ff5f56"></div>
+      <div class="pd-dot" style="background:#ffbd2e;margin-left:5px"></div>
+      <div class="pd-dot" style="background:#27c93f;margin-left:5px"></div>
+      <span style="margin-left:10px">Bordes y fondos — opciones disponibles</span>
+    </div>
+    <div class="page-demo-body">
+      <div class="pd-zone pz1"><span class="pd-label">Estilo de línea</span><span class="pd-desc">Sólido, punteado, rayado, doble, triple, en zigzag — más de 30 estilos disponibles</span></div>
+      <div class="pd-zone pz2"><span class="pd-label">Color del borde</span><span class="pd-desc">Cualquier color de la paleta de Office o código hexadecimal personalizado</span></div>
+      <div class="pd-zone pz3"><span class="pd-label">Ancho</span><span class="pd-desc">Desde ¼ pt hasta 6 pt. Para documentos formales: 1-2 pt es suficiente</span></div>
+      <div class="pd-zone pz4"><span class="pd-label">Arte (clipart)</span><span class="pd-desc">Bordes decorativos de imágenes repetidas (flores, estrellas...). Evitar en documentos institucionales</span></div>
+      <div class="pd-zone pz5"><span class="pd-label">Aplicar a</span><span class="pd-desc">Todo el documento, esta sección, solo primera página, o todas excepto la primera</span></div>
+    </div>
+  </div>
+
+  <div class="box warn">
+    <div class="box-ico">📋</div>
+    <div class="box-body">
+      <div class="box-title">Criterio institucional para bordes</div>
+      <div class="box-text">
+        <ul>
+          <li><strong>Documentos de texto (oficios, actas, informes):</strong> generalmente sin borde de página</li>
+          <li><strong>Constancias, diplomas y reconocimientos:</strong> borde sólido en color corporativo (azul marino o dorado), entre 2-4 pt</li>
+          <li><strong>Materiales didácticos y talleres:</strong> borde ligero en color suave puede usarse para diferenciarlo visualmente</li>
+          <li><strong>Nunca usar:</strong> bordes de arte (clipart) en documentos institucionales formales</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="t2">5.2 Color de fondo de página</h2>
+  <p class="body">El color de fondo se aplica desde <code>Diseño → Color de página</code>. Por defecto, las páginas de Word son blancas. Un color de fondo puede usarse en presentaciones, materiales didácticos o documentos digitales que no serán impresos.</p>
+  <p class="body"><strong>Importante:</strong> el color de fondo de página <em>no se imprime</em> por defecto en Word — debe activarse manualmente en <code>Archivo → Opciones → Mostrar → Imprimir colores e imágenes de fondo</code>. Para documentos que deben imprimirse con color de fondo, esto es un paso crítico.</p>
+
+  <!-- MARK COMPLETE -->
+  <div class="mark-complete">
+    <button class="btn-complete" onclick="markDone(this,'t5')" id="mc-t5">
+      <span class="bc-icon">○</span>
+      <span class="bc-txt">Marcar como completado</span>
+    </button>
+  </div>
+</section>
+
+<!-- ─── TEMA 6 ───────────────────────────────────────────── -->
+<section id="tema6" class="sec alt reveal">
+  <div class="sec-kicker">Tema 6</div>
+  <h2 class="sec-h">Marcas de Agua</h2>
+  <p class="sec-sub">Texto o imagen semitransparente en el fondo de todas las páginas para indicar el estado del documento</p>
+
+  <p class="body">Una marca de agua en Word es un texto o imagen que aparece en el fondo de la página, detrás del contenido principal, con transparencia parcial. Es una herramienta de comunicación de estado del documento: indica si es borrador, confidencial, o pertenece a alguna categoría especial.</p>
+
+  <h2 class="t2">6.1 Tipos de marcas de agua</h2>
+
+  <div class="watermark-demo">
+    <div class="wm-text">BORRADOR</div>
+    <div class="wm-content">
+      <strong style="color:var(--navy)">Vista previa: Marca de agua "BORRADOR"</strong><br>
+      El texto del documento aparece normalmente sobre el fondo. La marca de agua es semitransparente para que no interfiera con la lectura del contenido, pero sí sea claramente visible para quien recibe o lee el documento.
+    </div>
+  </div>
+
+  <div class="tbl-wrap">
+  <table class="t">
+    <thead><tr><th>Tipo de marca</th><th>Cuándo usarla</th><th>Configuración</th></tr></thead>
+    <tbody>
+      <tr><td><strong>CONFIDENCIAL</strong></td><td>Documentos con información sensible que no debe circular fuera del plantel</td><td>Texto rojo o gris oscuro, tamaño grande, diagonal</td></tr>
+      <tr><td><strong>BORRADOR</strong></td><td>Versiones preliminares en revisión, no aprobadas para distribución</td><td>Texto gris, tamaño grande, diagonal</td></tr>
+      <tr><td><strong>NO OFICIAL</strong></td><td>Copias de trabajo o ejemplos que no representan documentos oficiales</td><td>Texto gris claro, tamaño mediano</td></tr>
+      <tr><td><strong>URGENTE</strong></td><td>Documentos que requieren atención o respuesta inmediata</td><td>Texto rojo oscuro</td></tr>
+      <tr><td><strong>Personalizada</strong></td><td>Cualquier texto institucional: nombre del plantel, logo, año escolar</td><td>Configuración libre de texto, fuente, tamaño, color y ángulo</td></tr>
+      <tr><td><strong>Imagen como marca</strong></td><td>Logo institucional de fondo en documentos de presentación o diplomas</td><td>Imagen con escala y lavado (washout) ajustables</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 class="t2">6.2 Insertar y personalizar una marca de agua</h2>
+  <ol class="steps" style="list-style:none;padding:0">
+    <li class="step"><div class="step-n">1</div><div class="step-t">Ve a la pestaña <strong>Diseño → Marca de agua</strong>.</div></li>
+    <li class="step"><div class="step-n">2</div><div class="step-t">Elige una de las opciones prediseñadas (CONFIDENCIAL, BORRADOR, etc.) o haz clic en <strong>"Marca de agua personalizada..."</strong>.</div></li>
+    <li class="step"><div class="step-n">3</div><div class="step-t">En el cuadro de diálogo, selecciona <strong>"Marca de agua de texto"</strong> y escribe el texto deseado (ej: "CEB 6/17 — COPIA NO OFICIAL").</div></li>
+    <li class="step"><div class="step-n">4</div><div class="step-t">Configura la fuente, el tamaño, el color y si va diagonal o horizontal. Activa <strong>"Semitransparente"</strong> para que se vea detrás del texto sin interferir.</div></li>
+    <li class="step"><div class="step-n">5</div><div class="step-t">Haz clic en <strong>Aplicar</strong>. La marca aparecerá en todas las páginas del documento.</div></li>
+  </ol>
+
+  <h2 class="t2">6.3 Cómo quitar una marca de agua</h2>
+  <p class="body">Ve a <code>Diseño → Marca de agua → Quitar marca de agua</code>. Si la marca de agua no desaparece con este método (puede pasar en documentos recibidos), ve al encabezado (doble clic en la parte superior de la página), selecciona la marca de agua y presiona <code>Supr</code>. Las marcas de agua en Word son técnicamente elementos del encabezado.</p>
+
+  <!-- MARK COMPLETE -->
+  <div class="mark-complete">
+    <button class="btn-complete" onclick="markDone(this,'t6')" id="mc-t6">
+      <span class="bc-icon">○</span>
+      <span class="bc-txt">Marcar como completado</span>
+    </button>
+  </div>
+</section>
+
+<!-- ─── TEMA 7 ───────────────────────────────────────────── -->
+<section id="tema7" class="sec reveal">
+  <div class="sec-kicker">Tema 7</div>
+  <h2 class="sec-h">Plantillas</h2>
+  <p class="sec-sub">El acelerador definitivo: crea una plantilla, úsala cientos de veces</p>
+
+  <p class="body">Una plantilla en Word es un documento especial (.dotx) que sirve como base para crear nuevos documentos. Guarda la configuración de página, los estilos, el encabezado, el pie de página, los márgenes y cualquier texto fijo que se repita en ese tipo de documento. Cada vez que creas un nuevo documento basado en la plantilla, obtienes una copia lista para editar sin modificar el original.</p>
+
+  <div class="box green">
+    <div class="box-ico">⚡</div>
+    <div class="box-body">
+      <div class="box-title">El impacto real de las plantillas</div>
+      <div class="box-text">Si elaboras un oficio cada semana, crear una plantilla de oficio institucional (con membrete, márgenes, estilos y pies de página ya configurados) significa que en lugar de configurar todo cada vez, solo abres la plantilla y escribes el contenido. El ahorro puede ser de 10 a 15 minutos por documento — más de 8 horas al año en un solo tipo de documento.</div>
+    </div>
+  </div>
+
+  <h2 class="t2">7.1 La galería de plantillas de Microsoft</h2>
+  <p class="body">Cuando abres Word y haces clic en <strong>Nuevo</strong> (en lugar de Documento en blanco), accedes a la galería de plantillas. Hay cientos disponibles para: currículums, cartas, facturas, calendarios, listas, informes, etc. También puedes buscar plantillas en línea directamente desde el cuadro de búsqueda.</p>
+  <p class="body">Para documentos institucionales de bachillerato, las plantillas más útiles de la galería son las de <strong>Cartas formales</strong> y <strong>Informes profesionales</strong>, que puedes adaptar al estilo de tu plantel.</p>
+
+  <h2 class="t2">7.2 Cómo crear tu propia plantilla</h2>
+  <ol class="steps" style="list-style:none;padding:0">
+    <li class="step"><div class="step-n">1</div><div class="step-t">Crea un documento nuevo y configura todo: márgenes, orientación, estilos personalizados (CEB_Título, CEB_Cuerpo, etc.), encabezado y pie de página con los campos dinámicos, y cualquier texto fijo que siempre aparezca en ese tipo de documento.</div></li>
+    <li class="step"><div class="step-n">2</div><div class="step-t">Ve a <code>Archivo → Guardar como</code>. En el menú desplegable de tipo de archivo, selecciona <strong>"Plantilla de Word (*.dotx)"</strong>.</div></li>
+    <li class="step"><div class="step-n">3</div><div class="step-t">Word te llevará automáticamente a la carpeta de plantillas personales del sistema. Escribe un nombre descriptivo (ej: <code>CEB617_Oficio_Institucional</code>) y haz clic en <strong>Guardar</strong>.</div></li>
+    <li class="step"><div class="step-n">4</div><div class="step-t">A partir de ese momento, para crear un nuevo oficio: <code>Archivo → Nuevo → Personal</code> y selecciona tu plantilla. Se abrirá una copia editable del documento, sin modificar el original.</div></li>
+  </ol>
+
+  <h2 class="t2">7.3 Plantillas recomendadas para el CEB 6/17</h2>
+  <div class="tbl-wrap">
+  <table class="t">
+    <thead><tr><th>Plantilla</th><th>Nombre de archivo</th><th>Qué debe incluir</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Oficio institucional</strong></td><td><code>CEB617_Oficio.dotx</code></td><td>Membrete, márgenes estándar, espacio para folio/fecha, firma al final, estilo Normal y Oficio_Cuerpo</td></tr>
+      <tr><td><strong>Planeación didáctica</strong></td><td><code>CEB617_Planeacion.dotx</code></td><td>Tablas de datos del docente, campos para competencias, actividades y evaluación; logotipo de la SEP</td></tr>
+      <tr><td><strong>Constancia</strong></td><td><code>CEB617_Constancia.dotx</code></td><td>Borde decorativo, logotipos, texto estándar con campos editables para nombre, actividad y fecha</td></tr>
+      <tr><td><strong>Lista de asistencia</strong></td><td><code>CEB617_Lista.dotx</code></td><td>Tabla con columnas para nombre, número de lista y días del bimestre; encabezado con datos del grupo</td></tr>
+      <tr><td><strong>Acta de reunión</strong></td><td><code>CEB617_Acta.dotx</code></td><td>Campos para fecha, lugar, asistentes y tabla de acuerdos con número, descripción y responsable</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 class="t2">7.4 La plantilla Normal.dotm</h2>
+  <p class="body">La plantilla <strong>Normal.dotm</strong> es la plantilla base de Word — el documento "en blanco" que se abre por defecto. Todos los cambios que hagas a la fuente predeterminada, los estilos o la configuración de página y elijas "Aplicar a todos los documentos nuevos" se guardan en esta plantilla. Si esta plantilla se corrompe (puede pasar con virus o configuraciones erróneas), puedes eliminarla y Word la recreará desde cero automáticamente.</p>
+
+  <div class="box warn">
+    <div class="box-ico">⚠️</div>
+    <div class="box-body">
+      <div class="box-title">Precaución con la plantilla Normal.dotm</div>
+      <div class="box-text">Modificar la plantilla Normal directamente puede afectar el comportamiento de Word para todos los usuarios del equipo. Si compartes la computadora, es mejor crear plantillas personales específicas por tipo de documento en lugar de modificar la plantilla Normal. Así cada usuario mantiene un entorno predecible.</div>
+    </div>
+  </div>
+
+  <!-- MARK COMPLETE -->
+  <div class="mark-complete">
+    <button class="btn-complete" onclick="markDone(this,'t7')" id="mc-t7">
+      <span class="bc-icon">○</span>
+      <span class="bc-txt">Marcar como completado</span>
+    </button>
+  </div>
+</section>
+
+<!-- ─── EJERCICIOS ─────────────────────────────────────── -->
+<section id="ejercicios" class="sec alt reveal">
+  <div class="sec-kicker">Práctica</div>
+  <h2 class="sec-h">Ejercicios Paso a Paso</h2>
+  <p class="sec-sub">5 ejercicios progresivos para dominar la organización visual de documentos</p>
+
+  <!-- EJ 1 -->
+  <div class="ex-card">
+    <div class="ex-head">
+      <div class="ex-num">1</div>
+      <div class="ex-info">
+        <div class="ex-title">Configurar página institucional para oficio</div>
+        <div class="ex-meta">level: básico · ~20 min · Word 2016+</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-goal"><strong>Objetivo:</strong> Configurar los márgenes, tamaño de papel y orientación correctos para un oficio institucional del CEB 6/17 y guardar esa configuración como base para los ejercicios siguientes.</div>
+      <ol class="steps">
+        <li class="step"><div class="step-n">1</div><div class="step-t">Crea un documento nuevo (<code>Ctrl+N</code>). Ve a <code>Disposición → Márgenes → Márgenes personalizados</code>. Configura: Superior <strong>2.5 cm</strong>, Inferior <strong>2.5 cm</strong>, Izquierdo <strong>3 cm</strong>, Derecho <strong>2.5 cm</strong>.</div></li>
+        <li class="step"><div class="step-n">2</div><div class="step-t">Verifica que el tamaño de papel sea <strong>Carta</strong>: <code>Disposición → Tamaño → Carta</code>. Si está en A4, cámbialo.</div></li>
+        <li class="step"><div class="step-n">3</div><div class="step-t">Verifica que la orientación sea <strong>Vertical</strong>: <code>Disposición → Orientación → Vertical</code>.</div></li>
+        <li class="step"><div class="step-n">4</div><div class="step-t">Activa los caracteres no imprimibles (<code>Ctrl+F8</code> o botón ¶) para ver la estructura del documento.</div></li>
+        <li class="step"><div class="step-n">5</div><div class="step-t">Escribe tres párrafos de texto de prueba. Observa cómo el texto respeta los márgenes configurados en la regla.</div></li>
+        <li class="step"><div class="step-n">6</div><div class="step-t">Guarda como <code>M3_Ej1_ConfigPagina.docx</code> en la carpeta "Curso Word 2026 → Módulo 3" en OneDrive.</div></li>
+      </ol>
+      <div class="tip"><strong>Resultado esperado:</strong> Documento con márgenes institucionales correctos, papel carta y orientación vertical. La regla horizontal muestra los límites de los márgenes claramente.</div>
+      <div class="reto">Agrega una segunda sección con orientación horizontal usando un salto de sección (página siguiente), inserta una tabla simple en esa sección, luego regresa a orientación vertical en la tercera sección.</div>
+    
+      <div class="note-archivo">
+        <span class="na-ico">📁</span>
+        <div class="na-body">
+          <strong>NOTA:</strong> En este ejercicio SÍ se creará un archivo para subir como actividad.<br>
+          Nomenclatura del archivo: <code>TuNombre_Prac3Eje1.pdf</code>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EJ 2 -->
+  <div class="ex-card">
+    <div class="ex-head">
+      <div class="ex-num">2</div>
+      <div class="ex-info">
+        <div class="ex-title">Crear encabezado y pie de página institucional</div>
+        <div class="ex-meta">level: básico-intermedio · ~35 min · Word 2016+</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-goal"><strong>Objetivo:</strong> Diseñar un encabezado con el nombre de la institución y un pie de página con numeración "Página X de Y" usando campos dinámicos.</div>
+      <ol class="steps">
+        <li class="step"><div class="step-n">1</div><div class="step-t">Abre el documento del Ejercicio 1 o crea uno nuevo con la misma configuración de página. Inserta al menos 3 páginas de texto.</div></li>
+        <li class="step"><div class="step-n">2</div><div class="step-t">Doble clic en la parte superior de la página para entrar al <strong>encabezado</strong>. En la pestaña Herramientas, activa <strong>"Primera página diferente"</strong>.</div></li>
+        <li class="step"><div class="step-n">3</div><div class="step-t">Ve a la segunda página y escribe en el encabezado: <strong>"CENTRO DE ESTUDIOS DE BACHILLERATO 6/17"</strong> a la izquierda. Presiona Tab hasta el final y agrega la fecha con campo dinámico: <code>Insertar → Fecha y hora → Actualizar automáticamente ✓</code>.</div></li>
+        <li class="step"><div class="step-n">4</div><div class="step-t">Haz clic en el área de <strong>pie de página</strong> (parte inferior). Escribe "Página " + campo Page + " de " + campo NumPages. Centra todo con <code>Ctrl+T</code>.</div></li>
+        <li class="step"><div class="step-n">5</div><div class="step-t">Verifica que la primera página NO tiene encabezado ni numeración (por la opción de primera página diferente activada en el paso 2).</div></li>
+        <li class="step"><div class="step-n">6</div><div class="step-t">Guarda como <code>M3_Ej2_Encabezado_Pie.docx</code>.</div></li>
+      </ol>
+      <div class="tip"><strong>Resultado esperado:</strong> Encabezado institucional en páginas 2 en adelante, sin encabezado en la primera página, y numeración dinámica "Página X de Y" en el pie de cada página.</div>
+      <div class="bonus-hint">Pídele a Copilot que genere el texto de relleno para las páginas: "Genera tres párrafos sobre la misión educativa del bachillerato general en México, tono formal, 150 palabras cada uno".</div>
+    
+      <div class="note-archivo">
+        <span class="na-ico">📁</span>
+        <div class="na-body">
+          <strong>NOTA:</strong> En este ejercicio SÍ se creará un archivo para subir como actividad.<br>
+          Nomenclatura del archivo: <code>TuNombre_Prac3Eje2.pdf</code>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EJ 3 -->
+  <div class="ex-card">
+    <div class="ex-head">
+      <div class="ex-num">3</div>
+      <div class="ex-info">
+        <div class="ex-title">Aplicar marca de agua y borde de página a una constancia</div>
+        <div class="ex-meta">level: básico · ~25 min · Word 2016+</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-goal"><strong>Objetivo:</strong> Crear el diseño visual de una constancia de participación con borde de página institucional y marca de agua "BORRADOR" para revisión.</div>
+      <ol class="steps">
+        <li class="step"><div class="step-n">1</div><div class="step-t">Crea un nuevo documento con márgenes de 3 cm en todos los lados. Orienta en <strong>Vertical</strong> y tamaño <strong>Carta</strong>.</div></li>
+        <li class="step"><div class="step-n">2</div><div class="step-t">Ve a <code>Diseño → Bordes de página</code>. Aplica un borde de estilo sólido, color <strong>azul marino (#003366)</strong>, ancho <strong>3 pt</strong>. En "Aplicar a": <strong>"Todo el documento"</strong>. Haz clic en Aceptar.</div></li>
+        <li class="step"><div class="step-n">3</div><div class="step-t">Escribe el texto de la constancia: membrete, "SE HACE CONSTAR QUE:", nombre ficticio, actividad, fechas y firma. Aplica formato con estilos o formato manual apropiado.</div></li>
+        <li class="step"><div class="step-n">4</div><div class="step-t">Ve a <code>Diseño → Marca de agua → Más marcas de agua</code>. Selecciona <strong>Marca de agua de texto → "BORRADOR"</strong>. Color gris, diagonal. Haz clic en Aplicar.</div></li>
+        <li class="step"><div class="step-n">5</div><div class="step-t">Una vez revisado y aprobado el documento, quita la marca de agua: <code>Diseño → Marca de agua → Quitar marca de agua</code>.</div></li>
+        <li class="step"><div class="step-n">6</div><div class="step-t">Guarda como <code>M3_Ej3_Constancia_Diseño.docx</code>. Compara el antes y el después (con y sin marca de agua).</div></li>
+      </ol>
+      <div class="tip"><strong>Resultado esperado:</strong> Constancia con borde azul marino de 3 pt, marca de agua BORRADOR visible pero semitransparente, y texto institucional correctamente formateado.</div>
+    
+      <div class="note-archivo">
+        <span class="na-ico">📁</span>
+        <div class="na-body">
+          <strong>NOTA:</strong> En este ejercicio SÍ se creará un archivo para subir como actividad.<br>
+          Nomenclatura del archivo: <code>TuNombre_Prac3Eje3.pdf</code>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EJ 4 -->
+  <div class="ex-card">
+    <div class="ex-head">
+      <div class="ex-num">4</div>
+      <div class="ex-info">
+        <div class="ex-title">Usar secciones para un documento con numeración diferenciada</div>
+        <div class="ex-meta">level: intermedio · ~40 min · Word 2016+</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-goal"><strong>Objetivo:</strong> Crear un documento de dos secciones: portada + índice con numeración romana (i, ii), y cuerpo del documento con numeración arábiga desde 1.</div>
+      <ol class="steps">
+        <li class="step"><div class="step-n">1</div><div class="step-t">Crea un nuevo documento con la configuración institucional. Escribe en la primera página el título del documento (portada). En la segunda página escribe "Índice" con tres ítems de ejemplo.</div></li>
+        <li class="step"><div class="step-n">2</div><div class="step-t">Coloca el cursor al final del índice. Ve a <code>Disposición → Saltos → Sección siguiente (Página siguiente)</code>. Aquí comienza la Sección 2.</div></li>
+        <li class="step"><div class="step-n">3</div><div class="step-t">En las páginas del índice, inserta numeración: <code>Insertar → Número de página → Final de página → Número sin formato 2</code>.</div></li>
+        <li class="step"><div class="step-n">4</div><div class="step-t">Haz doble clic en el pie de página de las primeras páginas → <code>Insertar → Número de página → Formato del número de página → i, ii, iii → Iniciar en: i</code>. Acepta.</div></li>
+        <li class="step"><div class="step-n">5</div><div class="step-t">Haz doble clic en el pie de la Sección 2. <strong>Desactiva "Vincular al anterior"</strong> (botón en la barra de herramientas). Luego ve a <code>Insertar → Número de página → Formato → 1, 2, 3 → Iniciar en: 1</code>.</div></li>
+        <li class="step"><div class="step-n">6</div><div class="step-t">Agrega contenido en la Sección 2 para tener varias páginas y verifica que la numeración funciona correctamente. Guarda como <code>M3_Ej4_Secciones_Numeracion.docx</code>.</div></li>
+      </ol>
+      <div class="reto">Agrega una tercera sección con una página de tabla en orientación horizontal, luego regresa a vertical para los anexos. Verifica que la numeración continúa correctamente en cada sección.</div>
+    
+      <div class="note-archivo">
+        <span class="na-ico">📁</span>
+        <div class="na-body">
+          <strong>NOTA:</strong> En este ejercicio SÍ se creará un archivo para subir como actividad.<br>
+          Nomenclatura del archivo: <code>TuNombre_Prac3Eje4.pdf</code>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EJ 5 -->
+  <div class="ex-card">
+    <div class="ex-head">
+      <div class="ex-num">5</div>
+      <div class="ex-info">
+        <div class="ex-title">Crear la plantilla de oficio institucional del CEB 6/17</div>
+        <div class="ex-meta">level: intermedio · ~45 min · Word 2016+</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-goal"><strong>Objetivo:</strong> Crear una plantilla completa y reutilizable para oficios institucionales del CEB 6/17 que incluya todo el formato necesario, lista para que cualquier docente la use sin configurar nada.</div>
+      <ol class="steps">
+        <li class="step"><div class="step-n">1</div><div class="step-t">Crea un documento nuevo. Configura: márgenes estándar institucionales (Izq 3 / Der 2.5 / Sup 2.5 / Inf 2.5), tamaño Carta, orientación Vertical.</div></li>
+        <li class="step"><div class="step-n">2</div><div class="step-t">En el encabezado: inserta el nombre de la institución alineado a la izquierda en Arial 10pt Negrita. A la derecha (Tab): campo de fecha automática. Activa "Primera página diferente: No" (el encabezado aparece en todas las páginas).</div></li>
+        <li class="step"><div class="step-n">3</div><div class="step-t">En el pie de página: escribe "Página " + campo Page + " de " + campo NumPages, centrado. Agrega debajo el nombre del plantel en 8pt gris.</div></li>
+        <li class="step"><div class="step-n">4</div><div class="step-t">En el cuerpo del documento agrega el texto estándar del oficio con marcadores editables: "[NÚMERO DE OFICIO]", "[FECHA]", "[ASUNTO]", "[CUERPO DEL OFICIO]", "[NOMBRE DEL FIRMANTE]". Aplica estilos apropiados a cada elemento.</div></li>
+        <li class="step"><div class="step-n">5</div><div class="step-t">Crea el estilo <strong>"Oficio_Cuerpo"</strong>: Arial 12pt, justificado, interlineado 1.5, sangría de primera línea 1.25 cm, 6pt después. Aplícalo al cuerpo.</div></li>
+        <li class="step"><div class="step-n">6</div><div class="step-t">Guarda como <code>CEB617_Oficio_Institucional.dotx</code> (tipo Plantilla de Word). Verifica creando un nuevo documento desde la plantilla: <code>Archivo → Nuevo → Personal → seleccionar tu plantilla</code>.</div></li>
+      </ol>
+      <div class="tip"><strong>Resultado esperado:</strong> Una plantilla funcional que al abrirse muestra el formato completo del oficio con todos los marcadores de posición listos para editar. Reutilizable indefinidamente sin modificar el original.</div>
+    
+      <div class="note-archivo">
+        <span class="na-ico">📁</span>
+        <div class="na-body">
+          <strong>NOTA:</strong> En este ejercicio SÍ se creará un archivo para subir como actividad.<br>
+          Nomenclatura del archivo: <code>TuNombre_Prac3Eje5.pdf</code>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── EXAMEN ─────────────────────────────────────────── -->
+<section id="examen">
+  <div class="exam-hero">
+    <h2>📝 Examen del Módulo 3</h2>
+    <p>20 reactivos · Mínimo 14/20 (70%) para acreditar · ~40 minutos</p>
+    <div class="exam-stats">
+      <div><div class="es-v">8</div><div class="es-l">Opción múltiple</div></div>
+      <div><div class="es-v">5</div><div class="es-l">Verdadero/Falso</div></div>
+      <div><div class="es-v">4</div><div class="es-l">Relacionar</div></div>
+      <div><div class="es-v">3</div><div class="es-l">Resp. breve</div></div>
+    </div>
+  </div>
+
+  <div class="exam-body">
+    <div class="exam-note">⚠ Ninguna pregunta requiere Copilot ni M365 — todas respondibles con Word 2016+</div>
+
+    <div class="sec-div">Sección A — Opción múltiple <span class="sec-div-badge">1 pt c/u</span></div>
+
+    <div class="q-card" data-q="1" data-correct="b" data-type="mc">
+      <div class="q-head"><div class="q-num">1</div><div class="q-meta"><div class="q-type">Opción múltiple</div><div class="q-text">¿Cuál es el atajo de teclado para insertar un salto de página en Word?</div></div></div>
+      <div class="opts">
+        <div class="opt" onclick="pick(this,'1','a')"><div class="opt-l">A</div><div class="opt-t">Ctrl + P</div></div>
+        <div class="opt" onclick="pick(this,'1','b')"><div class="opt-l">B</div><div class="opt-t">Ctrl + Intro (Enter)</div></div>
+        <div class="opt" onclick="pick(this,'1','c')"><div class="opt-l">C</div><div class="opt-t">Ctrl + Mayús + P</div></div>
+        <div class="opt" onclick="pick(this,'1','d')"><div class="opt-l">D</div><div class="opt-t">Alt + Intro</div></div>
+      </div>
+      <div class="fb" id="fb1"></div>
+    </div>
+
+    <div class="q-card" data-q="2" data-correct="c" data-type="mc">
+      <div class="q-head"><div class="q-num">2</div><div class="q-meta"><div class="q-type">Opción múltiple</div><div class="q-text">¿Dónde se configuran los márgenes personalizados de una página en Microsoft Word?</div></div></div>
+      <div class="opts">
+        <div class="opt" onclick="pick(this,'2','a')"><div class="opt-l">A</div><div class="opt-t">Pestaña Inicio → grupo Párrafo</div></div>
+        <div class="opt" onclick="pick(this,'2','b')"><div class="opt-l">B</div><div class="opt-t">Pestaña Vista → Opciones de página</div></div>
+        <div class="opt" onclick="pick(this,'2','c')"><div class="opt-l">C</div><div class="opt-t">Pestaña Disposición → Márgenes → Márgenes personalizados</div></div>
+        <div class="opt" onclick="pick(this,'2','d')"><div class="opt-l">D</div><div class="opt-t">Pestaña Diseño → Configurar página</div></div>
+      </div>
+      <div class="fb" id="fb2"></div>
+    </div>
+
+    <div class="q-card" data-q="3" data-correct="a" data-type="mc">
+      <div class="q-head"><div class="q-num">3</div><div class="q-meta"><div class="q-type">Opción múltiple</div><div class="q-text">¿Qué extensión tiene un archivo de plantilla de Word?</div></div></div>
+      <div class="opts">
+        <div class="opt" onclick="pick(this,'3','a')"><div class="opt-l">A</div><div class="opt-t">.dotx</div></div>
+        <div class="opt" onclick="pick(this,'3','b')"><div class="opt-l">B</div><div class="opt-t">.docx</div></div>
+        <div class="opt" onclick="pick(this,'3','c')"><div class="opt-l">C</div><div class="opt-t">.tmpx</div></div>
+        <div class="opt" onclick="pick(this,'3','d')"><div class="opt-l">D</div><div class="opt-t">.wdtx</div></div>
+      </div>
+      <div class="fb" id="fb3"></div>
+    </div>
+
+    <div class="q-card" data-q="4" data-correct="d" data-type="mc">
+      <div class="q-head"><div class="q-num">4</div><div class="q-meta"><div class="q-type">Opción múltiple</div><div class="q-text">¿Para qué sirve la opción "Primera página diferente" en las herramientas de encabezado?</div></div></div>
+      <div class="opts">
+        <div class="opt" onclick="pick(this,'4','a')"><div class="opt-l">A</div><div class="opt-t">Para que la primera página tenga un margen distinto al resto del documento</div></div>
+        <div class="opt" onclick="pick(this,'4','b')"><div class="opt-l">B</div><div class="opt-t">Para cambiar automáticamente la orientación de la primera página</div></div>
+        <div class="opt" onclick="pick(this,'4','c')"><div class="opt-l">C</div><div class="opt-t">Para que el documento comience a numerarse desde la página 2</div></div>
+        <div class="opt" onclick="pick(this,'4','d')"><div class="opt-l">D</div><div class="opt-t">Para que la primera página tenga un encabezado o pie diferente al resto (o ninguno)</div></div>
+      </div>
+      <div class="fb" id="fb4"></div>
+    </div>
+
+    <div class="q-card" data-q="5" data-correct="b" data-type="mc">
+      <div class="q-head"><div class="q-num">5</div><div class="q-meta"><div class="q-type">Opción múltiple</div><div class="q-text">¿Qué tipo de salto de sección permite cambiar la orientación de una página de vertical a horizontal sin afectar el resto del documento?</div></div></div>
+      <div class="opts">
+        <div class="opt" onclick="pick(this,'5','a')"><div class="opt-l">A</div><div class="opt-t">Salto de página simple (Ctrl+Intro)</div></div>
+        <div class="opt" onclick="pick(this,'5','b')"><div class="opt-l">B</div><div class="opt-t">Salto de sección — Página siguiente</div></div>
+        <div class="opt" onclick="pick(this,'5','c')"><div class="opt-l">C</div><div class="opt-t">Salto de sección — Continuo</div></div>
+        <div class="opt" onclick="pick(this,'5','d')"><div class="opt-l">D</div><div class="opt-t">Salto de columna</div></div>
+      </div>
+      <div class="fb" id="fb5"></div>
+    </div>
+
+    <div class="q-card" data-q="6" data-correct="c" data-type="mc">
+      <div class="q-head"><div class="q-num">6</div><div class="q-meta"><div class="q-type">Opción múltiple</div><div class="q-text">¿Desde qué menú o pestaña se insertan las marcas de agua en Word?</div></div></div>
+      <div class="opts">
+        <div class="opt" onclick="pick(this,'6','a')"><div class="opt-l">A</div><div class="opt-t">Insertar → Marca de agua</div></div>
+        <div class="opt" onclick="pick(this,'6','b')"><div class="opt-l">B</div><div class="opt-t">Disposición → Marca de agua</div></div>
+        <div class="opt" onclick="pick(this,'6','c')"><div class="opt-l">C</div><div class="opt-t">Diseño → Marca de agua</div></div>
+        <div class="opt" onclick="pick(this,'6','d')"><div class="opt-l">D</div><div class="opt-t">Revisar → Marca de agua</div></div>
+      </div>
+      <div class="fb" id="fb6"></div>
+    </div>
+
+    <div class="q-card" data-q="7" data-correct="a" data-type="mc">
+      <div class="q-head"><div class="q-num">7</div><div class="q-meta"><div class="q-type">Opción múltiple</div><div class="q-text">¿Por qué el margen izquierdo de un oficio institucional suele ser mayor (3 cm) que el derecho (2.5 cm)?</div></div></div>
+      <div class="opts">
+        <div class="opt" onclick="pick(this,'7','a')"><div class="opt-l">A</div><div class="opt-t">Para dejar espacio para el encuadernado, perforado o engargolado del documento</div></div>
+        <div class="opt" onclick="pick(this,'7','b')"><div class="opt-l">B</div><div class="opt-t">Porque en la escritura occidental el ojo empieza a leer por la izquierda y necesita más espacio</div></div>
+        <div class="opt" onclick="pick(this,'7','c')"><div class="opt-l">C</div><div class="opt-t">Porque es el estándar internacional ISO para documentos en idioma español</div></div>
+        <div class="opt" onclick="pick(this,'7','d')"><div class="opt-l">D</div><div class="opt-t">Para que el sello institucional quepa en el margen izquierdo de la página</div></div>
+      </div>
+      <div class="fb" id="fb7"></div>
+    </div>
+
+    <div class="q-card" data-q="8" data-correct="d" data-type="mc">
+      <div class="q-head"><div class="q-num">8</div><div class="q-meta"><div class="q-type">Opción múltiple</div><div class="q-text">¿Cuál campo dinámico debes insertar en el pie de página para mostrar el total de páginas del documento?</div></div></div>
+      <div class="opts">
+        <div class="opt" onclick="pick(this,'8','a')"><div class="opt-l">A</div><div class="opt-t">Campo "Page"</div></div>
+        <div class="opt" onclick="pick(this,'8','b')"><div class="opt-l">B</div><div class="opt-t">Campo "PageCount"</div></div>
+        <div class="opt" onclick="pick(this,'8','c')"><div class="opt-l">C</div><div class="opt-t">Campo "TotalPages"</div></div>
+        <div class="opt" onclick="pick(this,'8','d')"><div class="opt-l">D</div><div class="opt-t">Campo "NumPages"</div></div>
+      </div>
+      <div class="fb" id="fb8"></div>
+    </div>
+
+    <div class="sec-div">Sección B — Verdadero o Falso <span class="sec-div-badge">1 pt c/u · justifica</span></div>
+
+    <div class="q-card" data-q="9" data-correct="F" data-type="tf">
+      <div class="q-head"><div class="q-num">9</div><div class="q-meta"><div class="q-type">Verdadero / Falso</div><div class="q-text">La forma correcta de llevar texto a una nueva página en Word es presionar Enter varias veces hasta que el cursor llegue a la siguiente página.</div></div></div>
+      <div class="tf-row"><div class="tf" onclick="pickTF(this,'9','V')">✓ Verdadero</div><div class="tf" onclick="pickTF(this,'9','F')">✗ Falso</div></div>
+      <div class="fb" id="fb9"></div>
+      <div class="sa" style="margin-top:10px"><textarea placeholder="Justifica tu respuesta..."></textarea></div>
+    </div>
+
+    <div class="q-card" data-q="10" data-correct="V" data-type="tf">
+      <div class="q-head"><div class="q-num">10</div><div class="q-meta"><div class="q-type">Verdadero / Falso</div><div class="q-text">Las marcas de agua en Word se almacenan técnicamente dentro del área del encabezado del documento.</div></div></div>
+      <div class="tf-row"><div class="tf" onclick="pickTF(this,'10','V')">✓ Verdadero</div><div class="tf" onclick="pickTF(this,'10','F')">✗ Falso</div></div>
+      <div class="fb" id="fb10"></div>
+      <div class="sa" style="margin-top:10px"><textarea placeholder="Justifica tu respuesta..."></textarea></div>
+    </div>
+
+    <div class="q-card" data-q="11" data-correct="F" data-type="tf">
+      <div class="q-head"><div class="q-num">11</div><div class="q-meta"><div class="q-type">Verdadero / Falso</div><div class="q-text">El color de fondo de página en Word se imprime automáticamente siempre que se envía el documento a la impresora.</div></div></div>
+      <div class="tf-row"><div class="tf" onclick="pickTF(this,'11','V')">✓ Verdadero</div><div class="tf" onclick="pickTF(this,'11','F')">✗ Falso</div></div>
+      <div class="fb" id="fb11"></div>
+      <div class="sa" style="margin-top:10px"><textarea placeholder="Justifica tu respuesta..."></textarea></div>
+    </div>
+
+    <div class="q-card" data-q="12" data-correct="V" data-type="tf">
+      <div class="q-head"><div class="q-num">12</div><div class="q-meta"><div class="q-type">Verdadero / Falso</div><div class="q-text">Una sección en Word permite aplicar márgenes, orientación o numeración diferente en distintas partes del mismo documento.</div></div></div>
+      <div class="tf-row"><div class="tf" onclick="pickTF(this,'12','V')">✓ Verdadero</div><div class="tf" onclick="pickTF(this,'12','F')">✗ Falso</div></div>
+      <div class="fb" id="fb12"></div>
+      <div class="sa" style="margin-top:10px"><textarea placeholder="Justifica tu respuesta..."></textarea></div>
+    </div>
+
+    <div class="q-card" data-q="13" data-correct="V" data-type="tf">
+      <div class="q-head"><div class="q-num">13</div><div class="q-meta"><div class="q-type">Verdadero / Falso</div><div class="q-text">Al crear un documento basado en una plantilla (.dotx), el original de la plantilla no se modifica — solo se genera una copia editable.</div></div></div>
+      <div class="tf-row"><div class="tf" onclick="pickTF(this,'13','V')">✓ Verdadero</div><div class="tf" onclick="pickTF(this,'13','F')">✗ Falso</div></div>
+      <div class="fb" id="fb13"></div>
+      <div class="sa" style="margin-top:10px"><textarea placeholder="Justifica tu respuesta..."></textarea></div>
+    </div>
+
+    <div class="sec-div">Sección C — Relacionar columnas <span class="sec-div-badge">1 pt c/par</span></div>
+    <p style="font-size:15px;color:rgba(255,255,255,.4);margin-bottom:15px">Haz clic en un elemento de la izquierda, luego en su correspondiente de la derecha.</p>
+    <div class="q-card">
+      <div class="q-head"><div class="q-num">14–17</div><div class="q-meta"><div class="q-type">Relacionar columnas</div><div class="q-text">Une cada elemento con su descripción o uso correcto.</div></div></div>
+      <div class="match-grid">
+        <div>
+          <div class="match-col-h">// elemento</div>
+          <div class="match-i" data-pair="A" onclick="doMatch(this,'L')">.dotx</div>
+          <div class="match-i" data-pair="B" onclick="doMatch(this,'L')">Salto de sección continuo</div>
+          <div class="match-i" data-pair="C" onclick="doMatch(this,'L')">Campo NumPages</div>
+          <div class="match-i" data-pair="D" onclick="doMatch(this,'L')">Ctrl + Intro</div>
+        </div>
+        <div>
+          <div class="match-col-h">// función_o_descripción</div>
+          <div class="match-i" data-pair="3" onclick="doMatch(this,'R')">Insertar salto de página</div>
+          <div class="match-i" data-pair="1" onclick="doMatch(this,'R')">Extensión de plantilla de Word</div>
+          <div class="match-i" data-pair="4" onclick="doMatch(this,'R')">Cambiar número de columnas en la misma página</div>
+          <div class="match-i" data-pair="2" onclick="doMatch(this,'R')">Muestra el total de páginas del documento</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-div">Sección D — Respuesta breve <span class="sec-div-badge">2 pts c/u · revisión manual</span></div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-num">18</div><div class="q-meta"><div class="q-type">Respuesta breve (2 pts)</div><div class="q-text">Explica la diferencia entre un salto de página simple (Ctrl+Intro) y un salto de sección de página siguiente. ¿En qué situación usarías cada uno?</div></div></div>
+      <div class="sa"><textarea placeholder="Escribe tu respuesta (mínimo 2 oraciones)..."></textarea></div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-num">19</div><div class="q-meta"><div class="q-type">Respuesta breve (2 pts)</div><div class="q-text">Describe el proceso para crear una plantilla de Word (.dotx) a partir de un documento ya formateado. ¿Qué ventaja ofrece usar plantillas en el trabajo diario de un docente?</div></div></div>
+      <div class="sa"><textarea placeholder="Escribe tu respuesta..."></textarea></div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-num">20</div><div class="q-meta"><div class="q-type">Respuesta breve (2 pts)</div><div class="q-text">Un colega necesita que su informe de 15 páginas tenga: numeración romana en las 3 páginas del índice y numeración arábiga desde 1 en el cuerpo. ¿Cómo le explicas paso a paso qué debe hacer en Word?</div></div></div>
+      <div class="sa"><textarea placeholder="Escribe tu respuesta..."></textarea></div>
+    </div>
+  </div>
+
+  <div class="exam-cta">
+    <button class="btn-grade" onclick="grade()">Calificar Examen →</button>
+    <div class="score-box" id="score-box">
+      <div class="score-big" id="score-val">—</div>
+      <div class="score-msg" id="score-msg">de 13 puntos automáticos (Secciones A y B)</div>
+      <div style="font-size:13px;color:rgba(255,255,255,.35);margin-top:10px;background:rgba(255,255,255,.04);border-radius:var(--r);padding:10px 13px">Las Secciones C y D requieren revisión manual por parte del instructor o autoevaluación del participante.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ACTIVIDAD INTEGRADORA ──────────────────────────── -->
+<section id="actividad" class="sec reveal">
+  <div class="sec-kicker">Cierre del módulo</div>
+  <h2 class="sec-h">Actividad Integradora</h2>
+  <p class="sec-sub">Documento institucional completo: demuestra tu dominio de la organización visual</p>
+
+  <div class="box ok">
+    <div class="box-ico">🏆</div>
+    <div class="box-body">
+      <div class="box-title">Descripción de la actividad</div>
+      <div class="box-text">Crearás un <strong>informe de actividades de fin de bimestre</strong> completamente profesional que integre: configuración de página correcta, encabezados y pies con campos dinámicos, secciones diferenciadas, numeración mixta, marca de agua y la plantilla guardada para uso futuro.</div>
+    </div>
+  </div>
+
+  <h2 class="t2">Producto a entregar: Informe bimestral con diseño completo</h2>
+  <ol class="steps" style="list-style:none;padding:0">
+    <li class="step"><div class="step-n">1</div><div class="step-t"><strong>Sección 1 — Portada e índice (sin número de página visible):</strong> Nombre del plantel, título del informe, datos del docente. Página de índice con los temas del informe. Numeración romana (i, ii) solo en la página del índice.</div></li>
+    <li class="step"><div class="step-n">2</div><div class="step-t"><strong>Sección 2 — Cuerpo del informe (mínimo 3 páginas):</strong> Configuración de márgenes institucionales. Encabezado con nombre de la institución y fecha automática. Pie de página con "Página X de Y". Numeración arábiga desde 1.</div></li>
+    <li class="step"><div class="step-n">3</div><div class="step-t"><strong>Marca de agua BORRADOR</strong> visible en todas las páginas del informe durante la fase de revisión.</div></li>
+    <li class="step"><div class="step-n">4</div><div class="step-t"><strong>Borde de página decorativo</strong> sutil (1-2 pt, color institucional) en las páginas de la Sección 2.</div></li>
+    <li class="step"><div class="step-n">5</div><div class="step-t"><strong>Plantilla guardada:</strong> Una vez completo el informe, guárdalo como plantilla (.dotx) con el nombre <code>CEB617_Informe_Bimestral.dotx</code>.</div></li>
+  </ol>
+
+  <h2 class="t2">Rúbrica de evaluación</h2>
+  <div class="tbl-wrap">
+  <table class="rub">
+    <thead><tr><th>Indicador</th><th>Excelente (4 pts)</th><th>Suficiente (2 pts)</th><th>Insuficiente (0 pts)</th><th>Pts</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Configuración de página</strong></td><td>Márgenes institucionales correctos, carta, vertical, secciones bien delimitadas</td><td>Márgenes correctos sin secciones diferenciadas</td><td>Márgenes incorrectos o sin configurar</td><td>/4</td></tr>
+      <tr><td><strong>Encabezado y pie</strong></td><td>Encabezado institucional + fecha automática + numeración "Página X de Y" funcionando</td><td>Encabezado o pie presentes pero sin campos dinámicos</td><td>Sin encabezado ni pie de página</td><td>/4</td></tr>
+      <tr><td><strong>Secciones y numeración</strong></td><td>Numeración romana en índice y arábiga desde 1 en el cuerpo correctamente</td><td>Numeración presente pero sin diferenciación por sección</td><td>Sin numeración o numeración incorrecta</td><td>/4</td></tr>
+      <tr><td><strong>Marca de agua y borde</strong></td><td>Marca de agua BORRADOR + borde decorativo institucional aplicados correctamente</td><td>Solo uno de los dos elementos presentes</td><td>Ninguno de los dos elementos</td><td>/4</td></tr>
+      <tr><td><strong>Plantilla guardada</strong></td><td>Plantilla .dotx guardada correctamente y funcional para crear nuevos documentos</td><td>Guardada como .docx (no como plantilla)</td><td>No guardada como plantilla</td><td>/4</td></tr>
+      <tr><td colspan="4"><strong>TOTAL</strong></td><td><strong>/20</strong></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="box warn">
+    <div class="box-ico">📤</div>
+    <div class="box-body">
+      <div class="box-title">Entrega</div>
+      <div class="box-text">Nomenclatura del archivo: <code>M3_TuNombre_.pdf</code> y <code>CEB617_Informe_Bimestral.dotx</code>. Fecha límite: <strong>1 de mayo de 2026</strong>.</div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+/* ── PROGRESS BAR ── */
+window.addEventListener('scroll',()=>{
+  const d=document.documentElement;
+  document.getElementById('pbar').style.width=(d.scrollTop/(d.scrollHeight-d.clientHeight)*100)+'%';
+});
+
+/* ── SIDEBAR ACTIVE ── */
+const secs=document.querySelectorAll('section[id]');
+const navs=document.querySelectorAll('.nav-link[href^="#"]');
+const obs=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      navs.forEach(n=>n.classList.remove('on'));
+      const a=document.querySelector(`.nav-link[href="#${e.target.id}"]`);
+      if(a)a.classList.add('on');
+    }
+  });
+},{threshold:.12,rootMargin:'-5% 0px -80% 0px'});
+secs.forEach(s=>obs.observe(s));
+
+/* ── REVEAL ── */
+const revObs=new IntersectionObserver(es=>{
+  es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('shown')});
+},{threshold:.06});
+document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
+
+/* ── MARK COMPLETE ── */
+const completed={};
+function markDone(btn, tid){
+  if(completed[tid]) return;
+  completed[tid]=true;
+  btn.classList.add('done');
+  btn.querySelector('.bc-icon').textContent='✓';
+  btn.querySelector('.bc-txt').textContent='¡Tema completado!';
+  btn.style.animation='none';
+  const navItem=document.getElementById('nav-'+tid);
+  if(navItem){navItem.classList.add('done')}
+  // Count completed
+  const total=7;
+  const done=Object.keys(completed).length;
+  // Update progress note
+  const note=document.querySelector('.prog-note');
+  if(note) note.textContent=`Módulo 3 · ${done}/${total} temas completados`;
+}
+
+/* ── EXAM ── */
+const answers={};
+const correct={
+  '1':'b','2':'c','3':'a','4':'d','5':'b','6':'c','7':'a','8':'d',
+  '9':'F','10':'V','11':'F','12':'V','13':'V'
+};
+const fbTxt={
+  ok:{
+    '1':'✓ Correcto. Ctrl+Intro (Enter) es el atajo para insertar un salto de página.',
+    '2':'✓ Correcto. Disposición → Márgenes → Márgenes personalizados.',
+    '3':'✓ Correcto. Los archivos de plantilla de Word tienen la extensión .dotx.',
+    '4':'✓ Correcto. "Primera página diferente" permite que la portada no tenga encabezado.',
+    '5':'✓ Correcto. El salto de sección "Página siguiente" permite cambiar la orientación.',
+    '6':'✓ Correcto. Las marcas de agua se insertan desde la pestaña Diseño.',
+    '7':'✓ Correcto. El margen izquierdo mayor deja espacio para encuadernado y perforado.',
+    '8':'✓ Correcto. El campo NumPages muestra el total de páginas del documento.',
+    '9':'✓ Correcto. Es FALSO. La forma correcta es usar un Salto de página (Ctrl+Intro).',
+    '10':'✓ Correcto. Las marcas de agua se almacenan en el área de encabezado del documento.',
+    '11':'✓ Correcto. Es FALSO. El color de fondo no se imprime por defecto — debe activarse en opciones.',
+    '12':'✓ Correcto. Las secciones permiten distintas configuraciones en el mismo documento.',
+    '13':'✓ Correcto. Una plantilla .dotx genera copias editables sin modificar el original.',
+  },
+  fail:{
+    '1':'✗ Incorrecto. Respuesta B: Ctrl+Intro (Enter) inserta un salto de página.',
+    '2':'✗ Incorrecto. Respuesta C: Disposición → Márgenes → Márgenes personalizados.',
+    '3':'✗ Incorrecto. Respuesta A: la extensión de plantilla de Word es .dotx.',
+    '4':'✗ Incorrecto. Respuesta D: "Primera página diferente" da un encabezado o pie distinto a la primera página.',
+    '5':'✗ Incorrecto. Respuesta B: el salto de sección "Página siguiente" permite cambiar la orientación.',
+    '6':'✗ Incorrecto. Respuesta C: Diseño → Marca de agua.',
+    '7':'✗ Incorrecto. Respuesta A: el margen izquierdo mayor deja espacio para encuadernado y perforado.',
+    '8':'✗ Incorrecto. Respuesta D: el campo NumPages (no PageCount ni TotalPages) muestra el total de páginas.',
+    '9':'✗ Incorrecto. Es FALSO. Usar Enter varias veces crea párrafos vacíos problemáticos. Lo correcto es Ctrl+Intro.',
+    '10':'✗ Incorrecto. Es VERDADERO. Las marcas de agua se almacenan técnicamente en el encabezado.',
+    '11':'✗ Incorrecto. Es FALSO. El color de fondo debe activarse manualmente en Archivo → Opciones.',
+    '12':'✗ Incorrecto. Es VERDADERO. Las secciones permiten configuraciones diferentes en el mismo documento.',
+    '13':'✗ Incorrecto. Es VERDADERO. Al usar una plantilla solo se genera una copia — el original no se toca.',
+  }
+};
+
+function pick(el,q,v){
+  if(answers[q])return;
+  document.querySelectorAll(`.q-card[data-q="${q}"] .opt`).forEach(o=>o.classList.remove('sel'));
+  el.classList.add('sel');answers[q]=v;
+}
+function pickTF(el,q,v){
+  if(answers[q])return;
+  el.parentElement.querySelectorAll('.tf').forEach(t=>t.classList.remove('sel'));
+  el.classList.add('sel');answers[q]=v;
+}
+let mL=null;
+function doMatch(el,side){
+  if(side==='L'){
+    document.querySelectorAll('.match-i').forEach(m=>{if(m.dataset.pair.length===1)m.classList.remove('sel')});
+    el.classList.add('sel');mL=el;
+  } else {
+    if(!mL)return;
+    mL.classList.remove('sel');mL.classList.add('done');
+    el.classList.add('done');mL=null;
+  }
+}
+function grade(){
+  let score=0;
+  for(let q=1;q<=13;q++){
+    const qs=String(q);
+    const given=answers[qs];
+    const card=document.querySelector(`.q-card[data-q="${q}"]`);
+    const f=document.getElementById(`fb${q}`);
+    if(!card||!f)continue;
+    const isOk=given===correct[qs];
+    if(isOk)score++;
+    if(card.dataset.type==='mc'){
+      card.querySelectorAll('.opt').forEach(o=>{
+        const l=o.querySelector('.opt-l').textContent.toLowerCase();
+        if(l===correct[qs])o.classList.add('ok');
+        else if(l===given&&!isOk)o.classList.add('bad');
+      });
+    } else if(card.dataset.type==='tf'){
+      card.querySelectorAll('.tf').forEach(t=>{
+        const v=t.textContent.includes('Verdadero')?'V':'F';
+        if(v===correct[qs])t.classList.add('ok');
+        else if(v===given&&!isOk)t.classList.add('bad');
+      });
+    }
+    f.classList.add('vis',isOk?'ok':'fail');
+    f.textContent=given?(isOk?fbTxt.ok[qs]:fbTxt.fail[qs]):'⚠ Sin respuesta.';
+  }
+  const box=document.getElementById('score-box');
+  const val=document.getElementById('score-val');
+  const msg=document.getElementById('score-msg');
+  val.textContent=`${score}/13`;
+  val.style.color=score>=9?'#52d9a9':'#ff8fa0';
+  msg.textContent=score>=9
+    ?`¡Muy bien! ${Math.round(score/13*100)}% en secciones automáticas. Solicita revisión de las secciones C y D a tu instructor.`
+    :`${Math.round(score/13*100)}% en secciones automáticas. Repasa los temas marcados en rojo antes de continuar.`;
+  box.classList.add('vis');
+  box.scrollIntoView({behavior:'smooth',block:'center'});
+}
+</script>
+</body>
+</html>

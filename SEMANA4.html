@@ -1,0 +1,1570 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 4 · Tablas y Listas | Microsoft Word 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F5F7FB;--bg2:#EAEEF6;--white:#FFFFFF;--card:#FFFFFF;
+  --border:#DDE3EE;--border2:#C5CDDF;
+  --navy:#0A2540;--blue:#0066FF;--blue2:#004FCC;--blueL:#E8F0FF;--blueXL:#F0F5FF;
+  --cyan:#00C2E0;--cyanL:#E0F9FD;
+  --amber:#FF8C00;--amberL:#FFF4E5;
+  --green:#00A67E;--greenL:#E3FAF5;
+  --red:#E0294A;--redL:#FFF0F3;
+  --purple:#7C3AED;--purpleL:#F5F0FF;
+  --text:#1A2B4A;--text2:#4A5A75;--muted:#8A97B0;
+  --r:10px;--r2:16px;
+  --shadow:0 2px 12px rgba(10,37,64,.08);--shadowM:0 8px 32px rgba(10,37,64,.12);
+  --sidebar:268px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);
+  line-height:1.7;overflow-x:hidden;font-size:17px;zoom:1.12}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg2)}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:6px}
+::-webkit-scrollbar-thumb:hover{background:var(--blue)}
+
+body::before{content:'';position:fixed;inset:0;z-index:-2;background-color:var(--bg);
+  background-image:radial-gradient(circle at 20% 10%,rgba(0,102,255,.05) 0%,transparent 50%),
+    radial-gradient(circle at 80% 90%,rgba(0,194,224,.06) 0%,transparent 45%),
+    radial-gradient(circle at 60% 40%,rgba(124,58,237,.03) 0%,transparent 40%)}
+body::after{content:'';position:fixed;inset:0;z-index:-1;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ccircle cx='40' cy='40' r='1.2' fill='%230066FF' fill-opacity='.09'/%3E%3C/svg%3E");
+  background-size:40px 40px;pointer-events:none}
+
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:9999;
+  background:linear-gradient(90deg,var(--purple),var(--blue),var(--cyan));
+  box-shadow:0 0 8px rgba(124,58,237,.4);transition:width .1s}
+
+/* SIDEBAR */
+#sidebar{position:fixed;left:0;top:0;bottom:0;width:var(--sidebar);background:var(--white);
+  border-right:1px solid var(--border);z-index:200;display:flex;flex-direction:column;
+  overflow-y:auto;box-shadow:2px 0 20px rgba(10,37,64,.06);scrollbar-width:thin}
+.sb-top{padding:18px 16px;border-bottom:1px solid var(--border)}
+.sb-brand{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.sb-icon{width:38px;height:38px;border-radius:10px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--purple),var(--blue));
+  display:flex;align-items:center;justify-content:center;font-size:18px;
+  box-shadow:0 4px 12px rgba(124,58,237,.3)}
+.sb-brand-txt{font-size:12px;font-weight:700;color:var(--navy);line-height:1.3}
+.sb-brand-sub{font-size:10px;color:var(--muted);font-weight:400}
+.sb-chip{background:var(--purpleL);border:1px solid rgba(124,58,237,.15);border-radius:var(--r);padding:10px 12px}
+.sb-chip-num{font-size:10px;font-weight:700;color:var(--purple);text-transform:uppercase;
+  letter-spacing:.1em;margin-bottom:3px;font-family:'Fira Code',monospace}
+.sb-chip-name{font-size:12.5px;font-weight:700;color:var(--navy);line-height:1.3}
+.sb-chip-week{font-size:11px;color:var(--muted);margin-top:3px}
+.nav-group{padding:12px 16px 4px;font-size:9.5px;font-weight:700;color:var(--muted);
+  text-transform:uppercase;letter-spacing:.12em}
+.nav-link{display:flex;align-items:center;gap:9px;padding:8px 12px 8px 16px;
+  font-size:12.5px;color:var(--text2);text-decoration:none;
+  border-left:3px solid transparent;transition:all .18s}
+.nav-link:hover{color:var(--purple);background:var(--purpleL)}
+.nav-link.on{color:var(--purple);border-left-color:var(--purple);background:var(--purpleL);font-weight:600}
+.nav-icon{font-size:13px;width:18px;text-align:center;flex-shrink:0}
+.nav-txt{flex:1;line-height:1.3}
+.nav-sub{font-size:10px;color:var(--muted);margin-top:1px;font-weight:400}
+.sb-foot{margin-top:auto;padding:14px 16px;border-top:1px solid var(--border)}
+.prog-row{display:flex;justify-content:space-between;margin-bottom:5px;font-size:10px;
+  font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.prog-row span{color:var(--purple);font-family:'Fira Code',monospace}
+.prog-track{height:5px;background:var(--bg2);border-radius:20px;overflow:hidden}
+.prog-fill{height:100%;width:31%;background:linear-gradient(90deg,var(--purple),var(--blue),var(--cyan));border-radius:20px}
+.prog-note{font-size:10px;color:var(--muted);margin-top:4px}
+
+/* MAIN */
+#main{margin-left:var(--sidebar);min-height:100vh}
+
+/* HERO */
+#hero{background:var(--white);border-bottom:1px solid var(--border);
+  position:relative;overflow:hidden;padding:56px 64px 48px;min-height:72vh;display:flex;align-items:center}
+#hero::before{content:'';position:absolute;inset:0;z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect x='0' y='100' width='60' height='1.5' fill='%237C3AED' fill-opacity='.07'/%3E%3Crect x='100' y='0' width='1.5' height='60' fill='%237C3AED' fill-opacity='.07'/%3E%3Crect x='60' y='100' width='1.5' height='60' fill='%237C3AED' fill-opacity='.07'/%3E%3Crect x='100' y='60' width='100' height='1.5' fill='%237C3AED' fill-opacity='.07'/%3E%3Ccircle cx='60' cy='100' r='4' fill='none' stroke='%237C3AED' stroke-width='1.5' stroke-opacity='.13'/%3E%3Ccircle cx='100' cy='60' r='4' fill='none' stroke='%237C3AED' stroke-width='1.5' stroke-opacity='.13'/%3E%3C/svg%3E");
+  background-size:200px 200px}
+.hero-circuit{position:absolute;top:-40px;right:-40px;width:480px;height:480px;z-index:0;pointer-events:none;opacity:.8}
+.hero-left{position:relative;z-index:1;max-width:660px;flex:1}
+.hero-right-card{position:absolute;right:64px;top:50%;transform:translateY(-50%);z-index:1;width:270px}
+
+.eyebrow{display:inline-flex;align-items:center;gap:8px;margin-bottom:22px;
+  background:var(--purpleL);border:1px solid rgba(124,58,237,.2);border-radius:20px;
+  padding:6px 14px;font-size:11px;font-weight:700;color:var(--purple);
+  text-transform:uppercase;letter-spacing:.1em;font-family:'Fira Code',monospace;animation:fadeUp .5s both}
+.eyebrow-pulse{width:7px;height:7px;border-radius:50%;background:var(--purple);
+  animation:pulse 1.6s infinite;flex-shrink:0}
+.hero-title{font-size:clamp(36px,4.8vw,62px);font-weight:900;color:var(--navy);
+  line-height:1.08;margin-bottom:18px;letter-spacing:-.02em;animation:fadeUp .5s .1s both}
+.hero-title .accent{background:linear-gradient(90deg,var(--purple),var(--blue));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-desc{font-size:17px;color:var(--text2);max-width:520px;margin-bottom:28px;
+  line-height:1.75;animation:fadeUp .5s .18s both}
+
+.compat-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r2);
+  padding:18px;box-shadow:var(--shadowM);animation:fadeUp .5s .2s both}
+.compat-hd{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;
+  letter-spacing:.1em;margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.compat-hd::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--purple);display:inline-block}
+.compat-row{display:flex;align-items:center;gap:9px;padding:7px 0;border-bottom:1px solid var(--border)}
+.compat-row:last-child{border-bottom:none}
+.compat-ok{width:18px;height:18px;border-radius:50%;flex-shrink:0;
+  background:var(--greenL);border:1px solid rgba(0,166,126,.3);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--green)}
+.compat-ok.star{background:var(--amberL);border-color:rgba(255,140,0,.3);color:var(--amber)}
+.compat-name{font-size:13px;font-weight:600;color:var(--text)}
+.compat-tag{margin-left:auto;font-size:9px;font-weight:700;padding:2px 7px;border-radius:6px;text-transform:uppercase}
+.compat-tag.all{background:var(--greenL);color:var(--green)}
+.compat-tag.bonus{background:var(--amberL);color:var(--amber)}
+
+/* SECTIONS */
+.sec{padding:60px 64px;border-bottom:1px solid var(--border);background:var(--white)}
+.sec.alt{background:var(--bg)}
+.sec-kicker{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:700;
+  color:var(--purple);text-transform:uppercase;letter-spacing:.14em;margin-bottom:8px;font-family:'Fira Code',monospace}
+.sec-kicker::before{content:'//';color:var(--cyan);margin-right:2px}
+.sec-h{font-size:clamp(24px,3.2vw,40px);font-weight:900;color:var(--navy);line-height:1.12;margin-bottom:8px;letter-spacing:-.01em}
+.sec-sub{font-size:16px;color:var(--text2);margin-bottom:36px;max-width:600px}
+h2.t2{font-size:22px;font-weight:800;color:var(--navy);margin:44px 0 14px;
+  display:flex;align-items:center;gap:10px;letter-spacing:-.01em}
+h2.t2::before{content:'';width:4px;height:22px;background:linear-gradient(180deg,var(--purple),var(--blue));border-radius:4px;flex-shrink:0}
+h3.t3{font-size:17px;font-weight:700;color:var(--purple);margin:26px 0 10px}
+p.body{font-size:16px;color:var(--text2);line-height:1.85;margin-bottom:18px;text-align:justify}
+p.body strong{color:var(--navy);font-weight:700}
+
+/* BOXES */
+.box{border-radius:var(--r2);padding:20px 24px;margin:22px 0;display:flex;gap:15px;align-items:flex-start}
+.box-ico{font-size:21px;flex-shrink:0;margin-top:2px}
+.box-body{flex:1}
+.box-title{font-weight:700;font-size:15px;margin-bottom:6px}
+.box-text{font-size:15px;line-height:1.75;color:var(--text2)}
+.box-text ul{margin:7px 0 0 18px}.box-text li{margin-bottom:5px}
+.box-text strong{color:var(--navy)}
+.box-text code{background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.15);
+  border-radius:4px;padding:2px 7px;font-family:'Fira Code',monospace;font-size:13px;color:var(--purple)}
+.box.info{background:var(--blueXL);border:1px solid rgba(0,102,255,.18)}.box.info .box-title{color:var(--blue)}
+.box.warn{background:var(--amberL);border:1px solid rgba(255,140,0,.2)}.box.warn .box-title{color:var(--amber)}
+.box.ok{background:var(--greenL);border:1px solid rgba(0,166,126,.2)}.box.ok .box-title{color:var(--green)}
+.box.err{background:var(--redL);border:1px solid rgba(224,41,74,.18)}.box.err .box-title{color:var(--red)}
+.box.purple{background:var(--purpleL);border:1px solid rgba(124,58,237,.2)}.box.purple .box-title{color:var(--purple)}
+.box.bonus{background:linear-gradient(135deg,var(--amberL),#FFF8EC);border:1px dashed rgba(255,140,0,.4)}.box.bonus .box-title{color:var(--amber)}
+
+/* TABLES */
+.tbl-wrap{overflow-x:auto;margin:18px 0;border-radius:var(--r2);box-shadow:var(--shadow);border:1px solid var(--border)}
+table.t{width:100%;border-collapse:collapse;font-size:15px;background:var(--white)}
+table.t thead tr{background:var(--navy)}
+table.t thead th{padding:13px 16px;text-align:left;color:#fff;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em}
+table.t thead th:first-child{border-radius:var(--r2) 0 0 0}table.t thead th:last-child{border-radius:0 var(--r2) 0 0}
+table.t thead th.ctr{text-align:center}
+table.t tbody tr{border-bottom:1px solid var(--border);transition:background .15s}
+table.t tbody tr:hover{background:var(--purpleL)}
+table.t td{padding:12px 16px;color:var(--text2);vertical-align:top;font-size:15px}
+table.t td.ctr{text-align:center}
+
+/* TABLE DEMO (visualize Word table styles) */
+.table-demo{margin:20px 0;border-radius:var(--r2);overflow:hidden;box-shadow:var(--shadowM)}
+.td-header{background:var(--navy);padding:10px 16px;display:flex;align-items:center;gap:8px;
+  font-family:'Fira Code',monospace;font-size:11px;color:rgba(255,255,255,.5)}
+.td-dot{width:10px;height:10px;border-radius:50%}
+.td-body{padding:16px;background:var(--white);overflow-x:auto}
+.demo-table{width:100%;border-collapse:collapse;font-size:14px}
+.demo-table.style1 thead tr{background:var(--navy)}
+.demo-table.style1 thead th{padding:10px 14px;color:#fff;font-weight:700;font-size:12px;text-align:left}
+.demo-table.style1 tbody tr:nth-child(even){background:var(--purpleL)}
+.demo-table.style1 td{padding:9px 14px;border-bottom:1px solid var(--border);color:var(--text2)}
+.demo-table.style2 thead tr{background:var(--purple)}
+.demo-table.style2 thead th{padding:10px 14px;color:#fff;font-weight:700;font-size:12px;text-align:left;border-right:1px solid rgba(255,255,255,.15)}
+.demo-table.style2 tbody tr{border-bottom:1px solid var(--border)}
+.demo-table.style2 td{padding:9px 14px;color:var(--text2);border-right:1px solid var(--border)}
+.demo-table.style3{border:2px solid var(--navy)}
+.demo-table.style3 thead tr{background:linear-gradient(135deg,var(--navy),var(--blue))}
+.demo-table.style3 thead th{padding:10px 14px;color:#fff;font-weight:700;font-size:12px;text-align:center;border-right:1px solid rgba(255,255,255,.15)}
+.demo-table.style3 td{padding:9px 14px;text-align:center;color:var(--text2);border:1px solid var(--border)}
+.demo-table.style3 tbody tr:hover{background:var(--blueXL)}
+
+/* LIST DEMO */
+.list-demo{background:var(--white);border:1px solid var(--border);border-radius:var(--r2);
+  padding:20px 24px;margin:18px 0;box-shadow:var(--shadow)}
+.list-demo-title{font-family:'Fira Code',monospace;font-size:10px;font-weight:700;
+  color:var(--purple);text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px}
+.list-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+.list-col h4{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;
+  letter-spacing:.08em;margin-bottom:8px;font-family:'Fira Code',monospace}
+.bullet-item{font-size:14px;color:var(--text2);padding:4px 0;display:flex;align-items:flex-start;gap:8px;line-height:1.4}
+.bullet-item::before{flex-shrink:0;margin-top:2px}
+.bi-disc::before{content:'●';color:var(--purple);font-size:10px}
+.bi-circle::before{content:'○';color:var(--blue);font-size:12px}
+.bi-square::before{content:'■';color:var(--navy);font-size:9px}
+.bi-check::before{content:'✓';color:var(--green);font-weight:700}
+.bi-arrow::before{content:'→';color:var(--amber)}
+.bi-dash::before{content:'–';color:var(--muted)}
+.num-item{font-size:14px;color:var(--text2);padding:3px 0;counter-increment:none}
+
+/* MULTILEVEL LIST */
+.ml-demo{background:var(--white);border:1px solid var(--border);border-radius:var(--r2);
+  padding:20px 24px;margin:18px 0;box-shadow:var(--shadow);font-size:14px;color:var(--text2)}
+.ml-1{padding:4px 0;font-weight:700;color:var(--navy);display:flex;align-items:center;gap:8px}
+.ml-1::before{content:'1.';font-family:'Fira Code',monospace;color:var(--purple);font-weight:700;width:20px}
+.ml-2{padding:3px 0 3px 28px;display:flex;align-items:center;gap:8px;color:var(--text2)}
+.ml-2::before{content:'1.1';font-family:'Fira Code',monospace;color:var(--blue);font-size:12px;width:30px;flex-shrink:0}
+.ml-3{padding:3px 0 3px 56px;display:flex;align-items:center;gap:8px;color:var(--muted)}
+.ml-3::before{content:'a)';font-family:'Fira Code',monospace;font-size:11px;width:24px;flex-shrink:0}
+
+/* COMPETENCES */
+.comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin:22px 0}
+.comp-item{background:var(--white);border:1px solid var(--border);border-radius:var(--r);
+  padding:14px 16px;display:flex;align-items:flex-start;gap:12px;transition:all .2s}
+.comp-item:hover{border-color:rgba(124,58,237,.3);box-shadow:0 4px 16px rgba(124,58,237,.08)}
+.comp-bullet{width:24px;height:24px;border-radius:6px;flex-shrink:0;margin-top:1px;
+  background:linear-gradient(135deg,var(--green),#00C49A);display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff}
+.comp-txt{font-size:14.5px;color:var(--text2);line-height:1.45}
+
+/* EXERCISES */
+.ex-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r2);
+  overflow:hidden;margin:30px 0;box-shadow:var(--shadow);transition:box-shadow .25s,border-color .25s}
+.ex-card:hover{box-shadow:var(--shadowM);border-color:rgba(124,58,237,.2)}
+.ex-head{padding:18px 22px;background:var(--navy);display:flex;align-items:center;gap:14px}
+.ex-num{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--purple),var(--blue));
+  display:flex;align-items:center;justify-content:center;font-weight:900;font-size:19px;color:#fff;
+  flex-shrink:0;box-shadow:0 4px 12px rgba(124,58,237,.4)}
+.ex-info{flex:1}
+.ex-title{font-weight:800;font-size:17px;color:#fff}
+.ex-meta{font-size:12px;color:rgba(255,255,255,.55);margin-top:3px;font-family:'Fira Code',monospace}
+.ex-body{padding:24px 26px}
+.ex-goal{background:var(--amberL);border-left:3px solid var(--amber);border-radius:0 var(--r) var(--r) 0;
+  padding:13px 17px;margin-bottom:22px;font-size:15px;color:var(--text2)}
+.ex-goal strong{color:var(--amber);font-weight:700}
+.steps{list-style:none;padding:0}
+.step{display:flex;gap:15px;margin-bottom:16px;align-items:flex-start}
+.step-n{width:30px;height:30px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--purple),var(--blue));
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:#fff;
+  box-shadow:0 3px 8px rgba(124,58,237,.25)}
+.step-t{font-size:15px;color:var(--text2);line-height:1.75;padding-top:4px}
+.step-t strong{color:var(--navy);font-weight:700}
+.step-t code{background:var(--purpleL);border:1px solid rgba(124,58,237,.15);border-radius:5px;
+  padding:2px 7px;font-family:'Fira Code',monospace;font-size:13px;color:var(--purple)}
+.tip{background:var(--greenL);border:1px solid rgba(0,166,126,.2);border-radius:var(--r);
+  padding:12px 16px;margin-top:15px;font-size:14.5px;color:var(--text2)}
+.tip strong{color:var(--green)}
+.reto{background:var(--blueXL);border:1px solid rgba(0,102,255,.2);border-radius:var(--r);
+  padding:12px 16px;margin-top:10px;font-size:14.5px;color:var(--text2)}
+.reto::before{content:'⚡ Variante RETO: ';font-weight:700;color:var(--blue)}
+.bonus-hint{background:var(--blueXL);border:1px dashed rgba(0,102,255,.3);border-radius:var(--r);
+  padding:12px 16px;margin-top:10px;font-size:14.5px;color:var(--text2)}
+.bonus-hint::before{content:'⭐ BONUS (solo M365 + Copilot): ';font-weight:700;color:var(--blue)}
+
+/* NOTE ARCHIVO */
+.note-archivo{background:#FFFBEB;border:2px solid #F59E0B;border-radius:var(--r);
+  padding:13px 16px;margin-top:14px;display:flex;align-items:flex-start;gap:12px}
+.note-archivo .na-ico{font-size:20px;flex-shrink:0;margin-top:1px}
+.note-archivo .na-body{font-size:13.5px;color:var(--text2);line-height:1.6}
+.note-archivo .na-body strong{color:#B45309}
+.note-archivo .na-body code{background:rgba(180,83,9,.1);border:1px solid rgba(180,83,9,.2);
+  border-radius:4px;padding:2px 7px;font-family:'Fira Code',monospace;font-size:12px;color:#92400E}
+
+/* SHORTCUTS */
+.sk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin:18px 0}
+.sk-item{background:var(--white);border:1px solid var(--border);border-radius:var(--r);
+  padding:12px 14px;display:flex;align-items:center;gap:12px;transition:all .2s}
+.sk-item:hover{border-color:rgba(124,58,237,.3);transform:translateY(-1px)}
+.sk-keys{display:flex;gap:3px;align-items:center;flex-shrink:0}
+.key{background:var(--navy);color:#fff;border-radius:6px;padding:5px 9px;min-width:30px;text-align:center;
+  font-family:'Fira Code',monospace;font-size:12px;font-weight:600;
+  box-shadow:0 3px 0 rgba(10,37,64,.4);border:1px solid rgba(255,255,255,.1)}
+.key.w{min-width:46px}.plus{font-size:11px;color:var(--muted);font-weight:800}
+.sk-desc{font-size:13.5px;color:var(--text2);line-height:1.3}
+
+/* MARK COMPLETE */
+.mark-complete{margin:36px 0 8px;display:flex;align-items:center;justify-content:center}
+.btn-complete{display:inline-flex;align-items:center;gap:10px;
+  background:var(--purpleL);border:2px solid rgba(124,58,237,.2);
+  color:var(--purple);font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;
+  padding:12px 24px;border-radius:10px;cursor:pointer;transition:all .25s;box-shadow:var(--shadow)}
+.btn-complete:hover{background:var(--purple);color:#fff;border-color:var(--purple);
+  box-shadow:0 4px 20px rgba(124,58,237,.3);transform:translateY(-1px)}
+.btn-complete.done{background:var(--greenL);border-color:rgba(0,166,126,.3);color:var(--green);
+  cursor:default;transform:none!important;box-shadow:none!important}
+
+/* EXAM */
+#examen{background:var(--navy)}
+.exam-hero{padding:52px 64px 28px;border-bottom:1px solid rgba(255,255,255,.08);text-align:center;
+  position:relative;overflow:hidden;
+  background:radial-gradient(ellipse 70% 60% at 20% 50%,rgba(124,58,237,.12) 0%,transparent 70%),
+    radial-gradient(ellipse 50% 50% at 80% 50%,rgba(0,102,255,.08) 0%,transparent 70%)}
+.exam-hero::after{content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Ccircle cx='20' cy='20' r='1' fill='white' fill-opacity='.05'/%3E%3C/svg%3E");
+  background-size:40px 40px}
+.exam-hero h2{font-size:36px;font-weight:900;color:#fff;margin-bottom:8px;position:relative;z-index:1}
+.exam-hero p{font-size:15px;color:rgba(255,255,255,.5);margin-bottom:20px;position:relative;z-index:1}
+.exam-stats{display:flex;justify-content:center;gap:32px;position:relative;z-index:1}
+.es-v{font-family:'Fira Code',monospace;font-size:30px;font-weight:700;color:var(--amber)}
+.es-l{font-size:11px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.08em}
+.exam-body{padding:32px 64px 48px}
+.exam-note{background:rgba(255,140,0,.1);border:1px solid rgba(255,140,0,.25);border-radius:var(--r);
+  padding:13px 17px;margin-bottom:24px;font-size:14px;color:rgba(255,255,255,.65);display:flex;align-items:center;gap:8px}
+.sec-div{font-family:'Fira Code',monospace;font-size:12px;font-weight:700;color:var(--cyan);
+  text-transform:uppercase;letter-spacing:.12em;padding:10px 0;border-bottom:1px solid rgba(0,194,224,.2);
+  margin:28px 0 18px;display:flex;align-items:center;gap:10px}
+.sec-div-badge{background:rgba(0,194,224,.12);border:1px solid rgba(0,194,224,.2);border-radius:5px;padding:2px 8px;font-size:11px;color:var(--cyan)}
+.q-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:var(--r2);
+  padding:22px 24px;margin-bottom:13px;transition:border-color .2s}
+.q-card:hover{border-color:rgba(124,58,237,.3)}
+.q-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:16px}
+.q-num{width:34px;height:34px;border-radius:50%;flex-shrink:0;background:rgba(124,58,237,.2);
+  border:1px solid rgba(124,58,237,.35);display:flex;align-items:center;justify-content:center;
+  font-family:'Fira Code',monospace;font-size:13px;font-weight:700;color:#c4b5fd}
+.q-meta{flex:1}
+.q-type{font-size:10px;font-weight:700;color:var(--amber);text-transform:uppercase;letter-spacing:.1em;margin-bottom:5px;font-family:'Fira Code',monospace}
+.q-text{font-size:15.5px;color:#fff;line-height:1.65;font-weight:500}
+.opts{display:flex;flex-direction:column;gap:8px;margin-left:48px}
+.opt{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  border-radius:var(--r);padding:12px 16px;cursor:pointer;transition:all .18s;user-select:none}
+.opt:hover{background:rgba(124,58,237,.1);border-color:rgba(124,58,237,.3)}
+.opt.sel{background:rgba(124,58,237,.15);border-color:rgba(124,58,237,.4)}
+.opt.ok{background:rgba(0,166,126,.12);border-color:rgba(0,166,126,.35)}
+.opt.bad{background:rgba(224,41,74,.08);border-color:rgba(224,41,74,.3)}
+.opt-l{width:26px;height:26px;border-radius:50%;flex-shrink:0;background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;
+  font-family:'Fira Code',monospace;font-size:12px;font-weight:700;color:rgba(255,255,255,.5)}
+.opt.ok .opt-l{background:var(--green);color:#fff;border-color:var(--green)}
+.opt.bad .opt-l{background:var(--red);color:#fff;border-color:var(--red)}
+.opt-t{font-size:14.5px;color:rgba(255,255,255,.8)}
+.tf-row{display:flex;gap:10px;margin-left:48px}
+.tf{flex:1;padding:14px;border-radius:var(--r);text-align:center;background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.09);cursor:pointer;font-size:15px;font-weight:700;
+  color:rgba(255,255,255,.55);transition:all .18s;user-select:none}
+.tf:hover{border-color:rgba(124,58,237,.3)}
+.tf.sel{border-color:var(--purple);background:rgba(124,58,237,.15);color:#fff}
+.tf.ok{border-color:var(--green);background:rgba(0,166,126,.12);color:var(--green)}
+.tf.bad{border-color:var(--red);background:rgba(224,41,74,.08);color:#ff8fa0}
+.fb{margin-left:48px;margin-top:10px;padding:10px 14px;border-radius:8px;font-size:14px;display:none}
+.fb.vis{display:block}
+.fb.ok{background:rgba(0,166,126,.1);border:1px solid rgba(0,166,126,.25);color:#52d9a9}
+.fb.bad{background:rgba(224,41,74,.08);border:1px solid rgba(224,41,74,.2);color:#ff8fa0}
+.sa{margin-left:48px;margin-top:9px}
+.sa textarea{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+  border-radius:var(--r);padding:12px 15px;color:#fff;font-family:'Outfit',sans-serif;
+  font-size:15px;line-height:1.65;resize:vertical;min-height:80px;outline:none;transition:border-color .2s}
+.sa textarea:focus{border-color:rgba(124,58,237,.45)}
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-left:48px}
+.match-col-h{font-size:11px;font-weight:700;color:rgba(255,255,255,.35);text-transform:uppercase;
+  letter-spacing:.08em;margin-bottom:8px;font-family:'Fira Code',monospace}
+.match-i{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--r);
+  padding:10px 14px;font-size:14px;color:rgba(255,255,255,.75);margin-bottom:6px;cursor:pointer;transition:all .18s}
+.match-i:hover{border-color:rgba(124,58,237,.3)}
+.match-i.sel{border-color:var(--amber);background:rgba(255,140,0,.08)}
+.match-i.done{border-color:var(--green);background:rgba(0,166,126,.08);color:#52d9a9}
+.exam-cta{text-align:center;padding:28px 64px 44px;border-top:1px solid rgba(255,255,255,.07)}
+.btn-grade{background:linear-gradient(135deg,var(--purple),var(--blue));color:#fff;
+  font-family:'Outfit',sans-serif;font-size:16px;font-weight:800;letter-spacing:.04em;
+  text-transform:uppercase;padding:16px 52px;border:none;border-radius:30px;cursor:pointer;
+  transition:all .22s;box-shadow:0 4px 20px rgba(124,58,237,.35)}
+.btn-grade:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(124,58,237,.45)}
+.score-box{display:none;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);
+  border-radius:var(--r2);padding:28px;margin-top:22px}
+.score-box.vis{display:block}
+.score-big{font-family:'Fira Code',monospace;font-size:60px;font-weight:700;color:var(--amber)}
+.score-msg{font-size:15px;color:rgba(255,255,255,.5);margin-top:5px}
+
+/* RUBRIC */
+.rub{width:100%;border-collapse:collapse;font-size:14.5px;margin:16px 0;border-radius:var(--r2);overflow:hidden;box-shadow:var(--shadow)}
+.rub thead{background:var(--navy)}
+.rub th{padding:11px 13px;text-align:left;color:#fff;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.rub td{padding:11px 13px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top}
+.rub tr:nth-child(even){background:var(--purpleL)}
+.rub tr:last-child td{background:rgba(124,58,237,.08);font-weight:700;color:var(--purple)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .55s,transform .55s}
+.reveal.shown{opacity:1;transform:none}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  :root{--sidebar:0px}
+  #sidebar{display:none}#main{margin-left:0}
+  .hero-right-card{display:none}#hero{padding:40px 24px;min-height:auto}
+  .sec{padding:40px 24px}
+  .comp-grid,.sk-grid,.list-row{grid-template-columns:1fr}
+  .exam-body,.exam-cta,.exam-hero{padding-left:24px;padding-right:24px}
+  .opts,.tf-row,.fb,.sa,.match-grid{margin-left:0}
+  .match-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div id="pbar"></div>
+
+<!-- ═══ SIDEBAR ════════════════════════════════════════════ -->
+<nav id="sidebar">
+  <div class="sb-top">
+    <div class="sb-brand">
+      <div class="sb-icon">⊞</div>
+      <div>
+        <div class="sb-brand-txt">Microsoft Word 2026</div>
+        <div class="sb-brand-sub">Curso autogestivo · Parte 1 de 2</div>
+      </div>
+    </div>
+    <div class="sb-chip">
+      <div class="sb-chip-num">MOD_04 // SEM_04</div>
+      <div class="sb-chip-name">Tablas y Listas</div>
+      <div class="sb-chip-week">📅 4–10 de mayo de 2026 · 18 horas</div>
+    </div>
+  </div>
+
+  <div class="nav-group">Contenido</div>
+  <a href="#hero"      class="nav-link on"><span class="nav-icon">🏠</span><div class="nav-txt">Portada<div class="nav-sub">Inicio del módulo</div></div></a>
+  <a href="#intro"     class="nav-link"><span class="nav-icon">🎯</span><div class="nav-txt">Introducción<div class="nav-sub">Mapa y competencias</div></div></a>
+  <a href="#tema1"     class="nav-link"><span class="nav-icon">➕</span><div class="nav-txt">Tema 1 · Insertar tablas<div class="nav-sub">Todos los métodos</div></div></a>
+  <a href="#tema2"     class="nav-link"><span class="nav-icon">🎨</span><div class="nav-txt">Tema 2 · Diseño de tablas<div class="nav-sub">Bordes, sombreado, estilos</div></div></a>
+  <a href="#tema3"     class="nav-link"><span class="nav-icon">⚙️</span><div class="nav-txt">Tema 3 · Operaciones avanzadas<div class="nav-sub">Combinar, dividir, ordenar</div></div></a>
+  <a href="#tema4"     class="nav-link"><span class="nav-icon">🏫</span><div class="nav-txt">Tema 4 · Tablas académicas<div class="nav-sub">Registros y seguimiento</div></div></a>
+  <a href="#tema5"     class="nav-link"><span class="nav-icon">•</span><div class="nav-txt">Tema 5 · Listas con viñetas<div class="nav-sub">Personalización completa</div></div></a>
+  <a href="#tema6"     class="nav-link"><span class="nav-icon">🔢</span><div class="nav-txt">Tema 6 · Listas numeradas<div class="nav-sub">Formatos y continuación</div></div></a>
+  <a href="#tema7"     class="nav-link"><span class="nav-icon">≡</span><div class="nav-txt">Tema 7 · Listas multinivel<div class="nav-sub">Jerarquías y estilos</div></div></a>
+
+  <div class="nav-group">Evaluación</div>
+  <a href="#ejercicios" class="nav-link"><span class="nav-icon">✏️</span><div class="nav-txt">Ejercicios paso a paso<div class="nav-sub">5 ejercicios prácticos</div></div></a>
+  <a href="#examen"    class="nav-link"><span class="nav-icon">📝</span><div class="nav-txt">Examen interactivo<div class="nav-sub">20 reactivos</div></div></a>
+  <a href="#actividad" class="nav-link"><span class="nav-icon">🏆</span><div class="nav-txt">Actividad integradora<div class="nav-sub">Proyecto + rúbrica</div></div></a>
+
+  <div class="sb-foot">
+    <div class="prog-row">Progreso del curso <span>31%</span></div>
+    <div class="prog-track"><div class="prog-fill"></div></div>
+    <div class="prog-note">Módulo 4 de 13 · Parte 1 de 2</div>
+  </div>
+</nav>
+
+<!-- ═══ MAIN ════════════════════════════════════════════════ -->
+<main id="main">
+
+<!-- ─── HERO ─────────────────────────────────────────────── -->
+<section id="hero">
+  <svg class="hero-circuit" viewBox="0 0 480 480" fill="none">
+    <line x1="400" y1="0"   x2="400" y2="110" stroke="#7C3AED" stroke-width="1.5" stroke-opacity=".12"/>
+    <line x1="400" y1="110" x2="310" y2="110" stroke="#7C3AED" stroke-width="1.5" stroke-opacity=".12"/>
+    <line x1="310" y1="110" x2="310" y2="220" stroke="#7C3AED" stroke-width="1.5" stroke-opacity=".12"/>
+    <line x1="310" y1="220" x2="450" y2="220" stroke="#7C3AED" stroke-width="1.5" stroke-opacity=".12"/>
+    <line x1="360" y1="0"   x2="360" y2="70"  stroke="#0066FF" stroke-width="1"   stroke-opacity=".09"/>
+    <line x1="360" y1="70"  x2="270" y2="70"  stroke="#0066FF" stroke-width="1"   stroke-opacity=".09"/>
+    <line x1="270" y1="70"  x2="270" y2="170" stroke="#0066FF" stroke-width="1"   stroke-opacity=".09"/>
+    <circle cx="400" cy="110" r="5"   fill="none" stroke="#7C3AED" stroke-width="1.5" stroke-opacity=".25"/>
+    <circle cx="310" cy="110" r="3.5" fill="#7C3AED" fill-opacity=".2"/>
+    <circle cx="310" cy="220" r="5"   fill="none" stroke="#7C3AED" stroke-width="1.5" stroke-opacity=".25"/>
+    <circle cx="360" cy="70"  r="3.5" fill="#0066FF" fill-opacity=".18"/>
+    <circle cx="270" cy="70"  r="3.5" fill="#0066FF" fill-opacity=".18"/>
+    <!-- Table grid deco -->
+    <rect x="320" y="270" width="80" height="80" rx="4" fill="none" stroke="#7C3AED" stroke-width="1" stroke-opacity=".1"/>
+    <line x1="320" y1="297" x2="400" y2="297" stroke="#7C3AED" stroke-width=".8" stroke-opacity=".08"/>
+    <line x1="320" y1="324" x2="400" y2="324" stroke="#7C3AED" stroke-width=".8" stroke-opacity=".08"/>
+    <line x1="320" y1="351" x2="400" y2="351" stroke="#7C3AED" stroke-width=".8" stroke-opacity=".08"/>
+    <line x1="347" y1="270" x2="347" y2="350" stroke="#7C3AED" stroke-width=".8" stroke-opacity=".08"/>
+    <line x1="374" y1="270" x2="374" y2="350" stroke="#7C3AED" stroke-width=".8" stroke-opacity=".08"/>
+    <rect x="320" y="270" width="27" height="27" rx="0" fill="#7C3AED" fill-opacity=".07"/>
+    <!-- dots -->
+    <circle cx="380" cy="400" r="2" fill="#FF8C00" fill-opacity=".3"/>
+    <circle cx="420" cy="420" r="2" fill="#7C3AED" fill-opacity=".3"/>
+    <circle cx="460" cy="380" r="2" fill="#00C2E0" fill-opacity=".3"/>
+    <line x1="380" y1="400" x2="420" y2="420" stroke="#7C3AED" stroke-width=".8" stroke-opacity=".1"/>
+    <line x1="420" y1="420" x2="460" y2="380" stroke="#0066FF" stroke-width=".8" stroke-opacity=".1"/>
+  </svg>
+
+  <div class="hero-left">
+    <div class="eyebrow">
+      <span class="eyebrow-pulse"></span>
+      MOD_04 · SEM_04 · 4–10 MAY 2026
+    </div>
+    <h1 class="hero-title">
+      <span class="accent">Tablas</span> y<br>Listas
+    </h1>
+    <p class="hero-desc">
+      Domina la herramienta más usada para presentar datos: tablas con diseño profesional, listas con viñetas personalizadas y listas multinivel para documentos estructurados. Compatible con <strong>cualquier versión desde Word 2016</strong>.
+    </p>
+  </div>
+
+  <div class="hero-right-card">
+    <div class="compat-card">
+      <div class="compat-hd">Compatibilidad</div>
+      <div class="compat-row"><div class="compat-ok">✓</div><div class="compat-name">Word 2016</div><span class="compat-tag all">100%</span></div>
+      <div class="compat-row"><div class="compat-ok">✓</div><div class="compat-name">Word 2019</div><span class="compat-tag all">100%</span></div>
+      <div class="compat-row"><div class="compat-ok">✓</div><div class="compat-name">Word 2021</div><span class="compat-tag all">100%</span></div>
+      <div class="compat-row"><div class="compat-ok">✓</div><div class="compat-name">Microsoft 365</div><span class="compat-tag all">100%</span></div>
+      <div class="compat-row"><div class="compat-ok star">⭐</div><div class="compat-name">365 + Copilot</div><span class="compat-tag bonus">+ Bonus</span></div>
+      <div class="compat-row"><div class="compat-ok">✓</div><div class="compat-name">Windows 7/10/11</div><span class="compat-tag all">100%</span></div>
+    </div>
+    <div style="margin-top:10px;background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:12px 14px;box-shadow:var(--shadow);display:flex;align-items:center;gap:10px">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="6" fill="#F5F0FF"/>
+        <rect x="5" y="8"  width="22" height="16" rx="2" fill="none" stroke="#7C3AED" stroke-width="1.2" stroke-opacity=".6"/>
+        <line x1="5"  y1="13" x2="27" y2="13" stroke="#7C3AED" stroke-width=".8" stroke-opacity=".4"/>
+        <line x1="5"  y1="18" x2="27" y2="18" stroke="#7C3AED" stroke-width=".8" stroke-opacity=".4"/>
+        <line x1="12" y1="8"  x2="12" y2="24" stroke="#7C3AED" stroke-width=".8" stroke-opacity=".4"/>
+        <line x1="20" y1="8"  x2="20" y2="24" stroke="#7C3AED" stroke-width=".8" stroke-opacity=".4"/>
+        <rect x="5" y="8" width="7" height="5" rx="0" fill="#7C3AED" fill-opacity=".12"/>
+      </svg>
+      <div>
+        <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-family:'Fira Code',monospace">Semana 4 de 7</div>
+        <div style="font-size:12px;font-weight:700;color:var(--navy)">4–10 de mayo, 2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── INTRODUCCIÓN ──────────────────────────────────────── -->
+<section id="intro" class="sec alt reveal">
+  <div class="sec-kicker">Punto de partida</div>
+  <h2 class="sec-h">Introducción y Encuadre</h2>
+  <p class="sec-sub">Tablas y listas: las dos herramientas que más usarás para presentar información organizada.</p>
+
+  <div class="box purple">
+    <div class="box-ico">📊</div>
+    <div class="box-body">
+      <div class="box-title">¿Por qué dominar tablas y listas?</div>
+      <div class="box-text">Las tablas y las listas son los elementos de organización de información más usados en documentos institucionales: listas de asistencia, tablas de calificaciones, horarios, actas con columnas de acuerdos y responsables, planeaciones con objetivos y actividades. Dominarlas con precisión es esencial para producir documentos limpios, profesionales y fáciles de leer. Todo el contenido de este módulo funciona con <strong>cualquier versión de Word desde 2016</strong>.</div>
+    </div>
+  </div>
+
+  <h2 class="t2">Mapa conceptual del Módulo 4</h2>
+  <div class="tbl-wrap">
+  <table class="t">
+    <thead><tr><th>Tema</th><th>Contenido principal</th></tr></thead>
+    <tbody>
+      <tr><td><strong>1. Insertar tablas</strong></td><td>Todos los métodos: cuadrícula, cuadro de diálogo, dibujar, Excel, texto</td></tr>
+      <tr><td><strong>2. Diseño de tablas</strong></td><td>Bordes, sombreado, estilos integrados y personalización visual</td></tr>
+      <tr><td><strong>3. Operaciones avanzadas</strong></td><td>Combinar y dividir celdas, ordenar datos, convertir texto a tabla</td></tr>
+      <tr><td><strong>4. Tablas académicas</strong></td><td>Registros de asistencia, calificaciones y seguimiento para el bachillerato</td></tr>
+      <tr><td><strong>5. Listas con viñetas</strong></td><td>Personalización de símbolos, tamaños, colores e imágenes como viñeta</td></tr>
+      <tr><td><strong>6. Listas numeradas</strong></td><td>Formatos de número, reiniciar, continuar y ajustar sangría</td></tr>
+      <tr><td><strong>7. Listas multinivel</strong></td><td>Jerarquías de 1 a 9 niveles, estilos de lista y personalización completa</td></tr>
+      <tr><td><strong>Práctica + Examen</strong></td><td>5 ejercicios prácticos + examen de 20 reactivos</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 class="t2">Competencias que desarrollarás</h2>
+  <div class="comp-grid">
+    <div class="comp-item"><div class="comp-bullet">✓</div><div class="comp-txt">Insertarás tablas usando todos los métodos disponibles en Word</div></div>
+    <div class="comp-item"><div class="comp-bullet">✓</div><div class="comp-txt">Aplicarás estilos de tabla profesionales con bordes y sombreado</div></div>
+    <div class="comp-item"><div class="comp-bullet">✓</div><div class="comp-txt">Combinarás y dividirás celdas para layouts complejos</div></div>
+    <div class="comp-item"><div class="comp-bullet">✓</div><div class="comp-txt">Ordenarás datos de tablas alfabética y numéricamente</div></div>
+    <div class="comp-item"><div class="comp-bullet">✓</div><div class="comp-txt">Diseñarás tablas de registro académico para el bachillerato</div></div>
+    <div class="comp-item"><div class="comp-bullet">✓</div><div class="comp-txt">Crearás listas con viñetas personalizadas para cualquier contexto</div></div>
+    <div class="comp-item"><div class="comp-bullet">✓</div><div class="comp-txt">Configurarás listas numeradas con distintos formatos y continuaciones</div></div>
+    <div class="comp-item"><div class="comp-bullet">✓</div><div class="comp-txt">Diseñarás listas multinivel para jerarquizar información compleja</div></div>
+  </div>
+
+  <div class="box warn">
+    <div class="box-ico">🤔</div>
+    <div class="box-body">
+      <div class="box-title">Pregunta detonadora</div>
+      <div class="box-text"><em>¿Cuánto tiempo te toma crear manualmente una lista de asistencia o una tabla de calificaciones cada bimestre? ¿Sabías que Word puede convertir automáticamente texto separado por tabulaciones o comas en una tabla perfectamente formada? Al terminar este módulo lo harás en segundos.</em></div>
+    </div>
+  </div>
+
+  <div class="box ok">
+    <div class="box-ico">📌</div>
+    <div class="box-body">
+      <div class="box-title">Instrucciones de navegación</div>
+      <div class="box-text">
+        <ul>
+          <li>Módulo de la <strong>semana del 4 al 10 de mayo</strong> · 18 horas · ~2.6 hrs/día.</li>
+          <li>Los Temas 3 (operaciones avanzadas) y 7 (multinivel) requieren más práctica — dales tiempo extra.</li>
+          <li>Al terminar cada tema, marca tu avance con el botón <strong>"Marcar como completado"</strong>.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TEMA 1 ──────────────────────────────────────────────── -->
+<section id="tema1" class="sec reveal">
+  <div class="sec-kicker">Tema 1</div>
+  <h2 class="sec-h">Insertar Tablas</h2>
+  <p class="sec-sub">Todos los métodos para crear una tabla en Word: elige el que mejor se adapta a tu situación</p>
+
+  <p class="body">Una tabla en Word es una cuadrícula de filas y columnas que organiza información en celdas. Cada celda puede contener texto, números, imágenes u otras tablas anidadas. Word ofrece cinco métodos distintos para insertar tablas, cada uno con ventajas específicas según el contexto.</p>
+
+  <h2 class="t2">1.1 Los cinco métodos para insertar tablas</h2>
+  <div class="tbl-wrap">
+  <table class="t">
+    <thead><tr><th>Método</th><th>Cómo se accede</th><th>Mejor para</th><th>Límite</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Cuadrícula visual</strong></td><td><code>Insertar → Tabla → arrastrar</code> sobre la cuadrícula</td><td>Tablas pequeñas (hasta 10×8) que quieres ver antes de insertar</td><td>10 columnas × 8 filas</td></tr>
+      <tr><td><strong>Cuadro de diálogo</strong></td><td><code>Insertar → Tabla → Insertar tabla...</code></td><td>Tablas con dimensiones exactas o muy grandes</td><td>Sin límite práctico</td></tr>
+      <tr><td><strong>Dibujar tabla</strong></td><td><code>Insertar → Tabla → Dibujar tabla</code></td><td>Tablas con filas/columnas de tamaño irregular desde el inicio</td><td>Flexibilidad total</td></tr>
+      <tr><td><strong>Hoja de cálculo Excel</strong></td><td><code>Insertar → Tabla → Hoja de cálculo de Excel</code></td><td>Cuando necesitas fórmulas complejas dentro del documento</td><td>Requiere Excel instalado</td></tr>
+      <tr><td><strong>Convertir texto a tabla</strong></td><td>Selecciona el texto → <code>Insertar → Tabla → Convertir texto en tabla</code></td><td>Cuando ya tienes datos en texto separado por Tab, coma o punto y coma</td><td>Depende del separador</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 class="t2">1.2 Navegar dentro de una tabla</h2>
+  <p class="body">Una vez creada la tabla, es fundamental conocer cómo moverse dentro de ella de manera eficiente:</p>
+  <div class="sk-grid">
+    <div class="sk-item"><div class="sk-keys"><span class="key">Tab</span></div><div class="sk-desc">Avanza a la siguiente celda</div></div>
+    <div class="sk-item"><div class="sk-keys"><span class="key w">May</span><span class="plus">+</span><span class="key">Tab</span></div><div class="sk-desc">Retrocede a la celda anterior</div></div>
+    <div class="sk-item"><div class="sk-keys"><span class="key">Tab</span> <span style="font-size:11px;color:var(--muted)">en última celda</span></div><div class="sk-desc">Agrega una nueva fila al final</div></div>
+    <div class="sk-item"><div class="sk-keys"><span class="key">↑ ↓</span></div><div class="sk-desc">Mueve entre filas</div></div>
+    <div class="sk-item"><div class="sk-keys"><span class="key w">Alt</span><span class="plus">+</span><span class="key w">May</span><span class="plus">+</span><span class="key">↑</span></div><div class="sk-desc">Sube la fila actual</div></div>
+    <div class="sk-item"><div class="sk-keys"><span class="key w">Alt</span><span class="plus">+</span><span class="key w">May</span><span class="plus">+</span><span class="key">↓</span></div><div class="sk-desc">Baja la fila actual</div></div>
+  </div>
+
+  <h2 class="t2">1.3 Convertir texto en tabla — caso práctico</h2>
+  <p class="body">Este es uno de los trucos más útiles de Word. Si tienes datos en texto plano separados por tabulaciones, comas o cualquier otro carácter, Word los puede convertir automáticamente en una tabla perfectamente estructurada.</p>
+  <div class="box info">
+    <div class="box-ico">💡</div>
+    <div class="box-body">
+      <div class="box-title">Ejemplo: convertir una lista de alumnos en tabla</div>
+      <div class="box-text">
+        Si tienes el siguiente texto (separado por Tab):<br><br>
+        <code>Juan Pérez&nbsp;&nbsp;&nbsp;8.5&nbsp;&nbsp;&nbsp;Aprobado</code><br>
+        <code>María López&nbsp;&nbsp;&nbsp;9.2&nbsp;&nbsp;&nbsp;Aprobado</code><br>
+        <code>Carlos Ruiz&nbsp;&nbsp;&nbsp;6.0&nbsp;&nbsp;&nbsp;Reprobado</code><br><br>
+        Selecciona todo el texto → <code>Insertar → Tabla → Convertir texto en tabla</code> → Word detecta automáticamente las 3 columnas por las tabulaciones → haz clic en Aceptar. ¡Listo!
+      </div>
+    </div>
+  </div>
+
+  <div class="mark-complete">
+    <button class="btn-complete" onclick="markDone(this,'t1')" id="mc-t1">
+      <span class="bc-icon">○</span><span class="bc-txt">Marcar como completado</span>
+    </button>
+  </div>
+</section>
+
+<!-- ─── TEMA 2 ──────────────────────────────────────────────── -->
+<section id="tema2" class="sec alt reveal">
+  <div class="sec-kicker">Tema 2</div>
+  <h2 class="sec-h">Diseño de Tablas</h2>
+  <p class="sec-sub">Bordes, sombreado, estilos integrados y herramientas de diseño visual para tablas profesionales</p>
+
+  <p class="body">Una tabla bien diseñada comunica los datos con claridad y proyecta profesionalismo. Word incluye un conjunto completo de herramientas de diseño en la pestaña contextual <strong>Diseño de tabla</strong>, que aparece automáticamente cuando el cursor está dentro de una tabla.</p>
+
+  <h2 class="t2">2.1 Estilos de tabla integrados</h2>
+  <p class="body">Word ofrece más de 100 estilos de tabla prediseñados. Para aplicarlos: haz clic dentro de la tabla y ve a <strong>Diseño de tabla → Estilos de tabla</strong>. Los estilos más útiles para documentos institucionales son:</p>
+
+  <div class="table-demo">
+    <div class="td-header">
+      <div class="td-dot" style="background:#ff5f56"></div>
+      <div class="td-dot" style="background:#ffbd2e;margin-left:5px"></div>
+      <div class="td-dot" style="background:#27c93f;margin-left:5px"></div>
+      <span style="margin-left:10px">Galería de estilos de tabla — Word 2016+</span>
+    </div>
+    <div class="td-body">
+      <p style="font-size:11px;font-family:'Fira Code',monospace;color:var(--muted);margin-bottom:12px">// Estilo 1: Tabla cuadrícula con encabezado oscuro</p>
+      <table class="demo-table style1" style="margin-bottom:20px">
+        <thead><tr><th>Nombre del alumno</th><th>No. Lista</th><th>Calificación</th><th>Estatus</th></tr></thead>
+        <tbody>
+          <tr><td>Juan Pérez García</td><td>01</td><td>8.5</td><td>Aprobado</td></tr>
+          <tr><td>María López Ruiz</td><td>02</td><td>9.2</td><td>Aprobado</td></tr>
+          <tr><td>Carlos Soto Medina</td><td>03</td><td>6.0</td><td>Reprobado</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:11px;font-family:'Fira Code',monospace;color:var(--muted);margin-bottom:12px">// Estilo 2: Tabla con énfasis en columnas</p>
+      <table class="demo-table style2" style="margin-bottom:20px">
+        <thead><tr><th>Actividad</th><th>Responsable</th><th>Fecha</th><th>Estado</th></tr></thead>
+        <tbody>
+          <tr><td>Entrega de planeaciones</td><td>Docentes de área</td><td>5 mayo 2026</td><td>Pendiente</td></tr>
+          <tr><td>Reunión de academia</td><td>Coordinador académico</td><td>7 mayo 2026</td><td>Programada</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:11px;font-family:'Fira Code',monospace;color:var(--muted);margin-bottom:12px">// Estilo 3: Tabla de horario con celdas de igual ancho</p>
+      <table class="demo-table style3">
+        <thead><tr><th>Hora</th><th>Lunes</th><th>Martes</th><th>Miércoles</th><th>Jueves</th><th>Viernes</th></tr></thead>
+        <tbody>
+          <tr><td>07:00–08:00</td><td>Matemáticas</td><td>Español</td><td>Historia</td><td>Química</td><td>Inglés</td></tr>
+          <tr><td>08:00–09:00</td><td>Física</td><td>Matemáticas</td><td>Biología</td><td>Español</td><td>Educación Física</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <h2 class="t2">2.2 Opciones de estilo de tabla</h2>
+  <p class="body">Dentro de la pestaña <strong>Diseño de tabla</strong>, el grupo <strong>"Opciones de estilo de tabla"</strong> permite activar o desactivar características visuales del estilo aplicado:</p>
+  <div class="tbl-wrap">
+  <table class="t">
+    <thead><tr><th>Opción</th><th>Qué controla</th><th>Cuándo activar</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Fila de encabezado</strong></td><td>Aplica formato especial a la primera fila</td><td>Siempre que la primera fila sea un encabezado de columnas</td></tr>
+      <tr><td><strong>Fila de totales</strong></td><td>Aplica formato especial a la última fila</td><td>En tablas con totales, promedios o sumatorias al final</td></tr>
+      <tr><td><strong>Filas con bandas</strong></td><td>Alterna el color de fondo entre filas pares e impares</td><td>En tablas con muchas filas para facilitar la lectura horizontal</td></tr>
+      <tr><td><strong>Primera columna</strong></td><td>Aplica negrita o formato especial a la primera columna</td><td>Cuando la primera columna es una categoría o identificador clave</td></tr>
+      <tr><td><strong>Última columna</strong></td><td>Aplica formato especial a la última columna</td><td>Cuando la última columna es un resultado o conclusión</td></tr>
+      <tr><td><strong>Columnas con bandas</strong></td><td>Alterna el color entre columnas pares e impares</td><td>En tablas de horario o comparativas con muchas columnas</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 class="t2">2.3 Personalizar bordes y sombreado</h2>
+  <p class="body">Para control total sobre los bordes y rellenos, selecciona las celdas a modificar y usa las herramientas de la pestaña <strong>Diseño de tabla</strong>:</p>
+  <div class="tbl-wrap">
+  <table class="t">
+    <thead><tr><th>Elemento</th><th>Cómo acceder</th><th>Opciones disponibles</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Bordes</strong></td><td>Diseño de tabla → Bordes (desplegable)</td><td>Todos los bordes, solo exteriores, solo interiores, sin bordes, bordes personalizados</td></tr>
+      <tr><td><strong>Estilo de línea</strong></td><td>Diseño de tabla → Estilos de pluma</td><td>Sólido, punteado, doble, en zigzag — más de 20 estilos</td></tr>
+      <tr><td><strong>Grosor de línea</strong></td><td>Diseño de tabla → Grosor de pluma</td><td>Desde ¼ pt hasta 6 pt</td></tr>
+      <tr><td><strong>Color de borde</strong></td><td>Diseño de tabla → Color de pluma</td><td>Cualquier color de la paleta o código hexadecimal</td></tr>
+      <tr><td><strong>Sombreado de celda</strong></td><td>Diseño de tabla → Sombreado</td><td>Color de relleno para celdas o grupos de celdas seleccionadas</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="box ok">
+    <div class="box-ico">✓</div>
+    <div class="box-body">
+      <div class="box-title">Recomendaciones de diseño para tablas institucionales</div>
+      <div class="box-text">
+        <ul>
+          <li><strong>Encabezados:</strong> Fondo azul marino o gris oscuro con texto blanco en negrita</li>
+          <li><strong>Filas alternas:</strong> Color muy claro del acento institucional (azul al 10%) para tablas de más de 8 filas</li>
+          <li><strong>Bordes:</strong> Exterior más grueso (1.5-2 pt) que los interiores (0.5-1 pt)</li>
+          <li><strong>Nunca usar:</strong> Más de 2-3 colores de relleno distintos en la misma tabla</li>
+          <li><strong>Alineación vertical:</strong> Usar centrado vertical en todas las celdas para apariencia limpia</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="mark-complete">
+    <button class="btn-complete" onclick="markDone(this,'t2')" id="mc-t2">
+      <span class="bc-icon">○</span><span class="bc-txt">Marcar como completado</span>
+    </button>
+  </div>
+</section>
+
+<!-- ─── TEMA 3 ──────────────────────────────────────────────── -->
+<section id="tema3" class="sec reveal">
+  <div class="sec-kicker">Tema 3</div>
+  <h2 class="sec-h">Operaciones Avanzadas con Tablas</h2>
+  <p class="sec-sub">Combinar, dividir, ordenar, calcular y convertir: el control total sobre tu tabla</p>
+
+  <p class="body">Las operaciones avanzadas son las que permiten crear tablas complejas con estructuras irregulares, datos organizados y cálculos básicos. Estas herramientas se encuentran en la pestaña contextual <strong>Presentación</strong> (Layout), que aparece cuando el cursor está dentro de una tabla.</p>
+
+  <h2 class="t2">3.1 Combinar y dividir celdas</h2>
+  <p class="body"><strong>Combinar celdas</strong> une dos o más celdas adyacentes en una sola. Es esencial para crear encabezados que abarcan varias columnas (como en un horario donde "LUNES" encabeza Hora 1, Hora 2 y Hora 3). Para combinar: selecciona las celdas a unir → <code>Presentación → Combinar celdas</code>.</p>
+  <p class="body"><strong>Dividir celdas</strong> hace lo contrario: divide una celda en múltiples filas o columnas. Para dividir: haz clic en la celda → <code>Presentación → Dividir celdas</code> → especifica el número de filas y columnas resultantes.</p>
+
+  <div class="box info">
+    <div class="box-ico">💡</div>
+    <div class="box-body">
+      <div class="box-title">Combinar para crear encabezados de grupo</div>
+      <div class="box-text">En una tabla de calificaciones bimestrales, puedes tener una fila con el texto "PRIMER BIMESTRE" que ocupe 4 columnas (una por examen). Selecciona esas 4 celdas → Combinar → aplica el texto y el formato del encabezado. Esto hace la tabla más legible y profesional que repetir el título en cada columna.</div>
+    </div>
+  </div>
+
+  <h2 class="t2">3.2 Ordenar datos en una tabla</h2>
+  <p class="body">Word puede ordenar el contenido de una tabla alfabética o numéricamente, de forma ascendente o descendente. Para ordenar: haz clic dentro de la tabla → <code>Presentación → Datos → Ordenar</code>. Puedes ordenar por hasta 3 columnas de forma simultánea (criterio principal, secundario y terciario).</p>
+  <p class="body">Ejemplo práctico: tienes una lista de 35 alumnos en el orden en que los registraste. Para ordenarlos alfabéticamente por apellido: Ordenar → Columna 2 (apellidos) → Tipo: Texto → Ascendente → Aceptar. En segundos tienes la lista ordenada.</p>
+
+  <h2 class="t2">3.3 Insertar y eliminar filas y columnas</h2>
+  <div class="tbl-wrap">
+  <table class="t">
+    <thead><tr><th>Operación</th><th>Método rápido</th><th>Método con menú</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Insertar fila al final</strong></td><td>Presiona Tab en la última celda</td><td>Presentación → Filas y columnas → Insertar debajo</td></tr>
+      <tr><td><strong>Insertar fila arriba/abajo</strong></td><td>Clic en el + que aparece al lado izquierdo al pasar el cursor por la línea entre filas</td><td>Clic derecho → Insertar → Filas encima / Filas debajo</td></tr>
+      <tr><td><strong>Insertar columna</strong></td><td>Clic en el + que aparece arriba al pasar el cursor por la línea entre columnas</td><td>Clic derecho → Insertar → Columnas a la izquierda / derecha</td></tr>
+      <tr><td><strong>Eliminar fila o columna</strong></td><td>Selecciona → clic derecho → Eliminar filas / Eliminar columnas</td><td>Presentación → Eliminar → Eliminar filas / columnas</td></tr>
+      <tr><td><strong>Eliminar toda la tabla</strong></td><td>Selecciona toda la tabla → clic derecho → Eliminar tabla</td><td>Presentación → Eliminar → Eliminar tabla</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 class="t2">3.4 Ajustar tamaño de filas y columnas</h2>
+  <p class="body">Para ajustar el ancho de las columnas y el alto de las filas con precisión:</p>
+  <div class="tbl-wrap">
+  <table class="t">
+    <thead><tr><th>Método</th><th>Cuándo usarlo</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Arrastrar el borde de la columna/fila</strong></td><td>Ajuste visual rápido cuando no necesitas medidas exactas</td></tr>
+      <tr><td><strong>Presentación → Ancho de columna / Alto de fila</strong></td><td>Cuando necesitas un tamaño exacto en centímetros</td></tr>
+      <tr><td><strong>Distribuir filas uniformemente</strong></td><td>Cuando quieres que todas las filas seleccionadas tengan la misma altura</td></tr>
+      <tr><td><strong>Distribuir columnas uniformemente</strong></td><td>Para que todas las columnas seleccionadas tengan el mismo ancho</td></tr>
+      <tr><td><strong>Autoajustar al contenido</strong></td><td>La columna se ajusta al ancho del texto más largo que contiene</td></tr>
+      <tr><td><strong>Autoajustar a la ventana</strong></td><td>La tabla ocupa exactamente el ancho disponible entre márgenes</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 class="t2">3.5 Fórmulas básicas en tablas de Word</h2>
+  <p class="body">Word permite insertar fórmulas simples en las celdas de una tabla, similar a Excel pero con funciones más limitadas. Para insertar una fórmula: haz clic en la celda → <code>Presentación → Datos → Fórmula</code>.</p>
+  <div class="tbl-wrap">
+  <table class="t">
+    <thead><tr><th>Fórmula</th><th>Qué hace</th><th>Ejemplo</th></tr></thead>
+    <tbody>
+      <tr><td><code>=SUM(ABOVE)</code></td><td>Suma todas las celdas de arriba en la misma columna</td><td>Total de calificaciones de una columna</td></tr>
+      <tr><td><code>=SUM(LEFT)</code></td><td>Suma todas las celdas a la izquierda en la misma fila</td><td>Total de puntos de un alumno en la misma fila</td></tr>
+      <tr><td><code>=AVERAGE(ABOVE)</code></td><td>Promedio de las celdas de arriba</td><td>Calificación promedio de un grupo</td></tr>
+      <tr><td><code>=MAX(ABOVE)</code></td><td>Valor máximo de las celdas de arriba</td><td>Calificación más alta del bimestre</td></tr>
+      <tr><td><code>=MIN(ABOVE)</code></td><td>Valor mínimo de las celdas de arriba</td><td>Calificación más baja del bimestre</td></tr>
+      <tr><td><code>=COUNT(ABOVE)</code></td><td>Cuenta el número de celdas con contenido numérico</td><td>Número de alumnos evaluados</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="box warn">
+    <div class="box-ico">⚠️</div>
+    <div class="box-body">
+      <div class="box-title">Limitación importante de las fórmulas en Word</div>
+      <div class="box-text">A diferencia de Excel, las fórmulas en Word <strong>no se actualizan automáticamente</strong> cuando cambias los datos. Debes hacer clic derecho sobre la celda con la fórmula y seleccionar <strong>"Actualizar campo"</strong> (o presionar F9) para recalcularla. Para tablas con muchos cálculos dinámicos, es mejor usar una hoja de Excel vinculada.</div>
+    </div>
+  </div>
+
+  <div class="mark-complete">
+    <button class="btn-complete" onclick="markDone(this,'t3')" id="mc-t3">
+      <span class="bc-icon">○</span><span class="bc-txt">Marcar como completado</span>
+    </button>
+  </div>
+</section>
+
+<!-- ─── TEMA 4 ──────────────────────────────────────────────── -->
+<section id="tema4" class="sec alt reveal">
+  <div class="sec-kicker">Tema 4</div>
+  <h2 class="sec-h">Tablas para el Ámbito Académico</h2>
+  <p class="sec-sub">Diseño de registros de asistencia, listas de calificaciones, horarios y formatos de seguimiento</p>
+
+  <p class="body">El trabajo docente en bachillerato requiere de documentos tabulares muy específicos: listas de asistencia, concentrados de calificaciones, actas de evaluación, horarios y formatos de seguimiento. En este tema aprenderás a diseñar cada uno de ellos de forma profesional y eficiente.</p>
+
+  <h2 class="t2">4.1 Lista de asistencia bimestral</h2>
+  <p class="body">Una lista de asistencia efectiva debe incluir: número de lista, nombre del alumno, las columnas de los días del período, y una columna de totales. La estructura recomendada:</p>
+  <div class="tbl-wrap">
+  <table class="t">
+    <thead><tr>
+      <th style="width:40px">#</th>
+      <th>Nombre del alumno</th>
+      <th class="ctr" style="width:35px">L 4</th>
+      <th class="ctr" style="width:35px">M 5</th>
+      <th class="ctr" style="width:35px">Mi 6</th>
+      <th class="ctr" style="width:35px">J 7</th>
+      <th class="ctr" style="width:35px">V 8</th>
+      <th class="ctr" style="width:50px">Asist.</th>
+      <th class="ctr" style="width:50px">Falt.</th>
+    </tr></thead>
+    <tbody>
+      <tr><td>01</td><td>García López, Ana</td><td class="ctr">✓</td><td class="ctr">✓</td><td class="ctr">F</td><td class="ctr">✓</td><td class="ctr">✓</td><td class="ctr">4</td><td class="ctr">1</td></tr>
+      <tr><td>02</td><td>Martínez Ruiz, Juan</td><td class="ctr">✓</td><td class="ctr">✓</td><td class="ctr">✓</td><td class="ctr">✓</td><td class="ctr">✓</td><td class="ctr">5</td><td class="ctr">0</td></tr>
+      <tr><td>03</td><td>Soto Méndez, Carla</td><td class="ctr">F</td><td class="ctr">✓</td><td class="ctr">F</td><td class="ctr">✓</td><td class="ctr">✓</td><td class="ctr">3</td><td class="ctr">2</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="body">Para construirla eficientemente: crea la estructura básica de columnas, usa <strong>Distribuir columnas uniformemente</strong> para las celdas de días (todas del mismo ancho), aplica el estilo de tabla con filas alternadas para facilitar la lectura, y usa sombreado gris claro en las columnas de totales.</p>
+
+  <h2 class="t2">4.2 Concentrado de calificaciones bimestrales</h2>
+  <p class="body">Para el concentrado de calificaciones se recomienda una tabla con <strong>filas de encabezado repetidas</strong> en cada página — esencial si la lista supera una hoja. Para activarlo: haz clic en la fila de encabezado → <code>Presentación → Datos → Repetir filas de encabezado</code>. Al imprimir, la primera fila aparecerá automáticamente en cada página.</p>
+
+  <h2 class="t2">4.3 Tabla de acuerdos para actas de reunión</h2>
+  <p class="body">El formato estándar de acuerdos en actas institucionales requiere: número de acuerdo, descripción, responsable y fecha de seguimiento. Se recomienda la siguiente distribución de columnas:</p>
+  <div class="tbl-wrap">
+  <table class="t">
+    <thead><tr>
+      <th style="width:60px">No.</th>
+      <th>Acuerdo tomado</th>
+      <th style="width:160px">Responsable</th>
+      <th style="width:120px">Fecha seguimiento</th>
+    </tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Entregar planeaciones didácticas del segundo bimestre al coordinador académico en formato digital</td><td>Todos los docentes</td><td>8 de mayo 2026</td></tr>
+      <tr><td>2</td><td>Actualizar el registro de asistencia en el sistema académico con los datos del primer bimestre</td><td>Control escolar</td><td>5 de mayo 2026</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="box purple">
+    <div class="box-ico">🏫</div>
+    <div class="box-body">
+      <div class="box-title">Recomendación: guarda estas tablas como Elementos rápidos</div>
+      <div class="box-text">Una vez que diseñes tu tabla de asistencia o concentrado de calificaciones perfecta, puedes guardarla como <strong>Elemento rápido</strong> para reutilizarla en cualquier documento futuro: selecciona la tabla completa → <code>Insertar → Elementos rápidos → Guardar selección en la galería</code>. Desde ese momento puedes insertarla con dos clics en cualquier documento, sin tener que rediseñarla.</div>
+    </div>
+  </div>
+
+  <div class="mark-complete">
+    <button class="btn-complete" onclick="markDone(this,'t4')" id="mc-t4">
+      <span class="bc-icon">○</span><span class="bc-txt">Marcar como completado</span>
+    </button>
+  </div>
+</section>
+
+<!-- ─── TEMA 5 ──────────────────────────────────────────────── -->
+<section id="tema5" class="sec reveal">
+  <div class="sec-kicker">Tema 5</div>
+  <h2 class="sec-h">Listas con Viñetas</h2>
+  <p class="sec-sub">Personalización completa: símbolos, imágenes, colores y tamaños como viñeta</p>
+
+  <p class="body">Una lista con viñetas organiza elementos sin un orden jerárquico específico. El botón de viñetas en la pestaña <strong>Inicio → grupo Párrafo</strong> aplica la viñeta predeterminada, pero Word permite una personalización total del símbolo, tamaño, color y posición de la viñeta.</p>
+
+  <h2 class="t2">5.1 Tipos de viñetas disponibles</h2>
+  <div class="list-demo">
+    <div class="list-demo-title">// tipos_de_viñetas — ejemplos visuales</div>
+    <div class="list-row">
+      <div>
+        <h4>Símbolos clásicos</h4>
+        <div class="bullet-item bi-disc">Viñeta rellena (●) — estándar</div>
+        <div class="bullet-item bi-circle">Círculo vacío (○) — secundario</div>
+        <div class="bullet-item bi-square">Cuadrado (■) — alternativo</div>
+        <div class="bullet-item bi-dash">Guión largo (–) — minimal</div>
+      </div>
+      <div>
+        <h4>Símbolos especiales</h4>
+        <div class="bullet-item bi-check">Verificación (✓) — listas de tareas</div>
+        <div class="bullet-item bi-arrow">Flecha (→) — pasos o procesos</div>
+        <div class="bullet-item" style="gap:8px"><span style="color:#e11d48;margin-top:2px;font-size:12px">♦</span>Rombo — documentos formales</div>
+        <div class="bullet-item" style="gap:8px"><span style="color:var(--purple);margin-top:2px;font-size:11px">★</span>Estrella — destacados</div>
+      </div>
+      <div>
+        <h4>Imagen como viñeta</h4>
+        <div class="bullet-item" style="gap:8px"><span style="background:var(--purpleL);border-radius:50%;width:14px;height:14px;flex-shrink:0;margin-top:3px;border:1.5px solid var(--purple)"></span>Logo o ícono corporativo</div>
+        <div class="bullet-item" style="gap:8px"><span style="background:var(--amberL);border-radius:3px;width:12px;height:12px;flex-shrink:0;margin-top:4px;border:1.5px solid var(--amber)"></span>Ícono temático personalizado</div>
+        <div class="bullet-item" style="gap:8px"><span style="background:var(--blueXL);border-radius:50%;width:14px;height:14px;flex-shrink:0;margin-top:3px;border:1.5px solid var(--blue)"></span>Ícono de categoría</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="t2">5.2 Cómo personalizar las viñetas</h2>
+  <ol class="steps" style="list-style:none;padding:0">
+    <li class="step"><div class="step-n">1</div><div class="step-t">Haz clic en la flecha desplegable del botón <strong>Viñetas</strong> en el grupo Párrafo de la pestaña Inicio.</div></li>
+    <li class="step"><div class="step-n">2</div><div class="step-t">Selecciona <strong>"Definir nueva viñeta..."</strong> al final de la galería.</div></li>
+    <li class="step"><div class="step-n">3</div><div class="step-t">Para usar un símbolo: haz clic en <strong>"Símbolo..."</strong> → selecciona la fuente (Wingdings, Symbol, Webdings tienen cientos de opciones) → elige el carácter → Aceptar.</div></li>
+    <li class="step"><div class="step-n">4</div><div class="step-t">Para usar una imagen: haz clic en <strong>"Imagen..."</strong> → busca y selecciona la imagen o ícono deseado.</div></li>
+    <li class="step"><div class="step-n">5</div><div class="step-t">Ajusta la <strong>alineación</strong> (izquierda, centrada, derecha) de la viñeta respecto al texto. Haz clic en <strong>Fuente...</strong> para cambiar el color y tamaño del símbolo.</div></li>
+    <li class="step"><div class="step-n">6</div><div class="step-t">Haz clic en Aceptar. La viñeta personalizada se guarda en la galería para usarla de nuevo.</div></li>
+  </ol>
+
+  <h2 class="t2">5.3 Ajustar la sangría de las listas</h2>
+  <p class="body">La sangría de una lista controla la distancia entre el margen y la viñeta, y entre la viñeta y el texto. Para ajustarla: clic derecho en cualquier elemento de la lista → <strong>"Ajustar sangrías de lista"</strong>. Los valores recomendados para documentos institucionales son: Posición de la viñeta 0.5 cm, Sangría del texto 1.25 cm.</p>
+
+  <div class="mark-complete">
+    <button class="btn-complete" onclick="markDone(this,'t5')" id="mc-t5">
+      <span class="bc-icon">○</span><span class="bc-txt">Marcar como completado</span>
+    </button>
+  </div>
+</section>
+
+<!-- ─── TEMA 6 ──────────────────────────────────────────────── -->
+<section id="tema6" class="sec alt reveal">
+  <div class="sec-kicker">Tema 6</div>
+  <h2 class="sec-h">Listas Numeradas</h2>
+  <p class="sec-sub">Formatos de numeración, reiniciar contadores, continuar secuencias y ajustar valores</p>
+
+  <p class="body">Las listas numeradas ordenan elementos donde el orden es relevante: pasos de un procedimiento, criterios de evaluación, puntos del orden del día en una reunión, artículos de un reglamento. El control de la numeración es más sofisticado de lo que parece.</p>
+
+  <h2 class="t2">6.1 Formatos de numeración disponibles</h2>
+  <div class="tbl-wrap">
+  <table class="t">
+    <thead><tr><th>Formato</th><th>Ejemplo</th><th>Uso típico</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Arábigos</strong></td><td>1. 2. 3.</td><td>Pasos, instrucciones, criterios de evaluación</td></tr>
+      <tr><td><strong>Romanos mayúsculos</strong></td><td>I. II. III.</td><td>Secciones principales de un reglamento o documento formal</td></tr>
+      <tr><td><strong>Romanos minúsculos</strong></td><td>i. ii. iii.</td><td>Subelementos o subsecciones de un documento legal</td></tr>
+      <tr><td><strong>Letras mayúsculas</strong></td><td>A. B. C.</td><td>Categorías principales, opciones de respuesta en exámenes</td></tr>
+      <tr><td><strong>Letras minúsculas</strong></td><td>a. b. c.</td><td>Subelementos, incisos de artículos de reglamento</td></tr>
+      <tr><td><strong>Con paréntesis</strong></td><td>(1) (2) (3)</td><td>Notas al pie, referencias, aclaraciones</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 class="t2">6.2 Reiniciar y continuar numeración</h2>
+  <p class="body">Uno de los problemas más frecuentes con las listas numeradas es que Word continúa la numeración de una lista anterior cuando deberías empezar desde 1 de nuevo, o viceversa. Hay dos operaciones clave:</p>
+  <div class="tbl-wrap">
+  <table class="t">
+    <thead><tr><th>Operación</th><th>Cómo hacerlo</th><th>Cuándo usarlo</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Reiniciar en 1</strong></td><td>Clic derecho sobre el primer elemento → <strong>"Reiniciar en 1"</strong></td><td>Cuando una nueva lista debe empezar desde 1 aunque haya otra lista antes</td></tr>
+      <tr><td><strong>Continuar numeración</strong></td><td>Clic derecho → <strong>"Continuar numeración"</strong></td><td>Cuando dos listas separadas por un párrafo deben considerarse una misma secuencia</td></tr>
+      <tr><td><strong>Establecer valor del número</strong></td><td>Clic derecho → <strong>"Establecer valor del número..."</strong></td><td>Para comenzar una lista desde un número específico (ej: el artículo 15 de un reglamento)</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 class="t2">6.3 Personalizar el formato de número</h2>
+  <p class="body">Para personalizar completamente el formato: clic en la flecha del botón <strong>Lista numerada → Definir nuevo formato de número...</strong>. Aquí puedes cambiar el estilo de número, la fuente del número (color, tamaño, negrita) y agregar texto antes o después del número (ej: "Artículo " + número + ".-").</p>
+
+  <div class="mark-complete">
+    <button class="btn-complete" onclick="markDone(this,'t6')" id="mc-t6">
+      <span class="bc-icon">○</span><span class="bc-txt">Marcar como completado</span>
+    </button>
+  </div>
+</section>
+
+<!-- ─── TEMA 7 ──────────────────────────────────────────────── -->
+<section id="tema7" class="sec reveal">
+  <div class="sec-kicker">Tema 7</div>
+  <h2 class="sec-h">Listas Multinivel</h2>
+  <p class="sec-sub">Jerarquías de hasta 9 niveles para estructurar documentos complejos como reglamentos y programas de estudio</p>
+
+  <p class="body">Las listas multinivel son listas que tienen subniveles de indentación. Son la herramienta correcta para representar jerarquías: un reglamento con artículos, incisos y sub-incisos; un programa de estudios con unidades, temas y subtemas; un plan de trabajo con objetivos, estrategias y actividades.</p>
+
+  <h2 class="t2">7.1 Estructura visual de una lista multinivel</h2>
+  <div class="ml-demo">
+    <div class="ml-1">Unidad 1. Pensamiento Crítico y Sociedad</div>
+    <div class="ml-2">1.1 Fundamentos del pensamiento crítico</div>
+    <div class="ml-3">a) Definición y características del pensamiento crítico</div>
+    <div class="ml-3">b) Diferencia entre pensamiento crítico y pensamiento creativo</div>
+    <div class="ml-2">1.2 Aplicaciones en contextos sociales</div>
+    <div class="ml-3">a) Análisis de problemas comunitarios</div>
+    <div class="ml-3">b) Propuestas de solución fundamentadas</div>
+    <div class="ml-1">Unidad 2. Comunicación Efectiva</div>
+    <div class="ml-2">2.1 Comunicación verbal y no verbal</div>
+    <div class="ml-2">2.2 Técnicas de expresión oral en contextos formales</div>
+  </div>
+
+  <h2 class="t2">7.2 Cómo crear y usar listas multinivel</h2>
+  <ol class="steps" style="list-style:none;padding:0">
+    <li class="step"><div class="step-n">1</div><div class="step-t">Haz clic en la flecha del botón <strong>Lista multinivel</strong> en el grupo Párrafo → selecciona un estilo de la galería o haz clic en <strong>"Definir nueva lista multinivel..."</strong>.</div></li>
+    <li class="step"><div class="step-n">2</div><div class="step-t">Escribe el primer elemento del nivel 1. Para bajar un nivel: presiona <code>Tab</code>. Para subir un nivel: presiona <code>Mayús+Tab</code>.</div></li>
+    <li class="step"><div class="step-n">3</div><div class="step-t">Cada nivel puede tener su propio formato: en <strong>"Definir nueva lista multinivel"</strong>, selecciona cada nivel y configura el formato de número, la sangría y el espaciado.</div></li>
+    <li class="step"><div class="step-n">4</div><div class="step-t">Para vincular los niveles de la lista con <strong>estilos de título</strong> (recomendado en documentos largos): en "Definir nueva lista multinivel", en el campo <strong>"Vincular nivel al estilo"</strong>, asocia el Nivel 1 con "Título 1", el Nivel 2 con "Título 2", etc. Esto permite que la tabla de contenido automática refleje la estructura de la lista.</div></li>
+  </ol>
+
+  <h2 class="t2">7.3 Galería de listas multinivel para documentos institucionales</h2>
+  <div class="tbl-wrap">
+  <table class="t">
+    <thead><tr><th>Tipo de documento</th><th>Nivel 1</th><th>Nivel 2</th><th>Nivel 3</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Reglamento escolar</strong></td><td>Capítulo I, II, III...</td><td>Artículo 1, 2, 3...</td><td>Inciso a), b), c)...</td></tr>
+      <tr><td><strong>Programa de estudios</strong></td><td>Unidad 1, 2, 3...</td><td>Tema 1.1, 1.2...</td><td>Subtema 1.1.1...</td></tr>
+      <tr><td><strong>Plan de trabajo anual</strong></td><td>I. Objetivo general</td><td>1.1 Estrategia</td><td>a) Actividad</td></tr>
+      <tr><td><strong>Manual de procedimientos</strong></td><td>Proceso 1, 2, 3...</td><td>Paso 1.1, 1.2...</td><td>Sub-paso a, b, c...</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="box bonus">
+    <div class="box-ico">⭐</div>
+    <div class="box-body">
+      <div class="box-title">BONUS — Generar tablas desde instrucciones con Copilot (solo M365 + Copilot)</div>
+      <div class="box-text">Si tienes acceso a Microsoft Copilot en Word, puedes pedirle que genere una tabla directamente desde una instrucción en lenguaje natural. Ejemplo: <em>"Crea una tabla de 5 columnas para registro de asistencia con: número de lista, nombre del alumno, fecha, asistió/faltó y observaciones. Aplica estilo con encabezado azul marino."</em> Copilot genera la tabla estructura en segundos. Esta función es informativa — no se evalúa en el examen de este módulo.</div>
+    </div>
+  </div>
+
+  <div class="mark-complete">
+    <button class="btn-complete" onclick="markDone(this,'t7')" id="mc-t7">
+      <span class="bc-icon">○</span><span class="bc-txt">Marcar como completado</span>
+    </button>
+  </div>
+</section>
+
+<!-- ─── EJERCICIOS ────────────────────────────────────────────── -->
+<section id="ejercicios" class="sec alt reveal">
+  <div class="sec-kicker">Práctica</div>
+  <h2 class="sec-h">Ejercicios Paso a Paso</h2>
+  <p class="sec-sub">5 ejercicios progresivos para dominar tablas y listas en Word</p>
+
+  <!-- EJ 1 -->
+  <div class="ex-card">
+    <div class="ex-head">
+      <div class="ex-num">1</div>
+      <div class="ex-info">
+        <div class="ex-title">Crear y dar formato a una tabla de registro de asistencia</div>
+        <div class="ex-meta">level: básico · ~30 min · Word 2016+</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-goal"><strong>Objetivo:</strong> Crear desde cero una lista de asistencia semanal profesional para un grupo de bachillerato, aplicando estilo de tabla, combinación de celdas y distribución uniforme de columnas.</div>
+      <ol class="steps">
+        <li class="step"><div class="step-n">1</div><div class="step-t">Nuevo documento con márgenes estándar. Ve a <code>Insertar → Tabla → Insertar tabla</code>. Crea una tabla de <strong>9 columnas × 12 filas</strong> (1 encabezado + 10 alumnos + 1 fila de totales).</div></li>
+        <li class="step"><div class="step-n">2</div><div class="step-t">En la primera fila escribe los encabezados: <strong>#, Nombre del Alumno, Lun, Mar, Mié, Jue, Vie, Total Asist., Total Falt.</strong></div></li>
+        <li class="step"><div class="step-n">3</div><div class="step-t">Selecciona las columnas Lun, Mar, Mié, Jue, Vie → <code>Presentación → Distribuir columnas</code> para que tengan el mismo ancho. Haz lo mismo con Total Asist. y Total Falt.</div></li>
+        <li class="step"><div class="step-n">4</div><div class="step-t">Aplica el estilo de tabla <strong>"Tabla cuadrícula 5 oscura - Énfasis 5"</strong> o similar (con encabezado oscuro y filas alternas). Activa: Fila de encabezado + Filas con bandas.</div></li>
+        <li class="step"><div class="step-n">5</div><div class="step-t">Agrega 10 nombres ficticios de alumnos y marca asistencias (✓) y faltas (F) para los 5 días. En la última fila escribe "TOTALES" y usa <code>=COUNT</code> o suma manual en las columnas de totales.</div></li>
+        <li class="step"><div class="step-n">6</div><div class="step-t">Activa la opción <code>Presentación → Repetir filas de encabezado</code>. Guarda como <code>Prac4Eje1.docx</code> y exporta a PDF.</div></li>
+      </ol>
+      <div class="tip"><strong>Resultado esperado:</strong> Lista de asistencia con encabezado oscuro, filas alternas, columnas uniformes y encabezado que se repite si la tabla pasa a la siguiente página.</div>
+      <div class="reto">Agrega una fila superior que combine las 9 celdas y escriba el encabezado "LISTA DE ASISTENCIA — GRUPO: 2°A — SEMANA DEL 4 AL 8 DE MAYO DE 2026". Aplica fondo del color institucional.</div>
+      <div class="note-archivo">
+        <span class="na-ico">📁</span>
+        <div class="na-body"><strong>NOTA:</strong> En este ejercicio SÍ se creará un archivo para subir como actividad.<br>Nomenclatura del archivo: <code>TuNombre_Prac4Eje1.pdf</code></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EJ 2 -->
+  <div class="ex-card">
+    <div class="ex-head">
+      <div class="ex-num">2</div>
+      <div class="ex-info">
+        <div class="ex-title">Convertir texto en tabla y aplicar diseño avanzado</div>
+        <div class="ex-meta">level: básico-intermedio · ~30 min · Word 2016+</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-goal"><strong>Objetivo:</strong> Convertir texto separado por tabulaciones en una tabla, combinar celdas para crear un encabezado de grupo y ordenar los datos alfabéticamente.</div>
+      <ol class="steps">
+        <li class="step"><div class="step-n">1</div><div class="step-t">Copia y pega el siguiente texto en un documento nuevo (separa cada dato con Tab):<br>
+        <code>Juan&nbsp;&nbsp;Pérez&nbsp;&nbsp;8.5&nbsp;&nbsp;Aprobado</code><br>
+        <code>Ana&nbsp;&nbsp;García&nbsp;&nbsp;9.2&nbsp;&nbsp;Aprobado</code><br>
+        <code>Carlos&nbsp;&nbsp;Ruiz&nbsp;&nbsp;6.0&nbsp;&nbsp;Reprobado</code><br>
+        <code>María&nbsp;&nbsp;Soto&nbsp;&nbsp;7.8&nbsp;&nbsp;Aprobado</code></div></li>
+        <li class="step"><div class="step-n">2</div><div class="step-t">Selecciona todo el texto. Ve a <code>Insertar → Tabla → Convertir texto en tabla</code>. Verifica que detecta 4 columnas con separador "Tabulaciones". Haz clic en Aceptar.</div></li>
+        <li class="step"><div class="step-n">3</div><div class="step-t">Agrega una fila de encabezado arriba: clic en la primera fila → <code>Presentación → Insertar encima</code>. Escribe: <strong>Nombre, Apellido, Calificación, Estatus</strong>.</div></li>
+        <li class="step"><div class="step-n">4</div><div class="step-t">Combina las 4 celdas de la primera fila para crear una fila superior de título: inserta otra fila encima → combina todas sus celdas → escribe <strong>"CONCENTRADO DE EVALUACIÓN — GRUPO 2°A"</strong>.</div></li>
+        <li class="step"><div class="step-n">5</div><div class="step-t">Ordena la tabla por apellido: clic en la tabla → <code>Presentación → Datos → Ordenar → Columna 2 → Ascendente</code>. Asegúrate de marcar "La lista tiene una fila de encabezado".</div></li>
+        <li class="step"><div class="step-n">6</div><div class="step-t">Aplica un estilo de tabla profesional, sombreado verde claro para "Aprobado" y rojo claro para "Reprobado". Exporta a PDF como <code>Prac4Eje2.pdf</code>.</div></li>
+      </ol>
+      <div class="tip"><strong>Resultado esperado:</strong> Tabla con fila de título combinada, encabezados de columna, datos ordenados alfabéticamente y sombreado diferenciado por estatus.</div>
+      <div class="note-archivo">
+        <span class="na-ico">📁</span>
+        <div class="na-body"><strong>NOTA:</strong> En este ejercicio SÍ se creará un archivo para subir como actividad.<br>Nomenclatura del archivo: <code>TuNombre_Prac4Eje2.pdf</code></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EJ 3 -->
+  <div class="ex-card">
+    <div class="ex-head">
+      <div class="ex-num">3</div>
+      <div class="ex-info">
+        <div class="ex-title">Crear listas de viñetas personalizadas para una planeación</div>
+        <div class="ex-meta">level: básico · ~25 min · Word 2016+</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-goal"><strong>Objetivo:</strong> Crear tres listas con viñetas personalizadas diferentes para las secciones de una planeación didáctica: competencias (✓), estrategias (→) y recursos (●).</div>
+      <ol class="steps">
+        <li class="step"><div class="step-n">1</div><div class="step-t">Nuevo documento. Escribe el título <strong>"PLANEACIÓN DIDÁCTICA — PENSAMIENTO CRÍTICO"</strong> con estilo Título 1.</div></li>
+        <li class="step"><div class="step-n">2</div><div class="step-t">Sección "Competencias a desarrollar". Crea una lista con viñeta personalizada <strong>✓ verde</strong>: flecha del botón Viñetas → Definir nueva viñeta → Símbolo → fuente Wingdings 2 → carácter ✓ → Fuente → color verde. Agrega 3 competencias.</div></li>
+        <li class="step"><div class="step-n">3</div><div class="step-t">Sección "Estrategias didácticas". Crea una lista con viñeta <strong>→ azul</strong>: misma ruta, fuente Webdings o Symbol, carácter de flecha, color azul navy. Agrega 4 estrategias.</div></li>
+        <li class="step"><div class="step-n">4</div><div class="step-t">Sección "Recursos y materiales". Crea una lista con viñeta <strong>● púrpura</strong>: símbolo de bala rellena, color púrpura (#7C3AED). Agrega 3 recursos.</div></li>
+        <li class="step"><div class="step-n">5</div><div class="step-t">Ajusta la sangría de cada lista a: posición de viñeta 0.5 cm, sangría de texto 1.25 cm (clic derecho → Ajustar sangrías).</div></li>
+        <li class="step"><div class="step-n">6</div><div class="step-t">Exporta a PDF como <code>Prac4Eje3.pdf</code>.</div></li>
+      </ol>
+      <div class="tip"><strong>Resultado esperado:</strong> Tres secciones diferenciadas visualmente por el tipo de viñeta personalizada, cada una con su color y símbolo apropiado para el contexto.</div>
+      <div class="note-archivo">
+        <span class="na-ico">📁</span>
+        <div class="na-body"><strong>NOTA:</strong> En este ejercicio SÍ se creará un archivo para subir como actividad.<br>Nomenclatura del archivo: <code>TuNombre_Prac4Eje3.pdf</code></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EJ 4 -->
+  <div class="ex-card">
+    <div class="ex-head">
+      <div class="ex-num">4</div>
+      <div class="ex-info">
+        <div class="ex-title">Crear listas numeradas para el orden del día de una reunión</div>
+        <div class="ex-meta">level: básico-intermedio · ~25 min · Word 2016+</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-goal"><strong>Objetivo:</strong> Crear el orden del día de una reunión académica usando listas numeradas con formato personalizado, practicando reiniciar y continuar numeración.</div>
+      <ol class="steps">
+        <li class="step"><div class="step-n">1</div><div class="step-t">Nuevo documento. Escribe el encabezado del acta y el título <strong>"ORDEN DEL DÍA"</strong> con estilo Título 2.</div></li>
+        <li class="step"><div class="step-n">2</div><div class="step-t">Crea una lista numerada con formato <strong>"1. 2. 3."</strong> en negrita azul navy: flecha del botón → Definir nuevo formato de número → Estilo: 1,2,3 → Fuente: negrita, color #0A2540. Agrega 5 puntos del orden del día.</div></li>
+        <li class="step"><div class="step-n">3</div><div class="step-t">Agrega un párrafo de texto entre los puntos 3 y 4 (simula un comentario). Observa si la numeración se interrumpe. Si es así, haz clic derecho en el punto 4 → <strong>"Continuar numeración"</strong>.</div></li>
+        <li class="step"><div class="step-n">4</div><div class="step-t">Debajo del orden del día, crea una sección "ACUERDOS TOMADOS" con nueva lista numerada que comience desde 1 (clic derecho → Reiniciar en 1). Agrega 3 acuerdos.</div></li>
+        <li class="step"><div class="step-n">5</div><div class="step-t">Aplica a los acuerdos el formato "Artículo X.-" usando <strong>"Definir nuevo formato de número"</strong> → Formato de número: "Artículo " + número + ".-".</div></li>
+        <li class="step"><div class="step-n">6</div><div class="step-t">Exporta a PDF como <code>Prac4Eje4.pdf</code>.</div></li>
+      </ol>
+      <div class="tip"><strong>Resultado esperado:</strong> Orden del día con numeración en negrita, acuerdos con formato "Artículo X.-", y numeraciones independientes en cada sección.</div>
+      <div class="note-archivo">
+        <span class="na-ico">📁</span>
+        <div class="na-body"><strong>NOTA:</strong> En este ejercicio SÍ se creará un archivo para subir como actividad.<br>Nomenclatura del archivo: <code>TuNombre_Prac4Eje4.pdf</code></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EJ 5 -->
+  <div class="ex-card">
+    <div class="ex-head">
+      <div class="ex-num">5</div>
+      <div class="ex-info">
+        <div class="ex-title">Crear un programa de estudios con lista multinivel</div>
+        <div class="ex-meta">level: intermedio · ~40 min · Word 2016+</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-goal"><strong>Objetivo:</strong> Construir la estructura de un programa de estudios usando listas multinivel con 3 niveles: Unidades, Temas y Subtemas, vinculados a estilos de título para navegación.</div>
+      <ol class="steps">
+        <li class="step"><div class="step-n">1</div><div class="step-t">Nuevo documento. Abre la definición de lista multinivel: <code>Inicio → Lista multinivel → Definir nueva lista multinivel</code>.</div></li>
+        <li class="step"><div class="step-n">2</div><div class="step-t">Nivel 1: formato <strong>"Unidad 1."</strong> en negrita 14pt. Vincula al estilo Título 1. Sangría: 0 cm.</div></li>
+        <li class="step"><div class="step-n">3</div><div class="step-t">Nivel 2: formato <strong>"1.1"</strong> en negrita 12pt color azul. Vincula al estilo Título 2. Sangría: 0.75 cm.</div></li>
+        <li class="step"><div class="step-n">4</div><div class="step-t">Nivel 3: formato <strong>"a)"</strong> en normal 11pt. Vincula al estilo Título 3. Sangría: 1.5 cm. Acepta la configuración.</div></li>
+        <li class="step"><div class="step-n">5</div><div class="step-t">Escribe la estructura del programa: 2 Unidades, cada una con 3 Temas, cada Tema con 2-3 Subtemas. Usa Tab para bajar nivel y Mayús+Tab para subir.</div></li>
+        <li class="step"><div class="step-n">6</div><div class="step-t">Al final del documento, inserta una tabla de contenido automática: <code>Referencias → Tabla de contenido → Tabla automática 1</code>. Verifica que refleja la estructura del programa. Exporta a PDF como <code>Prac4Eje5.pdf</code>.</div></li>
+      </ol>
+      <div class="tip"><strong>Resultado esperado:</strong> Programa de estudios con 3 niveles correctamente formateados y una tabla de contenido automática que refleja la jerarquía completa.</div>
+      <div class="reto">Agrega una tabla de contenidos al inicio con hipervínculos activos a cada unidad y tema. Verifica que al hacer clic en el PDF, el enlace navega al tema correcto.</div>
+      <div class="bonus-hint">Pídele a Copilot: "Genera el contenido de un programa de estudios de Pensamiento Crítico y Sociedad para bachillerato general, con 3 unidades, 3 temas por unidad y 2 subtemas por tema, tono académico formal".</div>
+      <div class="note-archivo">
+        <span class="na-ico">📁</span>
+        <div class="na-body"><strong>NOTA:</strong> En este ejercicio SÍ se creará un archivo para subir como actividad.<br>Nomenclatura del archivo: <code>TuNombre_Prac4Eje5.pdf</code></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── EXAMEN ──────────────────────────────────────────────── -->
+<section id="examen">
+  <div class="exam-hero">
+    <h2>📝 Examen del Módulo 4</h2>
+    <p>20 reactivos · Mínimo 14/20 (70%) para acreditar · ~40 minutos</p>
+    <div class="exam-stats">
+      <div><div class="es-v">8</div><div class="es-l">Opción múltiple</div></div>
+      <div><div class="es-v">5</div><div class="es-l">Verdadero/Falso</div></div>
+      <div><div class="es-v">4</div><div class="es-l">Relacionar</div></div>
+      <div><div class="es-v">3</div><div class="es-l">Resp. breve</div></div>
+    </div>
+  </div>
+
+  <div class="exam-body">
+    <div class="exam-note">⚠ Ninguna pregunta requiere Copilot ni M365 — todas respondibles con Word 2016+</div>
+
+    <div class="sec-div">Sección A — Opción múltiple <span class="sec-div-badge">1 pt c/u</span></div>
+
+    <div class="q-card" data-q="1" data-correct="c" data-type="mc">
+      <div class="q-head"><div class="q-num">1</div><div class="q-meta"><div class="q-type">Opción múltiple</div><div class="q-text">¿Qué atajo de teclado permite avanzar de una celda a la siguiente dentro de una tabla en Word?</div></div></div>
+      <div class="opts">
+        <div class="opt" onclick="pick(this,'1','a')"><div class="opt-l">A</div><div class="opt-t">Ctrl + →</div></div>
+        <div class="opt" onclick="pick(this,'1','b')"><div class="opt-l">B</div><div class="opt-t">Intro (Enter)</div></div>
+        <div class="opt" onclick="pick(this,'1','c')"><div class="opt-l">C</div><div class="opt-t">Tab</div></div>
+        <div class="opt" onclick="pick(this,'1','d')"><div class="opt-l">D</div><div class="opt-t">Espacio</div></div>
+      </div>
+      <div class="fb" id="fb1"></div>
+    </div>
+
+    <div class="q-card" data-q="2" data-correct="b" data-type="mc">
+      <div class="q-head"><div class="q-num">2</div><div class="q-meta"><div class="q-type">Opción múltiple</div><div class="q-text">¿Cuál es la función de la opción "Repetir filas de encabezado" en las herramientas de tabla?</div></div></div>
+      <div class="opts">
+        <div class="opt" onclick="pick(this,'2','a')"><div class="opt-l">A</div><div class="opt-t">Aplicar el mismo formato de la primera fila a todas las filas de la tabla</div></div>
+        <div class="opt" onclick="pick(this,'2','b')"><div class="opt-l">B</div><div class="opt-t">Que la primera fila de la tabla aparezca al inicio de cada página cuando la tabla se extiende</div></div>
+        <div class="opt" onclick="pick(this,'2','c')"><div class="opt-l">C</div><div class="opt-t">Duplicar la primera fila para usarla como pie de la tabla</div></div>
+        <div class="opt" onclick="pick(this,'2','d')"><div class="opt-l">D</div><div class="opt-t">Bloquear la primera fila para que no pueda editarse</div></div>
+      </div>
+      <div class="fb" id="fb2"></div>
+    </div>
+
+    <div class="q-card" data-q="3" data-correct="a" data-type="mc">
+      <div class="q-head"><div class="q-num">3</div><div class="q-meta"><div class="q-type">Opción múltiple</div><div class="q-text">¿Qué fórmula de Word calcula la suma de todos los valores numéricos en las celdas de arriba en la misma columna?</div></div></div>
+      <div class="opts">
+        <div class="opt" onclick="pick(this,'3','a')"><div class="opt-l">A</div><div class="opt-t">=SUM(ABOVE)</div></div>
+        <div class="opt" onclick="pick(this,'3','b')"><div class="opt-l">B</div><div class="opt-t">=TOTAL(UP)</div></div>
+        <div class="opt" onclick="pick(this,'3','c')"><div class="opt-l">C</div><div class="opt-t">=ADD(COLUMN)</div></div>
+        <div class="opt" onclick="pick(this,'3','d')"><div class="opt-l">D</div><div class="opt-t">=SUM(COLUMN)</div></div>
+      </div>
+      <div class="fb" id="fb3"></div>
+    </div>
+
+    <div class="q-card" data-q="4" data-correct="d" data-type="mc">
+      <div class="q-head"><div class="q-num">4</div><div class="q-meta"><div class="q-type">Opción múltiple</div><div class="q-text">¿Qué herramienta de Word permite crear tablas a partir de texto plano separado por tabulaciones o comas?</div></div></div>
+      <div class="opts">
+        <div class="opt" onclick="pick(this,'4','a')"><div class="opt-l">A</div><div class="opt-t">Insertar → Tabla → Dibujar tabla</div></div>
+        <div class="opt" onclick="pick(this,'4','b')"><div class="opt-l">B</div><div class="opt-t">Presentación → Datos → Ordenar</div></div>
+        <div class="opt" onclick="pick(this,'4','c')"><div class="opt-l">C</div><div class="opt-t">Diseño de tabla → Convertir a texto</div></div>
+        <div class="opt" onclick="pick(this,'4','d')"><div class="opt-l">D</div><div class="opt-t">Insertar → Tabla → Convertir texto en tabla</div></div>
+      </div>
+      <div class="fb" id="fb4"></div>
+    </div>
+
+    <div class="q-card" data-q="5" data-correct="b" data-type="mc">
+      <div class="q-head"><div class="q-num">5</div><div class="q-meta"><div class="q-type">Opción múltiple</div><div class="q-text">¿Qué acción realiza la tecla Tab cuando el cursor está posicionado en la última celda de una tabla?</div></div></div>
+      <div class="opts">
+        <div class="opt" onclick="pick(this,'5','a')"><div class="opt-l">A</div><div class="opt-t">Cierra la tabla y regresa al texto normal</div></div>
+        <div class="opt" onclick="pick(this,'5','b')"><div class="opt-l">B</div><div class="opt-t">Agrega automáticamente una nueva fila al final de la tabla</div></div>
+        <div class="opt" onclick="pick(this,'5','c')"><div class="opt-l">C</div><div class="opt-t">Mueve el cursor al inicio de la primera celda de la tabla</div></div>
+        <div class="opt" onclick="pick(this,'5','d')"><div class="opt-l">D</div><div class="opt-t">Inserta un carácter de tabulación dentro de la celda</div></div>
+      </div>
+      <div class="fb" id="fb5"></div>
+    </div>
+
+    <div class="q-card" data-q="6" data-correct="c" data-type="mc">
+      <div class="q-head"><div class="q-num">6</div><div class="q-meta"><div class="q-type">Opción múltiple</div><div class="q-text">Para bajar un nivel en una lista multinivel (pasar del Nivel 1 al Nivel 2), ¿qué tecla o combinación se usa?</div></div></div>
+      <div class="opts">
+        <div class="opt" onclick="pick(this,'6','a')"><div class="opt-l">A</div><div class="opt-t">Ctrl + Tab</div></div>
+        <div class="opt" onclick="pick(this,'6','b')"><div class="opt-l">B</div><div class="opt-t">Mayús + Tab</div></div>
+        <div class="opt" onclick="pick(this,'6','c')"><div class="opt-l">C</div><div class="opt-t">Tab</div></div>
+        <div class="opt" onclick="pick(this,'6','d')"><div class="opt-l">D</div><div class="opt-t">Ctrl + →</div></div>
+      </div>
+      <div class="fb" id="fb6"></div>
+    </div>
+
+    <div class="q-card" data-q="7" data-correct="a" data-type="mc">
+      <div class="q-head"><div class="q-num">7</div><div class="q-meta"><div class="q-type">Opción múltiple</div><div class="q-text">¿Cuál es la principal limitación de las fórmulas insertadas en tablas de Word en comparación con Excel?</div></div></div>
+      <div class="opts">
+        <div class="opt" onclick="pick(this,'7','a')"><div class="opt-l">A</div><div class="opt-t">Las fórmulas de Word no se recalculan automáticamente al cambiar los datos — hay que actualizarlas manualmente</div></div>
+        <div class="opt" onclick="pick(this,'7','b')"><div class="opt-l">B</div><div class="opt-t">Word solo permite la fórmula =SUM y no admite otras funciones como AVERAGE o MAX</div></div>
+        <div class="opt" onclick="pick(this,'7','c')"><div class="opt-l">C</div><div class="opt-t">Las fórmulas de Word solo funcionan en la primera columna de la tabla</div></div>
+        <div class="opt" onclick="pick(this,'7','d')"><div class="opt-l">D</div><div class="opt-t">Word no permite insertar fórmulas en tablas, esa función solo existe en Excel</div></div>
+      </div>
+      <div class="fb" id="fb7"></div>
+    </div>
+
+    <div class="q-card" data-q="8" data-correct="d" data-type="mc">
+      <div class="q-head"><div class="q-num">8</div><div class="q-meta"><div class="q-type">Opción múltiple</div><div class="q-text">¿Dónde se activa la opción para personalizar completamente el símbolo de una viñeta en Word?</div></div></div>
+      <div class="opts">
+        <div class="opt" onclick="pick(this,'8','a')"><div class="opt-l">A</div><div class="opt-t">Inicio → Fuente → Símbolo especial</div></div>
+        <div class="opt" onclick="pick(this,'8','b')"><div class="opt-l">B</div><div class="opt-t">Insertar → Símbolo → Usar como viñeta</div></div>
+        <div class="opt" onclick="pick(this,'8','c')"><div class="opt-l">C</div><div class="opt-t">Vista → Opciones de viñeta</div></div>
+        <div class="opt" onclick="pick(this,'8','d')"><div class="opt-l">D</div><div class="opt-t">Inicio → flecha del botón Viñetas → Definir nueva viñeta</div></div>
+      </div>
+      <div class="fb" id="fb8"></div>
+    </div>
+
+    <div class="sec-div">Sección B — Verdadero o Falso <span class="sec-div-badge">1 pt c/u · justifica</span></div>
+
+    <div class="q-card" data-q="9" data-correct="V" data-type="tf">
+      <div class="q-head"><div class="q-num">9</div><div class="q-meta"><div class="q-type">Verdadero / Falso</div><div class="q-text">Al presionar Tab en la última celda de una tabla en Word, se crea automáticamente una nueva fila al final de la tabla.</div></div></div>
+      <div class="tf-row"><div class="tf" onclick="pickTF(this,'9','V')">✓ Verdadero</div><div class="tf" onclick="pickTF(this,'9','F')">✗ Falso</div></div>
+      <div class="fb" id="fb9"></div>
+      <div class="sa" style="margin-top:10px"><textarea placeholder="Justifica tu respuesta..."></textarea></div>
+    </div>
+
+    <div class="q-card" data-q="10" data-correct="F" data-type="tf">
+      <div class="q-head"><div class="q-num">10</div><div class="q-meta"><div class="q-type">Verdadero / Falso</div><div class="q-text">Las fórmulas insertadas en tablas de Word se actualizan automáticamente cada vez que el usuario modifica los datos de la tabla.</div></div></div>
+      <div class="tf-row"><div class="tf" onclick="pickTF(this,'10','V')">✓ Verdadero</div><div class="tf" onclick="pickTF(this,'10','F')">✗ Falso</div></div>
+      <div class="fb" id="fb10"></div>
+      <div class="sa" style="margin-top:10px"><textarea placeholder="Justifica tu respuesta..."></textarea></div>
+    </div>
+
+    <div class="q-card" data-q="11" data-correct="V" data-type="tf">
+      <div class="q-head"><div class="q-num">11</div><div class="q-meta"><div class="q-type">Verdadero / Falso</div><div class="q-text">En una lista multinivel de Word, la tecla Mayús+Tab permite subir un nivel de indentación (pasar del Nivel 2 al Nivel 1).</div></div></div>
+      <div class="tf-row"><div class="tf" onclick="pickTF(this,'11','V')">✓ Verdadero</div><div class="tf" onclick="pickTF(this,'11','F')">✗ Falso</div></div>
+      <div class="fb" id="fb11"></div>
+      <div class="sa" style="margin-top:10px"><textarea placeholder="Justifica tu respuesta..."></textarea></div>
+    </div>
+
+    <div class="q-card" data-q="12" data-correct="V" data-type="tf">
+      <div class="q-head"><div class="q-num">12</div><div class="q-meta"><div class="q-type">Verdadero / Falso</div><div class="q-text">La opción "Distribuir columnas uniformemente" en Word ajusta automáticamente todas las columnas seleccionadas para que tengan exactamente el mismo ancho.</div></div></div>
+      <div class="tf-row"><div class="tf" onclick="pickTF(this,'12','V')">✓ Verdadero</div><div class="tf" onclick="pickTF(this,'12','F')">✗ Falso</div></div>
+      <div class="fb" id="fb12"></div>
+      <div class="sa" style="margin-top:10px"><textarea placeholder="Justifica tu respuesta..."></textarea></div>
+    </div>
+
+    <div class="q-card" data-q="13" data-correct="F" data-type="tf">
+      <div class="q-head"><div class="q-num">13</div><div class="q-meta"><div class="q-type">Verdadero / Falso</div><div class="q-text">En Word solo es posible ordenar los datos de una tabla por una sola columna a la vez, no por múltiples criterios simultáneos.</div></div></div>
+      <div class="tf-row"><div class="tf" onclick="pickTF(this,'13','V')">✓ Verdadero</div><div class="tf" onclick="pickTF(this,'13','F')">✗ Falso</div></div>
+      <div class="fb" id="fb13"></div>
+      <div class="sa" style="margin-top:10px"><textarea placeholder="Justifica tu respuesta..."></textarea></div>
+    </div>
+
+    <div class="sec-div">Sección C — Relacionar columnas <span class="sec-div-badge">1 pt c/par</span></div>
+    <p style="font-size:15px;color:rgba(255,255,255,.4);margin-bottom:15px">Haz clic en un elemento de la izquierda, luego en su correspondiente de la derecha.</p>
+    <div class="q-card">
+      <div class="q-head"><div class="q-num">14–17</div><div class="q-meta"><div class="q-type">Relacionar columnas</div><div class="q-text">Une cada función o elemento con su descripción correcta.</div></div></div>
+      <div class="match-grid">
+        <div>
+          <div class="match-col-h">// elemento_o_función</div>
+          <div class="match-i" data-pair="A" onclick="doMatch(this,'L')">Combinar celdas</div>
+          <div class="match-i" data-pair="B" onclick="doMatch(this,'L')">=AVERAGE(ABOVE)</div>
+          <div class="match-i" data-pair="C" onclick="doMatch(this,'L')">Filas con bandas</div>
+          <div class="match-i" data-pair="D" onclick="doMatch(this,'L')">Definir nueva viñeta</div>
+        </div>
+        <div>
+          <div class="match-col-h">// descripción</div>
+          <div class="match-i" data-pair="3" onclick="doMatch(this,'R')">Personalizar el símbolo, color o imagen de una viñeta</div>
+          <div class="match-i" data-pair="1" onclick="doMatch(this,'R')">Unir dos o más celdas adyacentes en una sola</div>
+          <div class="match-i" data-pair="4" onclick="doMatch(this,'R')">Alternar color de fondo entre filas pares e impares</div>
+          <div class="match-i" data-pair="2" onclick="doMatch(this,'R')">Calcula el promedio de las celdas superiores</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-div">Sección D — Respuesta breve <span class="sec-div-badge">2 pts c/u · revisión manual</span></div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-num">18</div><div class="q-meta"><div class="q-type">Respuesta breve (2 pts)</div><div class="q-text">Explica cuándo es más conveniente usar una hoja de cálculo de Excel vinculada en lugar de las fórmulas propias de las tablas de Word. ¿Cuál es la diferencia clave entre ambas opciones?</div></div></div>
+      <div class="sa"><textarea placeholder="Escribe tu respuesta (mínimo 2 oraciones)..."></textarea></div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-num">19</div><div class="q-meta"><div class="q-type">Respuesta breve (2 pts)</div><div class="q-text">Describe el proceso para convertir el siguiente texto plano en una tabla de Word: "Juan, 8.5, Aprobado / María, 9.2, Aprobado / Carlos, 6.0, Reprobado" (los datos están separados por comas). ¿Qué pasos debes seguir?</div></div></div>
+      <div class="sa"><textarea placeholder="Escribe tu respuesta..."></textarea></div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-num">20</div><div class="q-meta"><div class="q-type">Respuesta breve (2 pts)</div><div class="q-text">¿Cuál es la diferencia entre una lista con viñetas, una lista numerada y una lista multinivel? Da un ejemplo de documento escolar donde usarías cada una de ellas.</div></div></div>
+      <div class="sa"><textarea placeholder="Escribe tu respuesta..."></textarea></div>
+    </div>
+  </div>
+
+  <div class="exam-cta">
+    <button class="btn-grade" onclick="grade()">Calificar Examen →</button>
+    <div class="score-box" id="score-box">
+      <div class="score-big" id="score-val">—</div>
+      <div class="score-msg" id="score-msg">de 13 puntos automáticos (Secciones A y B)</div>
+      <div style="font-size:13px;color:rgba(255,255,255,.35);margin-top:10px;background:rgba(255,255,255,.04);border-radius:var(--r);padding:10px 13px">Las Secciones C y D requieren revisión manual por parte del instructor.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ACTIVIDAD INTEGRADORA ─────────────────────────────────── -->
+<section id="actividad" class="sec reveal">
+  <div class="sec-kicker">Cierre del módulo</div>
+  <h2 class="sec-h">Actividad Integradora</h2>
+  <p class="sec-sub">Documento de gestión académica completo: tablas y listas con diseño profesional</p>
+
+  <div class="box ok">
+    <div class="box-ico">🏆</div>
+    <div class="box-body">
+      <div class="box-title">Descripción de la actividad</div>
+      <div class="box-text">Crearás un <strong>paquete de documentos de gestión académica</strong> que integre: una lista de asistencia bimestral completa, un concentrado de calificaciones con fórmulas, un orden del día con listas numeradas personalizadas y una estructura de programa de estudios con lista multinivel.</div>
+    </div>
+  </div>
+
+  <h2 class="t2">Producto a entregar: Paquete de gestión académica</h2>
+  <ol class="steps" style="list-style:none;padding:0">
+    <li class="step"><div class="step-n">1</div><div class="step-t"><strong>Lista de asistencia:</strong> Tabla de 10 alumnos ficticios × 5 días de clase. Encabezado combinado con nombre del grupo. Estilo con filas alternas, distribución uniforme de columnas de días, columna de totales con fórmula o suma manual.</div></li>
+    <li class="step"><div class="step-n">2</div><div class="step-t"><strong>Concentrado de calificaciones:</strong> Tabla de los mismos 10 alumnos con 4 evaluaciones bimestrales + columna de promedio. Encabezado que se repite en cada página. Sombreado diferenciado para aprobados y reprobados.</div></li>
+    <li class="step"><div class="step-n">3</div><div class="step-t"><strong>Orden del día:</strong> Lista numerada personalizada (formato "Punto X.-") con 5 puntos del orden del día para una reunión académica. Sección de "Acuerdos" con lista numerada reiniciada desde 1 con formato "Acuerdo X.-".</div></li>
+    <li class="step"><div class="step-n">4</div><div class="step-t"><strong>Programa de estudios:</strong> Lista multinivel de 3 niveles con al menos 2 unidades, 3 temas cada una y 2 subtemas por tema. Los niveles deben tener formatos distintos y estar vinculados a estilos de título.</div></li>
+    <li class="step"><div class="step-n">5</div><div class="step-t"><strong>Viñetas personalizadas:</strong> En al menos una sección del documento se usan viñetas personalizadas (símbolo específico, color institucional).</div></li>
+  </ol>
+
+  <h2 class="t2">Rúbrica de evaluación</h2>
+  <div class="tbl-wrap">
+  <table class="rub">
+    <thead><tr><th>Indicador</th><th>Excelente (4 pts)</th><th>Suficiente (2 pts)</th><th>Insuficiente (0 pts)</th><th>Pts</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Lista de asistencia</strong></td><td>Tabla completa con estilo, encabezado combinado, distribución uniforme y totales</td><td>Tabla presente pero sin estilo avanzado o sin encabezado combinado</td><td>Sin tabla o tabla sin estructura correcta</td><td>/4</td></tr>
+      <tr><td><strong>Concentrado de calificaciones</strong></td><td>Tabla con encabezado repetible, fórmula de promedio, sombreado diferenciado</td><td>Tabla con encabezado pero sin fórmulas o sin sombreado diferenciado</td><td>Tabla simple sin características avanzadas</td><td>/4</td></tr>
+      <tr><td><strong>Listas numeradas personalizadas</strong></td><td>Dos listas numeradas con formato personalizado y numeración reiniciada correctamente</td><td>Listas numeradas pero con formato predeterminado sin personalizar</td><td>Sin listas numeradas o numeración incorrecta</td><td>/4</td></tr>
+      <tr><td><strong>Lista multinivel</strong></td><td>3 niveles con formatos diferentes, vinculados a estilos de título</td><td>2-3 niveles pero sin vinculación a estilos o formatos idénticos</td><td>Sin lista multinivel o con un solo nivel</td><td>/4</td></tr>
+      <tr><td><strong>Viñetas personalizadas</strong></td><td>Viñetas con símbolo personalizado y color institucional aplicado con propósito</td><td>Viñetas personalizadas pero sin coherencia de color o símbolo</td><td>Solo viñetas predeterminadas sin personalización</td><td>/4</td></tr>
+      <tr><td colspan="4"><strong>TOTAL</strong></td><td><strong>/20</strong></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="box warn">
+    <div class="box-ico">📤</div>
+    <div class="box-body">
+      <div class="box-title">Entrega</div>
+      <div class="box-text">Nomenclatura del archivo: <code>M4_TuNombre_.pdf</code>. Fecha límite: <strong>8 de mayo de 2026</strong>.</div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+window.addEventListener('scroll',()=>{
+  const d=document.documentElement;
+  document.getElementById('pbar').style.width=(d.scrollTop/(d.scrollHeight-d.clientHeight)*100)+'%';
+});
+const secs=document.querySelectorAll('section[id]');
+const navs=document.querySelectorAll('.nav-link[href^="#"]');
+const obs=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      navs.forEach(n=>n.classList.remove('on'));
+      const a=document.querySelector(`.nav-link[href="#${e.target.id}"]`);
+      if(a)a.classList.add('on');
+    }
+  });
+},{threshold:.12,rootMargin:'-5% 0px -80% 0px'});
+secs.forEach(s=>obs.observe(s));
+const revObs=new IntersectionObserver(es=>{
+  es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('shown')});
+},{threshold:.06});
+document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
+
+/* MARK COMPLETE */
+const completed={};
+function markDone(btn,tid){
+  if(completed[tid])return;
+  completed[tid]=true;
+  btn.classList.add('done');
+  btn.querySelector('.bc-icon').textContent='✓';
+  btn.querySelector('.bc-txt').textContent='¡Tema completado!';
+  const done=Object.keys(completed).length;
+  const note=document.querySelector('.prog-note');
+  if(note)note.textContent=`Módulo 4 · ${done}/7 temas completados`;
+}
+
+/* EXAM */
+const answers={};
+const correct={'1':'c','2':'b','3':'a','4':'d','5':'b','6':'c','7':'a','8':'d',
+               '9':'V','10':'F','11':'V','12':'V','13':'F'};
+const fbTxt={
+  ok:{
+    '1':'✓ Correcto. Tab avanza de celda en celda dentro de una tabla.',
+    '2':'✓ Correcto. "Repetir filas de encabezado" muestra la primera fila al inicio de cada página.',
+    '3':'✓ Correcto. =SUM(ABOVE) suma todos los valores numéricos en las celdas de arriba.',
+    '4':'✓ Correcto. Insertar → Tabla → Convertir texto en tabla convierte texto delimitado en tabla.',
+    '5':'✓ Correcto. Tab en la última celda agrega automáticamente una nueva fila al final.',
+    '6':'✓ Correcto. Tab baja un nivel en la lista multinivel.',
+    '7':'✓ Correcto. Las fórmulas de Word no se recalculan automáticamente — hay que presionar F9.',
+    '8':'✓ Correcto. Inicio → flecha de Viñetas → Definir nueva viñeta.',
+    '9':'✓ Correcto. Tab en la última celda crea una nueva fila automáticamente.',
+    '10':'✓ Correcto. Es FALSO. Las fórmulas de Word requieren actualización manual (F9 o clic derecho).',
+    '11':'✓ Correcto. Mayús+Tab sube un nivel en la lista multinivel.',
+    '12':'✓ Correcto. "Distribuir columnas uniformemente" ajusta todas al mismo ancho.',
+    '13':'✓ Correcto. Es FALSO. Word permite ordenar por hasta 3 columnas simultáneamente.',
+  },
+  fail:{
+    '1':'✗ Incorrecto. Respuesta C: Tab avanza de una celda a la siguiente en la tabla.',
+    '2':'✗ Incorrecto. Respuesta B: muestra la primera fila al inicio de cada página cuando la tabla se extiende.',
+    '3':'✗ Incorrecto. Respuesta A: =SUM(ABOVE) suma los valores de las celdas de arriba.',
+    '4':'✗ Incorrecto. Respuesta D: Insertar → Tabla → Convertir texto en tabla.',
+    '5':'✗ Incorrecto. Respuesta B: Tab en la última celda crea una nueva fila al final.',
+    '6':'✗ Incorrecto. Respuesta C: Tab baja un nivel; Mayús+Tab sube un nivel.',
+    '7':'✗ Incorrecto. Respuesta A: las fórmulas de Word NO se actualizan automáticamente.',
+    '8':'✗ Incorrecto. Respuesta D: Inicio → flecha del botón Viñetas → Definir nueva viñeta.',
+    '9':'✗ Incorrecto. Es VERDADERO. Tab en la última celda agrega una nueva fila.',
+    '10':'✗ Incorrecto. Es FALSO. Las fórmulas de Word requieren actualización manual con F9.',
+    '11':'✗ Incorrecto. Es VERDADERO. Mayús+Tab sube un nivel en las listas multinivel.',
+    '12':'✗ Incorrecto. Es VERDADERO. "Distribuir columnas uniformemente" iguala el ancho.',
+    '13':'✗ Incorrecto. Es FALSO. Word permite ordenar por hasta 3 columnas con criterios simultáneos.',
+  }
+};
+
+function pick(el,q,v){
+  if(answers[q])return;
+  document.querySelectorAll(`.q-card[data-q="${q}"] .opt`).forEach(o=>o.classList.remove('sel'));
+  el.classList.add('sel');answers[q]=v;
+}
+function pickTF(el,q,v){
+  if(answers[q])return;
+  el.parentElement.querySelectorAll('.tf').forEach(t=>t.classList.remove('sel'));
+  el.classList.add('sel');answers[q]=v;
+}
+let mL=null;
+function doMatch(el,side){
+  if(side==='L'){
+    document.querySelectorAll('.match-i').forEach(m=>{if(m.dataset.pair.length===1)m.classList.remove('sel')});
+    el.classList.add('sel');mL=el;
+  } else {
+    if(!mL)return;
+    mL.classList.remove('sel');mL.classList.add('done');
+    el.classList.add('done');mL=null;
+  }
+}
+function grade(){
+  let score=0;
+  for(let q=1;q<=13;q++){
+    const qs=String(q);
+    const given=answers[qs];
+    const card=document.querySelector(`.q-card[data-q="${q}"]`);
+    const f=document.getElementById(`fb${q}`);
+    if(!card||!f)continue;
+    const isOk=given===correct[qs];
+    if(isOk)score++;
+    if(card.dataset.type==='mc'){
+      card.querySelectorAll('.opt').forEach(o=>{
+        const l=o.querySelector('.opt-l').textContent.toLowerCase();
+        if(l===correct[qs])o.classList.add('ok');
+        else if(l===given&&!isOk)o.classList.add('bad');
+      });
+    } else if(card.dataset.type==='tf'){
+      card.querySelectorAll('.tf').forEach(t=>{
+        const v=t.textContent.includes('Verdadero')?'V':'F';
+        if(v===correct[qs])t.classList.add('ok');
+        else if(v===given&&!isOk)t.classList.add('bad');
+      });
+    }
+    f.classList.add('vis',isOk?'ok':'fail');
+    f.textContent=given?(isOk?fbTxt.ok[qs]:fbTxt.fail[qs]):'⚠ Sin respuesta.';
+  }
+  const box=document.getElementById('score-box');
+  const val=document.getElementById('score-val');
+  const msg=document.getElementById('score-msg');
+  val.textContent=`${score}/13`;
+  val.style.color=score>=9?'#52d9a9':'#ff8fa0';
+  msg.textContent=score>=9
+    ?`¡Excelente! ${Math.round(score/13*100)}% en secciones automáticas. Solicita revisión de C y D a tu instructor.`
+    :`${Math.round(score/13*100)}% en secciones automáticas. Repasa los temas marcados en rojo.`;
+  box.classList.add('vis');
+  box.scrollIntoView({behavior:'smooth',block:'center'});
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 5 · Imágenes, Formas y Elementos Gráficos | Microsoft Word 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F5F7FB;--bg2:#EAEEF6;--white:#FFFFFF;--card:#FFFFFF;
+  --border:#DDE3EE;--border2:#C5CDDF;
+  --navy:#0A2540;--blue:#0066FF;--blue2:#004FCC;--blueL:#E8F0FF;--blueXL:#F0F5FF;
+  --cyan:#00C2E0;--cyanL:#E0F9FD;
+  --amber:#FF8C00;--amberL:#FFF4E5;
+  --green:#00A67E;--greenL:#E3FAF5;
+  --red:#E0294A;--redL:#FFF0F3;
+  --purple:#7C3AED;--purpleL:#F5F0FF;
+  --text:#1A2B4A;--text2:#4A5A75;--muted:#8A97B0;
+  --r:10px;--r2:16px;
+  --shadow:0 2px 12px rgba(10,37,64,.08);--shadowM:0 8px 32px rgba(10,37,64,.12);
+  --sidebar:268px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);
+  line-height:1.7;overflow-x:hidden;font-size:17px;zoom:1.12}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg2)}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:6px}
+::-webkit-scrollbar-thumb:hover{background:var(--blue)}
+
+body::before{content:'';position:fixed;inset:0;z-index:-2;background-color:var(--bg);
+  background-image:radial-gradient(circle at 20% 10%,rgba(0,102,255,.05) 0%,transparent 50%),
+    radial-gradient(circle at 80% 90%,rgba(0,194,224,.06) 0%,transparent 45%),
+    radial-gradient(circle at 60% 40%,rgba(124,58,237,.03) 0%,transparent 40%)}
+body::after{content:'';position:fixed;inset:0;z-index:-1;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ccircle cx='40' cy='40' r='1.2' fill='%230066FF' fill-opacity='.09'/%3E%3C/svg%3E");
+  background-size:40px 40px;pointer-events:none}
+
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:9999;
+  background:linear-gradient(90deg,var(--purple),var(--blue),var(--cyan));
+  box-shadow:0 0 8px rgba(124,58,237,.4);transition:width .1s}
+
+/* SIDEBAR */
+#sidebar{position:fixed;left:0;top:0;bottom:0;width:var(--sidebar);background:var(--white);
+  border-right:1px solid var(--border);z-index:200;display:flex;flex-direction:column;
+  overflow-y:auto;box-shadow:2px 0 20px rgba(10,37,64,.06);scrollbar-width:thin}
+.sb-top{padding:18px 16px;border-bottom:1px solid var(--border)}
+.sb-brand{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.sb-icon{width:38px;height:38px;border-radius:10px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--purple),var(--blue));
+  display:flex;align-items:center;justify-content:center;font-size:18px;
+  box-shadow:0 4px 12px rgba(124,58,237,.3)}
+.sb-brand-txt{font-size:12px;font-weight:700;color:var(--navy);line-height:1.3}
+.sb-brand-sub{font-size:10px;color:var(--muted);font-weight:400}
+.sb-chip{background:var(--purpleL);border:1px solid rgba(124,58,237,.15);border-radius:var(--r);padding:10px 12px}
+.sb-chip-num{font-size:10px;font-weight:700;color:var(--purple);text-transform:uppercase;
+  letter-spacing:.1em;margin-bottom:3px;font-family:'Fira Code',monospace}
+.sb-chip-name{font-size:12.5px;font-weight:700;color:var(--navy);line-height:1.3}
+.sb-chip-week{font-size:11px;color:var(--muted);margin-top:3px}
+.nav-group{padding:12px 16px 4px;font-size:9.5px;font-weight:700;color:var(--muted);
+  text-transform:uppercase;letter-spacing:.12em}
+.nav-link{display:flex;align-items:center;gap:9px;padding:8px 12px 8px 16px;
+  font-size:12.5px;color:var(--text2);text-decoration:none;
+  border-left:3px solid transparent;transition:all .18s}
+.nav-link:hover{color:var(--purple);background:var(--purpleL)}
+.nav-link.on{color:var(--purple);border-left-color:var(--purple);background:var(--purpleL);font-weight:600}
+.nav-icon{font-size:13px;width:18px;text-align:center;flex-shrink:0}
+.nav-txt{flex:1;line-height:1.3}
+.nav-sub{font-size:10px;color:var(--muted);margin-top:1px;font-weight:400}
+.sb-foot{margin-top:auto;padding:14px 16px;border-top:1px solid var(--border)}
+.prog-row{display:flex;justify-content:space-between;margin-bottom:5px;font-size:10px;
+  font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.prog-row span{color:var(--purple);font-family:'Fira Code',monospace}
+.prog-track{height:5px;background:var(--bg2);border-radius:20px;overflow:hidden}
+.prog-fill{height:100%;width:38%;background:linear-gradient(90deg,var(--purple),var(--blue),var(--cyan));border-radius:20px}
+.prog-note{font-size:10px;color:var(--muted);margin-top:4px}
+
+/* MAIN */
+#main{margin-left:var(--sidebar);min-height:100vh}
+
+/* HERO */
+#hero{background:var(--white);border-bottom:1px solid var(--border);
+  position:relative;overflow:hidden;padding:56px 64px 48px;min-height:72vh;display:flex;align-items:center}
+#hero::before{content:'';position:absolute;inset:0;z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect x='0' y='100' width='60' height='1.5' fill='%237C3AED' fill-opacity='.07'/%3E%3Crect x='100' y='0' width='1.5' height='60' fill='%237C3AED' fill-opacity='.07'/%3E%3Crect x='60' y='100' width='1.5' height='60' fill='%237C3AED' fill-opacity='.07'/%3E%3Crect x='100' y='60' width='100' height='1.5' fill='%237C3AED' fill-opacity='.07'/%3E%3Ccircle cx='60' cy='100' r='4' fill='none' stroke='%237C3AED' stroke-width='1.5' stroke-opacity='.13'/%3E%3Ccircle cx='100' cy='60' r='4' fill='none' stroke='%237C3AED' stroke-width='1.5' stroke-opacity='.13'/%3E%3C/svg%3E");
+  background-size:200px 200px}
+.hero-circuit{position:absolute;top:-40px;right:-40px;width:480px;height:480px;z-index:0;pointer-events:none;opacity:.8}
+.hero-left{position:relative;z-index:1;max-width:660px;flex:1}
+.hero-right-card{position:absolute;right:64px;top:50%;transform:translateY(-50%);z-index:1;width:270px}
+
+.eyebrow{display:inline-flex;align-items:center;gap:8px;margin-bottom:22px;
+  background:var(--purpleL);border:1px solid rgba(124,58,237,.2);border-radius:20px;
+  padding:6px 14px;font-size:11px;font-weight:700;color:var(--purple);
+  text-transform:uppercase;letter-spacing:.1em;font-family:'Fira Code',monospace;animation:fadeUp .5s both}
+.eyebrow-pulse{width:7px;height:7px;border-radius:50%;background:var(--purple);
+  animation:pulse 1.6s infinite;flex-shrink:0}
+.hero-title{font-size:clamp(36px,4.8vw,62px);font-weight:900;color:var(--navy);
+  line-height:1.08;margin-bottom:18px;letter-spacing:-.02em;animation:fadeUp .5s .1s both}
+.hero-title .accent{background:linear-gradient(90deg,var(--purple),var(--blue));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-desc{font-size:17px;color:var(--text2);max-width:520px;margin-bottom:28px;
+  line-height:1.75;animation:fadeUp .5s .18s both}
+
+.compat-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r2);
+  padding:18px;box-shadow:var(--shadowM);animation:fadeUp .5s .2s both}
+.compat-hd{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;
+  letter-spacing:.1em;margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.compat-hd::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--purple);display:inline-block}
+.compat-row{display:flex;align-items:center;gap:9px;padding:7px 0;border-bottom:1px solid var(--border)}
+.compat-row:last-child{border-bottom:none}
+.compat-ok{width:18px;height:18px;border-radius:50%;flex-shrink:0;
+  background:var(--greenL);border:1px solid rgba(0,166,126,.3);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--green)}
+.compat-ok.star{background:var(--amberL);border-color:rgba(255,140,0,.3);color:var(--amber)}
+.compat-name{font-size:13px;font-weight:600;color:var(--text)}
+.compat-tag{margin-left:auto;font-size:9px;font-weight:700;padding:2px 7px;border-radius:6px;text-transform:uppercase}
+.compat-tag.all{background:var(--greenL);color:var(--green)}
+.compat-tag.bonus{background:var(--amberL);color:var(--amber)}
+
+/* SECTIONS */
+.sec{padding:60px 64px;border-bottom:1px solid var(--border);background:var(--white)}
+.sec.alt{background:var(--bg)}
+.sec-kicker{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:700;
+  color:var(--purple);text-transform:uppercase;letter-spacing:.14em;margin-bottom:8px;font-family:'Fira Code',monospace}
+.sec-kicker::before{content:'//';color:var(--cyan);margin-right:2px}
+.sec-h{font-size:clamp(24px,3.2vw,40px);font-weight:900;color:var(--navy);line-height:1.12;margin-bottom:8px;letter-spacing:-.01em}
+.sec-sub{font-size:16px;color:var(--text2);margin-bottom:36px;max-width:600px}
+h2.t2{font-size:22px;font-weight:800;color:var(--navy);margin:44px 0 14px;
+  display:flex;align-items:center;gap:10px;letter-spacing:-.01em}
+h2.t2::before{content:'';width:4px;height:22px;background:linear-gradient(180deg,var(--purple),var(--blue));border-radius:4px;flex-shrink:0}
+h3.t3{font-size:17px;font-weight:700;color:var(--purple);margin:26px 0 10px}
+p.body{font-size:16px;color:var(--text2);line-height:1.85;margin-bottom:18px;text-align:justify}
+p.body strong{color:var(--navy);font-weight:700}
+
+/* BOXES */
+.box{border-radius:var(--r2);padding:20px 24px;margin:22px 0;display:flex;gap:15px;align-items:flex-start}
+.box-ico{font-size:21px;flex-shrink:0;margin-top:2px}
+.box-body{flex:1}
+.box-title{font-weight:700;font-size:15px;margin-bottom:6px}
+.box-text{font-size:15px;line-height:1.75;color:var(--text2)}
+.box-text ul{margin:7px 0 0 18px}.box-text li{margin-bottom:5px}
+.box-text strong{color:var(--navy)}
+.box-text code{background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.15);
+  border-radius:4px;padding:2px 7px;font-family:'Fira Code',monospace;font-size:13px;color:var(--purple)}
+.box.info{background:var(--blueXL);border:1px solid rgba(0,102,255,.18)}.box.info .box-title{color:var(--blue)}
+.box.warn{background:var(--amberL);border:1px solid rgba(255,140,0,.2)}.box.warn .box-title{color:var(--amber)}
+.box.ok{background:var(--greenL);border:1px solid rgba(0,166,126,.2)}.box.ok .box-title{color:var(--green)}
+.box.err{background:var(--redL);border:1px solid rgba(224,41,74,.18)}.box.err .box-title{color:var(--red)}
+.box.purple{background:var(--purpleL);border:1px solid rgba(124,58,237,.2)}.box.purple .box-title{color:var(--purple)}
+.box.bonus{background:linear-gradient(135deg,var(--amberL),#FFF8EC);border:1px dashed rgba(255,140,0,.4)}.box.bonus .box-title{color:var(--amber)}
+
+/* TABLES */
+.tbl-wrap{overflow-x:auto;margin:18px 0;border-radius:var(--r2);box-shadow:var(--shadow);border:1px solid var(--border)}
+table.t{width:100%;border-collapse:collapse;font-size:15px;background:var(--white)}
+table.t thead tr{background:var(--navy)}
+table.t thead th{padding:13px 16px;text-align:left;color:#fff;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em}
+table.t thead th:first-child{border-radius:var(--r2) 0 0 0}table.t thead th:last-child{border-radius:0 var(--r2) 0 0}
+table.t tbody tr{border-bottom:1px solid var(--border);transition:background .15s}
+table.t tbody tr:hover{background:var(--purpleL)}
+table.t td{padding:12px 16px;color:var(--text2);vertical-align:top;font-size:15px}
+table.t td.ctr{text-align:center}
+
+/* WRAP MODE VISUAL DEMO */
+.wrap-demo{background:var(--navy);border-radius:var(--r2);overflow:hidden;margin:20px 0;box-shadow:var(--shadowM)}
+.wd-bar{background:rgba(255,255,255,.06);padding:10px 16px;border-bottom:1px solid rgba(255,255,255,.08);
+  font-family:'Fira Code',monospace;font-size:11px;color:rgba(255,255,255,.4);display:flex;gap:7px;align-items:center}
+.wd-dot{width:10px;height:10px;border-radius:50%}
+.wd-body{padding:18px 20px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.wd-item{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--r);padding:13px}
+.wd-img{width:100%;height:52px;background:linear-gradient(135deg,rgba(124,58,237,.3),rgba(0,102,255,.2));
+  border-radius:6px;margin-bottom:8px;display:flex;align-items:center;justify-content:center;
+  font-size:20px;border:1px dashed rgba(255,255,255,.15)}
+.wd-label{font-family:'Fira Code',monospace;font-size:10px;font-weight:700;color:var(--cyan);
+  text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px}
+.wd-desc{font-size:11px;color:rgba(255,255,255,.5);line-height:1.4}
+
+/* SHAPES GRID */
+.shapes-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:18px 0}
+.shape-item{background:var(--white);border:1px solid var(--border);border-radius:var(--r);
+  padding:14px 8px;text-align:center;transition:all .2s}
+.shape-item:hover{border-color:rgba(124,58,237,.3);box-shadow:var(--shadow);transform:translateY(-2px)}
+.shape-ico{font-size:28px;margin-bottom:6px}
+.shape-name{font-size:11.5px;color:var(--text2);font-weight:600;line-height:1.3}
+.shape-cat{font-size:10px;color:var(--muted);font-family:'Fira Code',monospace;margin-top:2px}
+
+/* IMAGE TOOLS DIAGRAM */
+.img-tools{background:var(--white);border:1px solid var(--border);border-radius:var(--r2);
+  overflow:hidden;margin:20px 0;box-shadow:var(--shadow)}
+.it-header{background:var(--navy);padding:12px 18px;display:flex;align-items:center;gap:10px;
+  font-family:'Fira Code',monospace;font-size:11px;color:rgba(255,255,255,.4)}
+.it-body{padding:16px 18px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.it-zone{border-radius:var(--r);padding:12px 15px}
+.itz1{background:var(--purpleL);border:1px solid rgba(124,58,237,.2)}
+.itz2{background:var(--blueXL);border:1px solid rgba(0,102,255,.15)}
+.itz3{background:var(--greenL);border:1px solid rgba(0,166,126,.15)}
+.itz4{background:var(--amberL);border:1px solid rgba(255,140,0,.15)}
+.it-label{font-family:'Fira Code',monospace;font-size:10px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px}
+.itz1 .it-label{color:var(--purple)}
+.itz2 .it-label{color:var(--blue)}
+.itz3 .it-label{color:var(--green)}
+.itz4 .it-label{color:var(--amber)}
+.it-items{font-size:13px;color:var(--text2);line-height:1.8}
+
+/* SMARTART DEMO */
+.sa-demo{background:var(--white);border:1px solid var(--border);border-radius:var(--r2);
+  padding:20px 24px;margin:18px 0;box-shadow:var(--shadow)}
+.sa-flow{display:flex;align-items:center;gap:0;flex-wrap:nowrap;overflow-x:auto}
+.sa-node{
+  background:linear-gradient(135deg,var(--purple),var(--blue));
+  color:#fff;border-radius:var(--r);padding:10px 14px;
+  font-size:12.5px;font-weight:700;text-align:center;flex-shrink:0;min-width:100px;
+  box-shadow:0 3px 10px rgba(124,58,237,.25);
+}
+.sa-arrow{color:var(--muted);font-size:20px;padding:0 6px;flex-shrink:0}
+.sa-org{display:grid;gap:8px;margin-top:16px}
+.sa-org-row{display:flex;justify-content:center;gap:10px}
+.sa-org-box{background:var(--purpleL);border:1px solid rgba(124,58,237,.2);border-radius:8px;
+  padding:8px 14px;font-size:12.5px;font-weight:600;color:var(--purple);text-align:center;min-width:90px}
+.sa-org-box.root{background:var(--navy);color:#fff;border-color:var(--navy);min-width:130px}
+.sa-connector{width:1px;height:16px;background:var(--border);margin:0 auto}
+.sa-hconn{display:flex;justify-content:center;gap:10px}
+.sa-hconn-line{flex:1;height:1px;background:var(--border);margin-top:8px}
+
+/* COMPETENCES */
+.comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin:22px 0}
+.comp-item{background:var(--white);border:1px solid var(--border);border-radius:var(--r);
+  padding:14px 16px;display:flex;align-items:flex-start;gap:12px;transition:all .2s}
+.comp-item:hover{border-color:rgba(124,58,237,.3);box-shadow:0 4px 16px rgba(124,58,237,.08)}
+.comp-bullet{width:24px;height:24px;border-radius:6px;flex-shrink:0;margin-top:1px;
+  background:linear-gradient(135deg,var(--green),#00C49A);display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff}
+.comp-txt{font-size:14.5px;color:var(--text2);line-height:1.45}
+
+/* EXERCISES */
+.ex-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r2);
+  overflow:hidden;margin:30px 0;box-shadow:var(--shadow);transition:box-shadow .25s,border-color .25s}
+.ex-card:hover{box-shadow:var(--shadowM);border-color:rgba(124,58,237,.2)}
+.ex-head{padding:18px 22px;background:var(--navy);display:flex;align-items:center;gap:14px}
+.ex-num{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--purple),var(--blue));
+  display:flex;align-items:center;justify-content:center;font-weight:900;font-size:19px;color:#fff;
+  flex-shrink:0;box-shadow:0 4px 12px rgba(124,58,237,.4)}
+.ex-info{flex:1}
+.ex-title{font-weight:800;font-size:17px;color:#fff}
+.ex-meta{font-size:12px;color:rgba(255,255,255,.55);margin-top:3px;font-family:'Fira Code',monospace}
+.ex-body{padding:24px 26px}
+.ex-goal{background:var(--amberL);border-left:3px solid var(--amber);border-radius:0 var(--r) var(--r) 0;
+  padding:13px 17px;margin-bottom:22px;font-size:15px;color:var(--text2)}
+.ex-goal strong{color:var(--amber);font-weight:700}
+.steps{list-style:none;padding:0}
+.step{display:flex;gap:15px;margin-bottom:16px;align-items:flex-start}
+.step-n{width:30px;height:30px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--purple),var(--blue));
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:#fff;
+  box-shadow:0 3px 8px rgba(124,58,237,.25)}
+.step-t{font-size:15px;color:var(--text2);line-height:1.75;padding-top:4px}
+.step-t strong{color:var(--navy);font-weight:700}
+.step-t code{background:var(--purpleL);border:1px solid rgba(124,58,237,.15);border-radius:5px;
+  padding:2px 7px;font-family:'Fira Code',monospace;font-size:13px;color:var(--purple)}
+.tip{background:var(--greenL);border:1px solid rgba(0,166,126,.2);border-radius:var(--r);
+  padding:12px 16px;margin-top:15px;font-size:14.5px;color:var(--text2)}
+.tip strong{color:var(--green)}
+.reto{background:var(--blueXL);border:1px solid rgba(0,102,255,.2);border-radius:var(--r);
+  padding:12px 16px;margin-top:10px;font-size:14.5px;color:var(--text2)}
+.reto::before{content:'⚡ Variante RETO: ';font-weight:700;color:var(--blue)}
+.bonus-hint{background:var(--blueXL);border:1px dashed rgba(0,102,255,.3);border-radius:var(--r);
+  padding:12px 16px;margin-top:10px;font-size:14.5px;color:var(--text2)}
+.bonus-hint::before{content:'⭐ BONUS (solo M365 + Copilot): ';font-weight:700;color:var(--blue)}
+
+/* NOTE ARCHIVO */
+.note-archivo{background:#FFFBEB;border:2px solid #F59E0B;border-radius:var(--r);
+  padding:13px 16px;margin-top:14px;display:flex;align-items:flex-start;gap:12px}
+.note-archivo .na-ico{font-size:20px;flex-shrink:0;margin-top:1px}
+.note-archivo .na-body{font-size:13.5px;color:var(--text2);line-height:1.6}
+.note-archivo .na-body strong{color:#B45309}
+.note-archivo .na-body code{background:rgba(180,83,9,.1);border:1px solid rgba(180,83,9,.2);
+  border-radius:4px;padding:2px 7px;font-family:'Fira Code',monospace;font-size:12px;color:#92400E}
+
+/* MARK COMPLETE */
+.mark-complete{margin:36px 0 8px;display:flex;align-items:center;justify-content:center}
+.btn-complete{display:inline-flex;align-items:center;gap:10px;
+  background:var(--purpleL);border:2px solid rgba(124,58,237,.2);
+  color:var(--purple);font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;
+  padding:12px 24px;border-radius:10px;cursor:pointer;transition:all .25s;box-shadow:var(--shadow)}
+.btn-complete:hover{background:var(--purple);color:#fff;border-color:var(--purple);
+  box-shadow:0 4px 20px rgba(124,58,237,.3);transform:translateY(-1px)}
+.btn-complete.done{background:var(--greenL);border-color:rgba(0,166,126,.3);color:var(--green);
+  cursor:default;transform:none!important;box-shadow:none!important}
+
+/* EXAM */
+#examen{background:var(--navy)}
+.exam-hero{padding:52px 64px 28px;border-bottom:1px solid rgba(255,255,255,.08);text-align:center;
+  position:relative;overflow:hidden;
+  background:radial-gradient(ellipse 70% 60% at 20% 50%,rgba(124,58,237,.12) 0%,transparent 70%),
+    radial-gradient(ellipse 50% 50% at 80% 50%,rgba(0,102,255,.08) 0%,transparent 70%)}
+.exam-hero::after{content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Ccircle cx='20' cy='20' r='1' fill='white' fill-opacity='.05'/%3E%3C/svg%3E");
+  background-size:40px 40px}
+.exam-hero h2{font-size:36px;font-weight:900;color:#fff;margin-bottom:8px;position:relative;z-index:1}
+.exam-hero p{font-size:15px;color:rgba(255,255,255,.5);margin-bottom:20px;position:relative;z-index:1}
+.exam-stats{display:flex;justify-content:center;gap:32px;position:relative;z-index:1}
+.es-v{font-family:'Fira Code',monospace;font-size:30px;font-weight:700;color:var(--amber)}
+.es-l{font-size:11px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.08em}
+.exam-body{padding:32px 64px 48px}
+.exam-note{background:rgba(255,140,0,.1);border:1px solid rgba(255,140,0,.25);border-radius:var(--r);
+  padding:13px 17px;margin-bottom:24px;font-size:14px;color:rgba(255,255,255,.65);display:flex;align-items:center;gap:8px}
+.sec-div{font-family:'Fira Code',monospace;font-size:12px;font-weight:700;color:var(--cyan);
+  text-transform:uppercase;letter-spacing:.12em;padding:10px 0;border-bottom:1px solid rgba(0,194,224,.2);
+  margin:28px 0 18px;display:flex;align-items:center;gap:10px}
+.sec-div-badge{background:rgba(0,194,224,.12);border:1px solid rgba(0,194,224,.2);border-radius:5px;padding:2px 8px;font-size:11px;color:var(--cyan)}
+.q-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:var(--r2);
+  padding:22px 24px;margin-bottom:13px;transition:border-color .2s}
+.q-card:hover{border-color:rgba(124,58,237,.3)}
+.q-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:16px}
+.q-num{width:34px;height:34px;border-radius:50%;flex-shrink:0;background:rgba(124,58,237,.2);
+  border:1px solid rgba(124,58,237,.35);display:flex;align-items:center;justify-content:center;
+  font-family:'Fira Code',monospace;font-size:13px;font-weight:700;color:#c4b5fd}
+.q-meta{flex:1}
+.q-type{font-size:10px;font-weight:700;color:var(--amber);text-transform:uppercase;letter-spacing:.1em;margin-bottom:5px;font-family:'Fira Code',monospace}
+.q-text{font-size:15.5px;color:#fff;line-height:1.65;font-weight:500}
+.opts{display:flex;flex-direction:column;gap:8px;margin-left:48px}
+.opt{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  border-radius:var(--r);padding:12px 16px;cursor:pointer;transition:all .18s;user-select:none}
+.opt:hover{background:rgba(124,58,237,.1);border-color:rgba(124,58,237,.3)}
+.opt.sel{background:rgba(124,58,237,.15);border-color:rgba(124,58,237,.4)}
+.opt.ok{background:rgba(0,166,126,.12);border-color:rgba(0,166,126,.35)}
+.opt.bad{background:rgba(224,41,74,.08);border-color:rgba(224,41,74,.3)}
+.opt-l{width:26px;height:26px;border-radius:50%;flex-shrink:0;background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;
+  font-family:'Fira Code',monospace;font-size:12px;font-weight:700;color:rgba(255,255,255,.5)}
+.opt.ok .opt-l{background:var(--green);color:#fff;border-color:var(--green)}
+.opt.bad .opt-l{background:var(--red);color:#fff;border-color:var(--red)}
+.opt-t{font-size:14.5px;color:rgba(255,255,255,.8)}
+.tf-row{display:flex;gap:10px;margin-left:48px}
+.tf{flex:1;padding:14px;border-radius:var(--r);text-align:center;background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.09);cursor:pointer;font-size:15px;font-weight:700;
+  color:rgba(255,255,255,.55);transition:all .18s;user-select:none}
+.tf:hover{border-color:rgba(124,58,237,.3)}
+.tf.sel{border-color:var(--purple);background:rgba(124,58,237,.15);color:#fff}
+.tf.ok{border-color:var(--green);background:rgba(0,166,126,.12);color:var(--green)}
+.tf.bad{border-color:var(--red);background:rgba(224,41,74,.08);color:#ff8fa0}
+.fb{margin-left:48px;margin-top:10px;padding:10px 14px;border-radius:8px;font-size:14px;display:none}
+.fb.vis{display:block}
+.fb.ok{background:rgba(0,166,126,.1);border:1px solid rgba(0,166,126,.25);color:#52d9a9}
+.fb.bad{background:rgba(224,41,74,.08);border:1px solid rgba(224,41,74,.2);color:#ff8fa0}
+.sa{margin-left:48px;margin-top:9px}
+.sa textarea{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+  border-radius:var(--r);padding:12px 15px;color:#fff;font-family:'Outfit',sans-serif;
+  font-size:15px;line-height:1.65;resize:vertical;min-height:80px;outline:none;transition:border-color .2s}
+.sa textarea:focus{border-color:rgba(124,58,237,.45)}
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-left:48px}
+.match-col-h{font-size:11px;font-weight:700;color:rgba(255,255,255,.35);text-transform:uppercase;
+  letter-spacing:.08em;margin-bottom:8px;font-family:'Fira Code',monospace}
+.match-i{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--r);
+  padding:10px 14px;font-size:14px;color:rgba(255,255,255,.75);margin-bottom:6px;cursor:pointer;transition:all .18s}
+.match-i:hover{border-color:rgba(124,58,237,.3)}
+.match-i.sel{border-color:var(--amber);background:rgba(255,140,0,.08)}
+.match-i.done{border-color:var(--green);background:rgba(0,166,126,.08);color:#52d9a9}
+.exam-cta{text-align:center;padding:28px 64px 44px;border-top:1px solid rgba(255,255,255,.07)}
+.btn-grade{background:linear-gradient(135deg,var(--purple),var(--blue));color:#fff;
+  font-family:'Outfit',sans-serif;font-size:16px;font-weight:800;letter-spacing:.04em;
+  text-transform:uppercase;padding:16px 52px;border:none;border-radius:30px;cursor:pointer;
+  transition:all .22s;box-shadow:0 4px 20px rgba(124,58,237,.35)}
+.btn-grade:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(124,58,237,.45)}
+.score-box{display:none;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);
+  border-radius:var(--r2);padding:28px;margin-top:22px}
+.score-box.vis{display:block}
+.score-big{font-family:'Fira Code',monospace;font-size:60px;font-weight:700;color:var(--amber)}
+.score-msg{font-size:15px;color:rgba(255,255,255,.5);margin-top:5px}
+
+/* RUBRIC */
+.rub{width:100%;border-collapse:collapse;font-size:14.5px;margin:16px 0;border-radius:var(--r2);overflow:hidden;box-shadow:var(--shadow)}
+.rub thead{background:var(--navy)}
+.rub th{padding:11px 13px;text-align:left;color:#fff;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.rub td{padding:11px 13px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top}
+.rub tr:nth-child(even){background:var(--purpleL)}
+.rub tr:last-child td{background:rgba(124,58,237,.08);font-weight:700;color:var(--purple)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .55s,transform .55s}
+.reveal.shown{opacity:1;transform:none}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  :root{--sidebar:0px}
+  #sidebar{display:none}#main{margin-left:0}
+  .hero-right-card{display:none}#hero{padding:40px 24px;min-height:auto}
+  .sec{padding:40px 24px}
+  .comp-grid,.shapes-grid{grid-template-columns:1fr 1fr}
+  .wd-body,.it-body{grid-template-columns:1fr}
+  .exam-body,.exam-cta,.exam-hero{padding-left:24px;padding-right:24px}
+  .opts,.tf-row,.fb,.sa,.match-grid{margin-left:0}
+  .match-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div id="pbar"></div>
+
+<!-- ═══ SIDEBAR ════════════════════════════════════════════ -->
+<nav id="sidebar">
+  <div class="sb-top">
+    <div class="sb-brand">
+      <div class="sb-icon">🖼️</div>
+      <div>
+        <div class="sb-brand-txt">Microsoft Word 2026</div>
+        <div class="sb-brand-sub">Curso autogestivo · Parte 1 de 2</div>
+      </div>
+    </div>
+    <div class="sb-chip">
+      <div class="sb-chip-num">MOD_05 // SEM_05</div>
+      <div class="sb-chip-name">Imágenes, Formas y Elementos Gráficos</div>
+      <div class="sb-chip-week">📅 11–15 de mayo de 2026 · 20 horas</div>
+    </div>
+  </div>
+
+  <div class="nav-group">Contenido</div>
+  <a href="#hero"      class="nav-link on"><span class="nav-icon">🏠</span><div class="nav-txt">Portada<div class="nav-sub">Inicio del módulo</div></div></a>
+  <a href="#intro"     class="nav-link"><span class="nav-icon">🎯</span><div class="nav-txt">Introducción<div class="nav-sub">Mapa y competencias</div></div></a>
+  <a href="#tema1"     class="nav-link"><span class="nav-icon">🖼️</span><div class="nav-txt">Tema 1 · Insertar imágenes<div class="nav-sub">Desde archivo, web y pantalla</div></div></a>
+  <a href="#tema2"     class="nav-link"><span class="nav-icon">✂️</span><div class="nav-txt">Tema 2 · Herramientas de imagen<div class="nav-sub">Recortar, ajustar, quitar fondo</div></div></a>
+  <a href="#tema3"     class="nav-link"><span class="nav-icon">🔀</span><div class="nav-txt">Tema 3 · Ajuste del texto<div class="nav-sub">Disposición alrededor de imágenes</div></div></a>
+  <a href="#tema4"     class="nav-link"><span class="nav-icon">⬟</span><div class="nav-txt">Tema 4 · Formas<div class="nav-sub">Galería, efectos y formato</div></div></a>
+  <a href="#tema5"     class="nav-link"><span class="nav-icon">🧩</span><div class="nav-txt">Tema 5 · SmartArt<div class="nav-sub">Organigramas y procesos</div></div></a>
+  <a href="#tema6"     class="nav-link"><span class="nav-icon">W</span><div class="nav-txt">Tema 6 · WordArt<div class="nav-sub">Encabezados especiales</div></div></a>
+  <a href="#tema7"     class="nav-link"><span class="nav-icon">☐</span><div class="nav-txt">Tema 7 · Cuadros de texto<div class="nav-sub">Posicionamiento preciso</div></div></a>
+
+  <div class="nav-group">Evaluación</div>
+  <a href="#ejercicios" class="nav-link"><span class="nav-icon">✏️</span><div class="nav-txt">Ejercicios paso a paso<div class="nav-sub">5 ejercicios prácticos</div></div></a>
+  <a href="#examen"    class="nav-link"><span class="nav-icon">📝</span><div class="nav-txt">Examen interactivo<div class="nav-sub">20 reactivos</div></div></a>
+  <a href="#actividad" class="nav-link"><span class="nav-icon">🏆</span><div class="nav-txt">Actividad integradora<div class="nav-sub">Proyecto + rúbrica</div></div></a>
+
+  <div class="sb-foot">
+    <div class="prog-row">Progreso del curso <span>38%</span></div>
+    <div class="prog-track"><div class="prog-fill"></div></div>
+    <div class="prog-note">Módulo 5 de 13 · Parte 1 de 2</div>
+  </div>
+</nav>
+
+<!-- ═══ MAIN ════════════════════════════════════════════════ -->
+<main id="main">
+
+<!-- ─── HERO ─────────────────────────────────────────────── -->
+<section id="hero">
+  <svg class="hero-circuit" viewBox="0 0 480 480" fill="none">
+    <line x1="400" y1="0"   x2="400" y2="110" stroke="#7C3AED" stroke-width="1.5" stroke-opacity=".12"/>
+    <line x1="400" y1="110" x2="310" y2="110" stroke="#7C3AED" stroke-width="1.5" stroke-opacity=".12"/>
+    <line x1="310" y1="110" x2="310" y2="220" stroke="#7C3AED" stroke-width="1.5" stroke-opacity=".12"/>
+    <line x1="310" y1="220" x2="450" y2="220" stroke="#7C3AED" stroke-width="1.5" stroke-opacity=".12"/>
+    <line x1="360" y1="0"   x2="360" y2="70"  stroke="#0066FF" stroke-width="1"   stroke-opacity=".09"/>
+    <line x1="360" y1="70"  x2="270" y2="70"  stroke="#0066FF" stroke-width="1"   stroke-opacity=".09"/>
+    <line x1="270" y1="70"  x2="270" y2="170" stroke="#0066FF" stroke-width="1"   stroke-opacity=".09"/>
+    <circle cx="400" cy="110" r="5"   fill="none" stroke="#7C3AED" stroke-width="1.5" stroke-opacity=".25"/>
+    <circle cx="310" cy="110" r="3.5" fill="#7C3AED" fill-opacity=".2"/>
+    <circle cx="310" cy="220" r="5"   fill="none" stroke="#7C3AED" stroke-width="1.5" stroke-opacity=".25"/>
+    <circle cx="360" cy="70"  r="3.5" fill="#0066FF" fill-opacity=".18"/>
+    <!-- Image frame deco -->
+    <rect x="300" y="270" width="90" height="70" rx="6" fill="none" stroke="#7C3AED" stroke-width="1" stroke-opacity=".12"/>
+    <rect x="300" y="270" width="90" height="22" rx="6" fill="#7C3AED" fill-opacity=".07"/>
+    <!-- mountain shape inside frame -->
+    <polygon points="315,328 335,295 355,315 370,302 385,328" fill="none" stroke="#7C3AED" stroke-width="1" stroke-opacity=".1"/>
+    <circle cx="372" cy="285" r="6" fill="none" stroke="#0066FF" stroke-width="1" stroke-opacity=".12"/>
+    <!-- shapes deco -->
+    <rect x="310" y="370" width="30" height="30" rx="4" fill="none" stroke="#7C3AED" stroke-width="1" stroke-opacity=".1"/>
+    <circle cx="365" cy="385" r="15" fill="none" stroke="#0066FF" stroke-width="1" stroke-opacity=".1"/>
+    <polygon points="400,368 415,395 385,395" fill="none" stroke="#00C2E0" stroke-width="1" stroke-opacity=".1"/>
+    <circle cx="380" cy="430" r="2" fill="#FF8C00" fill-opacity=".3"/>
+    <circle cx="420" cy="445" r="2" fill="#7C3AED" fill-opacity=".3"/>
+    <line x1="380" y1="430" x2="420" y2="445" stroke="#7C3AED" stroke-width=".8" stroke-opacity=".1"/>
+  </svg>
+
+  <div class="hero-left">
+    <div class="eyebrow">
+      <span class="eyebrow-pulse"></span>
+      MOD_05 · SEM_05 · 11–15 MAY 2026
+    </div>
+    <h1 class="hero-title">
+      <span class="accent">Imágenes,</span><br>
+      Formas y<br>
+      Elementos Gráficos
+    </h1>
+    <p class="hero-desc">
+      Inserta, edita y posiciona imágenes con precisión. Crea organigramas con SmartArt, diseña con formas y cuadros de texto. Compatible con <strong>cualquier versión desde Word 2016</strong>.
+    </p>
+  </div>
+
+  <div class="hero-right-card">
+    <div class="compat-card">
+      <div class="compat-hd">Compatibilidad</div>
+      <div class="compat-row"><div class="compat-ok">✓</div><div class="compat-name">Word 2016</div><span class="compat-tag all">100%</span></div>
+      <div class="compat-row"><div class="compat-ok">✓</div><div class="compat-name">Word 2019</div><span class="compat-tag all">100%</span></div>
+      <div class="compat-row"><div class="compat-ok">✓</div><div class="compat-name">Word 2021</div><span class="compat-tag all">100%</span></div>
+      <div class="compat-row"><div class="compat-ok">✓</div><div class="compat-name">Microsoft 365</div><span class="compat-tag all">100%</span></div>
+      <div class="compat-row"><div class="compat-ok star">⭐</div><div class="compat-name">365 + Copilot</div><span class="compat-tag bonus">+ Bonus</span></div>
+      <div class="compat-row"><div class="compat-ok">✓</div><div class="compat-name">Windows 7/10/11</div><span class="compat-tag all">100%</span></div>
+    </div>
+    <div style="margin-top:10px;background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:12px 14px;box-shadow:var(--shadow);display:flex;align-items:center;gap:10px">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="6" fill="#F5F0FF"/>
+        <rect x="5" y="7" width="22" height="18" rx="2" fill="none" stroke="#7C3AED" stroke-width="1.2" stroke-opacity=".6"/>
+        <rect x="5" y="7" width="22" height="7" rx="2" fill="#7C3AED" fill-opacity=".1"/>
+        <polygon points="9,22 14,14 19,19 22,16 27,22" fill="none" stroke="#7C3AED" stroke-width="1" stroke-opacity=".4"/>
+        <circle cx="23" cy="13" r="3" fill="none" stroke="#0066FF" stroke-width="1" stroke-opacity=".5"/>
+      </svg>
+      <div>
+        <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-family:'Fira Code',monospace">Semana 5 de 7</div>
+        <div style="font-size:12px;font-weight:700;color:var(--navy)">11–15 de mayo, 2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── INTRODUCCIÓN ──────────────────────────────────────── -->
+<section id="intro" class="sec alt reveal">
+  <div class="sec-kicker">Punto de partida</div>
+  <h2 class="sec-h">Introducción y Encuadre</h2>
+  <p class="sec-sub">Los elementos visuales transforman un documento de texto en una comunicación completa y profesional.</p>
+
+  <div class="box purple">
+    <div class="box-ico">🖼️</div>
+    <div class="box-body">
+      <div class="box-title">¿Por qué importan los elementos gráficos?</div>
+      <div class="box-text">Un documento con elementos visuales bien integrados comunica más rápido y con mayor claridad que uno de solo texto. Las imágenes ilustran conceptos, las formas organizan información visualmente, los SmartArt muestran jerarquías y procesos, y los cuadros de texto permiten posicionar contenido con precisión milimétrica. Dominarlos transforma la calidad de cualquier material didáctico, constancia o informe. Todo el contenido funciona con <strong>cualquier versión de Word desde 2016</strong>.</div>
+    </div>
+  </div>
+
+  <h2 class="t2">Mapa conceptual del Módulo 5</h2>
+  <div class="tbl-wrap">
+  <table class="t">
+    <thead><tr><th>Tema</th><th>Contenido principal</th></tr></thead>
+    <tbody>
+      <tr><td><strong>1. Insertar imágenes</strong></td><td>Desde archivo, desde la web, capturas de pantalla e íconos</td></tr>
+      <tr><td><strong>2. Herramientas de imagen</strong></td><td>Recortar, ajustar brillo/contraste, quitar fondo, efectos artísticos</td></tr>
+      <tr><td><strong>3. Ajuste del texto</strong></td><td>En línea, cuadrado, estrecho, transparente, detrás/delante del texto</td></tr>
+      <tr><td><strong>4. Formas</strong></td><td>Galería completa, formato, efectos, combinar y agrupar formas</td></tr>
+      <tr><td><strong>5. SmartArt</strong></td><td>Organigramas, diagramas de proceso, ciclos y jerarquías</td></tr>
+      <tr><td><strong>6. WordArt</strong></td><td>Texto artístico para encabezados, diplomas y constancias</td></tr>
+      <tr><td><strong>7. Cuadros de texto</strong></td><td>Posicionamiento preciso de contenido, vinculación y formato</td></tr>
+      <tr><td><strong>Práctica + Examen</strong></td><td>5 ejercicios prácticos + examen de 20 reactivos</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 class="t2">Competencias que desarrollarás</h2>
+  <div class="comp-grid">
+    <div class="comp-item"><div class="comp-bullet">✓</div><div class="comp-txt">Insertarás imágenes desde múltiples fuentes y las integrarás en documentos</div></div>
+    <div class="comp-item"><div class="comp-bullet">✓</div><div class="comp-txt">Editarás imágenes: recorte, brillo, contraste y eliminación de fondo</div></div>
+    <div class="comp-item"><div class="comp-bullet">✓</div><div class="comp-txt">Controlarás la disposición del texto alrededor de cualquier imagen</div></div>
+    <div class="comp-item"><div class="comp-bullet">✓</div><div class="comp-txt">Crearás y formatearás formas con efectos visuales profesionales</div></div>
+    <div class="comp-item"><div class="comp-bullet">✓</div><div class="comp-txt">Diseñarás organigramas y diagramas de proceso con SmartArt</div></div>
+    <div class="comp-item"><div class="comp-bullet">✓</div><div class="comp-txt">Aplicarás WordArt para encabezados decorativos en constancias y diplomas</div></div>
+    <div class="comp-item"><div class="comp-bullet">✓</div><div class="comp-txt">Usarás cuadros de texto para posicionamiento preciso de contenido</div></div>
+    <div class="comp-item"><div class="comp-bullet">✓</div><div class="comp-txt">Agruparás y alinearás múltiples elementos para composiciones coherentes</div></div>
+  </div>
+
+  <div class="box warn">
+    <div class="box-ico">🤔</div>
+    <div class="box-body">
+      <div class="box-title">Pregunta detonadora</div>
+      <div class="box-text"><em>¿Has intentado alguna vez mover una imagen en Word y el texto se desordena por completo? ¿Sabes cómo hacer que una imagen quede exactamente en un punto fijo de la página sin afectar el flujo del texto? Al terminar este módulo dominarás el comportamiento de cada elemento gráfico con total precisión.</em></div>
+    </div>
+  </div>
+
+  <div class="box ok">
+    <div class="box-ico">📌</div>
+    <div class="box-body">
+      <div class="box-title">Instrucciones de navegación</div>
+      <div class="box-text">
+        <ul>
+          <li>Módulo de la <strong>semana del 11 al 15 de mayo</strong> · 20 horas · ~4 hrs/día.</li>
+          <li>Los Temas 3 (ajuste del texto) y 5 (SmartArt) son los más complejos — práctica es clave.</li>
+          <li>Al terminar cada tema, marca tu avance con el botón <strong>"Marcar como completado"</strong>.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TEMA 1 ──────────────────────────────────────────────── -->
+<section id="tema1" class="sec reveal">
+  <div class="sec-kicker">Tema 1</div>
+  <h2 class="sec-h">Insertar Imágenes</h2>
+  <p class="sec-sub">Desde archivo local, internet, capturas de pantalla e íconos integrados en Word</p>
+
+  <p class="body">Word permite insertar imágenes desde cuatro fuentes principales, cada una con un flujo de trabajo diferente. Todas se encuentran en la pestaña <strong>Insertar → grupo Ilustraciones</strong>. Es importante conocer las diferencias entre ellas para elegir la más eficiente según la situación.</p>
+
+  <h2 class="t2">1.1 Las cuatro fuentes de imágenes</h2>
+  <div class="tbl-wrap">
+  <table class="t">
+    <thead><tr><th>Fuente</th><th>Cómo acceder</th><th>Formatos soportados</th><th>Cuándo usarla</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Desde archivo</strong></td><td><code>Insertar → Imágenes → Este dispositivo</code></td><td>JPG, PNG, GIF, BMP, SVG, TIFF, WEBP</td><td>Cuando tienes la imagen guardada en tu equipo: logotipos, fotos institucionales</td></tr>
+      <tr><td><strong>Desde la web</strong></td><td><code>Insertar → Imágenes → Imágenes en línea</code></td><td>Búsqueda Bing con filtro de uso libre</td><td>Cuando necesitas una imagen ilustrativa y tienes conexión a internet (W2016+)</td></tr>
+      <tr><td><strong>Captura de pantalla</strong></td><td><code>Insertar → Captura de pantalla</code></td><td>Imagen de las ventanas abiertas o recorte personalizado</td><td>Para documentar procedimientos de software o incluir evidencias de trabajo</td></tr>
+      <tr><td><strong>Íconos (SVG)</strong></td><td><code>Insertar → Íconos</code></td><td>SVG vectorial escalable sin pérdida de calidad</td><td>Para decoración limpia y profesional; escalan a cualquier tamaño sin pixelarse (W2019+)</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 class="t2">1.2 Imágenes SVG vs. imágenes de mapa de bits</h2>
+  <p class="body">Existen dos grandes categorías de imágenes en diseño digital, y es fundamental entender la diferencia para usar la correcta:</p>
+  <div class="tbl-wrap">
+  <table class="t">
+    <thead><tr><th>Característica</th><th>Mapa de bits (JPG, PNG, GIF)</th><th>Vectorial (SVG)</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Cómo se forma</strong></td><td>Cuadrícula de píxeles de color</td><td>Fórmulas matemáticas de líneas y curvas</td></tr>
+      <tr><td><strong>Al ampliar</strong></td><td>Se pixela y pierde calidad</td><td>Se mantiene perfectamente nítido</td></tr>
+      <tr><td><strong>Peso del archivo</strong></td><td>Puede ser pesado (fotos: varios MB)</td><td>Muy ligero (íconos: pocos KB)</td></tr>
+      <tr><td><strong>Uso recomendado</strong></td><td>Fotografías, imágenes realistas</td><td>Logotipos, íconos, diagramas, ilustraciones</td></tr>
+      <tr><td><strong>En Word</strong></td><td>Se inserta tal cual; no es editable</td><td>Se puede colorear y editar como forma en W2019+</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 class="t2">1.3 Texto alternativo para accesibilidad</h2>
+  <p class="body">Toda imagen insertada en un documento debe tener un <strong>texto alternativo</strong> (Alt Text). Esto es esencial para la accesibilidad: las personas con discapacidad visual que usan lectores de pantalla escucharán la descripción de la imagen. Para agregar texto alternativo: clic derecho sobre la imagen → <strong>"Modificar texto alternativo..."</strong> → escribe una descripción breve y precisa.</p>
+  <p class="body">El Comprobador de Accesibilidad de Word (<code>Revisar → Comprobar accesibilidad</code>) señalará automáticamente las imágenes sin texto alternativo.</p>
+
+  <div class="mark-complete">
+    <button class="btn-complete" onclick="markDone(this,'t1')" id="mc-t1">
+      <span class="bc-icon">○</span><span class="bc-txt">Marcar como completado</span>
+    </button>
+  </div>
+</section>
+
+<!-- ─── TEMA 2 ──────────────────────────────────────────────── -->
+<section id="tema2" class="sec alt reveal">
+  <div class="sec-kicker">Tema 2</div>
+  <h2 class="sec-h">Herramientas de Imagen</h2>
+  <p class="sec-sub">Recortar, ajustar brillo y contraste, quitar fondo y aplicar efectos artísticos directamente en Word</p>
+
+  <p class="body">Al seleccionar una imagen en Word, aparece la pestaña contextual <strong>Formato de imagen</strong> con un conjunto completo de herramientas de edición. No es necesario salir a Photoshop o Paint para ajustes básicos — Word incluye todo lo necesario para uso profesional en documentos.</p>
+
+  <h2 class="t2">2.1 Panel de herramientas de imagen</h2>
+  <div class="img-tools">
+    <div class="it-header">
+      <div style="width:10px;height:10px;border-radius:50%;background:#ff5f56"></div>
+      <div style="width:10px;height:10px;border-radius:50%;background:#ffbd2e;margin-left:5px"></div>
+      <div style="width:10px;height:10px;border-radius:50%;background:#27c93f;margin-left:5px"></div>
+      <span style="margin-left:10px">Formato de imagen — Herramientas disponibles</span>
+    </div>
+    <div class="it-body">
+      <div class="it-zone itz1">
+        <div class="it-label">Ajustes</div>
+        <div class="it-items">• Brillo y contraste<br>• Nitidez<br>• Color (saturación, tono)<br>• Recolorear (escala de grises, sépia, lavado)<br>• Restablecer imagen</div>
+      </div>
+      <div class="it-zone itz2">
+        <div class="it-label">Estilos de imagen</div>
+        <div class="it-items">• Galería de marcos prediseñados<br>• Borde de imagen<br>• Efectos (sombra, reflejo, iluminado, bisel, rotación 3D)<br>• Diseño de imagen</div>
+      </div>
+      <div class="it-zone itz3">
+        <div class="it-label">Organizar</div>
+        <div class="it-items">• Ajuste del texto (posición)<br>• Traer al frente / Enviar al fondo<br>• Panel de selección<br>• Alinear, agrupar, girar</div>
+      </div>
+      <div class="it-zone itz4">
+        <div class="it-label">Tamaño</div>
+        <div class="it-items">• Recortar (libre, proporcional, forma)<br>• Alto y ancho exactos (cm)<br>• Bloquear relación de aspecto</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="t2">2.2 Recortar imágenes</h2>
+  <p class="body">El botón <strong>Recortar</strong> en la pestaña Formato tiene tres modos muy útiles:</p>
+  <div class="tbl-wrap">
+  <table class="t">
+    <thead><tr><th>Modo de recorte</th><th>Cómo funciona</th><th>Cuándo usarlo</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Recorte libre</strong></td><td>Arrastras los tiradores negros para definir el área a conservar</td><td>Cuando necesitas eliminar partes no deseadas de una foto</td></tr>
+      <tr><td><strong>Recortar a forma</strong></td><td>La imagen se recorta con la silueta de una forma (círculo, estrella, flecha, etc.)</td><td>Para efectos decorativos en constancias, diplomas o materiales didácticos</td></tr>
+      <tr><td><strong>Recortar a relación de aspecto</strong></td><td>Mantiene proporciones fijas (1:1, 16:9, 4:3, etc.)</td><td>Cuando necesitas que todas las imágenes del documento tengan las mismas proporciones</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 class="t2">2.3 Quitar fondo de imagen</h2>
+  <p class="body">La herramienta <strong>Quitar fondo</strong> (pestaña Formato → grupo Ajustar → <code>Quitar fondo</code>) elimina automáticamente el fondo de una imagen, dejando solo el elemento principal. Word usa inteligencia artificial básica para detectar el área a eliminar. Funciona mejor con fondos uniformes y alto contraste con el sujeto principal.</p>
+  <ol class="steps" style="list-style:none;padding:0">
+    <li class="step"><div class="step-n">1</div><div class="step-t">Selecciona la imagen → <code>Formato → Quitar fondo</code>. Word muestra una vista previa con el área a eliminar en magenta.</div></li>
+    <li class="step"><div class="step-n">2</div><div class="step-t">Si la detección no es perfecta, usa <strong>"Marcar las áreas para mantener"</strong> (lápiz verde) y <strong>"Marcar las áreas para quitar"</strong> (lápiz rojo) para corregir.</div></li>
+    <li class="step"><div class="step-n">3</div><div class="step-t">Haz clic en <strong>"Conservar cambios"</strong>. El fondo desaparece y la imagen queda con fondo transparente dentro del documento.</div></li>
+  </ol>
+  <div class="box info">
+    <div class="box-ico">💡</div>
+    <div class="box-body">
+      <div class="box-title">Aplicación práctica: logotipo sin fondo en constancias</div>
+      <div class="box-text">Si tienes el logotipo institucional en formato JPG (con fondo blanco) y necesitas colocarlo sobre un encabezado de color en una constancia, usa "Quitar fondo" para eliminar el fondo blanco. El logotipo quedará con fondo transparente y se integrará limpiamente sobre cualquier color. Para mejor resultado, usa el logotipo en formato PNG transparente si está disponible.</div>
+    </div>
+  </div>
+
+  <h2 class="t2">2.4 Efectos artísticos</h2>
+  <p class="body">Los efectos artísticos (<code>Formato → Efectos artísticos</code>) aplican filtros visuales a la imagen: líneas de lápiz, acuarela, tiza, mosaico, esponja, entre otros. Son útiles para materiales didácticos con un estilo visual particular o para diferenciar imágenes decorativas del contenido informativo.</p>
+
+  <div class="mark-complete">
+    <button class="btn-complete" onclick="markDone(this,'t2')" id="mc-t2">
+      <span class="bc-icon">○</span><span class="bc-txt">Marcar como completado</span>
+    </button>
+  </div>
+</section>
+
+<!-- ─── TEMA 3 ──────────────────────────────────────────────── -->
+<section id="tema3" class="sec reveal">
+  <div class="sec-kicker">Tema 3</div>
+  <h2 class="sec-h">Ajuste del Texto Alrededor de Imágenes</h2>
+  <p class="sec-sub">El tema más importante del módulo: controla exactamente cómo fluye el texto alrededor de cualquier elemento gráfico</p>
+
+  <p class="body">El ajuste del texto es la configuración que define cómo se relaciona la imagen con el texto del documento. Es la razón por la que a veces una imagen "empuja" todo el texto, o por qué parece que la imagen "flota" en el aire sin mover nada. Entender los 6 modos disponibles es fundamental para no tener problemas de diseño en documentos con imágenes.</p>
+
+  <h2 class="t2">3.1 Los 6 modos de ajuste del texto</h2>
+  <div class="wrap-demo">
+    <div class="wd-bar">
+      <div class="wd-dot" style="background:#ff5f56"></div>
+      <div class="wd-dot" style="background:#ffbd2e;margin-left:5px"></div>
+      <div class="wd-dot" style="background:#27c93f;margin-left:5px"></div>
+      <span style="margin-left:10px">Modos de ajuste de texto — Word 2016+</span>
+    </div>
+    <div class="wd-body">
+      <div class="wd-item">
+        <div class="wd-img">📝</div>
+        <div class="wd-label">En línea con el texto</div>
+        <div class="wd-desc">La imagen se comporta como un carácter de texto. El texto fluye antes y después, nunca al lado.</div>
+      </div>
+      <div class="wd-item">
+        <div class="wd-img">⬜</div>
+        <div class="wd-label">Cuadrado</div>
+        <div class="wd-desc">El texto rodea el rectángulo delimitador de la imagen por todos los lados de forma cuadrada.</div>
+      </div>
+      <div class="wd-item">
+        <div class="wd-img">🔀</div>
+        <div class="wd-label">Estrecho</div>
+        <div class="wd-desc">El texto sigue el contorno real de la imagen, no el rectángulo. Ideal para imágenes irregulares.</div>
+      </div>
+      <div class="wd-item">
+        <div class="wd-img">🌊</div>
+        <div class="wd-label">Transparente</div>
+        <div class="wd-desc">Similar a Estrecho pero el texto puede entrar en áreas transparentes de la imagen.</div>
+      </div>
+      <div class="wd-item">
+        <div class="wd-img">⬇️</div>
+        <div class="wd-label">Superior e inferior</div>
+        <div class="wd-desc">El texto aparece solo arriba y abajo de la imagen, nunca a los lados. Imagen ocupa todo el ancho.</div>
+      </div>
+      <div class="wd-item">
+        <div class="wd-img">🖼️</div>
+        <div class="wd-label">Detrás / Delante del texto</div>
+        <div class="wd-desc">La imagen se coloca detrás o delante del texto como en una capa independiente. Uso en marcas de agua o decoraciones.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tbl-wrap">
+  <table class="t">
+    <thead><tr><th>Modo</th><th>Atajo de acceso</th><th>Mejor para</th><th>Cuidado con</th></tr></thead>
+    <tbody>
+      <tr><td><strong>En línea con el texto</strong></td><td>Predeterminado al insertar</td><td>Imágenes que forman parte del flujo del texto (como en un libro de texto)</td><td>No se puede posicionar libremente; mueve el texto como un carácter</td></tr>
+      <tr><td><strong>Cuadrado</strong></td><td>Formato → Ajuste del texto → Cuadrado</td><td>Fotos o imágenes con fondo en documentos tipo revista o boletín</td><td>El espacio en blanco alrededor puede verse artificial con imágenes de forma irregular</td></tr>
+      <tr><td><strong>Estrecho</strong></td><td>Formato → Ajuste del texto → Estrecho</td><td>Imágenes con silueta irregular (PNG con fondo transparente)</td><td>Solo funciona bien con imágenes que tienen un borde bien definido</td></tr>
+      <tr><td><strong>Superior e inferior</strong></td><td>Formato → Ajuste del texto → Superior e inferior</td><td>Imágenes que deben ocupar todo el ancho disponible entre márgenes</td><td>Puede crear demasiado espacio en blanco si la imagen es pequeña</td></tr>
+      <tr><td><strong>Detrás del texto</strong></td><td>Formato → Ajuste del texto → Detrás del texto</td><td>Imágenes decorativas de fondo, marcas de agua personalizadas con imagen</td><td>El texto puede ser ilegible si la imagen tiene mucho detalle o contraste</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 class="t2">3.2 Anclar imágenes a una posición fija</h2>
+  <p class="body">Cuando el modo de ajuste es diferente a "En línea", la imagen tiene un <strong>ancla</strong> (símbolo de ancla 🔒 visible al seleccionarla). El ancla la vincula a un párrafo específico — si ese párrafo se mueve, la imagen lo sigue. Para fijar una imagen a una posición absoluta en la página independientemente del texto: <code>Formato → Posición → Más opciones de diseño → Posición → Fijar posición en la página</code>.</p>
+
+  <div class="mark-complete">
+    <button class="btn-complete" onclick="markDone(this,'t3')" id="mc-t3">
+      <span class="bc-icon">○</span><span class="bc-txt">Marcar como completado</span>
+    </button>
+  </div>
+</section>
+
+<!-- ─── TEMA 4 ──────────────────────────────────────────────── -->
+<section id="tema4" class="sec alt reveal">
+  <div class="sec-kicker">Tema 4</div>
+  <h2 class="sec-h">Formas</h2>
+  <p class="sec-sub">Galería completa, efectos visuales, agrupar y combinar para composiciones profesionales</p>
+
+  <p class="body">Las formas son elementos gráficos vectoriales que puedes insertar, escalar y personalizar completamente. Word incluye más de 180 formas prediseñadas organizadas en categorías. Se acceden desde <code>Insertar → Formas</code>.</p>
+
+  <h2 class="t2">4.1 Galería de formas por categoría</h2>
+  <div class="shapes-grid">
+    <div class="shape-item"><div class="shape-ico">▬</div><div class="shape-name">Líneas y conectores</div><div class="shape-cat">línea, flecha, curva</div></div>
+    <div class="shape-item"><div class="shape-ico">⬜</div><div class="shape-name">Rectángulos</div><div class="shape-cat">simple, redondeado, biselado</div></div>
+    <div class="shape-item"><div class="shape-ico">🔵</div><div class="shape-name">Formas básicas</div><div class="shape-cat">círculo, triángulo, rombo</div></div>
+    <div class="shape-item"><div class="shape-ico">➡️</div><div class="shape-name">Flechas de bloque</div><div class="shape-cat">simple, doble, codo</div></div>
+    <div class="shape-item"><div class="shape-ico">🔷</div><div class="shape-name">Formas de ecuación</div><div class="shape-cat">suma, igual, multiplicar</div></div>
+    <div class="shape-item"><div class="shape-ico">📋</div><div class="shape-name">Diagrama de flujo</div><div class="shape-cat">proceso, decisión, datos</div></div>
+    <div class="shape-item"><div class="shape-ico">⭐</div><div class="shape-name">Estrellas y cintas</div><div class="shape-cat">5-32 puntas, pergamino</div></div>
+    <div class="shape-item"><div class="shape-ico">💬</div><div class="shape-name">Globos de diálogo</div><div class="shape-cat">rectangular, ovalado, nube</div></div>
+    <div class="shape-item"><div class="shape-ico">🔲</div><div class="shape-name">Botones de acción</div><div class="shape-cat">inicio, fin, ayuda, sonido</div></div>
+    <div class="shape-item"><div class="shape-ico">🏷️</div><div class="shape-name">Llamadas</div><div class="shape-cat">con línea, sin línea</div></div>
+  </div>
+
+  <h2 class="t2">4.2 Dar formato a formas</h2>
+  <p class="body">Al seleccionar una forma aparece la pestaña <strong>Formato de forma</strong>. Las opciones de formato son:</p>
+  <div class="tbl-wrap">
+  <table class="t">
+    <thead><tr><th>Elemento</th><th>Opciones disponibles</th><th>Dónde está</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Relleno de forma</strong></td><td>Color sólido, degradado, textura, imagen como relleno, sin relleno</td><td>Formato → Relleno de forma</td></tr>
+      <tr><td><strong>Contorno de forma</strong></td><td>Color, grosor (pt), tipo de línea (sólido, punteado, rayado)</td><td>Formato → Contorno de forma</td></tr>
+      <tr><td><strong>Efectos de forma</strong></td><td>Sombra, reflejo, iluminado, bordes suaves, bisel, rotación 3D</td><td>Formato → Efectos de forma</td></tr>
+      <tr><td><strong>Texto dentro de la forma</strong></td><td>Haz clic en la forma y escribe — la forma actúa como cuadro de texto</td><td>Doble clic sobre la forma</td></tr>
+      <tr><td><strong>Tamaño exacto</strong></td><td>Alto y ancho en centímetros precisos</td><td>Formato → Tamaño (esquina derecha)</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 class="t2">4.3 Agrupar y alinear formas</h2>
+  <p class="body">Cuando creates una composición con múltiples formas, necesitas agruparlas para moverlas y redimensionarlas juntas sin que pierdan su disposición relativa.</p>
+  <div class="tbl-wrap">
+  <table class="t">
+    <thead><tr><th>Operación</th><th>Cómo hacerlo</th><th>Para qué sirve</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Seleccionar múltiples formas</strong></td><td>Mantén Ctrl y haz clic en cada forma, o arrastra un rectángulo de selección sobre ellas</td><td>Seleccionar las formas que quieres agrupar o alinear</td></tr>
+      <tr><td><strong>Agrupar</strong></td><td>Clic derecho → Agrupar → Agrupar (o Formato → Organizar → Agrupar)</td><td>Unir formas como una sola unidad para moverlas/escalarlas juntas</td></tr>
+      <tr><td><strong>Desagrupar</strong></td><td>Clic derecho → Agrupar → Desagrupar</td><td>Separar las formas para editarlas individualmente de nuevo</td></tr>
+      <tr><td><strong>Alinear</strong></td><td>Formato → Organizar → Alinear → elegir alineación</td><td>Alinear izquierda, derecha, arriba, abajo, centrar, distribuir uniformemente</td></tr>
+      <tr><td><strong>Ordenar por capas</strong></td><td>Formato → Traer al frente / Enviar al fondo (u opciones intermedias)</td><td>Controlar qué formas están encima y cuáles debajo cuando se superponen</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="mark-complete">
+    <button class="btn-complete" onclick="markDone(this,'t4')" id="mc-t4">
+      <span class="bc-icon">○</span><span class="bc-txt">Marcar como completado</span>
+    </button>
+  </div>
+</section>
+
+<!-- ─── TEMA 5 ──────────────────────────────────────────────── -->
+<section id="tema5" class="sec reveal">
+  <div class="sec-kicker">Tema 5</div>
+  <h2 class="sec-h">SmartArt</h2>
+  <p class="sec-sub">Organigramas, diagramas de proceso, ciclos y jerarquías con diseño profesional automático</p>
+
+  <p class="body">SmartArt es la herramienta de Word para crear diagramas visuales estructurados de forma automática. A diferencia de construir manualmente con formas, SmartArt gestiona el diseño, el espaciado y los colores de forma inteligente: cuando agregas o eliminas elementos, el diagrama se redimensiona automáticamente.</p>
+
+  <h2 class="t2">5.1 Tipos de diseños SmartArt</h2>
+  <div class="tbl-wrap">
+  <table class="t">
+    <thead><tr><th>Tipo</th><th>Para qué sirve</th><th>Ejemplo de uso en bachillerato</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Lista</strong></td><td>Presentar elementos sin jerarquía fija, con énfasis visual</td><td>Recursos del curso, materiales necesarios para una práctica</td></tr>
+      <tr><td><strong>Proceso</strong></td><td>Mostrar pasos secuenciales de izquierda a derecha</td><td>Proceso de evaluación bimestral, pasos del método científico</td></tr>
+      <tr><td><strong>Ciclo</strong></td><td>Mostrar un proceso continuo sin principio ni fin</td><td>Ciclo del aprendizaje, ciclo de vida de un organismo</td></tr>
+      <tr><td><strong>Jerarquía</strong></td><td>Mostrar relaciones de dependencia o autoridad (organigrama)</td><td>Organigrama del plantel, estructura de la materia</td></tr>
+      <tr><td><strong>Relación</strong></td><td>Mostrar conexiones entre conceptos</td><td>Relación entre temas de una unidad, diagrama de Venn</td></tr>
+      <tr><td><strong>Matriz</strong></td><td>Mostrar cuatro componentes en relación con un centro</td><td>Cuadrante de temas: urgente/importante, conocido/nuevo</td></tr>
+      <tr><td><strong>Pirámide</strong></td><td>Mostrar proporciones o niveles jerárquicos</td><td>Pirámide de Maslow, niveles de desempeño académico</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 class="t2">5.2 Crear un organigrama de la estructura del plantel</h2>
+  <div class="sa-demo">
+    <p style="font-size:11px;font-family:'Fira Code',monospace;color:var(--muted);margin-bottom:14px">// organigrama_ceb617 — SmartArt tipo Jerarquía</p>
+    <div class="sa-org">
+      <div class="sa-org-row">
+        <div class="sa-org-box root">Director del Plantel</div>
+      </div>
+      <div class="sa-connector"></div>
+      <div style="display:flex;justify-content:center;gap:40px">
+        <div style="width:1px;height:1px"></div>
+        <div style="border-top:1px solid var(--border);width:320px;margin-top:0;height:1px"></div>
+        <div style="width:1px;height:1px"></div>
+      </div>
+      <div class="sa-org-row" style="gap:24px">
+        <div class="sa-org-box">Subdirector Académico</div>
+        <div class="sa-org-box">Subdirector Administrativo</div>
+        <div class="sa-org-box">Orientación</div>
+      </div>
+      <div style="display:flex;justify-content:flex-start;gap:24px;padding-left:24px;margin-top:8px">
+        <div>
+          <div class="sa-connector"></div>
+          <div style="display:flex;gap:10px">
+            <div class="sa-org-box" style="min-width:80px;font-size:11px;padding:6px 10px">Coord. Académica</div>
+            <div class="sa-org-box" style="min-width:80px;font-size:11px;padding:6px 10px">Docentes</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="t2">5.3 Cómo crear y editar un SmartArt</h2>
+  <ol class="steps" style="list-style:none;padding:0">
+    <li class="step"><div class="step-n">1</div><div class="step-t">Ve a <code>Insertar → SmartArt</code>. Se abre la galería con todos los tipos disponibles. Selecciona el tipo y el diseño específico → Aceptar.</div></li>
+    <li class="step"><div class="step-n">2</div><div class="step-t">Escribe el texto en el <strong>Panel de texto</strong> (área de viñetas a la izquierda del diagrama). Cada punto de primer nivel es un nodo principal; los sub-puntos (Tab) se convierten en nodos secundarios.</div></li>
+    <li class="step"><div class="step-n">3</div><div class="step-t">Para agregar un nodo del mismo nivel: presiona Enter al final de un ítem. Para agregar un nodo de nivel inferior: presiona Tab. Para subir de nivel: presiona Mayús+Tab.</div></li>
+    <li class="step"><div class="step-n">4</div><div class="step-t">Cambia el estilo visual desde la pestaña <strong>Diseño de SmartArt</strong>: elige un diseño de la galería o cambia los colores con <strong>"Cambiar colores"</strong>. Los estilos de SmartArt aplican efectos 3D, sombras o planos.</div></li>
+    <li class="step"><div class="step-n">5</div><div class="step-t">Para editar una forma individual del SmartArt: haz clic en ella y usa las herramientas de <strong>Formato de forma</strong> para cambiar color, tamaño o efecto de ese nodo específico.</div></li>
+  </ol>
+
+  <div class="box ok">
+    <div class="box-ico">✓</div>
+    <div class="box-body">
+      <div class="box-title">Diagrama de proceso para la planeación bimestral</div>
+      <div class="box-text">
+        <div class="sa-flow" style="margin-top:8px">
+          <div class="sa-node">Diagnóstico</div><div class="sa-arrow">→</div>
+          <div class="sa-node">Planeación</div><div class="sa-arrow">→</div>
+          <div class="sa-node">Ejecución</div><div class="sa-arrow">→</div>
+          <div class="sa-node">Evaluación</div><div class="sa-arrow">→</div>
+          <div class="sa-node">Retroalimentación</div>
+        </div>
+        <p style="font-size:13px;color:var(--text2);margin-top:12px">Este diagrama de proceso se crea con SmartArt tipo <strong>Proceso básico</strong> en menos de 2 minutos. Al cambiar el tema de colores, todos los nodos se actualizan automáticamente.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mark-complete">
+    <button class="btn-complete" onclick="markDone(this,'t5')" id="mc-t5">
+      <span class="bc-icon">○</span><span class="bc-txt">Marcar como completado</span>
+    </button>
+  </div>
+</section>
+
+<!-- ─── TEMA 6 ──────────────────────────────────────────────── -->
+<section id="tema6" class="sec alt reveal">
+  <div class="sec-kicker">Tema 6</div>
+  <h2 class="sec-h">WordArt</h2>
+  <p class="sec-sub">Texto artístico para títulos, constancias, diplomas y materiales de presentación</p>
+
+  <p class="body">WordArt es una herramienta para crear texto con efectos visuales avanzados: degradados, sombras, reflejos, curvas y transformaciones. Se usa principalmente en títulos decorativos, portadas, constancias y diplomas donde el texto necesita un impacto visual mayor que la tipografía estándar.</p>
+
+  <h2 class="t2">6.1 Insertar y personalizar WordArt</h2>
+  <ol class="steps" style="list-style:none;padding:0">
+    <li class="step"><div class="step-n">1</div><div class="step-t">Ve a <code>Insertar → WordArt</code> y selecciona uno de los estilos de la galería (puedes cambiarlo después).</div></li>
+    <li class="step"><div class="step-n">2</div><div class="step-t">Reemplaza el texto de muestra con tu texto. Aplica la fuente y el tamaño que necesites desde el grupo Fuente en la pestaña Inicio.</div></li>
+    <li class="step"><div class="step-n">3</div><div class="step-t">Para dar forma al texto (curvado, en arco, en ola): <code>Formato → Efectos de texto → Transformar</code>. Hay más de 40 transformaciones disponibles.</div></li>
+    <li class="step"><div class="step-n">4</div><div class="step-t">Personaliza el relleno del texto: <code>Formato → Relleno de texto</code> → degradado en los colores institucionales del plantel.</div></li>
+    <li class="step"><div class="step-n">5</div><div class="step-t">Agrega contorno: <code>Formato → Contorno de texto</code>. Y efectos: <code>Formato → Efectos de texto</code> → sombra, reflejo o iluminado.</div></li>
+  </ol>
+
+  <div class="box warn">
+    <div class="box-ico">⚠️</div>
+    <div class="box-body">
+      <div class="box-title">Cuándo NO usar WordArt</div>
+      <div class="box-text">WordArt es decorativo — no es para el cuerpo del texto. Usarlo en párrafos largos dificulta la lectura. Tampoco es apropiado en documentos formales como oficios, actas o informes. Resérvalo para constancias, diplomas, portadas de materiales didácticos o elementos de diseño específicos donde el impacto visual es el objetivo.</div>
+    </div>
+  </div>
+
+  <div class="mark-complete">
+    <button class="btn-complete" onclick="markDone(this,'t6')" id="mc-t6">
+      <span class="bc-icon">○</span><span class="bc-txt">Marcar como completado</span>
+    </button>
+  </div>
+</section>
+
+<!-- ─── TEMA 7 ──────────────────────────────────────────────── -->
+<section id="tema7" class="sec reveal">
+  <div class="sec-kicker">Tema 7</div>
+  <h2 class="sec-h">Cuadros de Texto</h2>
+  <p class="sec-sub">Posicionamiento preciso de contenido en cualquier parte del documento, independientemente del flujo del texto</p>
+
+  <p class="body">Un cuadro de texto es un contenedor que puede colocarse en cualquier posición de la página y contener texto, imágenes u otros elementos. A diferencia del texto normal que fluye de párrafo en párrafo, los cuadros de texto son independientes del flujo del documento — los posicionas exactamente donde los necesitas.</p>
+
+  <h2 class="t2">7.1 Cuándo usar cuadros de texto</h2>
+  <div class="tbl-wrap">
+  <table class="t">
+    <thead><tr><th>Situación</th><th>Por qué usar cuadro de texto</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Leyendas de imágenes</strong></td><td>Posicionar el pie de foto justo debajo de la imagen sin depender del flujo del texto circundante</td></tr>
+      <tr><td><strong>Citas destacadas en boletines</strong></td><td>Colocar una cita o dato importante en el margen o entre columnas de un boletín informativo</td></tr>
+      <tr><td><strong>Datos de firma en constancias</strong></td><td>Posicionar el nombre, cargo y firma en una posición fija, independientemente del texto anterior</td></tr>
+      <tr><td><strong>Información en formularios</strong></td><td>Posicionar campos de texto en posiciones exactas de un formulario que se imprimirá sobre una plantilla</td></tr>
+      <tr><td><strong>Datos del membrete</strong></td><td>Separar el membrete institucional del cuerpo del documento con control preciso de posición</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 class="t2">7.2 Insertar y configurar cuadros de texto</h2>
+  <ol class="steps" style="list-style:none;padding:0">
+    <li class="step"><div class="step-n">1</div><div class="step-t">Ve a <code>Insertar → Cuadro de texto → Dibujar cuadro de texto</code>. El cursor cambia a una cruz — arrastra para definir el tamaño del cuadro.</div></li>
+    <li class="step"><div class="step-n">2</div><div class="step-t">Escribe o pega el contenido dentro del cuadro. Aplica formato al texto normalmente (fuente, tamaño, alineación).</div></li>
+    <li class="step"><div class="step-n">3</div><div class="step-t">Para eliminar el borde y el relleno del cuadro (haciéndolo invisible): <code>Formato → Contorno de forma → Sin contorno</code> y <code>Formato → Relleno de forma → Sin relleno</code>. El texto flotará sin marco visible.</div></li>
+    <li class="step"><div class="step-n">4</div><div class="step-t">Para posición exacta: <code>Formato → Posición → Más opciones de diseño</code>. Ingresa los valores exactos en centímetros desde los márgenes de la página.</div></li>
+  </ol>
+
+  <h2 class="t2">7.3 Vincular cuadros de texto</h2>
+  <p class="body">Cuando el texto en un cuadro de texto no cabe, puedes <strong>vincularlo</strong> con otro cuadro para que el texto fluya automáticamente del primero al segundo. Esto es muy útil en boletines con múltiples columnas de texto en posiciones irregulares. Para vincular: selecciona el primer cuadro → pestaña Formato → <strong>"Crear vínculo"</strong> → haz clic en el segundo cuadro de texto.</p>
+
+  <div class="box bonus">
+    <div class="box-ico">⭐</div>
+    <div class="box-body">
+      <div class="box-title">BONUS — Generar imágenes con IA en Word (solo M365 actualizado)</div>
+      <div class="box-text">Microsoft 365 con las actualizaciones más recientes incluye la capacidad de generar imágenes directamente en Word usando IA (modelo DALL-E integrado). Desde el panel de Copilot, puedes escribir una descripción y obtener una imagen creada desde cero para ilustrar tu documento. Esta función está en etapa de expansión gradual y puede no estar disponible en todas las suscripciones. No se evalúa en el examen de este módulo.</div>
+    </div>
+  </div>
+
+  <div class="mark-complete">
+    <button class="btn-complete" onclick="markDone(this,'t7')" id="mc-t7">
+      <span class="bc-icon">○</span><span class="bc-txt">Marcar como completado</span>
+    </button>
+  </div>
+</section>
+
+<!-- ─── EJERCICIOS ────────────────────────────────────────────── -->
+<section id="ejercicios" class="sec alt reveal">
+  <div class="sec-kicker">Práctica</div>
+  <h2 class="sec-h">Ejercicios Paso a Paso</h2>
+  <p class="sec-sub">5 ejercicios progresivos para dominar elementos gráficos en Word</p>
+
+  <!-- EJ 1 -->
+  <div class="ex-card">
+    <div class="ex-head">
+      <div class="ex-num">1</div>
+      <div class="ex-info">
+        <div class="ex-title">Insertar y editar imágenes en un boletín informativo</div>
+        <div class="ex-meta">level: básico · ~30 min · Word 2016+</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-goal"><strong>Objetivo:</strong> Insertar imágenes desde distintas fuentes, aplicar ajuste de texto correcto y editar brillo, contraste y recorte para crear un boletín informativo de una página.</div>
+      <ol class="steps">
+        <li class="step"><div class="step-n">1</div><div class="step-t">Nuevo documento. Configura: 2 columnas (<code>Disposición → Columnas → Dos</code>), márgenes 2 cm en todos los lados.</div></li>
+        <li class="step"><div class="step-n">2</div><div class="step-t">Escribe un título en la parte superior (combinando las dos columnas) y 3 párrafos de texto de muestra en las columnas.</div></li>
+        <li class="step"><div class="step-n">3</div><div class="step-t">Inserta una imagen desde tu equipo (<code>Insertar → Imágenes → Este dispositivo</code>) o busca una en línea. Ajusta el texto a <strong>"Cuadrado"</strong> y posiciónala entre los párrafos.</div></li>
+        <li class="step"><div class="step-n">4</div><div class="step-t">Selecciona la imagen → <code>Formato → Correcciones</code>: aumenta el brillo al +20% y el contraste al +10%. Después aplica <code>Recortar → Relación de aspecto → 4:3</code>.</div></li>
+        <li class="step"><div class="step-n">5</div><div class="step-t">Inserta un ícono desde la galería de Word (<code>Insertar → Íconos</code>). Cámbialo a color azul navy desde <code>Formato → Relleno de gráfico</code>. Colócalo al inicio del título como decoración.</div></li>
+        <li class="step"><div class="step-n">6</div><div class="step-t">Agrega texto alternativo a ambas imágenes. Exporta a PDF como <code>Prac5Eje1.pdf</code>.</div></li>
+      </ol>
+      <div class="tip"><strong>Resultado esperado:</strong> Boletín de dos columnas con imagen con ajuste de texto cuadrado, brillo y recorte ajustados, e ícono decorativo con color institucional.</div>
+      <div class="note-archivo">
+        <span class="na-ico">📁</span>
+        <div class="na-body"><strong>NOTA:</strong> En este ejercicio SÍ se creará un archivo para subir como actividad.<br>Nomenclatura del archivo: <code>TuNombre_Prac5Eje1.pdf</code></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EJ 2 -->
+  <div class="ex-card">
+    <div class="ex-head">
+      <div class="ex-num">2</div>
+      <div class="ex-info">
+        <div class="ex-title">Diseñar una constancia con WordArt, formas e imagen con fondo eliminado</div>
+        <div class="ex-meta">level: básico-intermedio · ~40 min · Word 2016+</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-goal"><strong>Objetivo:</strong> Crear una constancia de participación profesional combinando WordArt para el título, formas decorativas de borde y una imagen de logotipo con fondo eliminado.</div>
+      <ol class="steps">
+        <li class="step"><div class="step-n">1</div><div class="step-t">Nuevo documento. Márgenes 3 cm en todos lados. Inserta un borde de página: <code>Diseño → Bordes de página</code>, estilo sólido, azul marino, 2.5 pt.</div></li>
+        <li class="step"><div class="step-n">2</div><div class="step-t">Inserta el título con WordArt (<code>Insertar → WordArt</code>): <strong>"CONSTANCIA DE PARTICIPACIÓN"</strong>. Aplica: fuente Arial 28pt, relleno degradado azul→navy, sombra sutil.</div></li>
+        <li class="step"><div class="step-n">3</div><div class="step-t">Inserta una imagen de logotipo (puede ser una imagen de práctica con fondo blanco). Usa <code>Formato → Quitar fondo</code> para eliminar el fondo blanco. Ajuste del texto: <strong>"Delante del texto"</strong>. Posiciónala en la esquina superior izquierda.</div></li>
+        <li class="step"><div class="step-n">4</div><div class="step-t">Agrega dos formas de línea horizontal decorativa debajo del título (<code>Insertar → Formas → Línea</code>), color dorado (#E5A800), grosor 2pt. Agruparlas.</div></li>
+        <li class="step"><div class="step-n">5</div><div class="step-t">Escribe el texto de la constancia con el nombre ficticio del participante, la actividad y la fecha. Aplica formato apropiado con estilos.</div></li>
+        <li class="step"><div class="step-n">6</div><div class="step-t">Agrega un cuadro de texto sin borde con "Director del Plantel" en la parte inferior derecha. Exporta a PDF como <code>Prac5Eje2.pdf</code>.</div></li>
+      </ol>
+      <div class="tip"><strong>Resultado esperado:</strong> Constancia profesional con WordArt, logotipo sin fondo, líneas decorativas agrupadas y cuadro de texto de firma posicionado correctamente.</div>
+      <div class="note-archivo">
+        <span class="na-ico">📁</span>
+        <div class="na-body"><strong>NOTA:</strong> En este ejercicio SÍ se creará un archivo para subir como actividad.<br>Nomenclatura del archivo: <code>TuNombre_Prac5Eje2.pdf</code></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EJ 3 -->
+  <div class="ex-card">
+    <div class="ex-head">
+      <div class="ex-num">3</div>
+      <div class="ex-info">
+        <div class="ex-title">Crear el organigrama del plantel con SmartArt</div>
+        <div class="ex-meta">level: básico-intermedio · ~30 min · Word 2016+</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-goal"><strong>Objetivo:</strong> Crear el organigrama funcional del CEB 6/17 usando SmartArt tipo Jerarquía, con 3 niveles de la estructura organizacional del plantel.</div>
+      <ol class="steps">
+        <li class="step"><div class="step-n">1</div><div class="step-t">Nuevo documento. Inserta SmartArt: <code>Insertar → SmartArt → Jerarquía → Organigrama</code>.</div></li>
+        <li class="step"><div class="step-n">2</div><div class="step-t">En el panel de texto, escribe la estructura:<br>
+          Nivel 1: "Director del Plantel"<br>
+          Nivel 2 (Tab): "Subdirector Académico", "Subdirector Administrativo", "Orientación Educativa"<br>
+          Nivel 3 (Tab desde Subdirector Académico): "Coordinador Académico", "Docentes de Área"</div></li>
+        <li class="step"><div class="step-n">3</div><div class="step-t">Cambia los colores del SmartArt: <code>Diseño de SmartArt → Cambiar colores → Énfasis 1 (colores del tema)</code>. Elige la variante con azul navy.</div></li>
+        <li class="step"><div class="step-n">4</div><div class="step-t">Aplica un estilo 3D sutil: <code>Diseño de SmartArt → Estilos de SmartArt → Efecto intenso</code>.</div></li>
+        <li class="step"><div class="step-n">5</div><div class="step-t">Redimensiona el SmartArt completo para que ocupe el 80% del ancho de la página. Centra el elemento usando <code>Formato → Organizar → Alinear → Centrar horizontalmente</code>.</div></li>
+        <li class="step"><div class="step-n">6</div><div class="step-t">Agrega un título "ESTRUCTURA ORGANIZACIONAL — CEB 6/17" con Estilo Título 2 encima del organigrama. Exporta a PDF como <code>Prac5Eje3.pdf</code>.</div></li>
+      </ol>
+      <div class="tip"><strong>Resultado esperado:</strong> Organigrama de 3 niveles con colores institucionales, estilo de efecto aplicado y centrado correctamente en la página.</div>
+      <div class="reto">Agrega un nivel adicional debajo de "Docentes de Área" con los nombres de las academias (Matemáticas, Ciencias, Humanidades, Tecnológico). Verifica que el SmartArt se redimensiona automáticamente.</div>
+      <div class="note-archivo">
+        <span class="na-ico">📁</span>
+        <div class="na-body"><strong>NOTA:</strong> En este ejercicio SÍ se creará un archivo para subir como actividad.<br>Nomenclatura del archivo: <code>TuNombre_Prac5Eje3.pdf</code></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EJ 4 -->
+  <div class="ex-card">
+    <div class="ex-head">
+      <div class="ex-num">4</div>
+      <div class="ex-info">
+        <div class="ex-title">Crear un diagrama de proceso con formas personalizadas</div>
+        <div class="ex-meta">level: intermedio · ~35 min · Word 2016+</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-goal"><strong>Objetivo:</strong> Crear un diagrama de flujo del proceso de evaluación bimestral usando formas de diagrama de flujo de Word (no SmartArt), con formas combinadas, flechas y texto dentro de cada forma.</div>
+      <ol class="steps">
+        <li class="step"><div class="step-n">1</div><div class="step-t">Nuevo documento con orientación horizontal. Inserta la primera forma: <code>Insertar → Formas → Diagrama de flujo → Proceso</code>. Dibuja un rectángulo redondeado. Escribe dentro: <strong>"Inicio del bimestre"</strong>.</div></li>
+        <li class="step"><div class="step-n">2</div><div class="step-t">Añade 3 formas de Proceso más con: "Diagnóstico inicial", "Desarrollo de actividades", "Evaluación formativa". Conéctalas con flechas de flecha de bloque (<code>Formas → Flechas de bloque → Flecha derecha</code>).</div></li>
+        <li class="step"><div class="step-n">3</div><div class="step-t">Agrega un rombo de decisión (<code>Formas → Diagrama de flujo → Decisión</code>): "¿Alumno acreditó?". Añade dos salidas: "Sí" (flecha a "Cierre del bimestre") y "No" (flecha a "Recuperación académica").</div></li>
+        <li class="step"><div class="step-n">4</div><div class="step-t">Selecciona todas las formas (<code>Ctrl+A</code> o Ctrl+clic en cada una). Aplica un estilo de forma uniforme: relleno azul navy, contorno sin línea, texto blanco en negrita. Después agrúpalas (<code>clic derecho → Agrupar</code>).</div></li>
+        <li class="step"><div class="step-n">5</div><div class="step-t">Con el grupo seleccionado, usa <code>Formato → Organizar → Alinear → Distribuir horizontalmente</code> para que queden bien espaciadas.</div></li>
+        <li class="step"><div class="step-n">6</div><div class="step-t">Exporta a PDF como <code>Prac5Eje4.pdf</code>.</div></li>
+      </ol>
+      <div class="tip"><strong>Resultado esperado:</strong> Diagrama de flujo de evaluación con formas de proceso, decisión y flechas, todas con estilo uniforme, agrupadas y bien alineadas.</div>
+      <div class="note-archivo">
+        <span class="na-ico">📁</span>
+        <div class="na-body"><strong>NOTA:</strong> En este ejercicio SÍ se creará un archivo para subir como actividad.<br>Nomenclatura del archivo: <code>TuNombre_Prac5Eje4.pdf</code></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EJ 5 -->
+  <div class="ex-card">
+    <div class="ex-head">
+      <div class="ex-num">5</div>
+      <div class="ex-info">
+        <div class="ex-title">Diseñar un material didáctico con elementos gráficos integrados</div>
+        <div class="ex-meta">level: intermedio · ~45 min · Word 2016+</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-goal"><strong>Objetivo:</strong> Crear la primera página de un material didáctico que integre todos los elementos del módulo: imagen con ajuste de texto, SmartArt, cuadro de texto, forma decorativa y control completo de composición visual.</div>
+      <ol class="steps">
+        <li class="step"><div class="step-n">1</div><div class="step-t">Nuevo documento. Título con WordArt: <strong>"GUÍA DE ESTUDIO — PENSAMIENTO CRÍTICO"</strong>. Fuente Outfit, degradado azul-púrpura, sin transformación (texto recto).</div></li>
+        <li class="step"><div class="step-n">2</div><div class="step-t">Inserta un rectángulo de forma a la izquierda de la página (banda vertical decorativa): 1.5 cm de ancho, altura de toda la página, relleno azul navy, sin contorno. Ajuste: <strong>Detrás del texto</strong>.</div></li>
+        <li class="step"><div class="step-n">3</div><div class="step-t">Inserta una imagen ilustrativa (desde web o archivo). Aplica ajuste <strong>Cuadrado</strong> y posiciónala a la derecha del texto introductorio. Recórtala a relación 1:1 (cuadrada). Aplica estilo de borde redondeado.</div></li>
+        <li class="step"><div class="step-n">4</div><div class="step-t">Crea un SmartArt tipo <strong>Ciclo</strong> con 4 nodos: "Observar", "Analizar", "Cuestionar", "Concluir". Aplica colores institucionales y posiciónalo en la mitad inferior de la página.</div></li>
+        <li class="step"><div class="step-n">5</div><div class="step-t">Agrega un cuadro de texto sin borde con el dato: <em>"Módulo 1 de 3 · Docente: [Tu nombre] · Ciclo escolar 2025-2026"</em>. Posición fija en la esquina inferior izquierda a 1 cm del margen.</div></li>
+        <li class="step"><div class="step-n">6</div><div class="step-t">Exporta a PDF como <code>Prac5Eje5.pdf</code>. Verifica que todos los elementos se mantienen en su posición.</div></li>
+      </ol>
+      <div class="tip"><strong>Resultado esperado:</strong> Material didáctico de portada con 5 tipos de elementos gráficos integrados: WordArt, forma de banda, imagen con ajuste, SmartArt ciclo y cuadro de texto de datos.</div>
+      <div class="bonus-hint">Pídele a Copilot: "Genera el texto introductorio de una guía de estudio sobre Pensamiento Crítico para bachillerato, 3 párrafos, tono motivador y académico, 200 palabras".</div>
+      <div class="note-archivo">
+        <span class="na-ico">📁</span>
+        <div class="na-body"><strong>NOTA:</strong> En este ejercicio SÍ se creará un archivo para subir como actividad.<br>Nomenclatura del archivo: <code>TuNombre_Prac5Eje5.pdf</code></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── EXAMEN ──────────────────────────────────────────────── -->
+<section id="examen">
+  <div class="exam-hero">
+    <h2>📝 Examen del Módulo 5</h2>
+    <p>20 reactivos · Mínimo 14/20 (70%) para acreditar · ~40 minutos</p>
+    <div class="exam-stats">
+      <div><div class="es-v">8</div><div class="es-l">Opción múltiple</div></div>
+      <div><div class="es-v">5</div><div class="es-l">Verdadero/Falso</div></div>
+      <div><div class="es-v">4</div><div class="es-l">Relacionar</div></div>
+      <div><div class="es-v">3</div><div class="es-l">Resp. breve</div></div>
+    </div>
+  </div>
+
+  <div class="exam-body">
+    <div class="exam-note">⚠ Ninguna pregunta requiere Copilot ni M365 — todas respondibles con Word 2016+</div>
+
+    <div class="sec-div">Sección A — Opción múltiple <span class="sec-div-badge">1 pt c/u</span></div>
+
+    <div class="q-card" data-q="1" data-correct="b" data-type="mc">
+      <div class="q-head"><div class="q-num">1</div><div class="q-meta"><div class="q-type">Opción múltiple</div><div class="q-text">¿Cuál es la principal ventaja de los íconos SVG respecto a las imágenes JPG en Word?</div></div></div>
+      <div class="opts">
+        <div class="opt" onclick="pick(this,'1','a')"><div class="opt-l">A</div><div class="opt-t">Los íconos SVG pueden almacenar fotografías con mayor resolución que JPG</div></div>
+        <div class="opt" onclick="pick(this,'1','b')"><div class="opt-l">B</div><div class="opt-t">Los SVG se escalan a cualquier tamaño sin perder calidad porque son vectoriales</div></div>
+        <div class="opt" onclick="pick(this,'1','c')"><div class="opt-l">C</div><div class="opt-t">Los SVG son más rápidos de descargar porque se almacenan en la nube de Microsoft</div></div>
+        <div class="opt" onclick="pick(this,'1','d')"><div class="opt-l">D</div><div class="opt-t">Los SVG son compatibles con versiones anteriores de Word incluyendo Word 2003</div></div>
+      </div>
+      <div class="fb" id="fb1"></div>
+    </div>
+
+    <div class="q-card" data-q="2" data-correct="c" data-type="mc">
+      <div class="q-head"><div class="q-num">2</div><div class="q-meta"><div class="q-type">Opción múltiple</div><div class="q-text">¿Qué modo de ajuste de texto permite que el texto siga el contorno irregular de una imagen PNG con fondo transparente?</div></div></div>
+      <div class="opts">
+        <div class="opt" onclick="pick(this,'2','a')"><div class="opt-l">A</div><div class="opt-t">Cuadrado</div></div>
+        <div class="opt" onclick="pick(this,'2','b')"><div class="opt-l">B</div><div class="opt-t">Superior e inferior</div></div>
+        <div class="opt" onclick="pick(this,'2','c')"><div class="opt-l">C</div><div class="opt-t">Estrecho</div></div>
+        <div class="opt" onclick="pick(this,'2','d')"><div class="opt-l">D</div><div class="opt-t">En línea con el texto</div></div>
+      </div>
+      <div class="fb" id="fb2"></div>
+    </div>
+
+    <div class="q-card" data-q="3" data-correct="a" data-type="mc">
+      <div class="q-head"><div class="q-num">3</div><div class="q-meta"><div class="q-type">Opción múltiple</div><div class="q-text">¿Para qué sirve la herramienta "Quitar fondo" en las herramientas de imagen de Word?</div></div></div>
+      <div class="opts">
+        <div class="opt" onclick="pick(this,'3','a')"><div class="opt-l">A</div><div class="opt-t">Eliminar automáticamente el fondo de una imagen dejando solo el elemento principal</div></div>
+        <div class="opt" onclick="pick(this,'3','b')"><div class="opt-l">B</div><div class="opt-t">Cambiar el color de fondo del documento debajo de la imagen</div></div>
+        <div class="opt" onclick="pick(this,'3','c')"><div class="opt-l">C</div><div class="opt-t">Hacer que la imagen aparezca detrás del texto del documento</div></div>
+        <div class="opt" onclick="pick(this,'3','d')"><div class="opt-l">D</div><div class="opt-t">Eliminar el borde o contorno que rodea la imagen</div></div>
+      </div>
+      <div class="fb" id="fb3"></div>
+    </div>
+
+    <div class="q-card" data-q="4" data-correct="d" data-type="mc">
+      <div class="q-head"><div class="q-num">4</div><div class="q-meta"><div class="q-type">Opción múltiple</div><div class="q-text">¿Qué tipo de SmartArt es el más apropiado para crear el organigrama jerárquico del personal de un plantel educativo?</div></div></div>
+      <div class="opts">
+        <div class="opt" onclick="pick(this,'4','a')"><div class="opt-l">A</div><div class="opt-t">SmartArt tipo Ciclo, porque muestra relaciones continuas entre los puestos</div></div>
+        <div class="opt" onclick="pick(this,'4','b')"><div class="opt-l">B</div><div class="opt-t">SmartArt tipo Proceso, porque muestra los pasos del trabajo administrativo</div></div>
+        <div class="opt" onclick="pick(this,'4','c')"><div class="opt-l">C</div><div class="opt-t">SmartArt tipo Lista, porque enumera a todo el personal sin jerarquía</div></div>
+        <div class="opt" onclick="pick(this,'4','d')"><div class="opt-l">D</div><div class="opt-t">SmartArt tipo Jerarquía, porque muestra las relaciones de autoridad y dependencia</div></div>
+      </div>
+      <div class="fb" id="fb4"></div>
+    </div>
+
+    <div class="q-card" data-q="5" data-correct="b" data-type="mc">
+      <div class="q-head"><div class="q-num">5</div><div class="q-meta"><div class="q-type">Opción múltiple</div><div class="q-text">¿Cuál es el modo de ajuste de texto correcto para colocar una imagen como fondo decorativo de página sin afectar el flujo del texto?</div></div></div>
+      <div class="opts">
+        <div class="opt" onclick="pick(this,'5','a')"><div class="opt-l">A</div><div class="opt-t">Cuadrado — para que el texto rodee la imagen por los cuatro lados</div></div>
+        <div class="opt" onclick="pick(this,'5','b')"><div class="opt-l">B</div><div class="opt-t">Detrás del texto — la imagen queda en una capa inferior al texto</div></div>
+        <div class="opt" onclick="pick(this,'5','c')"><div class="opt-l">C</div><div class="opt-t">En línea con el texto — para integrarla como carácter en el párrafo</div></div>
+        <div class="opt" onclick="pick(this,'5','d')"><div class="opt-l">D</div><div class="opt-t">Estrecho — para que el texto siga el contorno de la imagen de fondo</div></div>
+      </div>
+      <div class="fb" id="fb5"></div>
+    </div>
+
+    <div class="q-card" data-q="6" data-correct="c" data-type="mc">
+      <div class="q-head"><div class="q-num">6</div><div class="q-meta"><div class="q-type">Opción múltiple</div><div class="q-text">¿Cuál es la forma correcta de mover varias formas agrupadas al mismo tiempo manteniendo su posición relativa entre ellas?</div></div></div>
+      <div class="opts">
+        <div class="opt" onclick="pick(this,'6','a')"><div class="opt-l">A</div><div class="opt-t">Seleccionar todas y presionar las teclas de dirección del teclado una por una</div></div>
+        <div class="opt" onclick="pick(this,'6','b')"><div class="opt-l">B</div><div class="opt-t">Copiar todas las formas y pegarlas en la nueva posición</div></div>
+        <div class="opt" onclick="pick(this,'6','c')"><div class="opt-l">C</div><div class="opt-t">Agrupar las formas y luego mover el grupo como una sola unidad</div></div>
+        <div class="opt" onclick="pick(this,'6','d')"><div class="opt-l">D</div><div class="opt-t">Convertirlas en imagen antes de moverlas para evitar que se desalineen</div></div>
+      </div>
+      <div class="fb" id="fb6"></div>
+    </div>
+
+    <div class="q-card" data-q="7" data-correct="a" data-type="mc">
+      <div class="q-head"><div class="q-num">7</div><div class="q-meta"><div class="q-type">Opción múltiple</div><div class="q-text">¿Qué herramienta de Word permite que el texto fluya automáticamente de un cuadro de texto a otro cuando el primero se llena?</div></div></div>
+      <div class="opts">
+        <div class="opt" onclick="pick(this,'7','a')"><div class="opt-l">A</div><div class="opt-t">Crear vínculo (disponible en la pestaña Formato del cuadro de texto)</div></div>
+        <div class="opt" onclick="pick(this,'7','b')"><div class="opt-l">B</div><div class="opt-t">Agrupar los cuadros de texto con la función de agrupación de formas</div></div>
+        <div class="opt" onclick="pick(this,'7','c')"><div class="opt-l">C</div><div class="opt-t">Usar columnas de texto en lugar de cuadros de texto independientes</div></div>
+        <div class="opt" onclick="pick(this,'7','d')"><div class="opt-l">D</div><div class="opt-t">Copiar y pegar el texto manualmente del primer al segundo cuadro</div></div>
+      </div>
+      <div class="fb" id="fb7"></div>
+    </div>
+
+    <div class="q-card" data-q="8" data-correct="d" data-type="mc">
+      <div class="q-head"><div class="q-num">8</div><div class="q-meta"><div class="q-type">Opción múltiple</div><div class="q-text">¿Cuál es la principal diferencia entre WordArt y el formato de texto normal en Word?</div></div></div>
+      <div class="opts">
+        <div class="opt" onclick="pick(this,'8','a')"><div class="opt-l">A</div><div class="opt-t">WordArt solo puede usarse en documentos con más de 5 páginas</div></div>
+        <div class="opt" onclick="pick(this,'8','b')"><div class="opt-l">B</div><div class="opt-t">WordArt permite usar cualquier fuente instalada, el texto normal no</div></div>
+        <div class="opt" onclick="pick(this,'8','c')"><div class="opt-l">C</div><div class="opt-t">WordArt es texto que se puede seleccionar y copiar, el normal no</div></div>
+        <div class="opt" onclick="pick(this,'8','d')"><div class="opt-l">D</div><div class="opt-t">WordArt es un objeto gráfico con efectos visuales avanzados; el texto normal es parte del flujo del documento</div></div>
+      </div>
+      <div class="fb" id="fb8"></div>
+    </div>
+
+    <div class="sec-div">Sección B — Verdadero o Falso <span class="sec-div-badge">1 pt c/u · justifica</span></div>
+
+    <div class="q-card" data-q="9" data-correct="V" data-type="tf">
+      <div class="q-head"><div class="q-num">9</div><div class="q-meta"><div class="q-type">Verdadero / Falso</div><div class="q-text">El modo de ajuste de texto "En línea con el texto" es el predeterminado al insertar una imagen en Word, y hace que la imagen se comporte como un carácter dentro del párrafo.</div></div></div>
+      <div class="tf-row"><div class="tf" onclick="pickTF(this,'9','V')">✓ Verdadero</div><div class="tf" onclick="pickTF(this,'9','F')">✗ Falso</div></div>
+      <div class="fb" id="fb9"></div>
+      <div class="sa" style="margin-top:10px"><textarea placeholder="Justifica tu respuesta..."></textarea></div>
+    </div>
+
+    <div class="q-card" data-q="10" data-correct="F" data-type="tf">
+      <div class="q-head"><div class="q-num">10</div><div class="q-meta"><div class="q-type">Verdadero / Falso</div><div class="q-text">Los diagramas SmartArt en Word no pueden modificarse después de creados — hay que eliminarlos y crear uno nuevo si se quiere cambiar el número de nodos.</div></div></div>
+      <div class="tf-row"><div class="tf" onclick="pickTF(this,'10','V')">✓ Verdadero</div><div class="tf" onclick="pickTF(this,'10','F')">✗ Falso</div></div>
+      <div class="fb" id="fb10"></div>
+      <div class="sa" style="margin-top:10px"><textarea placeholder="Justifica tu respuesta..."></textarea></div>
+    </div>
+
+    <div class="q-card" data-q="11" data-correct="V" data-type="tf">
+      <div class="q-head"><div class="q-num">11</div><div class="q-meta"><div class="q-type">Verdadero / Falso</div><div class="q-text">La herramienta "Quitar fondo" de Word funciona mejor con imágenes que tienen un fondo de color uniforme y alto contraste con el sujeto principal.</div></div></div>
+      <div class="tf-row"><div class="tf" onclick="pickTF(this,'11','V')">✓ Verdadero</div><div class="tf" onclick="pickTF(this,'11','F')">✗ Falso</div></div>
+      <div class="fb" id="fb11"></div>
+      <div class="sa" style="margin-top:10px"><textarea placeholder="Justifica tu respuesta..."></textarea></div>
+    </div>
+
+    <div class="q-card" data-q="12" data-correct="F" data-type="tf">
+      <div class="q-head"><div class="q-num">12</div><div class="q-meta"><div class="q-type">Verdadero / Falso</div><div class="q-text">WordArt es la mejor opción para formatear el cuerpo de texto de un oficio oficial o acta de reunión, ya que ofrece más opciones visuales que el texto normal.</div></div></div>
+      <div class="tf-row"><div class="tf" onclick="pickTF(this,'12','V')">✓ Verdadero</div><div class="tf" onclick="pickTF(this,'12','F')">✗ Falso</div></div>
+      <div class="fb" id="fb12"></div>
+      <div class="sa" style="margin-top:10px"><textarea placeholder="Justifica tu respuesta..."></textarea></div>
+    </div>
+
+    <div class="q-card" data-q="13" data-correct="V" data-type="tf">
+      <div class="q-head"><div class="q-num">13</div><div class="q-meta"><div class="q-type">Verdadero / Falso</div><div class="q-text">Un cuadro de texto en Word puede configurarse sin borde visible ni relleno de fondo, dejando solo el texto flotando en la posición deseada de la página.</div></div></div>
+      <div class="tf-row"><div class="tf" onclick="pickTF(this,'13','V')">✓ Verdadero</div><div class="tf" onclick="pickTF(this,'13','F')">✗ Falso</div></div>
+      <div class="fb" id="fb13"></div>
+      <div class="sa" style="margin-top:10px"><textarea placeholder="Justifica tu respuesta..."></textarea></div>
+    </div>
+
+    <div class="sec-div">Sección C — Relacionar columnas <span class="sec-div-badge">1 pt c/par</span></div>
+    <p style="font-size:15px;color:rgba(255,255,255,.4);margin-bottom:15px">Haz clic en un elemento de la izquierda, luego en su correspondiente de la derecha.</p>
+    <div class="q-card">
+      <div class="q-head"><div class="q-num">14–17</div><div class="q-meta"><div class="q-type">Relacionar columnas</div><div class="q-text">Une cada elemento con su descripción o uso correcto.</div></div></div>
+      <div class="match-grid">
+        <div>
+          <div class="match-col-h">// elemento</div>
+          <div class="match-i" data-pair="A" onclick="doMatch(this,'L')">Ajuste "Cuadrado"</div>
+          <div class="match-i" data-pair="B" onclick="doMatch(this,'L')">SmartArt tipo Ciclo</div>
+          <div class="match-i" data-pair="C" onclick="doMatch(this,'L')">Texto alternativo</div>
+          <div class="match-i" data-pair="D" onclick="doMatch(this,'L')">Recortar a forma</div>
+        </div>
+        <div>
+          <div class="match-col-h">// descripción_o_uso</div>
+          <div class="match-i" data-pair="3" onclick="doMatch(this,'R')">Descripción de imagen para lectores de pantalla (accesibilidad)</div>
+          <div class="match-i" data-pair="1" onclick="doMatch(this,'R')">El texto rodea el rectángulo de la imagen por todos sus lados</div>
+          <div class="match-i" data-pair="4" onclick="doMatch(this,'R')">Recortar imagen con la silueta de una forma prediseñada</div>
+          <div class="match-i" data-pair="2" onclick="doMatch(this,'R')">Diagrama para mostrar procesos continuos sin inicio ni fin</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-div">Sección D — Respuesta breve <span class="sec-div-badge">2 pts c/u · revisión manual</span></div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-num">18</div><div class="q-meta"><div class="q-type">Respuesta breve (2 pts)</div><div class="q-text">Explica la diferencia entre el modo de ajuste de texto "Cuadrado" y el modo "Estrecho". ¿En qué tipo de imagen es más conveniente usar cada uno?</div></div></div>
+      <div class="sa"><textarea placeholder="Escribe tu respuesta (mínimo 2 oraciones)..."></textarea></div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-num">19</div><div class="q-meta"><div class="q-type">Respuesta breve (2 pts)</div><div class="q-text">¿Por qué es importante agregar texto alternativo a las imágenes de un documento de Word? ¿Qué herramienta de Word verifica que todas las imágenes tengan texto alternativo?</div></div></div>
+      <div class="sa"><textarea placeholder="Escribe tu respuesta..."></textarea></div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-num">20</div><div class="q-meta"><div class="q-type">Respuesta breve (2 pts)</div><div class="q-text">Un colega quiere crear el organigrama del plantel. Describe cuándo usarías SmartArt y cuándo usarías formas individuales para el mismo organigrama. ¿Cuáles son las ventajas y desventajas de cada enfoque?</div></div></div>
+      <div class="sa"><textarea placeholder="Escribe tu respuesta..."></textarea></div>
+    </div>
+  </div>
+
+  <div class="exam-cta">
+    <button class="btn-grade" onclick="grade()">Calificar Examen →</button>
+    <div class="score-box" id="score-box">
+      <div class="score-big" id="score-val">—</div>
+      <div class="score-msg" id="score-msg">de 13 puntos automáticos (Secciones A y B)</div>
+      <div style="font-size:13px;color:rgba(255,255,255,.35);margin-top:10px;background:rgba(255,255,255,.04);border-radius:var(--r);padding:10px 13px">Las Secciones C y D requieren revisión manual por parte del instructor.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ACTIVIDAD INTEGRADORA ─────────────────────────────────── -->
+<section id="actividad" class="sec reveal">
+  <div class="sec-kicker">Cierre del módulo</div>
+  <h2 class="sec-h">Actividad Integradora</h2>
+  <p class="sec-sub">Material visual institucional completo: demuestra tu dominio de los elementos gráficos</p>
+
+  <div class="box ok">
+    <div class="box-ico">🏆</div>
+    <div class="box-body">
+      <div class="box-title">Descripción de la actividad</div>
+      <div class="box-text">Crearás un <strong>paquete de materiales visuales institucionales</strong> del CEB 6/17 que integre: una constancia de participación con todos los elementos del módulo, un organigrama del plantel, y la portada de un material didáctico con composición visual profesional.</div>
+    </div>
+  </div>
+
+  <h2 class="t2">Producto a entregar: Paquete de materiales visuales</h2>
+  <ol class="steps" style="list-style:none;padding:0">
+    <li class="step"><div class="step-n">1</div><div class="step-t"><strong>Constancia de participación (Página 1):</strong> WordArt para el título, imagen de logotipo con fondo eliminado, borde de página, dos líneas decorativas agrupadas, cuadro de texto para datos de firma. Todo con ajuste de texto correcto.</div></li>
+    <li class="step"><div class="step-n">2</div><div class="step-t"><strong>Organigrama del plantel (Página 2):</strong> SmartArt tipo Jerarquía con mínimo 3 niveles. Colores institucionales. Título centrado encima. Página en orientación horizontal.</div></li>
+    <li class="step"><div class="step-n">3</div><div class="step-t"><strong>Portada de material didáctico (Página 3):</strong> Al menos 5 elementos gráficos distintos correctamente integrados: imagen con ajuste de texto, forma decorativa, SmartArt tipo proceso o ciclo, WordArt y cuadro de texto con datos.</div></li>
+    <li class="step"><div class="step-n">4</div><div class="step-t"><strong>Texto alternativo:</strong> Todas las imágenes y SmartArt deben tener texto alternativo descriptivo.</div></li>
+    <li class="step"><div class="step-n">5</div><div class="step-t"><strong>Coherencia visual:</strong> Los tres documentos deben usar la misma paleta de colores (azul navy, blanco, acento dorado o púrpura) y la misma familia tipográfica.</div></li>
+  </ol>
+
+  <h2 class="t2">Rúbrica de evaluación</h2>
+  <div class="tbl-wrap">
+  <table class="rub">
+    <thead><tr><th>Indicador</th><th>Excelente (4 pts)</th><th>Suficiente (2 pts)</th><th>Insuficiente (0 pts)</th><th>Pts</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Constancia</strong></td><td>WordArt, logotipo sin fondo, borde, formas agrupadas y cuadro de texto de firma</td><td>3-4 de los 5 elementos presentes</td><td>Menos de 3 elementos o diseño no reconocible como constancia</td><td>/4</td></tr>
+      <tr><td><strong>Organigrama SmartArt</strong></td><td>3+ niveles, colores institucionales, página horizontal, título centrado</td><td>2 niveles o sin formato institucional</td><td>Sin SmartArt o estructura incorrecta</td><td>/4</td></tr>
+      <tr><td><strong>Portada didáctica</strong></td><td>5 tipos de elementos gráficos distintos correctamente integrados</td><td>3-4 tipos de elementos</td><td>Menos de 3 tipos o composición desordenada</td><td>/4</td></tr>
+      <tr><td><strong>Texto alternativo</strong></td><td>Todas las imágenes y SmartArt tienen texto alternativo descriptivo</td><td>Al menos el 50% de los elementos con texto alternativo</td><td>Sin texto alternativo en ningún elemento</td><td>/4</td></tr>
+      <tr><td><strong>Coherencia visual</strong></td><td>Misma paleta de colores y familia tipográfica en los 3 documentos</td><td>Coherencia parcial — 2 de los 3 documentos coinciden</td><td>Sin coherencia visual evidente entre documentos</td><td>/4</td></tr>
+      <tr><td colspan="4"><strong>TOTAL</strong></td><td><strong>/20</strong></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="box warn">
+    <div class="box-ico">📤</div>
+    <div class="box-body">
+      <div class="box-title">Entrega</div>
+      <div class="box-text">Nomenclatura del archivo: <code>M5_TuNombre_.pdf</code>. Fecha límite: <strong>15 de mayo de 2026</strong>.</div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+window.addEventListener('scroll',()=>{
+  const d=document.documentElement;
+  document.getElementById('pbar').style.width=(d.scrollTop/(d.scrollHeight-d.clientHeight)*100)+'%';
+});
+const secs=document.querySelectorAll('section[id]');
+const navs=document.querySelectorAll('.nav-link[href^="#"]');
+const obs=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      navs.forEach(n=>n.classList.remove('on'));
+      const a=document.querySelector(`.nav-link[href="#${e.target.id}"]`);
+      if(a)a.classList.add('on');
+    }
+  });
+},{threshold:.12,rootMargin:'-5% 0px -80% 0px'});
+secs.forEach(s=>obs.observe(s));
+const revObs=new IntersectionObserver(es=>{
+  es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('shown')});
+},{threshold:.06});
+document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
+
+const completed={};
+function markDone(btn,tid){
+  if(completed[tid])return;
+  completed[tid]=true;
+  btn.classList.add('done');
+  btn.querySelector('.bc-icon').textContent='✓';
+  btn.querySelector('.bc-txt').textContent='¡Tema completado!';
+  const done=Object.keys(completed).length;
+  const note=document.querySelector('.prog-note');
+  if(note)note.textContent=`Módulo 5 · ${done}/7 temas completados`;
+}
+
+const answers={};
+const correct={'1':'b','2':'c','3':'a','4':'d','5':'b','6':'c','7':'a','8':'d',
+               '9':'V','10':'F','11':'V','12':'F','13':'V'};
+const fbTxt={
+  ok:{
+    '1':'✓ Correcto. Los SVG son vectoriales: se escalan sin perder calidad a cualquier tamaño.',
+    '2':'✓ Correcto. "Estrecho" sigue el contorno real de la imagen, no el rectángulo.',
+    '3':'✓ Correcto. "Quitar fondo" elimina el fondo de la imagen dejando el elemento principal.',
+    '4':'✓ Correcto. SmartArt tipo Jerarquía muestra relaciones de autoridad como un organigrama.',
+    '5':'✓ Correcto. "Detrás del texto" coloca la imagen en una capa inferior sin afectar el texto.',
+    '6':'✓ Correcto. Agrupar las formas y mover el grupo mantiene las posiciones relativas.',
+    '7':'✓ Correcto. "Crear vínculo" permite que el texto fluya automáticamente entre cuadros.',
+    '8':'✓ Correcto. WordArt es un objeto gráfico con efectos visuales; el texto normal fluye con el documento.',
+    '9':'✓ Correcto. "En línea" es el modo predeterminado y trata la imagen como un carácter.',
+    '10':'✓ Correcto. Es FALSO. Los SmartArt sí se pueden editar: agregar/eliminar nodos en cualquier momento.',
+    '11':'✓ Correcto. "Quitar fondo" funciona mejor con fondos uniformes y alto contraste.',
+    '12':'✓ Correcto. Es FALSO. WordArt es decorativo, no apropiado para texto de documentos formales.',
+    '13':'✓ Correcto. Un cuadro de texto sin borde ni relleno deja el texto flotando sin marco visible.',
+  },
+  fail:{
+    '1':'✗ Incorrecto. Respuesta B: los SVG son vectoriales y se escalan sin pérdida de calidad.',
+    '2':'✗ Incorrecto. Respuesta C: "Estrecho" sigue el contorno real de una imagen PNG transparente.',
+    '3':'✗ Incorrecto. Respuesta A: "Quitar fondo" elimina el fondo dejando solo el elemento principal.',
+    '4':'✗ Incorrecto. Respuesta D: SmartArt Jerarquía es el correcto para organigramas.',
+    '5':'✗ Incorrecto. Respuesta B: "Detrás del texto" coloca la imagen sin afectar el flujo del texto.',
+    '6':'✗ Incorrecto. Respuesta C: Agrupar y mover el grupo es la forma correcta.',
+    '7':'✗ Incorrecto. Respuesta A: "Crear vínculo" en la pestaña Formato del cuadro de texto.',
+    '8':'✗ Incorrecto. Respuesta D: WordArt es un objeto gráfico con efectos avanzados, no texto normal.',
+    '9':'✗ Incorrecto. Es VERDADERO. "En línea" es el modo predeterminado al insertar imágenes.',
+    '10':'✗ Incorrecto. Es FALSO. Los SmartArt se pueden editar: agregar/quitar nodos en el panel de texto.',
+    '11':'✗ Incorrecto. Es VERDADERO. Funciona mejor con fondos uniformes y alto contraste.',
+    '12':'✗ Incorrecto. Es FALSO. WordArt no es apropiado para documentos formales como oficios o actas.',
+    '13':'✗ Incorrecto. Es VERDADERO. Un cuadro de texto puede ser completamente invisible manteniendo el texto.',
+  }
+};
+
+function pick(el,q,v){
+  if(answers[q])return;
+  document.querySelectorAll(`.q-card[data-q="${q}"] .opt`).forEach(o=>o.classList.remove('sel'));
+  el.classList.add('sel');answers[q]=v;
+}
+function pickTF(el,q,v){
+  if(answers[q])return;
+  el.parentElement.querySelectorAll('.tf').forEach(t=>t.classList.remove('sel'));
+  el.classList.add('sel');answers[q]=v;
+}
+let mL=null;
+function doMatch(el,side){
+  if(side==='L'){
+    document.querySelectorAll('.match-i').forEach(m=>{if(m.dataset.pair.length===1)m.classList.remove('sel')});
+    el.classList.add('sel');mL=el;
+  } else {
+    if(!mL)return;
+    mL.classList.remove('sel');mL.classList.add('done');
+    el.classList.add('done');mL=null;
+  }
+}
+function grade(){
+  let score=0;
+  for(let q=1;q<=13;q++){
+    const qs=String(q);
+    const given=answers[qs];
+    const card=document.querySelector(`.q-card[data-q="${q}"]`);
+    const f=document.getElementById(`fb${q}`);
+    if(!card||!f)continue;
+    const isOk=given===correct[qs];
+    if(isOk)score++;
+    if(card.dataset.type==='mc'){
+      card.querySelectorAll('.opt').forEach(o=>{
+        const l=o.querySelector('.opt-l').textContent.toLowerCase();
+        if(l===correct[qs])o.classList.add('ok');
+        else if(l===given&&!isOk)o.classList.add('bad');
+      });
+    } else if(card.dataset.type==='tf'){
+      card.querySelectorAll('.tf').forEach(t=>{
+        const v=t.textContent.includes('Verdadero')?'V':'F';
+        if(v===correct[qs])t.classList.add('ok');
+        else if(v===given&&!isOk)t.classList.add('bad');
+      });
+    }
+    f.classList.add('vis',isOk?'ok':'fail');
+    f.textContent=given?(isOk?fbTxt.ok[qs]:fbTxt.fail[qs]):'⚠ Sin respuesta.';
+  }
+  const box=document.getElementById('score-box');
+  const val=document.getElementById('score-val');
+  const msg=document.getElementById('score-msg');
+  val.textContent=`${score}/13`;
+  val.style.color=score>=9?'#52d9a9':'#ff8fa0';
+  msg.textContent=score>=9
+    ?`¡Excelente! ${Math.round(score/13*100)}% en secciones automáticas.`
+    :`${Math.round(score/13*100)}% en secciones automáticas. Repasa los temas marcados.`;
+  box.classList.add('vis');
+  box.scrollIntoView({behavior:'smooth',block:'center'});
+}
+</script>
+</body>
+</html>

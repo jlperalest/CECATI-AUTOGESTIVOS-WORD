@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 6 · Referencias y Citas Académicas | Microsoft Word 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F5F7FB;--bg2:#EAEEF6;--white:#FFFFFF;
+  --border:#DDE3EE;--border2:#C5CDDF;
+  --navy:#0A2540;--blue:#0066FF;--blue2:#004FCC;--blueL:#E8F0FF;--blueXL:#F0F5FF;
+  --cyan:#00C2E0;--cyanL:#E0F9FD;
+  --amber:#FF8C00;--amberL:#FFF4E5;
+  --green:#00A67E;--greenL:#E3FAF5;
+  --red:#E0294A;--redL:#FFF0F3;
+  --purple:#7C3AED;--purpleL:#F5F0FF;
+  --text:#1A2B4A;--text2:#4A5A75;--muted:#8A97B0;
+  --r:10px;--r2:16px;
+  --shadow:0 2px 12px rgba(10,37,64,.08);--shadowM:0 8px 32px rgba(10,37,64,.12);
+  --sidebar:268px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);
+  line-height:1.7;overflow-x:hidden;font-size:17px;zoom:1.12}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg2)}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:6px}
+::-webkit-scrollbar-thumb:hover{background:var(--blue)}
+
+body::before{content:'';position:fixed;inset:0;z-index:-2;background-color:var(--bg);
+  background-image:radial-gradient(circle at 20% 10%,rgba(0,102,255,.05) 0%,transparent 50%),
+    radial-gradient(circle at 80% 90%,rgba(0,194,224,.06) 0%,transparent 45%),
+    radial-gradient(circle at 60% 40%,rgba(124,58,237,.03) 0%,transparent 40%)}
+body::after{content:'';position:fixed;inset:0;z-index:-1;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ccircle cx='40' cy='40' r='1.2' fill='%230066FF' fill-opacity='.09'/%3E%3C/svg%3E");
+  background-size:40px 40px;pointer-events:none}
+
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:9999;
+  background:linear-gradient(90deg,var(--purple),var(--blue),var(--cyan));
+  box-shadow:0 0 8px rgba(124,58,237,.4);transition:width .1s}
+
+/* SIDEBAR */
+#sidebar{position:fixed;left:0;top:0;bottom:0;width:var(--sidebar);background:var(--white);
+  border-right:1px solid var(--border);z-index:200;display:flex;flex-direction:column;
+  overflow-y:auto;box-shadow:2px 0 20px rgba(10,37,64,.06);scrollbar-width:thin}
+.sb-top{padding:18px 16px;border-bottom:1px solid var(--border)}
+.sb-brand{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.sb-icon{width:38px;height:38px;border-radius:10px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--purple),var(--blue));
+  display:flex;align-items:center;justify-content:center;font-size:18px;
+  box-shadow:0 4px 12px rgba(124,58,237,.3)}
+.sb-brand-txt{font-size:12px;font-weight:700;color:var(--navy);line-height:1.3}
+.sb-brand-sub{font-size:10px;color:var(--muted);font-weight:400}
+.sb-chip{background:var(--purpleL);border:1px solid rgba(124,58,237,.15);border-radius:var(--r);padding:10px 12px}
+.sb-chip-num{font-size:10px;font-weight:700;color:var(--purple);text-transform:uppercase;
+  letter-spacing:.1em;margin-bottom:3px;font-family:'Fira Code',monospace}
+.sb-chip-name{font-size:12.5px;font-weight:700;color:var(--navy);line-height:1.3}
+.sb-chip-week{font-size:11px;color:var(--muted);margin-top:3px}
+.nav-group{padding:12px 16px 4px;font-size:9.5px;font-weight:700;color:var(--muted);
+  text-transform:uppercase;letter-spacing:.12em}
+.nav-link{display:flex;align-items:center;gap:9px;padding:8px 12px 8px 16px;
+  font-size:12.5px;color:var(--text2);text-decoration:none;
+  border-left:3px solid transparent;transition:all .18s}
+.nav-link:hover{color:var(--purple);background:var(--purpleL)}
+.nav-link.on{color:var(--purple);border-left-color:var(--purple);background:var(--purpleL);font-weight:600}
+.nav-icon{font-size:13px;width:18px;text-align:center;flex-shrink:0}
+.nav-txt{flex:1;line-height:1.3}
+.nav-sub{font-size:10px;color:var(--muted);margin-top:1px;font-weight:400}
+.sb-foot{margin-top:auto;padding:14px 16px;border-top:1px solid var(--border)}
+.prog-row{display:flex;justify-content:space-between;margin-bottom:5px;font-size:10px;
+  font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.prog-row span{color:var(--purple);font-family:'Fira Code',monospace}
+.prog-track{height:5px;background:var(--bg2);border-radius:20px;overflow:hidden}
+.prog-fill{height:100%;width:46%;background:linear-gradient(90deg,var(--purple),var(--blue),var(--cyan));border-radius:20px}
+.prog-note{font-size:10px;color:var(--muted);margin-top:4px}
+
+/* MAIN */
+#main{margin-left:var(--sidebar);min-height:100vh}
+
+/* HERO */
+#hero{background:var(--white);border-bottom:1px solid var(--border);
+  position:relative;overflow:hidden;padding:56px 64px 48px;min-height:72vh;display:flex;align-items:center}
+#hero::before{content:'';position:absolute;inset:0;z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect x='0' y='100' width='60' height='1.5' fill='%237C3AED' fill-opacity='.07'/%3E%3Crect x='100' y='0' width='1.5' height='60' fill='%237C3AED' fill-opacity='.07'/%3E%3Crect x='60' y='100' width='1.5' height='60' fill='%237C3AED' fill-opacity='.07'/%3E%3Crect x='100' y='60' width='100' height='1.5' fill='%237C3AED' fill-opacity='.07'/%3E%3Ccircle cx='60' cy='100' r='4' fill='none' stroke='%237C3AED' stroke-width='1.5' stroke-opacity='.13'/%3E%3Ccircle cx='100' cy='60' r='4' fill='none' stroke='%237C3AED' stroke-width='1.5' stroke-opacity='.13'/%3E%3C/svg%3E");
+  background-size:200px 200px}
+.hero-circuit{position:absolute;top:-40px;right:-40px;width:480px;height:480px;z-index:0;pointer-events:none;opacity:.8}
+.hero-left{position:relative;z-index:1;max-width:660px;flex:1}
+.hero-right-card{position:absolute;right:64px;top:50%;transform:translateY(-50%);z-index:1;width:270px}
+
+.eyebrow{display:inline-flex;align-items:center;gap:8px;margin-bottom:22px;
+  background:var(--purpleL);border:1px solid rgba(124,58,237,.2);border-radius:20px;
+  padding:6px 14px;font-size:11px;font-weight:700;color:var(--purple);
+  text-transform:uppercase;letter-spacing:.1em;font-family:'Fira Code',monospace;animation:fadeUp .5s both}
+.eyebrow-pulse{width:7px;height:7px;border-radius:50%;background:var(--purple);
+  animation:pulse 1.6s infinite;flex-shrink:0}
+.hero-title{font-size:clamp(36px,4.8vw,62px);font-weight:900;color:var(--navy);
+  line-height:1.08;margin-bottom:18px;letter-spacing:-.02em;animation:fadeUp .5s .1s both}
+.hero-title .accent{background:linear-gradient(90deg,var(--purple),var(--blue));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-desc{font-size:17px;color:var(--text2);max-width:520px;margin-bottom:28px;
+  line-height:1.75;animation:fadeUp .5s .18s both}
+
+.compat-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r2);
+  padding:18px;box-shadow:var(--shadowM);animation:fadeUp .5s .2s both}
+.compat-hd{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;
+  letter-spacing:.1em;margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.compat-hd::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--purple);display:inline-block}
+.compat-row{display:flex;align-items:center;gap:9px;padding:7px 0;border-bottom:1px solid var(--border)}
+.compat-row:last-child{border-bottom:none}
+.compat-ok{width:18px;height:18px;border-radius:50%;flex-shrink:0;background:var(--greenL);
+  border:1px solid rgba(0,166,126,.3);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--green)}
+.compat-ok.star{background:var(--amberL);border-color:rgba(255,140,0,.3);color:var(--amber)}
+.compat-name{font-size:13px;font-weight:600;color:var(--text)}
+.compat-tag{margin-left:auto;font-size:9px;font-weight:700;padding:2px 7px;border-radius:6px;text-transform:uppercase}
+.compat-tag.all{background:var(--greenL);color:var(--green)}
+.compat-tag.bonus{background:var(--amberL);color:var(--amber)}
+
+/* SECTIONS */
+.sec{padding:60px 64px;border-bottom:1px solid var(--border);background:var(--white)}
+.sec.alt{background:var(--bg)}
+.sec-kicker{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:700;
+  color:var(--purple);text-transform:uppercase;letter-spacing:.14em;margin-bottom:8px;font-family:'Fira Code',monospace}
+.sec-kicker::before{content:'//';color:var(--cyan);margin-right:2px}
+.sec-h{font-size:clamp(24px,3.2vw,40px);font-weight:900;color:var(--navy);line-height:1.12;margin-bottom:8px}
+.sec-sub{font-size:16px;color:var(--text2);margin-bottom:36px;max-width:600px}
+h2.t2{font-size:22px;font-weight:800;color:var(--navy);margin:44px 0 14px;
+  display:flex;align-items:center;gap:10px}
+h2.t2::before{content:'';width:4px;height:22px;background:linear-gradient(180deg,var(--purple),var(--blue));border-radius:4px;flex-shrink:0}
+h3.t3{font-size:17px;font-weight:700;color:var(--purple);margin:26px 0 10px}
+p.body{font-size:16px;color:var(--text2);line-height:1.85;margin-bottom:18px;text-align:justify}
+p.body strong{color:var(--navy);font-weight:700}
+
+/* BOXES */
+.box{border-radius:var(--r2);padding:20px 24px;margin:22px 0;display:flex;gap:15px;align-items:flex-start}
+.box-ico{font-size:21px;flex-shrink:0;margin-top:2px}
+.box-body{flex:1}
+.box-title{font-weight:700;font-size:15px;margin-bottom:6px}
+.box-text{font-size:15px;line-height:1.75;color:var(--text2)}
+.box-text ul{margin:7px 0 0 18px}.box-text li{margin-bottom:5px}
+.box-text strong{color:var(--navy)}
+.box-text code{background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.15);
+  border-radius:4px;padding:2px 7px;font-family:'Fira Code',monospace;font-size:13px;color:var(--purple)}
+.box.info{background:var(--blueXL);border:1px solid rgba(0,102,255,.18)}.box.info .box-title{color:var(--blue)}
+.box.warn{background:var(--amberL);border:1px solid rgba(255,140,0,.2)}.box.warn .box-title{color:var(--amber)}
+.box.ok{background:var(--greenL);border:1px solid rgba(0,166,126,.2)}.box.ok .box-title{color:var(--green)}
+.box.err{background:var(--redL);border:1px solid rgba(224,41,74,.18)}.box.err .box-title{color:var(--red)}
+.box.purple{background:var(--purpleL);border:1px solid rgba(124,58,237,.2)}.box.purple .box-title{color:var(--purple)}
+.box.bonus{background:linear-gradient(135deg,var(--amberL),#FFF8EC);border:1px dashed rgba(255,140,0,.4)}.box.bonus .box-title{color:var(--amber)}
+
+/* TABLES */
+.tbl-wrap{overflow-x:auto;margin:18px 0;border-radius:var(--r2);box-shadow:var(--shadow);border:1px solid var(--border)}
+table.t{width:100%;border-collapse:collapse;font-size:15px;background:var(--white)}
+table.t thead tr{background:var(--navy)}
+table.t thead th{padding:13px 16px;text-align:left;color:#fff;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em}
+table.t thead th:first-child{border-radius:var(--r2) 0 0 0}table.t thead th:last-child{border-radius:0 var(--r2) 0 0}
+table.t tbody tr{border-bottom:1px solid var(--border);transition:background .15s}
+table.t tbody tr:hover{background:var(--purpleL)}
+table.t td{padding:12px 16px;color:var(--text2);vertical-align:top;font-size:15px}
+table.t td.ctr{text-align:center}
+.ok-ico{color:var(--green);font-weight:700}.no-ico{color:var(--muted);font-size:13px}
+
+/* CITATION DEMOS */
+.cite-demo{background:var(--white);border:1px solid var(--border);border-radius:var(--r2);
+  padding:22px 26px;margin:18px 0;box-shadow:var(--shadow)}
+.cite-label{font-family:'Fira Code',monospace;font-size:10px;font-weight:700;color:var(--purple);
+  text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.cite-label::after{content:'';flex:1;height:1px;background:var(--border)}
+.cite-example{background:var(--bg);border-left:4px solid var(--purple);border-radius:0 var(--r) var(--r) 0;
+  padding:14px 18px;margin-bottom:12px;font-size:15px;color:var(--text2);line-height:1.8}
+.cite-example strong{color:var(--navy)}
+.cite-example em{color:var(--text2)}
+.cite-note{font-size:12.5px;color:var(--muted);margin-top:6px;font-style:italic}
+
+/* TOC DEMO */
+.toc-demo{background:var(--white);border:1px solid var(--border);border-radius:var(--r2);
+  overflow:hidden;margin:18px 0;box-shadow:var(--shadow)}
+.toc-header{background:var(--navy);padding:10px 16px;font-family:'Fira Code',monospace;
+  font-size:11px;color:rgba(255,255,255,.45);display:flex;gap:7px;align-items:center}
+.toc-body{padding:18px 22px}
+.toc-title{font-size:16px;font-weight:800;color:var(--navy);text-align:center;
+  margin-bottom:18px;padding-bottom:10px;border-bottom:2px solid var(--purple)}
+.toc-row{display:flex;align-items:baseline;gap:4px;margin-bottom:9px}
+.toc-num{font-family:'Fira Code',monospace;font-size:13px;font-weight:600;color:var(--purple);width:28px;flex-shrink:0}
+.toc-text{font-size:14px;color:var(--text2);flex:1}
+.toc-dots{flex:1;border-bottom:1px dotted var(--border2);margin:0 8px 4px}
+.toc-page{font-family:'Fira Code',monospace;font-size:13px;color:var(--muted);flex-shrink:0}
+.toc-row.h2 .toc-num{padding-left:16px;font-size:12px;color:var(--blue)}
+.toc-row.h2 .toc-text{font-size:13px}
+
+/* FOOTNOTE DEMO */
+.fn-demo{background:var(--white);border:1px solid var(--border);border-radius:var(--r2);
+  margin:18px 0;overflow:hidden;box-shadow:var(--shadow)}
+.fn-body{padding:18px 22px;font-size:15px;color:var(--text2);line-height:1.8;
+  border-bottom:2px solid var(--border)}
+.fn-sup{font-size:10px;vertical-align:super;color:var(--purple);font-weight:700;cursor:default}
+.fn-zone{padding:14px 22px;background:var(--bg)}
+.fn-line{display:flex;gap:10px;margin-bottom:6px;font-size:13px;color:var(--muted)}
+.fn-n{color:var(--purple);font-weight:700;font-size:11px;flex-shrink:0;padding-top:2px}
+.fn-t{line-height:1.6}
+
+/* CAPTION DEMO */
+.cap-demo{background:var(--bg);border-radius:var(--r2);padding:18px 22px;margin:18px 0;
+  border:1px solid var(--border)}
+.cap-img{background:linear-gradient(135deg,var(--purpleL),var(--blueXL));border-radius:var(--r);
+  height:100px;display:flex;align-items:center;justify-content:center;
+  font-size:32px;margin-bottom:8px;border:1px solid var(--border)}
+.cap-text{font-size:13px;color:var(--text2);text-align:center;font-style:italic}
+.cap-text strong{color:var(--purple);font-style:normal}
+
+/* COMPETENCES */
+.comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin:22px 0}
+.comp-item{background:var(--white);border:1px solid var(--border);border-radius:var(--r);
+  padding:14px 16px;display:flex;align-items:flex-start;gap:12px;transition:all .2s}
+.comp-item:hover{border-color:rgba(124,58,237,.3);box-shadow:0 4px 16px rgba(124,58,237,.08)}
+.comp-bullet{width:24px;height:24px;border-radius:6px;flex-shrink:0;margin-top:1px;
+  background:linear-gradient(135deg,var(--green),#00C49A);display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff}
+.comp-txt{font-size:14.5px;color:var(--text2);line-height:1.45}
+
+/* EXERCISES */
+.ex-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r2);
+  overflow:hidden;margin:30px 0;box-shadow:var(--shadow);transition:box-shadow .25s,border-color .25s}
+.ex-card:hover{box-shadow:var(--shadowM);border-color:rgba(124,58,237,.2)}
+.ex-head{padding:18px 22px;background:var(--navy);display:flex;align-items:center;gap:14px}
+.ex-num{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--purple),var(--blue));
+  display:flex;align-items:center;justify-content:center;font-weight:900;font-size:19px;color:#fff;
+  flex-shrink:0;box-shadow:0 4px 12px rgba(124,58,237,.4)}
+.ex-info{flex:1}
+.ex-title{font-weight:800;font-size:17px;color:#fff}
+.ex-meta{font-size:12px;color:rgba(255,255,255,.55);margin-top:3px;font-family:'Fira Code',monospace}
+.ex-body{padding:24px 26px}
+.ex-goal{background:var(--amberL);border-left:3px solid var(--amber);border-radius:0 var(--r) var(--r) 0;
+  padding:13px 17px;margin-bottom:22px;font-size:15px;color:var(--text2)}
+.ex-goal strong{color:var(--amber);font-weight:700}
+.steps{list-style:none;padding:0}
+.step{display:flex;gap:15px;margin-bottom:16px;align-items:flex-start}
+.step-n{width:30px;height:30px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--purple),var(--blue));
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:#fff;
+  box-shadow:0 3px 8px rgba(124,58,237,.25)}
+.step-t{font-size:15px;color:var(--text2);line-height:1.75;padding-top:4px}
+.step-t strong{color:var(--navy);font-weight:700}
+.step-t code{background:var(--purpleL);border:1px solid rgba(124,58,237,.15);border-radius:5px;
+  padding:2px 7px;font-family:'Fira Code',monospace;font-size:13px;color:var(--purple)}
+.tip{background:var(--greenL);border:1px solid rgba(0,166,126,.2);border-radius:var(--r);
+  padding:12px 16px;margin-top:15px;font-size:14.5px;color:var(--text2)}
+.tip strong{color:var(--green)}
+.reto{background:var(--blueXL);border:1px solid rgba(0,102,255,.2);border-radius:var(--r);
+  padding:12px 16px;margin-top:10px;font-size:14.5px;color:var(--text2)}
+.reto::before{content:'⚡ Variante RETO: ';font-weight:700;color:var(--blue)}
+.bonus-hint{background:var(--blueXL);border:1px dashed rgba(0,102,255,.3);border-radius:var(--r);
+  padding:12px 16px;margin-top:10px;font-size:14.5px;color:var(--text2)}
+.bonus-hint::before{content:'⭐ BONUS (solo M365 + Copilot): ';font-weight:700;color:var(--blue)}
+
+/* NOTE ARCHIVO */
+.note-archivo{background:#FFFBEB;border:2px solid #F59E0B;border-radius:var(--r);
+  padding:13px 16px;margin-top:14px;display:flex;align-items:flex-start;gap:12px}
+.note-archivo .na-ico{font-size:20px;flex-shrink:0;margin-top:1px}
+.note-archivo .na-body{font-size:13.5px;color:var(--text2);line-height:1.6}
+.note-archivo .na-body strong{color:#B45309}
+.note-archivo .na-body code{background:rgba(180,83,9,.1);border:1px solid rgba(180,83,9,.2);
+  border-radius:4px;padding:2px 7px;font-family:'Fira Code',monospace;font-size:12px;color:#92400E}
+
+/* MARK COMPLETE */
+.mark-complete{margin:36px 0 8px;display:flex;align-items:center;justify-content:center}
+.btn-complete{display:inline-flex;align-items:center;gap:10px;
+  background:var(--purpleL);border:2px solid rgba(124,58,237,.2);
+  color:var(--purple);font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;
+  padding:12px 24px;border-radius:10px;cursor:pointer;transition:all .25s;box-shadow:var(--shadow)}
+.btn-complete:hover{background:var(--purple);color:#fff;border-color:var(--purple);
+  box-shadow:0 4px 20px rgba(124,58,237,.3);transform:translateY(-1px)}
+.btn-complete.done{background:var(--greenL);border-color:rgba(0,166,126,.3);color:var(--green);
+  cursor:default;transform:none!important;box-shadow:none!important}
+
+/* EXAM */
+#examen{background:var(--navy)}
+.exam-hero{padding:52px 64px 28px;border-bottom:1px solid rgba(255,255,255,.08);text-align:center;
+  position:relative;overflow:hidden;
+  background:radial-gradient(ellipse 70% 60% at 20% 50%,rgba(124,58,237,.12) 0%,transparent 70%),
+    radial-gradient(ellipse 50% 50% at 80% 50%,rgba(0,102,255,.08) 0%,transparent 70%)}
+.exam-hero::after{content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Ccircle cx='20' cy='20' r='1' fill='white' fill-opacity='.05'/%3E%3C/svg%3E");
+  background-size:40px 40px}
+.exam-hero h2{font-size:36px;font-weight:900;color:#fff;margin-bottom:8px;position:relative;z-index:1}
+.exam-hero p{font-size:15px;color:rgba(255,255,255,.5);margin-bottom:20px;position:relative;z-index:1}
+.exam-stats{display:flex;justify-content:center;gap:32px;position:relative;z-index:1}
+.es-v{font-family:'Fira Code',monospace;font-size:30px;font-weight:700;color:var(--amber)}
+.es-l{font-size:11px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.08em}
+.exam-body{padding:32px 64px 48px}
+.exam-note{background:rgba(255,140,0,.1);border:1px solid rgba(255,140,0,.25);border-radius:var(--r);
+  padding:13px 17px;margin-bottom:24px;font-size:14px;color:rgba(255,255,255,.65);display:flex;align-items:center;gap:8px}
+.sec-div{font-family:'Fira Code',monospace;font-size:12px;font-weight:700;color:var(--cyan);
+  text-transform:uppercase;letter-spacing:.12em;padding:10px 0;border-bottom:1px solid rgba(0,194,224,.2);
+  margin:28px 0 18px;display:flex;align-items:center;gap:10px}
+.sec-div-badge{background:rgba(0,194,224,.12);border:1px solid rgba(0,194,224,.2);border-radius:5px;padding:2px 8px;font-size:11px;color:var(--cyan)}
+.q-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:var(--r2);
+  padding:22px 24px;margin-bottom:13px;transition:border-color .2s}
+.q-card:hover{border-color:rgba(124,58,237,.3)}
+.q-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:16px}
+.q-num{width:34px;height:34px;border-radius:50%;flex-shrink:0;background:rgba(124,58,237,.2);
+  border:1px solid rgba(124,58,237,.35);display:flex;align-items:center;justify-content:center;
+  font-family:'Fira Code',monospace;font-size:13px;font-weight:700;color:#c4b5fd}
+.q-meta{flex:1}
+.q-type{font-size:10px;font-weight:700;color:var(--amber);text-transform:uppercase;letter-spacing:.1em;margin-bottom:5px;font-family:'Fira Code',monospace}
+.q-text{font-size:15.5px;color:#fff;line-height:1.65;font-weight:500}
+.opts{display:flex;flex-direction:column;gap:8px;margin-left:48px}
+.opt{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  border-radius:var(--r);padding:12px 16px;cursor:pointer;transition:all .18s;user-select:none}
+.opt:hover{background:rgba(124,58,237,.1);border-color:rgba(124,58,237,.3)}
+.opt.sel{background:rgba(124,58,237,.15);border-color:rgba(124,58,237,.4)}
+.opt.ok{background:rgba(0,166,126,.12);border-color:rgba(0,166,126,.35)}
+.opt.bad{background:rgba(224,41,74,.08);border-color:rgba(224,41,74,.3)}
+.opt-l{width:26px;height:26px;border-radius:50%;flex-shrink:0;background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;
+  font-family:'Fira Code',monospace;font-size:12px;font-weight:700;color:rgba(255,255,255,.5)}
+.opt.ok .opt-l{background:var(--green);color:#fff;border-color:var(--green)}
+.opt.bad .opt-l{background:var(--red);color:#fff;border-color:var(--red)}
+.opt-t{font-size:14.5px;color:rgba(255,255,255,.8)}
+.tf-row{display:flex;gap:10px;margin-left:48px}
+.tf{flex:1;padding:14px;border-radius:var(--r);text-align:center;background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.09);cursor:pointer;font-size:15px;font-weight:700;
+  color:rgba(255,255,255,.55);transition:all .18s;user-select:none}
+.tf:hover{border-color:rgba(124,58,237,.3)}
+.tf.sel{border-color:var(--purple);background:rgba(124,58,237,.15);color:#fff}
+.tf.ok{border-color:var(--green);background:rgba(0,166,126,.12);color:var(--green)}
+.tf.bad{border-color:var(--red);background:rgba(224,41,74,.08);color:#ff8fa0}
+.fb{margin-left:48px;margin-top:10px;padding:10px 14px;border-radius:8px;font-size:14px;display:none}
+.fb.vis{display:block}
+.fb.ok{background:rgba(0,166,126,.1);border:1px solid rgba(0,166,126,.25);color:#52d9a9}
+.fb.bad{background:rgba(224,41,74,.08);border:1px solid rgba(224,41,74,.2);color:#ff8fa0}
+.sa{margin-left:48px;margin-top:9px}
+.sa textarea{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+  border-radius:var(--r);padding:12px 15px;color:#fff;font-family:'Outfit',sans-serif;
+  font-size:15px;line-height:1.65;resize:vertical;min-height:80px;outline:none;transition:border-color .2s}
+.sa textarea:focus{border-color:rgba(124,58,237,.45)}
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-left:48px}
+.match-col-h{font-size:11px;font-weight:700;color:rgba(255,255,255,.35);text-transform:uppercase;
+  letter-spacing:.08em;margin-bottom:8px;font-family:'Fira Code',monospace}
+.match-i{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--r);
+  padding:10px 14px;font-size:14px;color:rgba(255,255,255,.75);margin-bottom:6px;cursor:pointer;transition:all .18s}
+.match-i:hover{border-color:rgba(124,58,237,.3)}
+.match-i.sel{border-color:var(--amber);background:rgba(255,140,0,.08)}
+.match-i.done{border-color:var(--green);background:rgba(0,166,126,.08);color:#52d9a9}
+.exam-cta{text-align:center;padding:28px 64px 44px;border-top:1px solid rgba(255,255,255,.07)}
+.btn-grade{background:linear-gradient(135deg,var(--purple),var(--blue));color:#fff;
+  font-family:'Outfit',sans-serif;font-size:16px;font-weight:800;letter-spacing:.04em;
+  text-transform:uppercase;padding:16px 52px;border:none;border-radius:30px;cursor:pointer;
+  transition:all .22s;box-shadow:0 4px 20px rgba(124,58,237,.35)}
+.btn-grade:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(124,58,237,.45)}
+.score-box{display:none;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);
+  border-radius:var(--r2);padding:28px;margin-top:22px}
+.score-box.vis{display:block}
+.score-big{font-family:'Fira Code',monospace;font-size:60px;font-weight:700;color:var(--amber)}
+.score-msg{font-size:15px;color:rgba(255,255,255,.5);margin-top:5px}
+
+/* RUBRIC */
+.rub{width:100%;border-collapse:collapse;font-size:14.5px;margin:16px 0;border-radius:var(--r2);overflow:hidden;box-shadow:var(--shadow)}
+.rub thead{background:var(--navy)}
+.rub th{padding:11px 13px;text-align:left;color:#fff;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.rub td{padding:11px 13px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top}
+.rub tr:nth-child(even){background:var(--purpleL)}
+.rub tr:last-child td{background:rgba(124,58,237,.08);font-weight:700;color:var(--purple)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .55s,transform .55s}
+.reveal.shown{opacity:1;transform:none}
+
+@media(max-width:960px){
+  :root{--sidebar:0px}
+  #sidebar{display:none}#main{margin-left:0}
+  .hero-right-card{display:none}#hero{padding:40px 24px;min-height:auto}
+  .sec{padding:40px 24px}.comp-grid{grid-template-columns:1fr}
+  .exam-body,.exam-cta,.exam-hero{padding-left:24px;padding-right:24px}
+  .opts,.tf-row,.fb,.sa,.match-grid{margin-left:0}
+  .match-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div id="pbar"></div>
+
+<!-- ═══ SIDEBAR ════════════════════════════════════════════ -->
+<nav id="sidebar">
+  <div class="sb-top">
+    <div class="sb-brand">
+      <div class="sb-icon">📚</div>
+      <div>
+        <div class="sb-brand-txt">Microsoft Word 2026</div>
+        <div class="sb-brand-sub">Curso autogestivo · Parte 1 de 2</div>
+      </div>
+    </div>
+    <div class="sb-chip">
+      <div class="sb-chip-num">MOD_06 // SEM_06</div>
+      <div class="sb-chip-name">Referencias y Citas Académicas</div>
+      <div class="sb-chip-week">📅 18–22 de mayo de 2026 · 18 horas</div>
+    </div>
+  </div>
+
+  <div class="nav-group">Contenido</div>
+  <a href="#hero"       class="nav-link on"><span class="nav-icon">🏠</span><div class="nav-txt">Portada<div class="nav-sub">Inicio del módulo</div></div></a>
+  <a href="#intro"      class="nav-link"><span class="nav-icon">🎯</span><div class="nav-txt">Introducción<div class="nav-sub">Mapa y competencias</div></div></a>
+  <a href="#tema1"      class="nav-link"><span class="nav-icon">📑</span><div class="nav-txt">Tema 1 · Tabla de contenido<div class="nav-sub">Automática y personalizada</div></div></a>
+  <a href="#tema2"      class="nav-link"><span class="nav-icon">¹</span><div class="nav-txt">Tema 2 · Notas al pie y al final<div class="nav-sub">Insertar y administrar</div></div></a>
+  <a href="#tema3"      class="nav-link"><span class="nav-icon">🔖</span><div class="nav-txt">Tema 3 · Títulos y leyendas<div class="nav-sub">Figuras y tablas numeradas</div></div></a>
+  <a href="#tema4"      class="nav-link"><span class="nav-icon">📎</span><div class="nav-txt">Tema 4 · Citas y bibliografía APA<div class="nav-sub">Fuentes y referencias</div></div></a>
+  <a href="#tema5"      class="nav-link"><span class="nav-icon">📇</span><div class="nav-txt">Tema 5 · Índice analítico<div class="nav-sub">Marcas y generación</div></div></a>
+  <a href="#tema6"      class="nav-link"><span class="nav-icon">🔗</span><div class="nav-txt">Tema 6 · Hipervínculos<div class="nav-sub">Internos, externos y email</div></div></a>
+  <a href="#tema7"      class="nav-link"><span class="nav-icon">🔒</span><div class="nav-txt">Tema 7 · Marcadores<div class="nav-sub">Señalar y navegar</div></div></a>
+
+  <div class="nav-group">Evaluación</div>
+  <a href="#ejercicios" class="nav-link"><span class="nav-icon">✏️</span><div class="nav-txt">Ejercicios paso a paso<div class="nav-sub">5 ejercicios prácticos</div></div></a>
+  <a href="#examen"     class="nav-link"><span class="nav-icon">📝</span><div class="nav-txt">Examen interactivo<div class="nav-sub">20 reactivos</div></div></a>
+  <a href="#actividad"  class="nav-link"><span class="nav-icon">🏆</span><div class="nav-txt">Actividad integradora<div class="nav-sub">Proyecto + rúbrica</div></div></a>
+
+  <div class="sb-foot">
+    <div class="prog-row">Progreso del curso <span>46%</span></div>
+    <div class="prog-track"><div class="prog-fill"></div></div>
+    <div class="prog-note">Módulo 6 de 13 · Parte 1 de 2</div>
+  </div>
+</nav>
+
+<!-- ═══ MAIN ════════════════════════════════════════════════ -->
+<main id="main">
+
+<!-- ─── HERO ─────────────────────────────────────────────── -->
+<section id="hero">
+  <svg class="hero-circuit" viewBox="0 0 480 480" fill="none">
+    <line x1="400" y1="0"   x2="400" y2="110" stroke="#7C3AED" stroke-width="1.5" stroke-opacity=".12"/>
+    <line x1="400" y1="110" x2="310" y2="110" stroke="#7C3AED" stroke-width="1.5" stroke-opacity=".12"/>
+    <line x1="310" y1="110" x2="310" y2="220" stroke="#7C3AED" stroke-width="1.5" stroke-opacity=".12"/>
+    <line x1="310" y1="220" x2="450" y2="220" stroke="#7C3AED" stroke-width="1.5" stroke-opacity=".12"/>
+    <line x1="360" y1="0"   x2="360" y2="70"  stroke="#0066FF" stroke-width="1"   stroke-opacity=".09"/>
+    <line x1="360" y1="70"  x2="270" y2="70"  stroke="#0066FF" stroke-width="1"   stroke-opacity=".09"/>
+    <line x1="270" y1="70"  x2="270" y2="170" stroke="#0066FF" stroke-width="1"   stroke-opacity=".09"/>
+    <circle cx="400" cy="110" r="5"   fill="none" stroke="#7C3AED" stroke-width="1.5" stroke-opacity=".25"/>
+    <circle cx="310" cy="110" r="3.5" fill="#7C3AED" fill-opacity=".2"/>
+    <circle cx="310" cy="220" r="5"   fill="none" stroke="#7C3AED" stroke-width="1.5" stroke-opacity=".25"/>
+    <circle cx="360" cy="70"  r="3.5" fill="#0066FF" fill-opacity=".18"/>
+    <!-- Book/doc deco -->
+    <rect x="305" y="265" width="70" height="90" rx="4" fill="none" stroke="#7C3AED" stroke-width="1" stroke-opacity=".12"/>
+    <rect x="305" y="265" width="70" height="14" rx="4" fill="#7C3AED" fill-opacity=".08"/>
+    <line x1="315" y1="290" x2="365" y2="290" stroke="#7C3AED" stroke-width="1" stroke-opacity=".1"/>
+    <line x1="315" y1="300" x2="360" y2="300" stroke="#7C3AED" stroke-width="1" stroke-opacity=".08"/>
+    <line x1="315" y1="310" x2="355" y2="310" stroke="#7C3AED" stroke-width="1" stroke-opacity=".06"/>
+    <line x1="315" y1="320" x2="362" y2="320" stroke="#0066FF" stroke-width="1" stroke-opacity=".08"/>
+    <line x1="315" y1="330" x2="340" y2="330" stroke="#0066FF" stroke-width="1" stroke-opacity=".06"/>
+    <!-- footnote mark -->
+    <text x="368" y="293" font-family="monospace" font-size="9" fill="#7C3AED" fill-opacity=".25">¹</text>
+    <text x="368" y="303" font-family="monospace" font-size="9" fill="#7C3AED" fill-opacity=".2">²</text>
+    <!-- dots -->
+    <circle cx="380" cy="400" r="2" fill="#FF8C00" fill-opacity=".3"/>
+    <circle cx="420" cy="418" r="2" fill="#7C3AED" fill-opacity=".3"/>
+    <circle cx="460" cy="385" r="2" fill="#00C2E0" fill-opacity=".3"/>
+    <line x1="380" y1="400" x2="420" y2="418" stroke="#7C3AED" stroke-width=".8" stroke-opacity=".1"/>
+    <line x1="420" y1="418" x2="460" y2="385" stroke="#0066FF" stroke-width=".8" stroke-opacity=".1"/>
+  </svg>
+
+  <div class="hero-left">
+    <div class="eyebrow">
+      <span class="eyebrow-pulse"></span>
+      MOD_06 · SEM_06 · 18–22 MAY 2026
+    </div>
+    <h1 class="hero-title">
+      <span class="accent">Referencias</span><br>
+      y Citas<br>
+      Académicas
+    </h1>
+    <p class="hero-desc">
+      Tabla de contenido automática, notas al pie, citas APA, bibliografía, índice analítico e hipervínculos. El módulo que convierte un texto en un <strong>documento académico profesional</strong>.
+    </p>
+  </div>
+
+  <div class="hero-right-card">
+    <div class="compat-card">
+      <div class="compat-hd">Compatibilidad</div>
+      <div class="compat-row"><div class="compat-ok">✓</div><div class="compat-name">Word 2016</div><span class="compat-tag all">100%</span></div>
+      <div class="compat-row"><div class="compat-ok">✓</div><div class="compat-name">Word 2019</div><span class="compat-tag all">100%</span></div>
+      <div class="compat-row"><div class="compat-ok">✓</div><div class="compat-name">Word 2021</div><span class="compat-tag all">100%</span></div>
+      <div class="compat-row"><div class="compat-ok">✓</div><div class="compat-name">Microsoft 365</div><span class="compat-tag all">100%</span></div>
+      <div class="compat-row"><div class="compat-ok star">⭐</div><div class="compat-name">365 + Copilot</div><span class="compat-tag bonus">+ Bonus</span></div>
+      <div class="compat-row"><div class="compat-ok">✓</div><div class="compat-name">Windows 7/10/11</div><span class="compat-tag all">100%</span></div>
+    </div>
+    <div style="margin-top:10px;background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:12px 14px;box-shadow:var(--shadow);display:flex;align-items:center;gap:10px">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="6" fill="#F5F0FF"/>
+        <rect x="6" y="5" width="20" height="22" rx="2" fill="none" stroke="#7C3AED" stroke-width="1.2" stroke-opacity=".6"/>
+        <line x1="10" y1="11" x2="22" y2="11" stroke="#7C3AED" stroke-width="1" stroke-opacity=".4"/>
+        <line x1="10" y1="15" x2="22" y2="15" stroke="#7C3AED" stroke-width="1" stroke-opacity=".3"/>
+        <line x1="10" y1="19" x2="18" y2="19" stroke="#7C3AED" stroke-width="1" stroke-opacity=".2"/>
+        <text x="19" y="13" font-family="monospace" font-size="7" fill="#7C3AED" fill-opacity=".8">¹</text>
+        <text x="19" y="17" font-family="monospace" font-size="7" fill="#7C3AED" fill-opacity=".6">²</text>
+        <line x1="8" y1="23" x2="24" y2="23" stroke="#7C3AED" stroke-width=".8" stroke-opacity=".3"/>
+        <line x1="8" y1="25" x2="20" y2="25" stroke="#7C3AED" stroke-width=".8" stroke-opacity=".2"/>
+      </svg>
+      <div>
+        <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-family:'Fira Code',monospace">Semana 6 de 7</div>
+        <div style="font-size:12px;font-weight:700;color:var(--navy)">18–22 de mayo, 2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── INTRODUCCIÓN ──────────────────────────────────────── -->
+<section id="intro" class="sec alt reveal">
+  <div class="sec-kicker">Punto de partida</div>
+  <h2 class="sec-h">Introducción y Encuadre</h2>
+  <p class="sec-sub">Todo lo que diferencia un documento académico de uno informal está en este módulo.</p>
+
+  <div class="box purple">
+    <div class="box-ico">📚</div>
+    <div class="box-body">
+      <div class="box-title">¿Por qué dominar las referencias en Word?</div>
+      <div class="box-text">Un trabajo académico, un programa de estudios, un reglamento o un manual de procedimientos necesitan elementos que los documentos simples no requieren: tabla de contenido para navegar, notas al pie para aclarar sin interrumpir, citas que respaldan afirmaciones, bibliografía organizada según normas y un índice para encontrar términos clave. Word automatiza todos estos elementos — pero solo si sabes cómo configurarlos correctamente. Este módulo te enseña todo eso, desde cero, compatible con <strong>cualquier versión de Word desde 2016</strong>.</div>
+    </div>
+  </div>
+
+  <h2 class="t2">Mapa conceptual del Módulo 6</h2>
+  <div class="tbl-wrap">
+  <table class="t">
+    <thead><tr><th>Tema</th><th>Contenido principal</th></tr></thead>
+    <tbody>
+      <tr><td><strong>1. Tabla de contenido</strong></td><td>Automática desde estilos de título, personalizada, actualizar y formatear</td></tr>
+      <tr><td><strong>2. Notas al pie y al final</strong></td><td>Insertar, editar, convertir y administrar notas con formato profesional</td></tr>
+      <tr><td><strong>3. Títulos y leyendas</strong></td><td>Numerar automáticamente figuras y tablas con leyendas y lista de figuras</td></tr>
+      <tr><td><strong>4. Citas y bibliografía APA</strong></td><td>Gestor de fuentes de Word, estilos APA 7ª ed., insertar cita y generar bibliografía</td></tr>
+      <tr><td><strong>5. Índice analítico</strong></td><td>Marcar entradas, generar índice automático y actualizar</td></tr>
+      <tr><td><strong>6. Hipervínculos</strong></td><td>A páginas web, a secciones del mismo documento, a email y a archivos</td></tr>
+      <tr><td><strong>7. Marcadores</strong></td><td>Crear, nombrar y saltar a marcadores para navegación interna</td></tr>
+      <tr><td><strong>Práctica + Examen</strong></td><td>5 ejercicios prácticos + examen de 20 reactivos</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 class="t2">Competencias que desarrollarás</h2>
+  <div class="comp-grid">
+    <div class="comp-item"><div class="comp-bullet">✓</div><div class="comp-txt">Generarás tablas de contenido automáticas que se actualizan con un clic</div></div>
+    <div class="comp-item"><div class="comp-bullet">✓</div><div class="comp-txt">Insertarás notas al pie y al final con numeración y formato profesional</div></div>
+    <div class="comp-item"><div class="comp-bullet">✓</div><div class="comp-txt">Numerarás automáticamente figuras y tablas con leyendas descriptivas</div></div>
+    <div class="comp-item"><div class="comp-bullet">✓</div><div class="comp-txt">Insertarás citas en formato APA 7ª edición y generarás la bibliografía automáticamente</div></div>
+    <div class="comp-item"><div class="comp-bullet">✓</div><div class="comp-txt">Crearás un índice analítico con entradas marcadas y generación automática</div></div>
+    <div class="comp-item"><div class="comp-bullet">✓</div><div class="comp-txt">Insertarás hipervínculos a sitios web, secciones del documento y correos</div></div>
+    <div class="comp-item"><div class="comp-bullet">✓</div><div class="comp-txt">Usarás marcadores para crear navegación interna en documentos largos</div></div>
+    <div class="comp-item"><div class="comp-bullet">✓</div><div class="comp-txt">Producirás documentos académicos con todas las partes formales correctamente configuradas</div></div>
+  </div>
+
+  <div class="box warn">
+    <div class="box-ico">🤔</div>
+    <div class="box-body">
+      <div class="box-title">Pregunta detonadora</div>
+      <div class="box-text"><em>¿Has actualizado manualmente el índice de un documento largo cuando los números de página cambiaron? ¿Has escrito a mano cada entrada de la bibliografía de un trabajo? Al terminar este módulo, ambas cosas serán automáticas — y cuando el documento cambie, todo se actualiza en segundos.</em></div>
+    </div>
+  </div>
+
+  <div class="box ok">
+    <div class="box-ico">📌</div>
+    <div class="box-body">
+      <div class="box-title">Instrucciones de navegación</div>
+      <div class="box-text">
+        <ul>
+          <li>Módulo de la <strong>semana del 18 al 22 de mayo</strong> · 18 horas · ~3.6 hrs/día.</li>
+          <li>El Tema 4 (citas APA) y el Tema 1 (tabla de contenido) son los más importantes — practícalos especialmente.</li>
+          <li>Al terminar cada tema, marca tu avance con el botón <strong>"Marcar como completado"</strong>.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TEMA 1 ──────────────────────────────────────────────── -->
+<section id="tema1" class="sec reveal">
+  <div class="sec-kicker">Tema 1</div>
+  <h2 class="sec-h">Tabla de Contenido Automática</h2>
+  <p class="sec-sub">Genera un índice completo con números de página que se actualiza automáticamente con un clic</p>
+
+  <p class="body">La tabla de contenido (TDC) es el mapa de navegación de cualquier documento largo. En Word, generarla es completamente automático siempre que hayas aplicado los <strong>estilos de título</strong> (Título 1, Título 2, Título 3) a los encabezados del documento. Sin estilos de título, Word no puede generar la TDC. Esta es la razón más poderosa para usar estilos correctamente.</p>
+
+  <h2 class="t2">1.1 Demo visual de tabla de contenido</h2>
+  <div class="toc-demo">
+    <div class="toc-header">
+      <div style="width:10px;height:10px;border-radius:50%;background:#ff5f56"></div>
+      <div style="width:10px;height:10px;border-radius:50%;background:#ffbd2e;margin-left:5px"></div>
+      <div style="width:10px;height:10px;border-radius:50%;background:#27c93f;margin-left:5px"></div>
+      <span style="margin-left:10px">Tabla de contenido — generada automáticamente por Word</span>
+    </div>
+    <div class="toc-body">
+      <div class="toc-title">TABLA DE CONTENIDO</div>
+      <div class="toc-row"><span class="toc-num">1.</span><span class="toc-text">Introducción al pensamiento crítico</span><span class="toc-dots"></span><span class="toc-page">3</span></div>
+      <div class="toc-row h2"><span class="toc-num">1.1</span><span class="toc-text">Definición y características</span><span class="toc-dots"></span><span class="toc-page">3</span></div>
+      <div class="toc-row h2"><span class="toc-num">1.2</span><span class="toc-text">Diferencia con pensamiento creativo</span><span class="toc-dots"></span><span class="toc-page">5</span></div>
+      <div class="toc-row"><span class="toc-num">2.</span><span class="toc-text">Aplicaciones en contextos sociales</span><span class="toc-dots"></span><span class="toc-page">7</span></div>
+      <div class="toc-row h2"><span class="toc-num">2.1</span><span class="toc-text">Análisis de problemas comunitarios</span><span class="toc-dots"></span><span class="toc-page">7</span></div>
+      <div class="toc-row h2"><span class="toc-num">2.2</span><span class="toc-text">Propuestas de solución fundamentadas</span><span class="toc-dots"></span><span class="toc-page">10</span></div>
+      <div class="toc-row"><span class="toc-num">3.</span><span class="toc-text">Metodología de evaluación</span><span class="toc-dots"></span><span class="toc-page">13</span></div>
+      <div class="toc-row"><span class="toc-num" style="color:var(--muted)"></span><span class="toc-text">Referencias bibliográficas</span><span class="toc-dots"></span><span class="toc-page">17</span></div>
+    </div>
+  </div>
+
+  <h2 class="t2">1.2 Cómo insertar la tabla de contenido</h2>
+  <ol class="steps" style="list-style:none;padding:0">
+    <li class="step"><div class="step-n">1</div><div class="step-t"><strong>Requisito previo:</strong> Asegúrate de que todos los títulos del documento usan los estilos Título 1, Título 2, Título 3 (no formato manual). Sin esto, la TDC no funciona.</div></li>
+    <li class="step"><div class="step-n">2</div><div class="step-t">Coloca el cursor donde quieres insertar la TDC (generalmente después de la portada, en una página nueva).</div></li>
+    <li class="step"><div class="step-n">3</div><div class="step-t">Ve a <code>Referencias → Tabla de contenido</code>. Selecciona una de las tablas automáticas prediseñadas (recomendado: <strong>"Tabla automática 1"</strong>).</div></li>
+    <li class="step"><div class="step-n">4</div><div class="step-t">Para personalizar: haz clic en <strong>"Tabla de contenido personalizada..."</strong>. Puedes cambiar el número de niveles (1 a 9), el relleno de puntos, el formato y si incluye hipervínculos.</div></li>
+  </ol>
+
+  <h2 class="t2">1.3 Actualizar la tabla de contenido</h2>
+  <p class="body">Cuando agregas, eliminas o reordenanás contenido en el documento, los números de página cambian. La TDC <strong>no se actualiza automáticamente</strong> — debes actualizarla manualmente:</p>
+  <div class="tbl-wrap">
+  <table class="t">
+    <thead><tr><th>Método</th><th>Qué hace</th><th>Cuándo usarlo</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Clic en TDC → Actualizar tabla</strong></td><td>Abre opciones para actualizar solo páginas o todo</td><td>Cuando editaste el documento y necesitas sincronizar</td></tr>
+      <tr><td><strong>F9 con TDC seleccionada</strong></td><td>Fuerza la actualización del campo</td><td>Atajo rápido para actualizar sin menú</td></tr>
+      <tr><td><strong>Actualizar solo números de página</strong></td><td>Solo actualiza los números de página, no los títulos</td><td>Cuando los títulos no cambiaron, solo el contenido</td></tr>
+      <tr><td><strong>Actualizar toda la tabla</strong></td><td>Regenera la TDC completa: títulos y páginas</td><td>Cuando agregaste o eliminaste secciones enteras</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="box info">
+    <div class="box-ico">💡</div>
+    <div class="box-body">
+      <div class="box-title">Navegar con la TDC en formato digital</div>
+      <div class="box-text">En formato digital (Word o PDF), las entradas de la TDC son hipervínculos. Mantén presionado <strong>Ctrl</strong> y haz clic en cualquier entrada para saltar inmediatamente a esa sección del documento. Esto es especialmente útil en documentos largos como reglamentos, manuales o programas de estudios.</div>
+    </div>
+  </div>
+
+  <div class="mark-complete">
+    <button class="btn-complete" onclick="markDone(this,'t1')" id="mc-t1">
+      <span class="bc-icon">○</span><span class="bc-txt">Marcar como completado</span>
+    </button>
+  </div>
+</section>
+
+<!-- ─── TEMA 2 ──────────────────────────────────────────────── -->
+<section id="tema2" class="sec alt reveal">
+  <div class="sec-kicker">Tema 2</div>
+  <h2 class="sec-h">Notas al Pie y al Final</h2>
+  <p class="sec-sub">Aclaraciones, referencias y comentarios sin interrumpir el flujo principal del texto</p>
+
+  <p class="body">Las notas son información complementaria que no cabe en el flujo principal del texto sin interrumpirlo. Existen dos tipos: <strong>notas al pie</strong>, que aparecen al final de la misma página donde se insertan, y <strong>notas al final</strong>, que se acumulan al final del documento o de cada sección. Word las administra automáticamente: las numera, las renueva y ajusta el espacio en la página.</p>
+
+  <h2 class="t2">2.1 Demo visual de nota al pie</h2>
+  <div class="fn-demo">
+    <div class="fn-body">
+      El Pensamiento Crítico es una habilidad cognitiva de orden superior que permite al individuo analizar, evaluar y sintetizar información de manera reflexiva.<span class="fn-sup">1</span> Su desarrollo en el bachillerato es fundamental para la formación de ciudadanos activos y comprometidos con su entorno social.<span class="fn-sup">2</span>
+    </div>
+    <div class="fn-zone">
+      <div class="fn-line"><span class="fn-n">¹</span><span class="fn-t">Ennis, R. H. (1991). <em>Critical thinking: A streamlined conception.</em> Teaching Philosophy, 14(1), 5–24.</span></div>
+      <div class="fn-line"><span class="fn-n">²</span><span class="fn-t">Secretaría de Educación Pública. (2022). <em>Marco curricular común de la educación media superior.</em> México: SEP.</span></div>
+    </div>
+  </div>
+
+  <h2 class="t2">2.2 Insertar una nota al pie</h2>
+  <ol class="steps" style="list-style:none;padding:0">
+    <li class="step"><div class="step-n">1</div><div class="step-t">Coloca el cursor inmediatamente después de la palabra o fragmento que necesita la nota (sin espacio).</div></li>
+    <li class="step"><div class="step-n">2</div><div class="step-t">Ve a <code>Referencias → Insertar nota al pie</code> (o el atajo <code>Alt+Ctrl+F</code>). Word inserta automáticamente el número en superíndice y lleva el cursor al área de notas en la parte inferior de la página.</div></li>
+    <li class="step"><div class="step-n">3</div><div class="step-t">Escribe el contenido de la nota. Cuando termines, haz doble clic en el número de la nota para regresar al texto principal.</div></li>
+    <li class="step"><div class="step-n">4</div><div class="step-t">Para insertar una <strong>nota al final</strong>: <code>Referencias → Insertar nota al final</code> (o <code>Alt+Ctrl+D</code>). Aparecerá al final del documento.</div></li>
+  </ol>
+
+  <h2 class="t2">2.3 Administrar notas: convertir, mover y eliminar</h2>
+  <div class="tbl-wrap">
+  <table class="t">
+    <thead><tr><th>Operación</th><th>Cómo hacerlo</th><th>Resultado</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Eliminar nota</strong></td><td>Selecciona el número de la nota en el texto (no en el pie) y presiona Supr</td><td>La nota desaparece y la numeración se actualiza automáticamente</td></tr>
+      <tr><td><strong>Mover nota</strong></td><td>Corta (Ctrl+X) el número de la nota y pégalo (Ctrl+V) en la nueva posición</td><td>La nota se reubica y su numeración se reajusta automáticamente</td></tr>
+      <tr><td><strong>Convertir nota al pie ↔ al final</strong></td><td>Referencias → iniciador del cuadro Notas → botón "Convertir..."</td><td>Convierte todas o algunas notas entre los dos tipos</td></tr>
+      <tr><td><strong>Ver todas las notas</strong></td><td>Vista → Mostrar marcas → Notas</td><td>Panel de notas visible para revisar todas sin saltar de página en página</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="box ok">
+    <div class="box-ico">✓</div>
+    <div class="box-body">
+      <div class="box-title">Formato recomendado para notas académicas en bachillerato</div>
+      <div class="box-text">
+        <ul>
+          <li><strong>Fuente:</strong> La misma que el texto principal pero 2 puntos más pequeña (si el cuerpo es 12pt, la nota va en 10pt)</li>
+          <li><strong>Contenido:</strong> Referencia completa en APA para citas bibliográficas, o aclaración conceptual corta</li>
+          <li><strong>Longitud:</strong> Máximo 3-4 líneas — si necesita más espacio, incluirlo en el texto principal o en un anexo</li>
+          <li><strong>Cantidad:</strong> Máximo 3-4 notas por página para no sobrecargar visualmente</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="mark-complete">
+    <button class="btn-complete" onclick="markDone(this,'t2')" id="mc-t2">
+      <span class="bc-icon">○</span><span class="bc-txt">Marcar como completado</span>
+    </button>
+  </div>
+</section>
+
+<!-- ─── TEMA 3 ──────────────────────────────────────────────── -->
+<section id="tema3" class="sec reveal">
+  <div class="sec-kicker">Tema 3</div>
+  <h2 class="sec-h">Títulos y Leyendas Automáticas</h2>
+  <p class="sec-sub">Numera automáticamente figuras, tablas e ilustraciones y genera una lista de figuras</p>
+
+  <p class="body">En documentos académicos formales, cada figura, tabla y ecuación debe tener una leyenda numerada consecutivamente: "Figura 1. Descripción...", "Tabla 3. Descripción...". Hacerlo manualmente en un documento de 50 páginas es un caos — si insertas una figura nueva en la página 10, debes renumerar todas las siguientes manualmente. Word lo hace automáticamente.</p>
+
+  <h2 class="t2">3.1 Insertar una leyenda</h2>
+  <div class="cap-demo">
+    <div class="cap-img">🖼️ Imagen de ejemplo</div>
+    <div class="cap-text"><strong>Figura 1.</strong> Diagrama del proceso de evaluación bimestral en el CEB 6/17. Fuente: elaboración propia (2026).</div>
+  </div>
+
+  <ol class="steps" style="list-style:none;padding:0">
+    <li class="step"><div class="step-n">1</div><div class="step-t">Selecciona la imagen, tabla o elemento que necesita leyenda. Ve a <code>Referencias → Insertar título</code>.</div></li>
+    <li class="step"><div class="step-n">2</div><div class="step-t">En "Etiqueta" selecciona el tipo: <strong>Figura</strong>, <strong>Tabla</strong> o <strong>Ecuación</strong> (puedes crear etiquetas personalizadas como "Gráfico" o "Diagrama" con el botón "Nueva etiqueta...").</div></li>
+    <li class="step"><div class="step-n">3</div><div class="step-t">Elige la posición: <strong>Debajo del elemento seleccionado</strong> (para figuras) o <strong>Encima del elemento</strong> (para tablas, según norma APA). Agrega el texto descriptivo después del número automático. Haz clic en Aceptar.</div></li>
+    <li class="step"><div class="step-n">4</div><div class="step-t">Cuando insertes una nueva figura o tabla, repite el proceso. Word numerará automáticamente en secuencia. Si mueves o eliminas una figura, selecciona las leyendas restantes y presiona <strong>F9</strong> para actualizar la numeración.</div></li>
+  </ol>
+
+  <h2 class="t2">3.2 Lista de figuras y lista de tablas</h2>
+  <p class="body">Una vez que todas las figuras y tablas tienen leyendas automáticas, puedes generar una <strong>Lista de figuras</strong> o <strong>Lista de tablas</strong> (similar a la TDC pero para elementos gráficos). Ve a <code>Referencias → Insertar tabla de ilustraciones</code>, selecciona la etiqueta (Figura, Tabla, etc.) y haz clic en Aceptar.</p>
+
+  <div class="mark-complete">
+    <button class="btn-complete" onclick="markDone(this,'t3')" id="mc-t3">
+      <span class="bc-icon">○</span><span class="bc-txt">Marcar como completado</span>
+    </button>
+  </div>
+</section>
+
+<!-- ─── TEMA 4 ──────────────────────────────────────────────── -->
+<section id="tema4" class="sec alt reveal">
+  <div class="sec-kicker">Tema 4</div>
+  <h2 class="sec-h">Citas y Bibliografía APA</h2>
+  <p class="sec-sub">El gestor de referencias integrado de Word: inserta citas, administra fuentes y genera la bibliografía automáticamente</p>
+
+  <p class="body">Word incluye un <strong>gestor de referencias bibliográficas</strong> integrado que admite los principales estilos académicos: APA 7ª edición, MLA, Chicago, IEEE, entre otros. Una vez que registras una fuente (libro, artículo, sitio web, etc.), puedes insertar citas con un solo clic y generar automáticamente la lista de referencias al final del documento.</p>
+
+  <h2 class="t2">4.1 Configurar el estilo de citación</h2>
+  <p class="body">Antes de insertar cualquier cita, configura el estilo: <code>Referencias → Citas y bibliografía → Estilo</code>. Para documentos académicos en México el más usado es <strong>APA</strong> (7ª edición en versiones recientes de Word). Si no ves APA 7ª ed., actualiza Word o usa APA 6ª ed.</p>
+
+  <h2 class="t2">4.2 Agregar una fuente nueva</h2>
+  <ol class="steps" style="list-style:none;padding:0">
+    <li class="step"><div class="step-n">1</div><div class="step-t">Ve a <code>Referencias → Citas y bibliografía → Insertar cita → Agregar nueva fuente</code>. Se abre el cuadro de diálogo de edición de fuente.</div></li>
+    <li class="step"><div class="step-n">2</div><div class="step-t">Selecciona el <strong>tipo de fuente</strong>: Libro, Artículo de revista, Artículo de periódico, Sitio web, Informe, Conferencia, etc. El formulario cambia para mostrar los campos relevantes para cada tipo.</div></li>
+    <li class="step"><div class="step-n">3</div><div class="step-t">Completa todos los campos disponibles: autor(es), año, título, editorial, ciudad, URL, fecha de consulta, etc. Activa <strong>"Mostrar todos los campos bibliográficos"</strong> para ver opciones adicionales.</div></li>
+    <li class="step"><div class="step-n">4</div><div class="step-t">Haz clic en <strong>Aceptar</strong>. La fuente queda guardada en el <strong>Administrador de fuentes</strong> de Word — estará disponible en todos tus documentos futuros.</div></li>
+  </ol>
+
+  <h2 class="t2">4.3 Insertar una cita en el texto</h2>
+  <p class="body">Una vez registradas las fuentes, para insertar una cita: coloca el cursor al final de la afirmación que necesita la referencia → <code>Referencias → Insertar cita</code> → selecciona la fuente de la lista. Word inserta automáticamente la cita en el formato del estilo seleccionado.</p>
+
+  <h2 class="t2">4.4 Ejemplos de citas en formato APA 7ª edición</h2>
+  <div class="cite-demo">
+    <div class="cite-label">// cita_en_texto — APA 7ª edición</div>
+
+    <div class="cite-example">
+      <strong>Paráfrasis (autor y año):</strong><br>
+      El pensamiento crítico permite analizar la información con profundidad antes de emitir un juicio <strong>(Ennis, 1991)</strong>.
+    </div>
+    <p class="cite-note">Formato: (Apellido, año) — generado automáticamente por Word al insertar cita.</p>
+
+    <div class="cite-example">
+      <strong>Cita textual corta (menos de 40 palabras):</strong><br>
+      Según Ennis <strong>(1991)</strong>, el pensamiento crítico es "el pensamiento reflexivo y razonable que se centra en decidir qué creer o qué hacer" <strong>(p. 6)</strong>.
+    </div>
+    <p class="cite-note">Incluye número de página para citas textuales. Agrega la página manualmente en la cita de Word.</p>
+
+    <div class="cite-example">
+      <strong>Más de dos autores:</strong><br>
+      Las estrategias metacognitivas mejoran el rendimiento académico en estudiantes de bachillerato <strong>(García et al., 2020)</strong>.
+    </div>
+    <p class="cite-note">Word genera "et al." automáticamente para 3 o más autores en APA 7ª ed.</p>
+  </div>
+
+  <h2 class="t2">4.5 Generar la bibliografía automáticamente</h2>
+  <p class="body">Al final del documento, en una página nueva, inserta la lista de referencias: <code>Referencias → Bibliografía → Lista de referencias</code> (o <strong>Bibliografía</strong> según el estilo). Word generará automáticamente la lista con todas las fuentes citadas, en orden alfabético y con el formato correcto del estilo seleccionado.</p>
+
+  <div class="cite-demo">
+    <div class="cite-label">// bibliografía_generada — APA 7ª edición</div>
+    <div class="cite-example" style="font-size:14px;line-height:2">
+      Ennis, R. H. (1991). Critical thinking: A streamlined conception. <em>Teaching Philosophy, 14</em>(1), 5–24.<br>
+      García López, M., Ruiz Soto, P., &amp; Torres Méndez, A. (2020). <em>Estrategias metacognitivas en bachillerato.</em> Editorial Educativa Mexicana.<br>
+      Secretaría de Educación Pública. (2022). <em>Marco curricular común de la educación media superior.</em> SEP.
+    </div>
+    <p class="cite-note">Generada automáticamente por Word desde las fuentes registradas. Se actualiza con F9 cuando agregas nuevas citas.</p>
+  </div>
+
+  <div class="box bonus">
+    <div class="box-ico">⭐</div>
+    <div class="box-body">
+      <div class="box-title">BONUS — Citas automáticas con Copilot (solo M365 actualizado)</div>
+      <div class="box-text">Con las actualizaciones de julio 2025 de Microsoft 365, Word puede conectarse a bases de datos académicas externas para sugerir y completar referencias bibliográficas automáticamente. Escribe el nombre del autor o título de la obra y Copilot puede encontrar los datos completos de la referencia. Esta función está en expansión gradual y puede no estar disponible en todas las regiones. No se evalúa en el examen.</div>
+    </div>
+  </div>
+
+  <div class="mark-complete">
+    <button class="btn-complete" onclick="markDone(this,'t4')" id="mc-t4">
+      <span class="bc-icon">○</span><span class="bc-txt">Marcar como completado</span>
+    </button>
+  </div>
+</section>
+
+<!-- ─── TEMA 5 ──────────────────────────────────────────────── -->
+<section id="tema5" class="sec reveal">
+  <div class="sec-kicker">Tema 5</div>
+  <h2 class="sec-h">Índice Analítico</h2>
+  <p class="sec-sub">Marca términos clave, genera el índice automáticamente y mantenlo actualizado</p>
+
+  <p class="body">Un índice analítico (o índice alfabético) es la lista al final de un libro o documento que indica en qué páginas aparece cada término importante. Es diferente a la tabla de contenido — la TDC muestra la estructura de secciones, el índice muestra términos específicos. Es indispensable en reglamentos, manuales y libros de texto.</p>
+
+  <h2 class="t2">5.1 Marcar entradas del índice</h2>
+  <ol class="steps" style="list-style:none;padding:0">
+    <li class="step"><div class="step-n">1</div><div class="step-t">Selecciona la palabra o frase que quieres incluir en el índice.</div></li>
+    <li class="step"><div class="step-n">2</div><div class="step-t">Ve a <code>Referencias → Marcar entrada</code> (o atajo <code>Alt+Mayús+X</code>). Se abre el cuadro de diálogo de marcado.</div></li>
+    <li class="step"><div class="step-n">3</div><div class="step-t">Verifica que el texto seleccionado aparece en "Entrada principal". Si quieres una subentrada (ej: "evaluación → formativa"), escribe "formativa" en el campo <strong>Subentrada</strong>.</div></li>
+    <li class="step"><div class="step-n">4</div><div class="step-t">Haz clic en <strong>"Marcar"</strong> para marcar solo esta ocurrencia, o en <strong>"Marcar todas"</strong> para marcar todas las ocurrencias del término en el documento.</div></li>
+    <li class="step"><div class="step-n">5</div><div class="step-t">El cuadro permanece abierto para que puedas seleccionar y marcar más términos sin cerrarlo. Ciérralo cuando termines.</div></li>
+  </ol>
+
+  <h2 class="t2">5.2 Generar el índice</h2>
+  <p class="body">Una vez marcadas las entradas: coloca el cursor al final del documento (generalmente después de la bibliografía, en página nueva) → <code>Referencias → Insertar índice</code>. Configura el número de columnas, el formato y si incluye referencias cruzadas. Haz clic en Aceptar.</p>
+  <p class="body">Para actualizar el índice cuando el contenido cambia: haz clic dentro del índice y presiona <strong>F9</strong>.</p>
+
+  <div class="box warn">
+    <div class="box-ico">⚠️</div>
+    <div class="box-body">
+      <div class="box-title">Las marcas de índice hacen visible el texto oculto</div>
+      <div class="box-text">Cuando marcas entradas, Word inserta campos ocultos en el texto (como <code>{ XE "término" }</code>). Estos campos son visibles cuando tienes activados los caracteres no imprimibles (botón ¶). No aparecen al imprimir, pero pueden causar confusión al editar. Para ocultarlos: desactiva el botón ¶ o ve a <code>Archivo → Opciones → Mostrar → desactiva "Texto oculto"</code>.</div>
+    </div>
+  </div>
+
+  <div class="mark-complete">
+    <button class="btn-complete" onclick="markDone(this,'t5')" id="mc-t5">
+      <span class="bc-icon">○</span><span class="bc-txt">Marcar como completado</span>
+    </button>
+  </div>
+</section>
+
+<!-- ─── TEMA 6 ──────────────────────────────────────────────── -->
+<section id="tema6" class="sec alt reveal">
+  <div class="sec-kicker">Tema 6</div>
+  <h2 class="sec-h">Hipervínculos</h2>
+  <p class="sec-sub">Conecta tu documento con páginas web, secciones internas, archivos y correos electrónicos</p>
+
+  <p class="body">Un hipervínculo en Word es un texto o imagen que al hacer clic (Ctrl+clic en modo edición) lleva al usuario a otra ubicación: una página web, otra parte del mismo documento, otro archivo o un correo electrónico. Son esenciales en documentos digitales y en programas de estudios con recursos en línea.</p>
+
+  <h2 class="t2">6.1 Tipos de hipervínculos y cómo crearlos</h2>
+  <div class="tbl-wrap">
+  <table class="t">
+    <thead><tr><th>Tipo</th><th>Destino</th><th>Cómo crear</th><th>Ejemplo de uso</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Página web</strong></td><td>URL de internet</td><td>Selecciona texto → <code>Insertar → Vínculo</code> → pega la URL</td><td>Enlace a recurso educativo, SEP, SEMS</td></tr>
+      <tr><td><strong>Lugar del documento</strong></td><td>Marcador o título del mismo documento</td><td><code>Insertar → Vínculo → Lugar de este documento</code> → selecciona el título</td><td>Índice interactivo, "Ver Sección 3"</td></tr>
+      <tr><td><strong>Archivo externo</strong></td><td>Archivo en disco (PDF, Excel, etc.)</td><td><code>Insertar → Vínculo → Archivo existente</code> → busca el archivo</td><td>Enlace a anexo, hoja de Excel relacionada</td></tr>
+      <tr><td><strong>Correo electrónico</strong></td><td>Dirección de email</td><td><code>Insertar → Vínculo → Dirección de correo electrónico</code></td><td>Contacto del docente, soporte técnico</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 class="t2">6.2 Modificar y eliminar hipervínculos</h2>
+  <p class="body">Para <strong>editar</strong> un hipervínculo existente: clic derecho sobre el texto con vínculo → <strong>"Modificar hipervínculo"</strong>. Para <strong>eliminar</strong> el vínculo pero conservar el texto: clic derecho → <strong>"Quitar hipervínculo"</strong>. Para <strong>copiar</strong> la dirección URL: clic derecho → <strong>"Copiar hipervínculo"</strong>.</p>
+
+  <div class="box info">
+    <div class="box-ico">💡</div>
+    <div class="box-body">
+      <div class="box-title">Novedad de enero 2026: hipervínculos sin cambiar formato</div>
+      <div class="box-text">Desde las actualizaciones de enero 2026 de Microsoft 365, al insertar un hipervínculo en texto normal, Word ya no cambia automáticamente el estilo tipográfico (azul subrayado) si el texto ya tenía un estilo aplicado. Esto resuelve uno de los problemas más frecuentes en documentos con estilos personalizados. Solo disponible en M365 actualizado — en versiones anteriores, el hipervínculo sigue aplicando el estilo predeterminado azul subrayado.</div>
+    </div>
+  </div>
+
+  <div class="mark-complete">
+    <button class="btn-complete" onclick="markDone(this,'t6')" id="mc-t6">
+      <span class="bc-icon">○</span><span class="bc-txt">Marcar como completado</span>
+    </button>
+  </div>
+</section>
+
+<!-- ─── TEMA 7 ──────────────────────────────────────────────── -->
+<section id="tema7" class="sec reveal">
+  <div class="sec-kicker">Tema 7</div>
+  <h2 class="sec-h">Marcadores</h2>
+  <p class="sec-sub">Señala posiciones clave del documento para navegación interna rápida y precisa</p>
+
+  <p class="body">Un marcador es una etiqueta invisible que señala una posición específica dentro del documento. Sirve para dos propósitos principales: <strong>navegar directamente</strong> a esa posición con Ctrl+G (Ir a) o como <strong>destino de un hipervínculo</strong> interno del mismo documento. Son fundamentales en documentos de más de 20 páginas.</p>
+
+  <h2 class="t2">7.1 Crear un marcador</h2>
+  <ol class="steps" style="list-style:none;padding:0">
+    <li class="step"><div class="step-n">1</div><div class="step-t">Coloca el cursor en la posición que quieres marcar (o selecciona el texto/elemento a marcar).</div></li>
+    <li class="step"><div class="step-n">2</div><div class="step-t">Ve a <code>Insertar → Vínculo → Marcador</code>. Se abre el cuadro de diálogo de marcadores.</div></li>
+    <li class="step"><div class="step-n">3</div><div class="step-t">Escribe un nombre descriptivo para el marcador (sin espacios — usa guion bajo: <code>Evaluacion_Bimestral</code>, <code>Anexo_1</code>). Haz clic en <strong>Agregar</strong>.</div></li>
+    <li class="step"><div class="step-n">4</div><div class="step-t">El marcador queda guardado invisiblemente en esa posición. Para ver los marcadores activos en el documento: <code>Insertar → Vínculo → Marcador</code> → activa <strong>"Mostrar marcadores ocultos"</strong>. Aparecen como corchetes gris claro en el texto.</div></li>
+  </ol>
+
+  <h2 class="t2">7.2 Navegar a un marcador</h2>
+  <p class="body">Para saltar directamente a un marcador: presiona <code>Ctrl+G</code> (Ir a) → selecciona <strong>"Marcador"</strong> en el tipo → elige el marcador de la lista → haz clic en <strong>"Ir a"</strong>. También puedes ir a través del Panel de navegación (Ctrl+F) si el marcador tiene el mismo nombre que un título.</p>
+
+  <h2 class="t2">7.3 Hipervínculo a marcador (navegación interna)</h2>
+  <p class="body">La combinación de marcadores con hipervínculos internos crea documentos completamente navegables — como páginas web. Por ejemplo, en un reglamento escolar: en la tabla de contenido manual, cada artículo tiene un hipervínculo al marcador correspondiente en el cuerpo del reglamento.</p>
+  <p class="body">Para crear un hipervínculo a un marcador: selecciona el texto que será el enlace → <code>Insertar → Vínculo → Lugar de este documento</code> → selecciona el marcador → Aceptar. Al hacer Ctrl+clic, el documento salta directamente a esa posición.</p>
+
+  <div class="mark-complete">
+    <button class="btn-complete" onclick="markDone(this,'t7')" id="mc-t7">
+      <span class="bc-icon">○</span><span class="bc-txt">Marcar como completado</span>
+    </button>
+  </div>
+</section>
+
+<!-- ─── EJERCICIOS ────────────────────────────────────────────── -->
+<section id="ejercicios" class="sec alt reveal">
+  <div class="sec-kicker">Práctica</div>
+  <h2 class="sec-h">Ejercicios Paso a Paso</h2>
+  <p class="sec-sub">5 ejercicios progresivos para dominar las referencias académicas en Word</p>
+
+  <!-- EJ 1 -->
+  <div class="ex-card">
+    <div class="ex-head">
+      <div class="ex-num">1</div>
+      <div class="ex-info">
+        <div class="ex-title">Crear tabla de contenido automática para un programa de estudios</div>
+        <div class="ex-meta">level: básico · ~25 min · Word 2016+</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-goal"><strong>Objetivo:</strong> Crear un documento con estructura de programa de estudios usando estilos de título, generar la tabla de contenido automática y actualizar los números de página al modificar el contenido.</div>
+      <ol class="steps">
+        <li class="step"><div class="step-n">1</div><div class="step-t">Nuevo documento. Escribe una estructura de 3 unidades con 3 temas cada una. Aplica estrictamente: <strong>Título 1</strong> a los títulos de Unidad, <strong>Título 2</strong> a los temas, <strong>Normal</strong> al texto de contenido.</div></li>
+        <li class="step"><div class="step-n">2</div><div class="step-t">Agrega texto de relleno (2-3 párrafos) después de cada tema para que el documento supere las 5 páginas.</div></li>
+        <li class="step"><div class="step-n">3</div><div class="step-t">Coloca el cursor en la primera página (antes de todo el contenido). Inserta un salto de página (<code>Ctrl+Intro</code>). En esa nueva primera página, ve a <code>Referencias → Tabla de contenido → Tabla automática 1</code>.</div></li>
+        <li class="step"><div class="step-n">4</div><div class="step-t">Agrega un nuevo tema al inicio del documento (con Título 2). Observa que la TDC todavía no refleja el cambio. Haz clic en la TDC y selecciona <strong>"Actualizar tabla → Actualizar toda la tabla"</strong>.</div></li>
+        <li class="step"><div class="step-n">5</div><div class="step-t">Verifica que la TDC actualizada muestra el nuevo tema con el número de página correcto. Navega haciendo Ctrl+clic en una entrada de la TDC.</div></li>
+        <li class="step"><div class="step-n">6</div><div class="step-t">Exporta a PDF como <code>Prac6Eje1.pdf</code>.</div></li>
+      </ol>
+      <div class="tip"><strong>Resultado esperado:</strong> Programa de estudios con TDC automática de 2 niveles, actualizada y con hipervínculos funcionales.</div>
+      <div class="note-archivo">
+        <span class="na-ico">📁</span>
+        <div class="na-body"><strong>NOTA:</strong> En este ejercicio SÍ se creará un archivo para subir como actividad.<br>Nomenclatura del archivo: <code>TuNombre_Prac6Eje1.pdf</code></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EJ 2 -->
+  <div class="ex-card">
+    <div class="ex-head">
+      <div class="ex-num">2</div>
+      <div class="ex-info">
+        <div class="ex-title">Insertar y administrar notas al pie en un ensayo</div>
+        <div class="ex-meta">level: básico · ~25 min · Word 2016+</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-goal"><strong>Objetivo:</strong> Crear un ensayo corto de 2 páginas con 4 notas al pie académicas, practicar mover, eliminar y convertir notas.</div>
+      <ol class="steps">
+        <li class="step"><div class="step-n">1</div><div class="step-t">Nuevo documento. Escribe 4 párrafos sobre un tema de tu materia. Aplica: Arial 12pt, justificado, interlineado 1.5, márgenes estándar.</div></li>
+        <li class="step"><div class="step-n">2</div><div class="step-t">Al final del primer párrafo: <code>Referencias → Insertar nota al pie</code>. Escribe la referencia bibliográfica de una fuente real o ficticia en formato APA: <em>Apellido, N. (año). Título del libro. Editorial.</em></div></li>
+        <li class="step"><div class="step-n">3</div><div class="step-t">Agrega notas al pie al final de los párrafos 2, 3 y 4 con referencias distintas (variar tipos: libro, artículo, sitio web, informe).</div></li>
+        <li class="step"><div class="step-n">4</div><div class="step-t">Mueve la nota del párrafo 2 al párrafo 3: corta el número de nota en el texto y pégalo al final del párrafo 3. Verifica que la numeración se actualizó.</div></li>
+        <li class="step"><div class="step-n">5</div><div class="step-t">Convierte la nota al pie 1 en nota al final: <code>Referencias → iniciador del cuadro Notas → Convertir</code>. Selecciona "Convertir notas al pie en notas al final" para esta nota.</div></li>
+        <li class="step"><div class="step-n">6</div><div class="step-t">Exporta a PDF como <code>Prac6Eje2.pdf</code>.</div></li>
+      </ol>
+      <div class="tip"><strong>Resultado esperado:</strong> Ensayo con 3 notas al pie académicas y 1 nota al final, numeración actualizada tras mover y convertir.</div>
+      <div class="note-archivo">
+        <span class="na-ico">📁</span>
+        <div class="na-body"><strong>NOTA:</strong> En este ejercicio SÍ se creará un archivo para subir como actividad.<br>Nomenclatura del archivo: <code>TuNombre_Prac6Eje2.pdf</code></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EJ 3 -->
+  <div class="ex-card">
+    <div class="ex-head">
+      <div class="ex-num">3</div>
+      <div class="ex-info">
+        <div class="ex-title">Crear citas APA y bibliografía automática</div>
+        <div class="ex-meta">level: intermedio · ~35 min · Word 2016+</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-goal"><strong>Objetivo:</strong> Usar el gestor de referencias de Word para registrar 4 fuentes (libro, artículo, sitio web y reporte) e insertar citas en el texto, luego generar la bibliografía automática en formato APA.</div>
+      <ol class="steps">
+        <li class="step"><div class="step-n">1</div><div class="step-t">Nuevo documento. Configura estilo de citación: <code>Referencias → Estilo → APA</code>. Escribe 4 párrafos sobre pensamiento crítico, educación o tu área de trabajo.</div></li>
+        <li class="step"><div class="step-n">2</div><div class="step-t">Registra la primera fuente: <code>Referencias → Insertar cita → Agregar nueva fuente</code>. Tipo: Libro. Autor: Ennis, Robert H. Año: 1991. Título: Critical thinking: A streamlined conception. Editorial: Teaching Philosophy. Acepta.</div></li>
+        <li class="step"><div class="step-n">3</div><div class="step-t">Registra 3 fuentes más (inventadas o reales): un artículo de revista, un sitio web y un informe institucional. Completa todos los campos disponibles.</div></li>
+        <li class="step"><div class="step-n">4</div><div class="step-t">Inserta una cita al final de cada párrafo: <code>Referencias → Insertar cita → selecciona la fuente</code>. Verifica que el formato es (Apellido, año).</div></li>
+        <li class="step"><div class="step-n">5</div><div class="step-t">Al final del documento, en página nueva, escribe el título "REFERENCIAS" con Estilo Normal y Negrita. Debajo ve a <code>Referencias → Bibliografía → Lista de referencias</code>.</div></li>
+        <li class="step"><div class="step-n">6</div><div class="step-t">Verifica que la bibliografía está en orden alfabético y con el formato APA correcto. Exporta a PDF como <code>Prac6Eje3.pdf</code>.</div></li>
+      </ol>
+      <div class="reto">Agrega una cita textual a uno de los párrafos con número de página: clic en la cita ya insertada → Editar cita → agrega el número de página. Verifica que aparece como (Apellido, año, p. X).</div>
+      <div class="bonus-hint">Pídele a Copilot que escriba los párrafos: "Redacta 4 párrafos sobre la importancia del pensamiento crítico en el bachillerato, cada uno apoyado en una fuente bibliográfica diferente, tono académico APA".</div>
+      <div class="note-archivo">
+        <span class="na-ico">📁</span>
+        <div class="na-body"><strong>NOTA:</strong> En este ejercicio SÍ se creará un archivo para subir como actividad.<br>Nomenclatura del archivo: <code>TuNombre_Prac6Eje3.pdf</code></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EJ 4 -->
+  <div class="ex-card">
+    <div class="ex-head">
+      <div class="ex-num">4</div>
+      <div class="ex-info">
+        <div class="ex-title">Numerar figuras con leyendas y generar lista de figuras</div>
+        <div class="ex-meta">level: básico-intermedio · ~25 min · Word 2016+</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-goal"><strong>Objetivo:</strong> Insertar 4 imágenes en un documento, agregar leyendas automáticas numeradas a cada una y generar la lista de figuras automática.</div>
+      <ol class="steps">
+        <li class="step"><div class="step-n">1</div><div class="step-t">Crea un documento con 4 páginas de contenido. Inserta una imagen (o captura de pantalla) en cada página con ajuste de texto <strong>"Superior e inferior"</strong>.</div></li>
+        <li class="step"><div class="step-n">2</div><div class="step-t">Selecciona la primera imagen → <code>Referencias → Insertar título</code>. Etiqueta: <strong>Figura</strong>. Posición: <strong>Debajo del elemento</strong>. Agrega descripción: "Diagrama del proceso de evaluación bimestral". Acepta.</div></li>
+        <li class="step"><div class="step-n">3</div><div class="step-t">Repite para las otras 3 imágenes con descripciones diferentes. Verifica que la numeración es consecutiva: Figura 1, Figura 2, Figura 3, Figura 4.</div></li>
+        <li class="step"><div class="step-n">4</div><div class="step-t">Elimina la Figura 2 (imagen + leyenda). Selecciona las leyendas restantes y presiona <strong>F9</strong> para actualizar la numeración. Verifica que ahora son Figura 1, Figura 2, Figura 3.</div></li>
+        <li class="step"><div class="step-n">5</div><div class="step-t">En la segunda página del documento (después de la TDC si hay una), inserta la lista de figuras: <code>Referencias → Insertar tabla de ilustraciones → Etiqueta: Figura</code>. Acepta.</div></li>
+        <li class="step"><div class="step-n">6</div><div class="step-t">Exporta a PDF como <code>Prac6Eje4.pdf</code>.</div></li>
+      </ol>
+      <div class="tip"><strong>Resultado esperado:</strong> Documento con 3 figuras numeradas consecutivamente, leyendas descriptivas y lista de figuras automática al inicio.</div>
+      <div class="note-archivo">
+        <span class="na-ico">📁</span>
+        <div class="na-body"><strong>NOTA:</strong> En este ejercicio SÍ se creará un archivo para subir como actividad.<br>Nomenclatura del archivo: <code>TuNombre_Prac6Eje4.pdf</code></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EJ 5 -->
+  <div class="ex-card">
+    <div class="ex-head">
+      <div class="ex-num">5</div>
+      <div class="ex-info">
+        <div class="ex-title">Crear un reglamento con hipervínculos internos y marcadores</div>
+        <div class="ex-meta">level: intermedio · ~40 min · Word 2016+</div>
+      </div>
+    </div>
+    <div class="ex-body">
+      <div class="ex-goal"><strong>Objetivo:</strong> Crear un mini reglamento de 3 capítulos con marcadores en cada artículo e hipervínculos desde el índice inicial que permitan navegación directa a cada artículo.</div>
+      <ol class="steps">
+        <li class="step"><div class="step-n">1</div><div class="step-t">Nuevo documento. Escribe un mini reglamento con: <strong>3 Capítulos</strong> (Estilo Título 1), <strong>3 Artículos por capítulo</strong> (Estilo Título 2) y un párrafo de contenido por artículo.</div></li>
+        <li class="step"><div class="step-n">2</div><div class="step-t">Crea un marcador en cada Artículo: coloca el cursor al inicio del título → <code>Insertar → Vínculo → Marcador</code> → nombre sin espacios (ej: <strong>Art1_Cap1</strong>, <strong>Art2_Cap1</strong>...). Agrega todos los marcadores.</div></li>
+        <li class="step"><div class="step-n">3</div><div class="step-t">En la primera página crea un <strong>índice manual</strong> con los títulos de los capítulos y artículos (sin TDC automática). Este será el índice de navegación.</div></li>
+        <li class="step"><div class="step-n">4</div><div class="step-t">Selecciona "Artículo 1" en el índice → <code>Insertar → Vínculo → Lugar de este documento → selecciona Art1_Cap1</code> → Aceptar. Repite para todos los artículos del índice.</div></li>
+        <li class="step"><div class="step-n">5</div><div class="step-t">Prueba la navegación: Ctrl+clic en cada entrada del índice. Verifica que lleva al artículo correcto.</div></li>
+        <li class="step"><div class="step-n">6</div><div class="step-t">Agrega también un hipervínculo externo en el pie de página con el sitio web de la SEP (https://www.sep.gob.mx). Exporta a PDF como <code>Prac6Eje5.pdf</code>.</div></li>
+      </ol>
+      <div class="tip"><strong>Resultado esperado:</strong> Reglamento navegable con índice manual, 9 marcadores y 9 hipervínculos internos funcionales, más un hipervínculo externo a la SEP.</div>
+      <div class="reto">Agrega un hipervínculo de retorno "↑ Volver al índice" al final de cada capítulo, vinculado a un marcador al inicio del índice.</div>
+      <div class="note-archivo">
+        <span class="na-ico">📁</span>
+        <div class="na-body"><strong>NOTA:</strong> En este ejercicio SÍ se creará un archivo para subir como actividad.<br>Nomenclatura del archivo: <code>TuNombre_Prac6Eje5.pdf</code></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── EXAMEN ──────────────────────────────────────────────── -->
+<section id="examen">
+  <div class="exam-hero">
+    <h2>📝 Examen del Módulo 6</h2>
+    <p>20 reactivos · Mínimo 14/20 (70%) para acreditar · ~40 minutos</p>
+    <div class="exam-stats">
+      <div><div class="es-v">8</div><div class="es-l">Opción múltiple</div></div>
+      <div><div class="es-v">5</div><div class="es-l">Verdadero/Falso</div></div>
+      <div><div class="es-v">4</div><div class="es-l">Relacionar</div></div>
+      <div><div class="es-v">3</div><div class="es-l">Resp. breve</div></div>
+    </div>
+  </div>
+
+  <div class="exam-body">
+    <div class="exam-note">⚠ Ninguna pregunta requiere Copilot ni M365 — todas respondibles con Word 2016+</div>
+
+    <div class="sec-div">Sección A — Opción múltiple <span class="sec-div-badge">1 pt c/u</span></div>
+
+    <div class="q-card" data-q="1" data-correct="b" data-type="mc">
+      <div class="q-head"><div class="q-num">1</div><div class="q-meta"><div class="q-type">Opción múltiple</div><div class="q-text">¿Qué requisito PREVIO es indispensable para que Word genere una tabla de contenido automática?</div></div></div>
+      <div class="opts">
+        <div class="opt" onclick="pick(this,'1','a')"><div class="opt-l">A</div><div class="opt-t">El documento debe tener más de 10 páginas para activar la función</div></div>
+        <div class="opt" onclick="pick(this,'1','b')"><div class="opt-l">B</div><div class="opt-t">Los títulos del documento deben tener aplicados los estilos Título 1, Título 2, etc.</div></div>
+        <div class="opt" onclick="pick(this,'1','c')"><div class="opt-l">C</div><div class="opt-t">El documento debe estar guardado en OneDrive para acceder a la función</div></div>
+        <div class="opt" onclick="pick(this,'1','d')"><div class="opt-l">D</div><div class="opt-t">Es necesario tener Microsoft 365 activo para usar tablas de contenido automáticas</div></div>
+      </div>
+      <div class="fb" id="fb1"></div>
+    </div>
+
+    <div class="q-card" data-q="2" data-correct="c" data-type="mc">
+      <div class="q-head"><div class="q-num">2</div><div class="q-meta"><div class="q-type">Opción múltiple</div><div class="q-text">¿Cuál es la diferencia entre una nota al pie y una nota al final en Word?</div></div></div>
+      <div class="opts">
+        <div class="opt" onclick="pick(this,'2','a')"><div class="opt-l">A</div><div class="opt-t">La nota al pie usa números arábigos y la nota al final usa letras del alfabeto</div></div>
+        <div class="opt" onclick="pick(this,'2','b')"><div class="opt-l">B</div><div class="opt-t">La nota al pie es para citas bibliográficas y la nota al final es para aclaraciones conceptuales</div></div>
+        <div class="opt" onclick="pick(this,'2','c')"><div class="opt-l">C</div><div class="opt-t">La nota al pie aparece al final de la misma página; la nota al final aparece al cierre del documento</div></div>
+        <div class="opt" onclick="pick(this,'2','d')"><div class="opt-l">D</div><div class="opt-t">La nota al pie solo se puede usar en documentos de hasta 20 páginas</div></div>
+      </div>
+      <div class="fb" id="fb2"></div>
+    </div>
+
+    <div class="q-card" data-q="3" data-correct="a" data-type="mc">
+      <div class="q-head"><div class="q-num">3</div><div class="q-meta"><div class="q-type">Opción múltiple</div><div class="q-text">¿Cómo se actualiza la numeración de las leyendas de figura en Word cuando se elimina una figura del documento?</div></div></div>
+      <div class="opts">
+        <div class="opt" onclick="pick(this,'3','a')"><div class="opt-l">A</div><div class="opt-t">Seleccionando las leyendas restantes y presionando F9 para actualizar los campos</div></div>
+        <div class="opt" onclick="pick(this,'3','b')"><div class="opt-l">B</div><div class="opt-t">La numeración se actualiza automáticamente sin ninguna acción del usuario</div></div>
+        <div class="opt" onclick="pick(this,'3','c')"><div class="opt-l">C</div><div class="opt-t">Hay que eliminar todas las leyendas y volver a insertarlas desde cero</div></div>
+        <div class="opt" onclick="pick(this,'3','d')"><div class="opt-l">D</div><div class="opt-t">Las leyendas no se pueden actualizar — siempre es necesario editarlas manualmente</div></div>
+      </div>
+      <div class="fb" id="fb3"></div>
+    </div>
+
+    <div class="q-card" data-q="4" data-correct="d" data-type="mc">
+      <div class="q-head"><div class="q-num">4</div><div class="q-meta"><div class="q-type">Opción múltiple</div><div class="q-text">En formato de cita APA 7ª edición para una fuente con 3 o más autores, ¿cómo se escribe la cita en el texto?</div></div></div>
+      <div class="opts">
+        <div class="opt" onclick="pick(this,'4','a')"><div class="opt-l">A</div><div class="opt-t">(Apellido1, Apellido2 y Apellido3, año)</div></div>
+        <div class="opt" onclick="pick(this,'4','b')"><div class="opt-l">B</div><div class="opt-t">(Todos los apellidos, año)</div></div>
+        <div class="opt" onclick="pick(this,'4','c')"><div class="opt-l">C</div><div class="opt-t">(Apellido1 &amp; Apellido2, año)</div></div>
+        <div class="opt" onclick="pick(this,'4','d')"><div class="opt-l">D</div><div class="opt-t">(Apellido1 et al., año)</div></div>
+      </div>
+      <div class="fb" id="fb4"></div>
+    </div>
+
+    <div class="q-card" data-q="5" data-correct="b" data-type="mc">
+      <div class="q-head"><div class="q-num">5</div><div class="q-meta"><div class="q-type">Opción múltiple</div><div class="q-text">¿Cuál es el atajo de teclado para marcar una entrada del índice analítico en Word?</div></div></div>
+      <div class="opts">
+        <div class="opt" onclick="pick(this,'5','a')"><div class="opt-l">A</div><div class="opt-t">Ctrl + Mayús + I</div></div>
+        <div class="opt" onclick="pick(this,'5','b')"><div class="opt-l">B</div><div class="opt-t">Alt + Mayús + X</div></div>
+        <div class="opt" onclick="pick(this,'5','c')"><div class="opt-l">C</div><div class="opt-t">Ctrl + Alt + M</div></div>
+        <div class="opt" onclick="pick(this,'5','d')"><div class="opt-l">D</div><div class="opt-t">F12 + Índice</div></div>
+      </div>
+      <div class="fb" id="fb5"></div>
+    </div>
+
+    <div class="q-card" data-q="6" data-correct="c" data-type="mc">
+      <div class="q-head"><div class="q-num">6</div><div class="q-meta"><div class="q-type">Opción múltiple</div><div class="q-text">Para que un hipervínculo lleve al usuario a otra sección del MISMO documento (no a internet), ¿qué tipo de vínculo se debe seleccionar en Word?</div></div></div>
+      <div class="opts">
+        <div class="opt" onclick="pick(this,'6','a')"><div class="opt-l">A</div><div class="opt-t">Archivo existente o página web</div></div>
+        <div class="opt" onclick="pick(this,'6','b')"><div class="opt-l">B</div><div class="opt-t">Dirección de correo electrónico</div></div>
+        <div class="opt" onclick="pick(this,'6','c')"><div class="opt-l">C</div><div class="opt-t">Lugar de este documento</div></div>
+        <div class="opt" onclick="pick(this,'6','d')"><div class="opt-l">D</div><div class="opt-t">Nuevo documento</div></div>
+      </div>
+      <div class="fb" id="fb6"></div>
+    </div>
+
+    <div class="q-card" data-q="7" data-correct="a" data-type="mc">
+      <div class="q-head"><div class="q-num">7</div><div class="q-meta"><div class="q-type">Opción múltiple</div><div class="q-text">¿Cuál es la regla de nomenclatura para nombres de marcadores en Word?</div></div></div>
+      <div class="opts">
+        <div class="opt" onclick="pick(this,'7','a')"><div class="opt-l">A</div><div class="opt-t">No pueden tener espacios — se usa guion bajo o se escribe sin separación (Anexo_1 o Anexo1)</div></div>
+        <div class="opt" onclick="pick(this,'7','b')"><div class="opt-l">B</div><div class="opt-t">Deben escribirse en mayúsculas para que Word los identifique correctamente</div></div>
+        <div class="opt" onclick="pick(this,'7','c')"><div class="opt-l">C</div><div class="opt-t">Deben tener exactamente el mismo nombre que el título de la sección a la que apuntan</div></div>
+        <div class="opt" onclick="pick(this,'7','d')"><div class="opt-l">D</div><div class="opt-t">No pueden contener números, solo letras del alfabeto</div></div>
+      </div>
+      <div class="fb" id="fb7"></div>
+    </div>
+
+    <div class="q-card" data-q="8" data-correct="d" data-type="mc">
+      <div class="q-head"><div class="q-num">8</div><div class="q-meta"><div class="q-type">Opción múltiple</div><div class="q-text">¿Cuál es el atajo de teclado para insertar una nota al pie en Word?</div></div></div>
+      <div class="opts">
+        <div class="opt" onclick="pick(this,'8','a')"><div class="opt-l">A</div><div class="opt-t">Ctrl + F</div></div>
+        <div class="opt" onclick="pick(this,'8','b')"><div class="opt-l">B</div><div class="opt-t">Ctrl + Mayús + N</div></div>
+        <div class="opt" onclick="pick(this,'8','c')"><div class="opt-l">C</div><div class="opt-t">Alt + Ctrl + D</div></div>
+        <div class="opt" onclick="pick(this,'8','d')"><div class="opt-l">D</div><div class="opt-t">Alt + Ctrl + F</div></div>
+      </div>
+      <div class="fb" id="fb8"></div>
+    </div>
+
+    <div class="sec-div">Sección B — Verdadero o Falso <span class="sec-div-badge">1 pt c/u · justifica</span></div>
+
+    <div class="q-card" data-q="9" data-correct="F" data-type="tf">
+      <div class="q-head"><div class="q-num">9</div><div class="q-meta"><div class="q-type">Verdadero / Falso</div><div class="q-text">La tabla de contenido de Word se actualiza automáticamente cada vez que el usuario modifica el texto o agrega páginas al documento.</div></div></div>
+      <div class="tf-row"><div class="tf" onclick="pickTF(this,'9','V')">✓ Verdadero</div><div class="tf" onclick="pickTF(this,'9','F')">✗ Falso</div></div>
+      <div class="fb" id="fb9"></div>
+      <div class="sa" style="margin-top:10px"><textarea placeholder="Justifica tu respuesta..."></textarea></div>
+    </div>
+
+    <div class="q-card" data-q="10" data-correct="V" data-type="tf">
+      <div class="q-head"><div class="q-num">10</div><div class="q-meta"><div class="q-type">Verdadero / Falso</div><div class="q-text">Para eliminar una nota al pie en Word, se debe seleccionar el número de la nota en el texto principal (no en el área de notas) y presionar la tecla Suprimir.</div></div></div>
+      <div class="tf-row"><div class="tf" onclick="pickTF(this,'10','V')">✓ Verdadero</div><div class="tf" onclick="pickTF(this,'10','F')">✗ Falso</div></div>
+      <div class="fb" id="fb10"></div>
+      <div class="sa" style="margin-top:10px"><textarea placeholder="Justifica tu respuesta..."></textarea></div>
+    </div>
+
+    <div class="q-card" data-q="11" data-correct="V" data-type="tf">
+      <div class="q-head"><div class="q-num">11</div><div class="q-meta"><div class="q-type">Verdadero / Falso</div><div class="q-text">El gestor de referencias de Word guarda las fuentes registradas y las mantiene disponibles para todos los documentos futuros del mismo equipo.</div></div></div>
+      <div class="tf-row"><div class="tf" onclick="pickTF(this,'11','V')">✓ Verdadero</div><div class="tf" onclick="pickTF(this,'11','F')">✗ Falso</div></div>
+      <div class="fb" id="fb11"></div>
+      <div class="sa" style="margin-top:10px"><textarea placeholder="Justifica tu respuesta..."></textarea></div>
+    </div>
+
+    <div class="q-card" data-q="12" data-correct="F" data-type="tf">
+      <div class="q-head"><div class="q-num">12</div><div class="q-meta"><div class="q-type">Verdadero / Falso</div><div class="q-text">Las marcas de entradas del índice analítico en Word son visibles al imprimir el documento y aparecen como texto entre llaves {XE "término"}.</div></div></div>
+      <div class="tf-row"><div class="tf" onclick="pickTF(this,'12','V')">✓ Verdadero</div><div class="tf" onclick="pickTF(this,'12','F')">✗ Falso</div></div>
+      <div class="fb" id="fb12"></div>
+      <div class="sa" style="margin-top:10px"><textarea placeholder="Justifica tu respuesta..."></textarea></div>
+    </div>
+
+    <div class="q-card" data-q="13" data-correct="V" data-type="tf">
+      <div class="q-head"><div class="q-num">13</div><div class="q-meta"><div class="q-type">Verdadero / Falso</div><div class="q-text">En un documento de Word con hipervínculos, para activar un vínculo mientras se edita el documento se debe mantener presionada la tecla Ctrl y hacer clic sobre el hipervínculo.</div></div></div>
+      <div class="tf-row"><div class="tf" onclick="pickTF(this,'13','V')">✓ Verdadero</div><div class="tf" onclick="pickTF(this,'13','F')">✗ Falso</div></div>
+      <div class="fb" id="fb13"></div>
+      <div class="sa" style="margin-top:10px"><textarea placeholder="Justifica tu respuesta..."></textarea></div>
+    </div>
+
+    <div class="sec-div">Sección C — Relacionar columnas <span class="sec-div-badge">1 pt c/par</span></div>
+    <p style="font-size:15px;color:rgba(255,255,255,.4);margin-bottom:15px">Haz clic en un elemento de la izquierda, luego en su correspondiente de la derecha.</p>
+    <div class="q-card">
+      <div class="q-head"><div class="q-num">14–17</div><div class="q-meta"><div class="q-type">Relacionar columnas</div><div class="q-text">Une cada función o herramienta con su descripción correcta.</div></div></div>
+      <div class="match-grid">
+        <div>
+          <div class="match-col-h">// función_o_herramienta</div>
+          <div class="match-i" data-pair="A" onclick="doMatch(this,'L')">Alt + Ctrl + F</div>
+          <div class="match-i" data-pair="B" onclick="doMatch(this,'L')">F9 sobre la TDC</div>
+          <div class="match-i" data-pair="C" onclick="doMatch(this,'L')">Insertar tabla de ilustraciones</div>
+          <div class="match-i" data-pair="D" onclick="doMatch(this,'L')">Administrador de fuentes</div>
+        </div>
+        <div>
+          <div class="match-col-h">// descripción</div>
+          <div class="match-i" data-pair="3" onclick="doMatch(this,'R')">Lista automática de figuras o tablas con números de página</div>
+          <div class="match-i" data-pair="1" onclick="doMatch(this,'R')">Atajo para insertar nota al pie</div>
+          <div class="match-i" data-pair="4" onclick="doMatch(this,'R')">Banco de referencias disponibles en todos los documentos del equipo</div>
+          <div class="match-i" data-pair="2" onclick="doMatch(this,'R')">Actualiza los números de página y entradas de la tabla de contenido</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-div">Sección D — Respuesta breve <span class="sec-div-badge">2 pts c/u · revisión manual</span></div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-num">18</div><div class="q-meta"><div class="q-type">Respuesta breve (2 pts)</div><div class="q-text">Explica paso a paso cómo crear una tabla de contenido automática en Word desde un documento que ya tiene texto pero sin estilos de título aplicados. ¿Cuál es el primer paso indispensable?</div></div></div>
+      <div class="sa"><textarea placeholder="Escribe tu respuesta (mínimo 2 pasos)..."></textarea></div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-num">19</div><div class="q-meta"><div class="q-type">Respuesta breve (2 pts)</div><div class="q-text">¿Cuál es la diferencia entre una nota al pie y una cita en el texto (en formato APA)? ¿En qué situaciones usarías cada una en un trabajo académico de bachillerato?</div></div></div>
+      <div class="sa"><textarea placeholder="Escribe tu respuesta..."></textarea></div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-num">20</div><div class="q-meta"><div class="q-type">Respuesta breve (2 pts)</div><div class="q-text">Describe el proceso para hacer que un documento de Word sea completamente navegable con hipervínculos internos, de modo que el usuario pueda saltar de la tabla de contenido a cualquier sección con un solo clic.</div></div></div>
+      <div class="sa"><textarea placeholder="Escribe tu respuesta..."></textarea></div>
+    </div>
+  </div>
+
+  <div class="exam-cta">
+    <button class="btn-grade" onclick="grade()">Calificar Examen →</button>
+    <div class="score-box" id="score-box">
+      <div class="score-big" id="score-val">—</div>
+      <div class="score-msg" id="score-msg">de 13 puntos automáticos (Secciones A y B)</div>
+      <div style="font-size:13px;color:rgba(255,255,255,.35);margin-top:10px;background:rgba(255,255,255,.04);border-radius:var(--r);padding:10px 13px">Las Secciones C y D requieren revisión manual por parte del instructor.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ACTIVIDAD INTEGRADORA ─────────────────────────────────── -->
+<section id="actividad" class="sec reveal">
+  <div class="sec-kicker">Cierre del módulo</div>
+  <h2 class="sec-h">Actividad Integradora</h2>
+  <p class="sec-sub">Documento académico completo con todas las referencias y elementos de navegación</p>
+
+  <div class="box ok">
+    <div class="box-ico">🏆</div>
+    <div class="box-body">
+      <div class="box-title">Descripción de la actividad</div>
+      <div class="box-text">Crearás un <strong>ensayo académico de mínimo 5 páginas</strong> sobre un tema de tu área de trabajo, que integre todos los elementos del módulo: tabla de contenido, notas al pie, citas APA, bibliografía automática, leyendas de figura y un índice de términos con hipervínculos internos.</div>
+    </div>
+  </div>
+
+  <h2 class="t2">Estructura del ensayo a entregar</h2>
+  <ol class="steps" style="list-style:none;padding:0">
+    <li class="step"><div class="step-n">1</div><div class="step-t"><strong>Página 1 — Portada:</strong> Título del ensayo, nombre del autor, institución, fecha. Sin número de página visible.</div></li>
+    <li class="step"><div class="step-n">2</div><div class="step-t"><strong>Página 2 — Tabla de contenido automática:</strong> Generada desde los estilos de título. Mínimo 2 niveles (Título 1 y Título 2). Actualizada antes de entregar.</div></li>
+    <li class="step"><div class="step-n">3</div><div class="step-t"><strong>Páginas 3–6+ — Cuerpo del ensayo:</strong> Mínimo 3 secciones con Título 1, al menos 2 subsecciones con Título 2 cada una. Mínimo 4 citas en texto con formato APA. Mínimo 2 notas al pie. Una figura o imagen con leyenda automática.</div></li>
+    <li class="step"><div class="step-n">4</div><div class="step-t"><strong>Última página — Referencias:</strong> Bibliografía generada automáticamente por Word en formato APA. Mínimo 4 fuentes de distintos tipos.</div></li>
+    <li class="step"><div class="step-n">5</div><div class="step-t"><strong>Hipervínculos:</strong> Al menos un hipervínculo externo a una fuente web relevante, y la TDC debe funcionar como hipervínculos internos.</div></li>
+  </ol>
+
+  <h2 class="t2">Rúbrica de evaluación</h2>
+  <div class="tbl-wrap">
+  <table class="rub">
+    <thead><tr><th>Indicador</th><th>Excelente (4 pts)</th><th>Suficiente (2 pts)</th><th>Insuficiente (0 pts)</th><th>Pts</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Tabla de contenido</strong></td><td>TDC automática de 2 niveles, actualizada, con hipervínculos funcionales</td><td>TDC presente pero sin actualizar o con un solo nivel</td><td>Sin TDC o TDC escrita manualmente</td><td>/4</td></tr>
+      <tr><td><strong>Citas y bibliografía APA</strong></td><td>4+ citas en texto formato APA y bibliografía automática con 4+ fuentes de tipos distintos</td><td>Citas presentes pero sin bibliografía automática o menos de 4 fuentes</td><td>Sin citas APA o bibliografía incorrecta</td><td>/4</td></tr>
+      <tr><td><strong>Notas al pie</strong></td><td>2+ notas al pie con contenido relevante, formato académico correcto</td><td>Notas presentes pero con formato incorrecto o contenido irrelevante</td><td>Sin notas al pie</td><td>/4</td></tr>
+      <tr><td><strong>Leyenda de figura</strong></td><td>Al menos 1 figura con leyenda automática numerada (Figura 1. Descripción)</td><td>Figura presente sin leyenda automática o sin descripción</td><td>Sin figuras o sin leyenda</td><td>/4</td></tr>
+      <tr><td><strong>Hipervínculos</strong></td><td>TDC como hipervínculos internos + al menos 1 hipervínculo externo funcional</td><td>Solo hipervínculos internos o solo externo</td><td>Sin hipervínculos funcionales</td><td>/4</td></tr>
+      <tr><td colspan="4"><strong>TOTAL</strong></td><td><strong>/20</strong></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="box warn">
+    <div class="box-ico">📤</div>
+    <div class="box-body">
+      <div class="box-title">Entrega</div>
+      <div class="box-text">Nomenclatura del archivo: <code>M6_TuNombre_.pdf</code>. Fecha límite: <strong>22 de mayo de 2026</strong>.</div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+window.addEventListener('scroll',()=>{
+  const d=document.documentElement;
+  document.getElementById('pbar').style.width=(d.scrollTop/(d.scrollHeight-d.clientHeight)*100)+'%';
+});
+const secs=document.querySelectorAll('section[id]');
+const navs=document.querySelectorAll('.nav-link[href^="#"]');
+const obs=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      navs.forEach(n=>n.classList.remove('on'));
+      const a=document.querySelector(`.nav-link[href="#${e.target.id}"]`);
+      if(a)a.classList.add('on');
+    }
+  });
+},{threshold:.12,rootMargin:'-5% 0px -80% 0px'});
+secs.forEach(s=>obs.observe(s));
+const revObs=new IntersectionObserver(es=>{
+  es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('shown')});
+},{threshold:.06});
+document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
+
+const completed={};
+function markDone(btn,tid){
+  if(completed[tid])return;
+  completed[tid]=true;
+  btn.classList.add('done');
+  btn.querySelector('.bc-icon').textContent='✓';
+  btn.querySelector('.bc-txt').textContent='¡Tema completado!';
+  const done=Object.keys(completed).length;
+  const note=document.querySelector('.prog-note');
+  if(note)note.textContent=`Módulo 6 · ${done}/7 temas completados`;
+}
+
+const answers={};
+const correct={'1':'b','2':'c','3':'a','4':'d','5':'b','6':'c','7':'a','8':'d',
+               '9':'F','10':'V','11':'V','12':'F','13':'V'};
+const fbTxt={
+  ok:{
+    '1':'✓ Correcto. Los estilos Título 1, Título 2, etc. son el requisito previo indispensable.',
+    '2':'✓ Correcto. Nota al pie: al final de la misma página. Nota al final: al cierre del documento.',
+    '3':'✓ Correcto. Seleccionar las leyendas y presionar F9 actualiza la numeración automáticamente.',
+    '4':'✓ Correcto. APA 7ª ed.: (Apellido1 et al., año) para 3 o más autores.',
+    '5':'✓ Correcto. Alt+Mayús+X es el atajo para marcar entradas del índice analítico.',
+    '6':'✓ Correcto. "Lugar de este documento" crea hipervínculos a secciones internas del mismo archivo.',
+    '7':'✓ Correcto. Los marcadores no pueden tener espacios — se usa guion bajo o sin separación.',
+    '8':'✓ Correcto. Alt+Ctrl+F inserta nota al pie. Alt+Ctrl+D inserta nota al final.',
+    '9':'✓ Correcto. Es FALSO. La TDC NO se actualiza automáticamente — hay que hacerlo manualmente con F9.',
+    '10':'✓ Correcto. Hay que eliminar el número de la nota en el texto principal, no en el área de notas.',
+    '11':'✓ Correcto. El Administrador de fuentes de Word guarda las referencias para todos los documentos.',
+    '12':'✓ Correcto. Es FALSO. Las marcas {XE} son texto oculto — no se imprimen, solo se ven con ¶ activado.',
+    '13':'✓ Correcto. Ctrl+clic activa un hipervínculo en modo edición de Word.',
+  },
+  fail:{
+    '1':'✗ Incorrecto. Respuesta B: los estilos de título (Título 1, Título 2...) son el requisito indispensable.',
+    '2':'✗ Incorrecto. Respuesta C: la diferencia es la ubicación — al pie de la página vs. al final del documento.',
+    '3':'✗ Incorrecto. Respuesta A: seleccionar leyendas y presionar F9 actualiza la numeración.',
+    '4':'✗ Incorrecto. Respuesta D: APA 7ª ed. usa "et al." para 3 o más autores: (Apellido1 et al., año).',
+    '5':'✗ Incorrecto. Respuesta B: Alt+Mayús+X es el atajo para marcar entradas de índice.',
+    '6':'✗ Incorrecto. Respuesta C: "Lugar de este documento" para hipervínculos internos.',
+    '7':'✗ Incorrecto. Respuesta A: los marcadores no pueden tener espacios — se usa guion bajo.',
+    '8':'✗ Incorrecto. Respuesta D: Alt+Ctrl+F inserta nota al pie. Alt+Ctrl+D inserta nota al final.',
+    '9':'✗ Incorrecto. Es FALSO. La TDC necesita actualización manual — no es automática.',
+    '10':'✗ Incorrecto. Es VERDADERO. Se elimina el número en el texto principal, no en el área de notas.',
+    '11':'✗ Incorrecto. Es VERDADERO. El Administrador de fuentes de Word guarda las referencias globalmente.',
+    '12':'✗ Incorrecto. Es FALSO. Las marcas de índice son texto oculto — no aparecen al imprimir.',
+    '13':'✗ Incorrecto. Es VERDADERO. Ctrl+clic activa hipervínculos en modo edición.',
+  }
+};
+
+function pick(el,q,v){
+  if(answers[q])return;
+  document.querySelectorAll(`.q-card[data-q="${q}"] .opt`).forEach(o=>o.classList.remove('sel'));
+  el.classList.add('sel');answers[q]=v;
+}
+function pickTF(el,q,v){
+  if(answers[q])return;
+  el.parentElement.querySelectorAll('.tf').forEach(t=>t.classList.remove('sel'));
+  el.classList.add('sel');answers[q]=v;
+}
+let mL=null;
+function doMatch(el,side){
+  if(side==='L'){
+    document.querySelectorAll('.match-i').forEach(m=>{if(m.dataset.pair.length===1)m.classList.remove('sel')});
+    el.classList.add('sel');mL=el;
+  } else {
+    if(!mL)return;
+    mL.classList.remove('sel');mL.classList.add('done');
+    el.classList.add('done');mL=null;
+  }
+}
+function grade(){
+  let score=0;
+  for(let q=1;q<=13;q++){
+    const qs=String(q);
+    const given=answers[qs];
+    const card=document.querySelector(`.q-card[data-q="${q}"]`);
+    const f=document.getElementById(`fb${q}`);
+    if(!card||!f)continue;
+    const isOk=given===correct[qs];
+    if(isOk)score++;
+    if(card.dataset.type==='mc'){
+      card.querySelectorAll('.opt').forEach(o=>{
+        const l=o.querySelector('.opt-l').textContent.toLowerCase();
+        if(l===correct[qs])o.classList.add('ok');
+        else if(l===given&&!isOk)o.classList.add('bad');
+      });
+    } else if(card.dataset.type==='tf'){
+      card.querySelectorAll('.tf').forEach(t=>{
+        const v=t.textContent.includes('Verdadero')?'V':'F';
+        if(v===correct[qs])t.classList.add('ok');
+        else if(v===given&&!isOk)t.classList.add('bad');
+      });
+    }
+    f.classList.add('vis',isOk?'ok':'fail');
+    f.textContent=given?(isOk?fbTxt.ok[qs]:fbTxt.fail[qs]):'⚠ Sin respuesta.';
+  }
+  const box=document.getElementById('score-box');
+  const val=document.getElementById('score-val');
+  const msg=document.getElementById('score-msg');
+  val.textContent=`${score}/13`;
+  val.style.color=score>=9?'#52d9a9':'#ff8fa0';
+  msg.textContent=score>=9
+    ?`¡Excelente! ${Math.round(score/13*100)}% automático. Solicita revisión de C y D a tu instructor.`
+    :`${Math.round(score/13*100)}% automático. Repasa los temas marcados en rojo.`;
+  box.classList.add('vis');
+  box.scrollIntoView({behavior:'smooth',block:'center'});
+}
+</script>
+</body>
+</html>
